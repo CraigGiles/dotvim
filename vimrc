@@ -35,9 +35,6 @@ nmap <leader>7 :TagbarToggle<CR>
 " Jump to definition, <C-t> jumps back
 nmap <C-b> <C-]>zz
 
-" set or remove spell check
-nnoremap \\ :set spell!<CR>
-
 " hide searh results
 nnoremap \] /akosdjfhaosdhjkif<CR>
 
@@ -48,14 +45,18 @@ execute pathogen#infect()
 call pathogen#helptags()
 
 let g:project_use_nerdtree = 1
+
+" Close NERDTree when opening a file
 let NERDTreeQuitOnOpen = 1
-let g:neocomplete#enable_at_startup = 1
+
+" Start neocomplete at startup
+" let g:neocomplete#enable_at_startup = 1
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsExpandTrigger="<tab>"
 
 " If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+" let g:UltiSnipsEditSplit="vertical"
 
 " Powerline (Fancy thingy at bottom stuff)
 " let g:Powerline_symbols = 'fancy'
