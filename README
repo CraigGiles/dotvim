@@ -1,0 +1,13 @@
+VIM files for syncing VIM across multiple computers. To install:
+
+Clone repository into ~/.vim 
+	HTTP: git clone https://github.com/CraigGiles/dotvim.git ~/.vim
+	SSH: git clone git@github.com:CraigGiles/dotvim.git ~/.vim 
+
+Link your vimrc and gvimrc to included vimrc files:
+	ln -s ~/.vim/vimrc ~/.vimrc
+	ln -s ~/.vim/gvimrc ~/.gvimrc
+
+...
+
+profit!
