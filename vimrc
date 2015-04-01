@@ -88,6 +88,11 @@ set splitbelow                  " Puts new split windows to the bottom of the cu
 set nu				" Always show line numbers
 set tags=tags
 
+" Color columns at 80 lines and 120 lines
+set colorcolumn=120            " Sets 120 as the column limit drawdown mark
+set colorcolumn=80             " Sets 80 as the column limit drawdown mark
+let &colorcolumn="80,".join(range(120,999),",")
+
 set nobackup                    " don't use backup files
 set nowb                        " don't use backup files
 set noswapfile                  " don't use swap files
