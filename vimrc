@@ -2,6 +2,13 @@
 " Key Bindings
 " ==================================================
 
+" eclim bindings
+" OmniCompletion CTRL-X, CTRL-O
+let g:EclimCompletionMethod = 'omnifunc'
+
+nmap <up> ddkkp
+nmap <down> ddp
+
 " Easy open and source of vimrc
 nmap <leader>ed :vs ~/.vimrc<CR>
 nmap <leader>sv :source ~/.vimrc<CR>
@@ -47,22 +54,22 @@ call pathogen#helptags()
 let g:project_use_nerdtree = 1
 
 " Close NERDTree when opening a file
-let NERDTreeQuitOnOpen = 1
+let NERDTreeQuitOnOpen = 0
 
 " Start neocomplete at startup
 " let g:neocomplete#enable_at_startup = 1
 
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+" Trigger configuration. Do not use <tab> 
+" if you use https://github.com/Valloric/YouCompleteMe.
 " let g:UltiSnipsExpandTrigger="<tab>"
 
 " If you want :UltiSnipsEdit to split your window.
 " let g:UltiSnipsEditSplit="vertical"
 
 " Powerline (Fancy thingy at bottom stuff)
-" let g:Powerline_symbols = 'fancy'
 set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
-set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+set noshowmode " Hide the default mode text (-- INSERT -- below the statusline)
 
 " Control P
 let g:ctrlp_working_path_mode = 'ra'
@@ -80,13 +87,18 @@ let g:ctrlp_custom_ignore = {
 " ==================================================
 
 let g:solarized_termcolors=256
-set background=dark
+set background=light
 colorscheme solarized
 
-set splitright			" Puts new v-split to the right of the current
-set splitbelow                  " Puts new split windows to the bottom of the current
-set nu				" Always show line numbers
-set tags=tags
+set list                        " Makes the whitespace visible
+set guifont=Inconsolata:h16
+set splitright                  " Puts new v-split to the right of the current
+set splitbelow                  " Puts new split windows to the bottom 
+set nu                          " Always show line numbers
+set ignorecase                  " Case insensitive searches
+set tabstop=4                   " Tab Stop at 4 unless plugin overwrites it
+set shiftwidth=4
+set expandtab                   " Always use spaces instead of tabs
 
 " Color columns at 80 lines and 120 lines
 set colorcolumn=120            " Sets 120 as the column limit drawdown mark
