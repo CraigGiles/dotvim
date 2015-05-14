@@ -15,3 +15,7 @@ Initialize the submodules and pull their repos
 ...
 
 profit!
+
+Adding a new plugin to vim:
+    git submodule add http://path.to/plugin.git plugin
+    git commit

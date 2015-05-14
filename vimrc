@@ -9,6 +9,16 @@ let g:EclimCompletionMethod = 'omnifunc'
 nmap <up> ddkkp
 nmap <down> ddp
 
+" PHP and Scala functions for eclim
+nmap <leader>php :PhpSearchContext<CR>
+nmap <leader>ss :ScalaSearchContext<CR>
+
+" Change two vertical splits to horizontal splits
+nmap <leader>sp <C-w>t<C-w>K
+
+" Change two horizontal splits to vertical splits
+nmap <leader>vs <C-w>t<C-w>H
+
 " Easy open and source of vimrc
 nmap <leader>ed :vs ~/.vimrc<CR>
 nmap <leader>sv :source ~/.vimrc<CR>
@@ -44,6 +54,13 @@ nmap <C-b> <C-]>zz
 
 " hide searh results
 nnoremap \] /akosdjfhaosdhjkif<CR>
+
+" set text wrapping toggles
+nmap <silent> ,ww :set invwrap<cr>
+nmap <silent> ,wW :windo set invwrap<cr>
+
+" insert the class name into the current location
+imap \fn <c-r>=expand('%:t:r')<cr>
 
 " ==================================================
 " Plugins
@@ -100,6 +117,10 @@ set tabstop=4                   " Tab Stop at 4 unless plugin overwrites it
 set shiftwidth=4
 set expandtab                   " Always use spaces instead of tabs
 
+" When the page starts to scroll, keep the cursor 8 lines from the top and 8
+" " lines from the bottom
+set scrolloff=8
+
 " Color columns at 80 lines and 120 lines
 set colorcolumn=120            " Sets 120 as the column limit drawdown mark
 set colorcolumn=80             " Sets 80 as the column limit drawdown mark
@@ -117,6 +138,6 @@ set wildignore+=*/logs/**
 set wildignore+=*/sql/**
 set wildignore+=*/tools/**
 set wildignore+=*/docroot/res/out/**
-set wildignore+=*.swp   
-set wildignore+=*.bak  
+set wildignore+=*.swp
+set wildignore+=*.bak
 
