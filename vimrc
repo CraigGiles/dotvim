@@ -13,6 +13,9 @@ nmap <down> ddp
 nmap <leader>php :PhpSearchContext<CR>
 nmap <leader>ss :ScalaSearchContext<CR>
 
+" Open a quick list of all buffers
+nmap <leader>bt :BuffersToggle<CR>
+
 " Change two vertical splits to horizontal splits
 nmap <leader>sp <C-w>t<C-w>K
 
