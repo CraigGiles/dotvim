@@ -56,6 +56,17 @@ nnoremap \] /akosdjfhaosdhjkif<CR>
 " insert the class name into the current location
 imap <leader>cn <c-r>=expand('%:t:r')<cr>
 
+" Turn off that stupid highlight search
+nmap <silent> <leader>n :nohls<CR>
+
+" Add a GUID to current line
+imap <C-J>d <C-r>=substitute(system("uuidgen"), '.$', '', 'g')<CR>
+
+" Underline the current line with '='
+nmap <silent> <leader>u= :t.\|s/./=/g\|:nohls<cr>
+nmap <silent> <leader>u- :t.\|s/./-/g\|:nohls<cr>
+nmap <silent> <leader>u~ :t.\|s/./\\~/g\|:nohls<cr>
+
 " ==================================================
 " Plugins
 " ==================================================
@@ -99,6 +110,7 @@ Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-scripts/bufkill.vim'
 Plug 'vim-scripts/BufOnly.vim'
+Plug 'elzr/vim-json'
 
 call plug#end()
 
@@ -115,6 +127,7 @@ set ignorecase                  " Case insensitive searches
 set tabstop=4                   " Tab Stop at 4 unless plugin overwrites it
 set shiftwidth=4
 set expandtab                   " Always use spaces instead of tabs
+set autoread                    " Read a file that has changed on disk
 
 " When the page starts to scroll, keep the cursor 8 lines from the top and 8
 " lines from the bottom
