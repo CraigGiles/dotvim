@@ -2,6 +2,8 @@
 " Key Bindings
 " ==================================================
 
+let mapleader = "\<Space>"
+
 " eclim bindings
 " OmniCompletion CTRL-X, CTRL-O
 let g:EclimCompletionMethod = 'omnifunc'
@@ -57,23 +59,10 @@ imap <leader>cn <c-r>=expand('%:t:r')<cr>
 " ==================================================
 " Plugins
 " ==================================================
-execute pathogen#infect()
-call pathogen#helptags()
-
 let g:project_use_nerdtree = 1
 
 " Close NERDTree when opening a file
 let NERDTreeQuitOnOpen = 0
-
-" Start neocomplete at startup
-" let g:neocomplete#enable_at_startup = 1
-
-" Trigger configuration. Do not use <tab> 
-" if you use https://github.com/Valloric/YouCompleteMe.
-" let g:UltiSnipsExpandTrigger="<tab>"
-
-" If you want :UltiSnipsEdit to split your window.
-" let g:UltiSnipsEditSplit="vertical"
 
 " Powerline (Fancy thingy at bottom stuff)
 set laststatus=2   " Always show the statusline
@@ -91,12 +80,30 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',
   \ }
 
-"  ==================================================
+" ==================================================
 " Settings
 " ==================================================
 
+call plug#begin()
+
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
+Plug 'kien/ctrlp.vim'
+Plug 'powerline/powerline'
+Plug 'derekwyatt/vim-scala'
+Plug 'altercation/vim-colors-solarized'
+Plug 'majutsushi/tagbar'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-scripts/bufkill.vim'
+
+call plug#end()
+
 let g:solarized_termcolors=256
 set background=light
+" colorscheme solarized
 colorscheme solarized
 
 set list                        " Makes the whitespace visible
