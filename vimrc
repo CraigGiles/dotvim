@@ -5,14 +5,7 @@
 " eclim bindings
 " OmniCompletion CTRL-X, CTRL-O
 let g:EclimCompletionMethod = 'omnifunc'
-
-nmap <up> ddkkp
-nmap <down> ddp
-
-" PHP and Scala functions for eclim
-nmap <leader>php :PhpSearchContext<CR>
-nmap <leader>ss :ScalaSearchContext<CR>
-
+"
 " Open a quick list of all buffers
 nmap <leader>bt :BuffersToggle<CR>
 
@@ -58,12 +51,8 @@ nmap <C-b> <C-]>zz
 " hide searh results
 nnoremap \] /akosdjfhaosdhjkif<CR>
 
-" set text wrapping toggles
-nmap <silent> ,ww :set invwrap<cr>
-nmap <silent> ,wW :windo set invwrap<cr>
-
 " insert the class name into the current location
-imap \fn <c-r>=expand('%:t:r')<cr>
+imap <leader>cn <c-r>=expand('%:t:r')<cr>
 
 " ==================================================
 " Plugins
