@@ -75,10 +75,10 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn|target|project)$',
-  \ 'file': '\v\.(exe|so|dll|class|jar)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
+            \ 'dir':  '\v[\/]\.(git|hg|svn|target|project)$',
+            \ 'file': '\v\.(exe|so|dll|class|jar)$',
+            \ 'link': 'some_bad_symbolic_links',
+            \ }
 
 " ==================================================
 " Settings
@@ -98,12 +98,12 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
 Plug 'vim-scripts/bufkill.vim'
+Plug 'vim-scripts/BufOnly.vim'
 
 call plug#end()
 
 let g:solarized_termcolors=256
 set background=light
-" colorscheme solarized
 colorscheme solarized
 
 set list                        " Makes the whitespace visible
@@ -117,7 +117,7 @@ set shiftwidth=4
 set expandtab                   " Always use spaces instead of tabs
 
 " When the page starts to scroll, keep the cursor 8 lines from the top and 8
-" " lines from the bottom
+" lines from the bottom
 set scrolloff=8
 
 " Color columns at 80 lines and 120 lines
@@ -140,3 +140,7 @@ set wildignore+=*/docroot/res/out/**
 set wildignore+=*.swp
 set wildignore+=*.bak
 
+
+" ==================================================
+" Functions
+" ==================================================
