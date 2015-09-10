@@ -157,3 +157,14 @@ set wildignore+=*.bak
 " ==================================================
 " Functions
 " ==================================================
+function! ScalaInsertPackage()
+    silent! execute "normal! gg0"
+    r! echo %:p
+    s/.*\/scala//
+    s/\.scala//
+    s/\//./g
+    silent! execute "normal! 0xipackage\<Space>\<esc>kdd"
+endfunction
+
+command! ScalaInsertPackage call ScalaInsertPackage()
+
