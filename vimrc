@@ -50,6 +50,9 @@ nmap <leader>7 :TagbarToggle<CR>
 " Jump to definition, <C-t> jumps back
 nmap <C-b> g]
 
+" Code Completion
+imap <C-Space> <C-x><C-o>
+
 " hide searh results
 nnoremap \] /akosdjfhaosdhjkif<CR>
 
