@@ -48,7 +48,7 @@ nmap <leader>2 :NERDTreeFind<CR>
 nmap <leader>7 :TagbarToggle<CR>
 
 " Jump to definition, <C-t> jumps back
-nmap <C-b> <C-]>zz
+nmap <C-b> g]
 
 " hide searh results
 nnoremap \] /akosdjfhaosdhjkif<CR>
@@ -119,7 +119,7 @@ set background=light
 colorscheme solarized
 
 set list                        " Makes the whitespace visible
-set guifont=Inconsolata:h16
+set guifont=Menlo:h16
 set splitright                  " Puts new v-split to the right of the current
 set splitbelow                  " Puts new split windows to the bottom 
 set nu                          " Always show line numbers
@@ -128,6 +128,7 @@ set tabstop=4                   " Tab Stop at 4 unless plugin overwrites it
 set shiftwidth=4
 set expandtab                   " Always use spaces instead of tabs
 set autoread                    " Read a file that has changed on disk
+set hidden                      " Allow modified buffers in the background
 
 " When the page starts to scroll, keep the cursor 8 lines from the top and 8
 " lines from the bottom
@@ -141,6 +142,10 @@ let &colorcolumn="80,".join(range(120,999),",")
 set nobackup                    " don't use backup files
 set nowb                        " don't use backup files
 set noswapfile                  " don't use swap files
+
+" Sets the timeout length for how long we'll 'pause' when waiting for a
+" keypress after leader key
+set timeoutlen=400
 
 " I don't want to pull up these folders/files when calling COMMAND-T
 set wildignore+=*/vendor/**
@@ -164,6 +169,7 @@ function! ScalaInsertPackage()
     s/\.scala//
     s/\//./g
     silent! execute "normal! 0xipackage\<Space>\<esc>kdd"
+    silent! execute "normal! $daw$xo\<ESC>"
 endfunction
 
 command! ScalaInsertPackage call ScalaInsertPackage()
