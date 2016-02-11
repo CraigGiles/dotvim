@@ -4,12 +4,9 @@
 
 let mapleader = "\<Space>"
 
-" eclim bindings
-" OmniCompletion CTRL-X, CTRL-O
-let g:EclimCompletionMethod = 'omnifunc'
-"
-" Open a quick list of all buffers
-nmap <leader>bt :BuffersToggle<CR>
+" Easy opening of splits
+nmap vs :vs<CR>
+nmap sp :sp<CR>
 
 " Change two vertical splits to horizontal splits
 nmap <leader>sp <C-w>t<C-w>K
@@ -20,10 +17,6 @@ nmap <leader>vs <C-w>t<C-w>H
 " Easy open and source of vimrc
 nmap <leader>ed :vs ~/.vimrc<CR>
 nmap <leader>sv :source ~/.vimrc<CR>
-
-" Easy opening of splits
-nmap vs :vs<CR>
-nmap sp :sp<CR>
 
 " Down is really the next line
 nnoremap j gj
@@ -37,9 +30,8 @@ nmap + :vertical resize +5<CR>
 
 " git related commands
 nmap ga :Gblame<CR>
-nmap gs :Gstatus<CR>
-nmap gm :Gcommit<CR>
 
+" highlight all the things
 nmap <leader>a ggVG
 
 " File navigation and IDE like settings
@@ -97,7 +89,6 @@ let g:ctrlp_custom_ignore = {
 " ==================================================
 " Settings
 " ==================================================
-
 call plug#begin()
 
 Plug 'tpope/vim-sensible'
