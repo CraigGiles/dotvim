@@ -1,21 +1,17 @@
 VIM files for syncing VIM across multiple computers. To install:
 
 Clone repository into ~/.vim 
-	HTTP: git clone https://github.com/CraigGiles/dotvim.git ~/.vim
-	SSH: git clone git@github.com:CraigGiles/dotvim.git ~/.vim 
+  HTTP: git clone https://github.com/CraigGiles/dotvim.git ~/.vim
+  SSH: git clone git@github.com:CraigGiles/dotvim.git ~/.vim 
 
 Link your vimrc and gvimrc to included vimrc files:
-	ln -s ~/.vim/vimrc ~/.vimrc
-	ln -s ~/.vim/gvimrc ~/.gvimrc
+  ln -s ~/.vim/vimrc ~/.vimrc
+  ln -s ~/.vim/gvimrc ~/.gvimrc
 
-Initialize the submodules and pull their repos
-	git submodule init
-	git submodule update
+Initialize the plugins:
+  In bash, run:
+  {{{ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim }}}
 
-...
-
-profit!
-
-Adding a new plugin to vim:
-    git submodule add http://path.to/plugin.git plugin
-    git commit
+  In VIM, run:
+  :PlugInstall
