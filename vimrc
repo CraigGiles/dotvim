@@ -70,7 +70,7 @@ nmap <silent> <leader>u- :t.\|s/./-/g\|:nohls<cr>
 nmap <silent> <leader>u~ :t.\|s/./\\~/g\|:nohls<cr>
 
 " ==================================================
-" Plugins
+" Plugin Settings
 " ==================================================
 let g:project_use_nerdtree = 1
 
@@ -80,19 +80,20 @@ let NERDTreeQuitOnOpen = 0
 " Gutentags
 let g:gutentags_cache_dir=".git"
 
-" Control P
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-
-let g:ctrlp_custom_ignore = {
-            \ 'dir':  '\v[\/]\.(git|hg|svn|target|project)$',
-            \ 'file': '\v\.(exe|so|dll|class|jar)$',
-            \ 'link': 'some_bad_symbolic_links',
-            \ }
+set laststatus=2
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'gutentags#statusline()' ],
+      \             [ 'readonly', 'fugitive', 'filename', 'modified' ] ]
+      \ },
+      \ 'component': {
+      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+      \ },
+      \ }
 
 " ==================================================
-" Settings
+" Plugins
 " ==================================================
 call plug#begin()
 
@@ -112,9 +113,14 @@ Plug 'elzr/vim-json'
 Plug 'airblade/vim-gitgutter'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'tsukkee/unite-tag'
+Plug 'itchyny/lightline.vim'
 
 call plug#end()
 
+
+" ==================================================
+" Settings
+" ==================================================
 let g:solarized_termcolors=256
 set background=light
 colorscheme solarized
