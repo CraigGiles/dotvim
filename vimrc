@@ -4,6 +4,8 @@
 
 let mapleader = "\<Space>"
 
+nnoremap / /\v
+
 " Easy opening of splits
 nmap vs :vs<CR>
 nmap sp :sp<CR>
@@ -70,10 +72,8 @@ let g:project_use_nerdtree = 1
 " Close NERDTree when opening a file
 let NERDTreeQuitOnOpen = 0
 
-" Powerline (Fancy thingy at bottom stuff)
-set laststatus=2   " Always show the statusline
-set encoding=utf-8 " Necessary to show Unicode glyphs
-set noshowmode " Hide the default mode text (-- INSERT -- below the statusline)
+" Gutentags
+let g:gutentags_cache_dir=".git"
 
 " Control P
 let g:ctrlp_working_path_mode = 'ra'
@@ -96,8 +96,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
-Plug 'kien/ctrlp.vim'
-Plug 'powerline/powerline'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'derekwyatt/vim-scala'
 Plug 'altercation/vim-colors-solarized'
 Plug 'majutsushi/tagbar'
@@ -105,6 +104,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'vim-scripts/bufkill.vim'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'elzr/vim-json'
+Plug 'airblade/vim-gitgutter'
+Plug 'ludovicchabant/vim-gutentags'
 
 call plug#end()
 
@@ -113,16 +114,19 @@ set background=light
 colorscheme solarized
 
 set list                        " Makes the whitespace visible
-set guifont=Menlo:h16
+set guifont=Menlo:h14
 set splitright                  " Puts new v-split to the right of the current
 set splitbelow                  " Puts new split windows to the bottom 
 set nu                          " Always show line numbers
 set ignorecase                  " Case insensitive searches
+set smartcase                   " Case sensitive when wanted
 set tabstop=4                   " Tab Stop at 4 unless plugin overwrites it
 set shiftwidth=4
 set expandtab                   " Always use spaces instead of tabs
 set autoread                    " Read a file that has changed on disk
 set hidden                      " Allow modified buffers in the background
+set ruler
+set statusline+=%{gutentags#statusline()}
 
 " When the page starts to scroll, keep the cursor 8 lines from the top and 8
 " lines from the bottom
