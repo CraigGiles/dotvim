@@ -1,10 +1,15 @@
 " ==================================================
 " Key Bindings
-" ==================================================
+" =================================================
 
 let mapleader = "\<Space>"
 
 nnoremap / /\v
+
+" Unite key bindings
+nnoremap <C-p> :Unite -start-insert tag<CR>
+nnoremap <leader>f :<C-u>Unite -start-insert file_rec<CR>
+nnoremap <leader>ls :Unite buffer<CR>
 
 " Easy opening of splits
 nmap vs :vs<CR>
@@ -96,7 +101,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'Shougo/unite.vim'
 Plug 'derekwyatt/vim-scala'
 Plug 'altercation/vim-colors-solarized'
 Plug 'majutsushi/tagbar'
@@ -106,6 +111,7 @@ Plug 'vim-scripts/BufOnly.vim'
 Plug 'elzr/vim-json'
 Plug 'airblade/vim-gitgutter'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'tsukkee/unite-tag'
 
 call plug#end()
 
