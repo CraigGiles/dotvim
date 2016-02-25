@@ -73,6 +73,7 @@ nmap <silent> <leader>u~ :t.\|s/./\\~/g\|:nohls<cr>
 " Plugin Settings
 " ==================================================
 let g:project_use_nerdtree = 1
+let g:scala_use_default_keymappings = 0
 
 " Close NERDTree when opening a file
 let NERDTreeQuitOnOpen = 0
