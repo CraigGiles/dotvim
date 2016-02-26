@@ -137,6 +137,9 @@ set tabstop=4                   " Tab Stop at 4 unless plugin overwrites it
 set shiftwidth=4
 set expandtab                   " Always use spaces instead of tabs
 set autoread                    " Read a file that has changed on disk
+set autowrite                   " Auto write to disk when buffer is changed
+set autowriteall
+au FocusLost * silent! wa
 set hidden                      " Allow modified buffers in the background
 set ruler
 set statusline+=%{gutentags#statusline()}
