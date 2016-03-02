@@ -93,6 +93,11 @@ let g:lightline = {
       \ },
       \ }
 
+" CtrlP settings
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+
 " ==================================================
 " Plugins
 " ==================================================
@@ -114,6 +119,7 @@ Plug 'elzr/vim-json'
 Plug 'airblade/vim-gitgutter'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'tsukkee/unite-tag'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'itchyny/lightline.vim'
 
 call plug#end()
