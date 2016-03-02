@@ -7,7 +7,7 @@ let mapleader = "\<Space>"
 nnoremap / /\v
 
 " Unite key bindings
-nnoremap <C-p> :Unite -start-insert tag<CR>
+nnoremap <leader>t :Unite -start-insert tag<CR>
 nnoremap <leader>f :<C-u>Unite -start-insert file_rec<CR>
 nnoremap <leader>ls :Unite buffer<CR>
 
