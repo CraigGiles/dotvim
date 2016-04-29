@@ -4,8 +4,6 @@
 
 let mapleader = "\<Space>"
 
-nnoremap / /\v
-
 " Unite key bindings
 nnoremap <leader>t :Unite -start-insert tag<CR>
 nnoremap <leader>f :<C-u>Unite -start-insert file_rec<CR>
@@ -145,7 +143,6 @@ set expandtab                   " Always use spaces instead of tabs
 set autoread                    " Read a file that has changed on disk
 set autowrite                   " Auto write to disk when buffer is changed
 set autowriteall
-au FocusLost * silent! wa
 set hidden                      " Allow modified buffers in the background
 set ruler
 set statusline+=%{gutentags#statusline()}
