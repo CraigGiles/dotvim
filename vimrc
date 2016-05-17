@@ -116,7 +116,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'vim-scripts/bufkill.vim'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'tsukkee/unite-tag'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'itchyny/lightline.vim'
@@ -184,7 +183,7 @@ set wildignore+=*.bak
 function! ScalaInsertPackage()
     silent! execute "normal! gg0"
     r! echo %:p
-    s/.*\/scala//
+    s/.*src\/main\/scala//
     s/\.scala//
     s/\//./g
     silent! execute "normal! 0xipackage\<Space>\<esc>kdd"
