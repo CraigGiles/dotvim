@@ -72,21 +72,26 @@ nmap <silent> <leader>u~ :t.\|s/./\\~/g\|:nohls<cr>
 " ==================================================
 " Plugin Settings
 " ==================================================
+
 let g:project_use_nerdtree = 1
 let g:scala_use_default_keymappings = 0
 
 " Close NERDTree when opening a file
 let NERDTreeQuitOnOpen = 0
 
-" Gutentags
-let g:gutentags_cache_dir=".git"
+" tags
+let g:auto_ctags = 1
+let g:auto_ctags_directory_list = ['.git', '.svn']
+let g:auto_ctags_tags_name = 'tags'
+let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
 
 set laststatus=2
 let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
-      \   'left': [ [ 'mode', 'gutentags#statusline()' ],
-      \             [ 'readonly', 'fugitive', 'filename', 'modified' ] ]
+      \   'left': [
+      \     [ 'readonly', 'fugitive', 'filename', 'modified' ] 
+      \   ]
       \ },
       \ 'component': {
       \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
@@ -109,16 +114,16 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'Shougo/unite.vim'
+Plug 'tsukkee/unite-tag'
 Plug 'derekwyatt/vim-scala'
 Plug 'altercation/vim-colors-solarized'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
-Plug 'vim-scripts/bufkill.vim'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'tsukkee/unite-tag'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'itchyny/lightline.vim'
+Plug 'soramugi/auto-ctags.vim'
 
 call plug#end()
 
