@@ -150,7 +150,6 @@ set autowrite                   " Auto write to disk when buffer is changed
 set autowriteall
 set hidden                      " Allow modified buffers in the background
 set ruler
-set statusline+=%{gutentags#statusline()}
 set nomodeline                  " Don't allow modeline ( :help modeline )
 
 " When the page starts to scroll, keep the cursor 8 lines from the top and 8
