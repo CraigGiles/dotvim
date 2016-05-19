@@ -125,6 +125,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'soramugi/auto-ctags.vim'
 
+Plug 'spiroid/vim-ultisnip-scala'
+
 call plug#end()
 
 
