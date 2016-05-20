@@ -103,6 +103,12 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 
+" ENSIME settings
+" autocmd BufWritePost *.scala :EnTypeCheck
+nnoremap <leader>et :EnType<CR>
+au FileType scala nnoremap <leader>ed :EnDeclaration<CR>
+au FileType scala nnoremap <leader>ei :EnSuggestImport<CR>
+
 " ==================================================
 " Plugins
 " ==================================================
@@ -124,6 +130,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'soramugi/auto-ctags.vim'
+Plug 'ensime/ensime-vim'
+Plug 'scrooloose/syntastic'
 
 Plug 'spiroid/vim-ultisnip-scala'
 
@@ -138,7 +146,7 @@ set background=light
 colorscheme solarized
 
 set list                        " Makes the whitespace visible
-set guifont=Menlo:h14
+set guifont=Menlo:h12
 set splitright                  " Puts new v-split to the right of the current
 set splitbelow                  " Puts new split windows to the bottom
 set nu                          " Always show line numbers
