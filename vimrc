@@ -87,17 +87,17 @@ let g:auto_ctags_tags_name = 'tags'
 let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
 
 set laststatus=2
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [
-      \     [ 'readonly', 'fugitive', 'filename', 'modified' ] 
-      \   ]
-      \ },
-      \ 'component': {
-      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
-      \ },
-      \ }
+" let g:lightline = {
+"       \ 'colorscheme': 'wombat',
+"       \ 'active': {
+"       \   'left': [
+"       \     [ 'readonly', 'fugitive', 'filename', 'modified' ]
+"       \   ]
+"       \ },
+"       \ 'component': {
+"       \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+"       \ },
+"       \ }
 
 " CtrlP settings
 let g:ctrlp_map = '<c-p>'
@@ -127,11 +127,11 @@ Plug 'derekwyatt/vim-scala'
 Plug 'derekwyatt/vim-sbt'
 Plug 'altercation/vim-colors-solarized'
 Plug 'majutsushi/tagbar'
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
 Plug 'soramugi/auto-ctags.vim'
 Plug 'ensime/ensime-vim'
 Plug 'scrooloose/syntastic'
@@ -225,3 +225,49 @@ augroup ITNHighlight
     autocmd BufLeave  *.itn       syntax off
     autocmd BufLeave  *.itn   endif
 augroup END
+
+function! WindowNumber()
+  return tabpagewinnr(tabpagenr())
+endfunction
+function! TrailingSpaceWarning()
+  if !exists("b:statline_trailing_space_warning")
+    let lineno = search('\s$', 'nw')
+    if lineno != 0
+      let b:statline_trailing_space_warning = 'Trailing:'.lineno.''
+    else
+      let b:statline_trailing_space_warning = 'Trailing: None'
+    endif
+  endif
+  return b:statline_trailing_space_warning
+endfunction
+
+" recalculate when idle, and after saving
+augroup statline_trail
+  autocmd!
+  autocmd cursorhold,bufwritepost * unlet! b:statline_trailing_space_warning
+augroup END
+
+set statusline=
+set statusline+=%6*%m%r%*                          " modified, readonly
+set statusline+=
+set statusline+=%{fugitive#statusline()}           " Git branch
+set statusline+=[
+set statusline+=%1*%{expand('%:h')}%*              " relative path to file's directory"
+set statusline+=][
+set statusline+=%1*%t%*                            " file name
+set statusline+=][
+set statusline+=%<                                 " truncate here if needed
+set statusline+=%5*%L\ lines%*                     " number of lines
+set statusline+=][
+set statusline+=%3*%{TrailingSpaceWarning()}%*     " trailing whitespace
+set statusline+=]
+
+set statusline+=%=                                 " switch to RHS
+
+set statusline+=[
+set statusline+=%5*col:%-3.c%*                      " column
+set statusline+=][
+set statusline+=%2*buf:%-3n%*                      " buffer number
+set statusline+=][
+set statusline+=%2*win:%-3.3{WindowNumber()}%*     " window number
+set statusline+=]
