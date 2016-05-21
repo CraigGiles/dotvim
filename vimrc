@@ -11,43 +11,43 @@ nnoremap <leader>f :<C-u>Unite -start-insert file_rec<CR>
 nnoremap <leader>ls :Unite buffer<CR>
 
 " Easy opening of splits
-nmap vs :vs<CR>
-nmap sp :sp<CR>
+nnoremap vs :vs<CR>
+nnoremap sp :sp<CR>
 
 " Change two vertical splits to horizontal splits
-nmap <leader>sp <C-w>t<C-w>K
+nnoremap <leader>sp <C-w>t<C-w>K
 
 " Change two horizontal splits to vertical splits
-nmap <leader>vs <C-w>t<C-w>H
+nnoremap <leader>vs <C-w>t<C-w>H
 
 " Easy open and source of vimrc
-nmap <leader>ed :vs ~/.vimrc<CR>
-nmap <leader>sv :source ~/.vimrc<CR>
+nnoremap <leader>ed :vs ~/.vimrc<CR>
+nnoremap <leader>sv :source ~/.vimrc<CR>
 
 " Down is really the next line
 nnoremap j gj
 nnoremap k gk
 
 " Escape to normal mode from insert mode with jj
-imap jj <ESC>
+inoremap jj <ESC>
 
 " Increase vertical split size by 5
-nmap + :resize +5<CR>
-nmap <leader>+ :resize +5<CR>
+nnoremap + :resize +5<CR>
+nnoremap <leader>+ :resize +5<CR>
 
 " git related commands
-nmap ga :Gblame<CR>
+nnoremap ga :Gblame<CR>
 
 " highlight all the things
-nmap <leader>a ggVG
+nnoremap <leader>a ggVG
 
 " File navigation and IDE like settings
-map <leader>1 :NERDTreeToggle<CR>
-nmap <leader>2 :NERDTreeFind<CR>
-nmap <leader>7 :TagbarToggle<CR>
+nnoremap <leader>1 :NERDTreeToggle<CR>
+nnoremap <leader>2 :NERDTreeFind<CR>
+nnoremap <leader>7 :TagbarToggle<CR>
 
 " Jump to definition, <C-t> jumps back
-nmap <C-b> g]
+nnoremap <C-b> g]
 
 " Buffer navigation
 nnoremap gb :ls<CR>:buffer<Space>
@@ -56,18 +56,18 @@ nnoremap ,b :buffer *
 nnoremap ,B :sbuffer *
 
 " Code Completion
-imap <C-Space> <C-x><C-o>
+inoremap <C-Space> <C-x><C-o>
 
 " insert the class name into the current location
-imap <leader>cn <c-r>=expand('%:t:r')<cr>
+inoremap <leader>cn <c-r>=expand('%:t:r')<cr>
 
 " Turn off that stupid highlight search
-nmap <silent> <leader>n :nohls<CR>
+nnoremap <silent> <leader>n :nohls<CR>
 
 " Underline the current line with '='
-nmap <silent> <leader>u= :t.\|s/./=/g\|:nohls<cr>
-nmap <silent> <leader>u- :t.\|s/./-/g\|:nohls<cr>
-nmap <silent> <leader>u~ :t.\|s/./\\~/g\|:nohls<cr>
+nnoremap <silent> <leader>u= :t.\|s/./=/g\|:nohls<cr>
+nnoremap <silent> <leader>u- :t.\|s/./-/g\|:nohls<cr>
+nnoremap <silent> <leader>u~ :t.\|s/./\\~/g\|:nohls<cr>
 
 " ==================================================
 " Plugin Settings
@@ -179,7 +179,7 @@ set noswapfile                  " don't use swap files
 " keypress after leader key
 set timeoutlen=1000
 
-" I don't want to pull up these folders/files when calling COMMAND-T
+" I don't want to pull up these folders/files when calling my fuzzy finder
 set wildignore+=*/vendor/**
 set wildignore+=*/target/**
 set wildignore+=*/cli/**
