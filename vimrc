@@ -122,6 +122,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'Shougo/unite.vim'
 Plug 'tsukkee/unite-tag'
 Plug 'derekwyatt/vim-scala'
+Plug 'derekwyatt/vim-sbt'
 Plug 'altercation/vim-colors-solarized'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
@@ -141,9 +142,8 @@ call plug#end()
 " ==================================================
 " Settings
 " ==================================================
-let g:solarized_termcolors=256
-set background=light
-colorscheme solarized
+set background=dark
+colorscheme darkula
 
 set list                        " Makes the whitespace visible
 set guifont=Menlo:h12
@@ -168,8 +168,8 @@ set scrolloff=8
 
 " Color columns at 80 lines and 120+ lines
 set colorcolumn=120            " Sets 120 as the column limit drawdown mark
-set colorcolumn=80             " Sets 80 as the column limit drawdown mark
-let &colorcolumn="80,".join(range(120,999),",")
+set colorcolumn=81             " Sets 80 as the column limit drawdown mark
+let &colorcolumn="81,".join(range(120,999),",")
 
 set nobackup                    " don't use backup files
 set nowb                        " don't use backup files
@@ -194,15 +194,3 @@ set wildignore+=*.bak
 " ==================================================
 " Functions
 " ==================================================
-function! ScalaInsertPackage()
-    silent! execute "normal! gg0"
-    r! echo %:p
-    s/.*src\/main\/scala//
-    s/\.scala//
-    s/\//./g
-    silent! execute "normal! 0xipackage\<Space>\<esc>kdd"
-    silent! execute "normal! $daw$xo\<ESC>"
-endfunction
-
-command! ScalaInsertPackage call ScalaInsertPackage()
-
