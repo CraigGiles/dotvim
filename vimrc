@@ -2,6 +2,7 @@
 " Key Bindings
 " =================================================
 
+let mapleader = "\<Space>"
 nnoremap <leader>y "*y
 nnoremap <leader>p "*p
 
@@ -59,7 +60,7 @@ nnoremap ,B :sbuffer *
 inoremap <C-Space> <C-x><C-o>
 
 " insert the class name into the current location
-inoremap <leader>cn <c-r>=expand('%:t:r')<cr>
+inoremap <C-space>cn <c-r>=expand('%:t:r')<cr>
 
 " Turn off that stupid highlight search
 nnoremap <silent> <leader>n :nohls<CR>
@@ -104,7 +105,6 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 
 " ENSIME settings
-" autocmd BufWritePost *.scala :EnTypeCheck
 nnoremap <leader>et :EnType<CR>
 au FileType scala nnoremap <leader>ed :EnDeclaration<CR>
 au FileType scala nnoremap <leader>ei :EnSuggestImport<CR>
@@ -119,6 +119,8 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-scriptease'
 Plug 'Shougo/unite.vim'
 Plug 'tsukkee/unite-tag'
 Plug 'derekwyatt/vim-scala'
@@ -133,7 +135,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'soramugi/auto-ctags.vim'
 Plug 'ensime/ensime-vim'
 Plug 'scrooloose/syntastic'
-
 Plug 'spiroid/vim-ultisnip-scala'
 
 call plug#end()
@@ -170,6 +171,7 @@ set scrolloff=8
 set colorcolumn=120            " Sets 120 as the column limit drawdown mark
 set colorcolumn=81             " Sets 80 as the column limit drawdown mark
 let &colorcolumn="81,".join(range(120,999),",")
+highlight ColorColumn ctermbg=0 guibg=lightblue
 
 set nobackup                    " don't use backup files
 set nowb                        " don't use backup files
@@ -194,3 +196,32 @@ set wildignore+=*.bak
 " ==================================================
 " Functions
 " ==================================================
+"=====[ Always syntax highlight .patch and ToDo and .itn files ]===============
+
+augroup PatchHighlight
+    autocmd!
+    autocmd BufEnter  *.patch,*.diff  let b:syntax_was_on = exists("syntax_on")
+    autocmd BufEnter  *.patch,*.diff  syntax enable
+    autocmd BufLeave  *.patch,*.diff  if !getbufvar("%","syntax_was_on")
+    autocmd BufLeave  *.patch,*.diff      syntax off
+    autocmd BufLeave  *.patch,*.diff  endif
+augroup END
+
+augroup TODOHighlight
+    autocmd!
+    autocmd BufEnter  *.todo,todo,ToDo,TODO  let b:syntax_was_on = exists("syntax_on")
+    autocmd BufEnter  *.todo,todo,ToDo,TODO  syntax enable
+    autocmd BufLeave  *.todo,todo,ToDo,TODO  if !getbufvar("%","syntax_was_on")
+    autocmd BufLeave  *.todo,todo,ToDo,TODO      syntax off
+    autocmd BufLeave  *.todo,todo,ToDo,TODO  endif
+augroup END
+
+augroup ITNHighlight
+    autocmd!
+    autocmd BufEnter  *.itn   let b:syntax_was_on = exists("syntax_on")
+    autocmd BufEnter  *.itn   syntax enable
+    autocmd BufEnter  *.itn   set syntax=itn
+    autocmd BufLeave  *.itn   if !getbufvar("%","syntax_was_on")
+    autocmd BufLeave  *.itn       syntax off
+    autocmd BufLeave  *.itn   endif
+augroup END
