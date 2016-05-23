@@ -15,3 +15,8 @@ Initialize the plugins:
 
   In VIM, run:
   :PlugInstall
+
+TMUX:
+================================================================================
+brew install reattach-to-user-namespace
+ln -s ~/.vim/tmux.conf ~/.tmux.conf

@@ -77,6 +77,12 @@ nnoremap <silent> <leader>u~ :t.\|s/./\\~/g\|:nohls<cr>
 " ==================================================
 " Plugin Settings
 " ==================================================
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 
 let g:project_use_nerdtree = 1
 let g:scala_use_default_keymappings = 0
@@ -140,6 +146,7 @@ Plug 'soramugi/auto-ctags.vim'
 Plug 'ensime/ensime-vim'
 Plug 'scrooloose/syntastic'
 Plug 'spiroid/vim-ultisnip-scala'
+Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
 
