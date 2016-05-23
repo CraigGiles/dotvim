@@ -1,12 +1,12 @@
 " ==================================================
 " Key Bindings
 " =================================================
+let mapleader = "\<Space>"
 
 " Source the current file
 nnoremap <leader>so :source %<CR>
 
-let mapleader = "\<Space>"
-
+nnoremap <C-s> :w<CR>
 nnoremap <leader>y "*y
 nnoremap <leader>p "*p
 
