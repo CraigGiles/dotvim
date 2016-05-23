@@ -2,7 +2,11 @@
 " Key Bindings
 " =================================================
 
+" Source the current file
+nnoremap <leader>so :source %<CR>
+
 let mapleader = "\<Space>"
+
 nnoremap <leader>y "*y
 nnoremap <leader>p "*p
 
@@ -168,10 +172,23 @@ set nomodeline                  " Don't allow modeline ( :help modeline )
 set scrolloff=8
 
 " Color columns at 80 lines and 120+ lines
-set colorcolumn=120            " Sets 120 as the column limit drawdown mark
-set colorcolumn=81             " Sets 80 as the column limit drawdown mark
-let &colorcolumn="81,".join(range(120,999),",")
-highlight ColorColumn ctermbg=0 guibg=lightblue
+" set colorcolumn=120            " Sets 120 as the column limit drawdown mark
+" set colorcolumn=81             " Sets 80 as the column limit drawdown mark
+" let &colorcolumn="81,".join(range(120,999),",")
+highlight ColorColumn ctermbg=0 guibg=magenta
+
+" Color column line 81 and 121-130
+call matchadd('ColorColumn', '\%81v', 100)
+call matchadd('ColorColumn', '\%121v', 100)
+call matchadd('ColorColumn', '\%122v', 100)
+call matchadd('ColorColumn', '\%123v', 100)
+call matchadd('ColorColumn', '\%124v', 100)
+call matchadd('ColorColumn', '\%125v', 100)
+call matchadd('ColorColumn', '\%126v', 100)
+call matchadd('ColorColumn', '\%127v', 100)
+call matchadd('ColorColumn', '\%128v', 100)
+call matchadd('ColorColumn', '\%129v', 100)
+call matchadd('ColorColumn', '\%130v', 100)
 
 set nobackup                    " don't use backup files
 set nowb                        " don't use backup files
@@ -252,12 +269,9 @@ set statusline+=%6*%m%r%*                          " modified, readonly
 set statusline+=
 set statusline+=%{fugitive#statusline()}           " Git branch
 set statusline+=[
-set statusline+=%1*%{expand('%:h')}%*              " relative path to file's directory"
-set statusline+=][
 set statusline+=%1*%t%*                            " file name
 set statusline+=][
 set statusline+=%<                                 " truncate here if needed
-set statusline+=%5*%L\ lines%*                     " number of lines
 set statusline+=][
 set statusline+=%3*%{TrailingSpaceWarning()}%*     " trailing whitespace
 set statusline+=]
@@ -265,6 +279,8 @@ set statusline+=]
 set statusline+=%=                                 " switch to RHS
 
 set statusline+=[
+set statusline+=%1*%{expand('%:h')}%*              " relative path to file's directory"
+set statusline+=][
 set statusline+=%5*col:%-3.c%*                      " column
 set statusline+=][
 set statusline+=%2*buf:%-3n%*                      " buffer number
