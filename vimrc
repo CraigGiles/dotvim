@@ -84,6 +84,10 @@ nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 
+" Vimmux Helper Keys
+nnoremap <leader>vst :VimuxRunCommand("sbt test")<CR>
+nnoremap <leader>vc :VimuxCloseRunner<CR>
+
 let g:project_use_nerdtree = 1
 let g:scala_use_default_keymappings = 0
 
@@ -147,6 +151,7 @@ Plug 'ensime/ensime-vim'
 Plug 'scrooloose/syntastic'
 Plug 'spiroid/vim-ultisnip-scala'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'benmills/vimux'
 
 call plug#end()
 

@@ -7,16 +7,12 @@ Clone repository into ~/.vim
 Link your vimrc and gvimrc to included vimrc files:
   ln -s ~/.vim/vimrc ~/.vimrc
   ln -s ~/.vim/gvimrc ~/.gvimrc
+  ln -s ~/.vim/bashrc ~/.bash_profile
+  ln -s ~/.vim/tmux.conf ~/.tmux.conf
 
 Initialize the plugins:
-  In bash, run:
-  {{{ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim }}}
-
-  In VIM, run:
   :PlugInstall
 
 TMUX:
 ================================================================================
 brew install reattach-to-user-namespace
-ln -s ~/.vim/tmux.conf ~/.tmux.conf
