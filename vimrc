@@ -5,6 +5,7 @@ let mapleader = "\<Space>"
 
 " Source the current file
 nnoremap <leader>so :source %<CR>
+nnoremap <Esc> <Nop>
 
 nnoremap <C-s> :w<CR>
 nnoremap <leader>y "*y
@@ -26,7 +27,7 @@ nnoremap <leader>sp <C-w>t<C-w>K
 nnoremap <leader>vs <C-w>t<C-w>H
 
 " Easy open and source of vimrc
-nnoremap <leader>ed :vs ~/.vimrc<CR>
+nnoremap <leader>vrc :vs ~/.vimrc<CR>
 nnoremap <leader>sv :source ~/.vimrc<CR>
 
 " Down is really the next line
