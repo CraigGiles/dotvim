@@ -46,9 +46,11 @@ nnoremap ga :Gblame<CR>
 " highlight all the things
 nnoremap <leader>a ggVG
 
+let g:netrw_liststyle=3
+
 " File navigation and IDE like settings
-nnoremap <leader>1 :NERDTreeToggle<CR>
-nnoremap <leader>2 :NERDTreeFind<CR>
+nnoremap <F2> :NERDTreeToggle<CR>
+nnoremap <F3> :NERDTreeFind<CR>
 nnoremap <leader>7 :TagbarToggle<CR>
 
 " Jump to definition, <C-t> jumps back
@@ -88,11 +90,12 @@ nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
 nnoremap <leader>vst :VimuxRunCommand("sbt test")<CR>
 nnoremap <leader>vc :VimuxCloseRunner<CR>
 
-let g:project_use_nerdtree = 1
+" let NERDTreeHijackNetrw=1
+" let g:project_use_nerdtree = 1
 let g:scala_use_default_keymappings = 0
 
 " Close NERDTree when opening a file
-let NERDTreeQuitOnOpen = 0
+" let NERDTreeQuitOnOpen = 0
 
 " tags
 let g:auto_ctags = 1
@@ -101,17 +104,6 @@ let g:auto_ctags_tags_name = 'tags'
 let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
 
 set laststatus=2
-" let g:lightline = {
-"       \ 'colorscheme': 'wombat',
-"       \ 'active': {
-"       \   'left': [
-"       \     [ 'readonly', 'fugitive', 'filename', 'modified' ]
-"       \   ]
-"       \ },
-"       \ 'component': {
-"       \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
-"       \ },
-"       \ }
 
 " CtrlP settings
 let g:ctrlp_map = '<c-p>'
@@ -135,6 +127,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-scriptease'
+Plug 'tpope/vim-dispatch'
 Plug 'Shougo/unite.vim'
 Plug 'tsukkee/unite-tag'
 Plug 'derekwyatt/vim-scala'
@@ -145,7 +138,6 @@ Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
-" Plug 'itchyny/lightline.vim'
 Plug 'soramugi/auto-ctags.vim'
 Plug 'ensime/ensime-vim'
 Plug 'scrooloose/syntastic'
