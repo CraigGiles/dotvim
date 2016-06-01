@@ -46,7 +46,7 @@ nnoremap ga :Gblame<CR>
 " highlight all the things
 nnoremap <leader>a ggVG
 
-let g:netrw_liststyle=3
+" let g:netrw_liststyle=3
 
 " File navigation and IDE like settings
 nnoremap <F2> :NERDTreeToggle<CR>
@@ -111,9 +111,9 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 
 " ENSIME settings
-nnoremap <leader>et :EnType<CR>
-au FileType scala nnoremap <leader>ed :EnDeclaration<CR>
-au FileType scala nnoremap <leader>ei :EnSuggestImport<CR>
+" nnoremap <leader>et :EnType<CR>
+" au FileType scala nnoremap <leader>ed :EnDeclaration<CR>
+" au FileType scala nnoremap <leader>ei :EnSuggestImport<CR>
 
 " ==================================================
 " Plugins
@@ -139,8 +139,8 @@ Plug 'vim-scripts/BufOnly.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'soramugi/auto-ctags.vim'
-Plug 'ensime/ensime-vim'
-Plug 'scrooloose/syntastic'
+" Plug 'ensime/ensime-vim'
+" Plug 'scrooloose/syntastic'
 Plug 'spiroid/vim-ultisnip-scala'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
