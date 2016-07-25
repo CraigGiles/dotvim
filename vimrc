@@ -7,8 +7,8 @@ let mapleader = "\<Space>"
 nnoremap <leader>so :source %<CR>
 
 nnoremap <C-s> :w<CR>
-nnoremap <leader>y "*y
-nnoremap <leader>p "*p
+nnoremap <leader>Y "*y
+nnoremap <leader>P "*p
 
 " Unite key bindings
 nnoremap <leader>t :Unite -start-insert tag<CR>
@@ -134,16 +134,11 @@ Plug 'derekwyatt/vim-scala'
 Plug 'derekwyatt/vim-sbt'
 Plug 'altercation/vim-colors-solarized'
 Plug 'majutsushi/tagbar'
-" Plug 'scrooloose/nerdtree'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'soramugi/auto-ctags.vim'
-" Plug 'ensime/ensime-vim'
-" Plug 'scrooloose/syntastic'
 Plug 'spiroid/vim-ultisnip-scala'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'benmills/vimux'
 
 call plug#end()
 
@@ -151,8 +146,10 @@ call plug#end()
 " ==================================================
 " Settings
 " ==================================================
-set background=dark
-colorscheme darkula
+" set background=dark
+" colorscheme darkula
+" set background=light
+" colorscheme solarized
 
 set list                        " Makes the whitespace visible
 set guifont=Menlo:h12
@@ -219,33 +216,33 @@ set wildignore+=*.bak
 " ==================================================
 "=====[ Always syntax highlight .patch and ToDo and .itn files ]===============
 
-augroup PatchHighlight
-    autocmd!
-    autocmd BufEnter  *.patch,*.diff  let b:syntax_was_on = exists("syntax_on")
-    autocmd BufEnter  *.patch,*.diff  syntax enable
-    autocmd BufLeave  *.patch,*.diff  if !getbufvar("%","syntax_was_on")
-    autocmd BufLeave  *.patch,*.diff      syntax off
-    autocmd BufLeave  *.patch,*.diff  endif
-augroup END
+" augroup PatchHighlight
+"     autocmd!
+"     autocmd BufEnter  *.patch,*.diff  let b:syntax_was_on = exists("syntax_on")
+"     autocmd BufEnter  *.patch,*.diff  syntax enable
+"     autocmd BufLeave  *.patch,*.diff  if !getbufvar("%","syntax_was_on")
+"     autocmd BufLeave  *.patch,*.diff      syntax off
+"     autocmd BufLeave  *.patch,*.diff  endif
+" augroup END
 
-augroup TODOHighlight
-    autocmd!
-    autocmd BufEnter  *.todo,todo,ToDo,TODO  let b:syntax_was_on = exists("syntax_on")
-    autocmd BufEnter  *.todo,todo,ToDo,TODO  syntax enable
-    autocmd BufLeave  *.todo,todo,ToDo,TODO  if !getbufvar("%","syntax_was_on")
-    autocmd BufLeave  *.todo,todo,ToDo,TODO      syntax off
-    autocmd BufLeave  *.todo,todo,ToDo,TODO  endif
-augroup END
+" augroup TODOHighlight
+"     autocmd!
+"     autocmd BufEnter  *.todo,todo,ToDo,TODO  let b:syntax_was_on = exists("syntax_on")
+"     autocmd BufEnter  *.todo,todo,ToDo,TODO  syntax enable
+"     autocmd BufLeave  *.todo,todo,ToDo,TODO  if !getbufvar("%","syntax_was_on")
+"     autocmd BufLeave  *.todo,todo,ToDo,TODO      syntax off
+"     autocmd BufLeave  *.todo,todo,ToDo,TODO  endif
+" augroup END
 
-augroup ITNHighlight
-    autocmd!
-    autocmd BufEnter  *.itn   let b:syntax_was_on = exists("syntax_on")
-    autocmd BufEnter  *.itn   syntax enable
-    autocmd BufEnter  *.itn   set syntax=itn
-    autocmd BufLeave  *.itn   if !getbufvar("%","syntax_was_on")
-    autocmd BufLeave  *.itn       syntax off
-    autocmd BufLeave  *.itn   endif
-augroup END
+" augroup ITNHighlight
+"     autocmd!
+"     autocmd BufEnter  *.itn   let b:syntax_was_on = exists("syntax_on")
+"     autocmd BufEnter  *.itn   syntax enable
+"     autocmd BufEnter  *.itn   set syntax=itn
+"     autocmd BufLeave  *.itn   if !getbufvar("%","syntax_was_on")
+"     autocmd BufLeave  *.itn       syntax off
+"     autocmd BufLeave  *.itn   endif
+" augroup END
 
 function! WindowNumber()
   return tabpagewinnr(tabpagenr())
