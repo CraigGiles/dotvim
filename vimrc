@@ -266,26 +266,40 @@ augroup statline_trail
   autocmd cursorhold,bufwritepost * unlet! b:statline_trailing_space_warning
 augroup END
 
-set statusline=
-set statusline+=%6*%m%r%*                          " modified, readonly
-set statusline+=
-set statusline+=%{fugitive#statusline()}           " Git branch
-set statusline+=[
-set statusline+=%1*%t%*                            " file name
-set statusline+=][
-set statusline+=%<                                 " truncate here if needed
-set statusline+=][
-set statusline+=%3*%{TrailingSpaceWarning()}%*     " trailing whitespace
-set statusline+=]
+" set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
 
-set statusline+=%=                                 " switch to RHS
+set statusline+=%m                              "modified flag
+set statusline+=%r                              "read only flag
+set statusline=[%t]                               "tail of the filename
+" set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
+set statusline+=[%{&ff}]                         "file format
+set statusline+=%h                              "help file flag
+set statusline+=%y                              "filetype
+set statusline+=%=                              "left/right separator
+set statusline+=%c,                             "cursor column
+set statusline+=%l/%L                           "cursor line/total lines
+set statusline+=\ %P                            "percent through file
 
-set statusline+=[
-set statusline+=%1*%{expand('%:h')}%*              " relative path to file's directory"
-set statusline+=][
-set statusline+=%5*col:%-3.c%*                      " column
-set statusline+=][
-set statusline+=%2*buf:%-3n%*                      " buffer number
-set statusline+=][
-set statusline+=%2*win:%-3.3{WindowNumber()}%*     " window number
-set statusline+=]
+" set statusline=
+" set statusline+=%6*%m%r%*                          " modified, readonly
+" set statusline+=
+" set statusline+=%{fugitive#statusline()}           " Git branch
+" set statusline+=[
+" set statusline+=%1*%t%*                            " file name
+" set statusline+=][
+" set statusline+=%<                                 " truncate here if needed
+" set statusline+=][
+" set statusline+=%3*%{TrailingSpaceWarning()}%*     " trailing whitespace
+" set statusline+=]
+
+" set statusline+=%=                                 " switch to RHS
+
+" set statusline+=[
+" set statusline+=%1*%{expand('%:h')}%*              " relative path to file's directory"
+" set statusline+=][
+" set statusline+=%5*col:%-3.c%*                      " column
+" set statusline+=][
+" set statusline+=%2*buf:%-3n%*                      " buffer number
+" set statusline+=][
+" set statusline+=%2*win:%-3.3{WindowNumber()}%*     " window number
+" set statusline+=]
