@@ -80,23 +80,8 @@ nnoremap <silent> <leader>u~ :t.\|s/./\\~/g\|:nohls<cr>
 " ==================================================
 " Plugin Settings
 " ==================================================
-let g:tmux_navigator_no_mappings = 1
-
-nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
-nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
-nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
-nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
-
-" Vimmux Helper Keys
-nnoremap <leader>vst :VimuxRunCommand("sbt test")<CR>
-nnoremap <leader>vc :VimuxCloseRunner<CR>
-
-" let NERDTreeHijackNetrw=1
-" let g:project_use_nerdtree = 1
 let g:scala_use_default_keymappings = 0
-
-" Close NERDTree when opening a file
-" let NERDTreeQuitOnOpen = 0
+let g:notes_directories = ['~/Documents/Notes', '~/Desktop/Notes']
 
 " tags
 let g:auto_ctags = 1
@@ -106,15 +91,8 @@ let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
 
 set laststatus=2
 
-" CtrlP settings
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
-
-" ENSIME settings
-" nnoremap <leader>et :EnType<CR>
-" au FileType scala nnoremap <leader>ed :EnDeclaration<CR>
-" au FileType scala nnoremap <leader>ei :EnSuggestImport<CR>
+nnoremap <C-P> :Files<CR>
+nnoremap <C-p> :Tags<CR>
 
 " ==================================================
 " Plugins
@@ -127,19 +105,24 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-dispatch'
-Plug 'Shougo/unite.vim'
-Plug 'tsukkee/unite-tag'
 Plug 'derekwyatt/vim-scala'
 Plug 'derekwyatt/vim-sbt'
-Plug 'altercation/vim-colors-solarized'
+Plug 'spiroid/vim-ultisnip-scala'
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'soramugi/auto-ctags.vim'
-Plug 'spiroid/vim-ultisnip-scala'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'xolox/vim-notes'
+Plug 'xolox/vim-misc'
+
+" Testing these plugins
+Plug 'morhetz/gruvbox'
+
+" Colorschemes
+Plug 'altercation/vim-colors-solarized'
 
 call plug#end()
 
@@ -215,39 +198,10 @@ set wildignore+=*.bak
 " ==================================================
 " Functions
 " ==================================================
-"=====[ Always syntax highlight .patch and ToDo and .itn files ]===============
-
-" augroup PatchHighlight
-"     autocmd!
-"     autocmd BufEnter  *.patch,*.diff  let b:syntax_was_on = exists("syntax_on")
-"     autocmd BufEnter  *.patch,*.diff  syntax enable
-"     autocmd BufLeave  *.patch,*.diff  if !getbufvar("%","syntax_was_on")
-"     autocmd BufLeave  *.patch,*.diff      syntax off
-"     autocmd BufLeave  *.patch,*.diff  endif
-" augroup END
-
-" augroup TODOHighlight
-"     autocmd!
-"     autocmd BufEnter  *.todo,todo,ToDo,TODO  let b:syntax_was_on = exists("syntax_on")
-"     autocmd BufEnter  *.todo,todo,ToDo,TODO  syntax enable
-"     autocmd BufLeave  *.todo,todo,ToDo,TODO  if !getbufvar("%","syntax_was_on")
-"     autocmd BufLeave  *.todo,todo,ToDo,TODO      syntax off
-"     autocmd BufLeave  *.todo,todo,ToDo,TODO  endif
-" augroup END
-
-" augroup ITNHighlight
-"     autocmd!
-"     autocmd BufEnter  *.itn   let b:syntax_was_on = exists("syntax_on")
-"     autocmd BufEnter  *.itn   syntax enable
-"     autocmd BufEnter  *.itn   set syntax=itn
-"     autocmd BufLeave  *.itn   if !getbufvar("%","syntax_was_on")
-"     autocmd BufLeave  *.itn       syntax off
-"     autocmd BufLeave  *.itn   endif
-" augroup END
-
 function! WindowNumber()
   return tabpagewinnr(tabpagenr())
 endfunction
+
 function! TrailingSpaceWarning()
   if !exists("b:statline_trailing_space_warning")
     let lineno = search('\s$', 'nw')
