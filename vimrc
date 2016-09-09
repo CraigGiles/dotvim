@@ -81,7 +81,7 @@ nnoremap <silent> <leader>u~ :t.\|s/./\\~/g\|:nohls<cr>
 " Plugin Settings
 " ==================================================
 let g:scala_use_default_keymappings = 0
-let g:notes_directories = ['~/Development/notes', '~/Desktop/Notes']
+let g:notes_directories = ['~/Development/notes']
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
