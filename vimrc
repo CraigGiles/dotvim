@@ -81,7 +81,11 @@ nnoremap <silent> <leader>u~ :t.\|s/./\\~/g\|:nohls<cr>
 " Plugin Settings
 " ==================================================
 let g:scala_use_default_keymappings = 0
-let g:notes_directories = ['~/Documents/Notes', '~/Desktop/Notes']
+let g:notes_directories = ['~/Development/notes', '~/Desktop/Notes']
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
 
 " tags
 let g:auto_ctags = 1
@@ -90,9 +94,6 @@ let g:auto_ctags_tags_name = 'tags'
 let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
 
 set laststatus=2
-
-nnoremap <C-P> :Files<CR>
-nnoremap <C-p> :Tags<CR>
 
 " ==================================================
 " Plugins
@@ -117,6 +118,9 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
+Plug 'kien/ctrlp.vim'
+Plug 'Shougo/unite.vim'
+Plug 'jceb/vim-orgmode'
 
 " Testing these plugins
 Plug 'morhetz/gruvbox'
@@ -130,8 +134,8 @@ call plug#end()
 " ==================================================
 " Settings
 " ==================================================
-" set background=dark
-" colorscheme darkula
+set background=dark
+colorscheme darkula
 " set background=light
 " colorscheme solarized
 
@@ -144,6 +148,7 @@ set ignorecase                  " Case insensitive searches
 set smartcase                   " Case sensitive when wanted
 set tabstop=4                   " Tab Stop at 4 unless plugin overwrites it
 set shiftwidth=4
+set linespace=3                 " Vertical line space
 set expandtab                   " Always use spaces instead of tabs
 set autoread                    " Read a file that has changed on disk
 set autowrite                   " Auto write to disk when buffer is changed
