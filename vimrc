@@ -38,8 +38,8 @@ nnoremap k gk
 inoremap jj <ESC>
 
 " Increase vertical split size by 5
-nnoremap + :resize +5<CR>
-nnoremap <leader>+ :resize +5<CR>
+nnoremap + :vertical-resize +5<CR>
+nnoremap <leader>+ :vertical-resize +5<CR>
 
 " git related commands
 nnoremap ga :Gblame<CR>
@@ -80,11 +80,20 @@ let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 
+" Open/Close NERDTree
+nnoremap - :NERDTreeToggle<CR>
+nnoremap _ :NERDTreeFind<CR>
+
 " tags
 let g:auto_ctags = 1
 let g:auto_ctags_directory_list = ['.git', '.svn']
 let g:auto_ctags_tags_name = 'tags'
 let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
+
+" Ensime settings
+autocmd BufWritePost *.scala silent :EnTypeCheck
+nnoremap <leader>et :EnTypeCheck<CR>
+nnoremap <leader>ed :EnDeclaration<CR>
 
 set laststatus=2
 
@@ -98,7 +107,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-vinegar'
+" Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-dispatch'
 Plug 'derekwyatt/vim-scala'
 Plug 'derekwyatt/vim-sbt'
@@ -114,6 +123,8 @@ Plug 'xolox/vim-misc'
 Plug 'kien/ctrlp.vim'
 Plug 'Shougo/unite.vim'
 Plug 'jceb/vim-orgmode'
+Plug 'scrooloose/nerdtree'
+Plug 'ensime/ensime-vim'
 
 " Testing these plugins
 Plug 'morhetz/gruvbox'
@@ -127,13 +138,13 @@ call plug#end()
 " ==================================================
 " Settings
 " ==================================================
-set background=dark
-colorscheme darkula
-" set background=light
-" colorscheme solarized
+" set background=dark
+" colorscheme darkula
+set background=light
+colorscheme solarized
 
 set list                        " Makes the whitespace visible
-set guifont=Menlo:h12
+set guifont=Menlo:h14
 set splitright                  " Puts new v-split to the right of the current
 set splitbelow                  " Puts new split windows to the bottom
 set nu                          " Always show line numbers
