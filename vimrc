@@ -44,14 +44,7 @@ nnoremap <leader>+ :resize +5<CR>
 " git related commands
 nnoremap ga :Gblame<CR>
 
-" highlight all the things
-nnoremap <leader>a ggVG
-
-" let g:netrw_liststyle=3
-
 " File navigation and IDE like settings
-nnoremap <F2> :NERDTreeToggle<CR>
-nnoremap <F3> :NERDTreeFind<CR>
 nnoremap <leader>7 :TagbarToggle<CR>
 
 " Jump to definition, <C-t> jumps back
