@@ -37,9 +37,9 @@ nnoremap k gk
 " Escape to normal mode from insert mode with jj
 inoremap jj <ESC>
 
-" Increase vertical split size by 5
-nnoremap + :vertical-resize +5<CR>
-nnoremap <leader>+ :vertical-resize +5<CR>
+" Increase split size by 5
+nnoremap = :vertical resize +5<CR>
+nnoremap + :resize +5<CR>
 
 " git related commands
 nnoremap ga :Gblame<CR>
