@@ -96,6 +96,11 @@ let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
 nnoremap <leader>et :EnTypeCheck<CR>
 nnoremap <leader>ed :EnDeclaration<CR>
 
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 set laststatus=2
 
 " Markdown Preview
@@ -131,11 +136,10 @@ Plug 'scrooloose/nerdtree'
 Plug 'ensime/ensime-vim'
 Plug 'solarnz/thrift.vim'
 
-
-
 " Testing these plugins
 Plug 'morhetz/gruvbox'
 Plug 'iamcco/markdown-preview.vim'
+Plug 'scrooloose/syntastic'
 
 " Colorschemes
 Plug 'altercation/vim-colors-solarized'
@@ -244,6 +248,12 @@ set statusline+=%r                              "read only flag
 set statusline=[%t]                               "tail of the filename
 " set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
 set statusline+=[%{&ff}]                         "file format
+
+" Syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
 set statusline+=%h                              "help file flag
 set statusline+=%y                              "filetype
 set statusline+=%=                              "left/right separator
