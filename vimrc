@@ -83,6 +83,7 @@ let g:ctrlp_working_path_mode = 'ra'
 " Open/Close NERDTree
 nnoremap - :NERDTreeToggle<CR>
 nnoremap _ :NERDTreeFind<CR>
+let NERDTreeQuitOnOpen=1
 
 " tags
 let g:auto_ctags = 1
@@ -91,11 +92,14 @@ let g:auto_ctags_tags_name = 'tags'
 let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
 
 " Ensime settings
-autocmd BufWritePost *.scala silent :EnTypeCheck
+" autocmd BufWritePost *.scala silent :EnTypeCheck
 nnoremap <leader>et :EnTypeCheck<CR>
 nnoremap <leader>ed :EnDeclaration<CR>
 
 set laststatus=2
+
+" Markdown Preview
+let g:mkdp_path_to_chrome = "open -a Safari"
 
 " ==================================================
 " Plugins
@@ -125,9 +129,13 @@ Plug 'Shougo/unite.vim'
 Plug 'jceb/vim-orgmode'
 Plug 'scrooloose/nerdtree'
 Plug 'ensime/ensime-vim'
+Plug 'solarnz/thrift.vim'
+
+
 
 " Testing these plugins
 Plug 'morhetz/gruvbox'
+Plug 'iamcco/markdown-preview.vim'
 
 " Colorschemes
 Plug 'altercation/vim-colors-solarized'
@@ -140,8 +148,8 @@ call plug#end()
 " ==================================================
 " set background=dark
 " colorscheme darkula
-set background=light
-colorscheme solarized
+" set background=light
+" colorscheme solarized
 
 set list                        " Makes the whitespace visible
 set guifont=Menlo:h14
