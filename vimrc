@@ -92,7 +92,7 @@ let g:auto_ctags_tags_name = 'tags'
 let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
 
 " Ensime settings
-" autocmd BufWritePost *.scala silent :EnTypeCheck
+autocmd BufWritePost *.scala silent :EnTypeCheck
 nnoremap <leader>et :EnTypeCheck<CR>
 nnoremap <leader>ed :EnDeclaration<CR>
 
