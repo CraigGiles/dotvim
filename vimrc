@@ -105,6 +105,7 @@ set laststatus=2
 
 " Markdown Preview
 let g:mkdp_path_to_chrome = "open -a Safari"
+nnoremap <leader>md :MarkdownPreview<CR>
 
 " ==================================================
 " Plugins

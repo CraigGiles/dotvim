@@ -1,7 +1,8 @@
 function! ScalaInsertPackage()
     silent! execute "normal! gg0"
     r! echo %:p
-    s/.*src\/main\/scala//
+    silent! s/.*src\/main\/scala//
+    silent! s/.*src\/test\/scala//
     s/\.scala//
     s/\//./g
     silent! execute "normal! 0xipackage\<Space>\<esc>kdd"
