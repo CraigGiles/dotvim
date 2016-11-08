@@ -27,7 +27,7 @@ nnoremap <leader>sp <C-w>t<C-w>K
 nnoremap <leader>vs <C-w>t<C-w>H
 
 " Easy open and source of vimrc
-nnoremap <leader>vrc :vs ~/.vimrc<CR>
+nnoremap <leader>ed :vs ~/.vimrc<CR>
 nnoremap <leader>sv :source ~/.vimrc<CR>
 
 " Down is really the next line
@@ -105,6 +105,11 @@ set laststatus=2
 
 " Markdown Preview
 let g:mkdp_path_to_chrome = "open -a Safari"
+nnoremap <leader>md :MarkdownPreview<CR>
+
+" SLIME for REPL
+let g:slime_target = "tmux"
+let g:slime_paste_file = "$HOME/.slime_paste"
 
 " ==================================================
 " Plugins
@@ -135,6 +140,7 @@ Plug 'jceb/vim-orgmode'
 Plug 'scrooloose/nerdtree'
 Plug 'ensime/ensime-vim'
 Plug 'solarnz/thrift.vim'
+Plug 'jpalardy/vim-slime'
 
 " Testing these plugins
 Plug 'morhetz/gruvbox'
@@ -143,6 +149,7 @@ Plug 'scrooloose/syntastic'
 
 " Colorschemes
 Plug 'altercation/vim-colors-solarized'
+Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
 
@@ -181,20 +188,20 @@ set scrolloff=8
 " set colorcolumn=120            " Sets 120 as the column limit drawdown mark
 " set colorcolumn=81             " Sets 80 as the column limit drawdown mark
 " let &colorcolumn="81,".join(range(120,999),",")
-highlight ColorColumn ctermbg=0 guibg=magenta
+" highlight ColorColumn ctermbg=0 guibg=magenta
 
 " Color column line 81 and 121-130
-call matchadd('ColorColumn', '\%81v', 100)
-call matchadd('ColorColumn', '\%121v', 100)
-call matchadd('ColorColumn', '\%122v', 100)
-call matchadd('ColorColumn', '\%123v', 100)
-call matchadd('ColorColumn', '\%124v', 100)
-call matchadd('ColorColumn', '\%125v', 100)
-call matchadd('ColorColumn', '\%126v', 100)
-call matchadd('ColorColumn', '\%127v', 100)
-call matchadd('ColorColumn', '\%128v', 100)
-call matchadd('ColorColumn', '\%129v', 100)
-call matchadd('ColorColumn', '\%130v', 100)
+" call matchadd('ColorColumn', '\%81v', 100)
+" call matchadd('ColorColumn', '\%121v', 100)
+" call matchadd('ColorColumn', '\%122v', 100)
+" call matchadd('ColorColumn', '\%123v', 100)
+" call matchadd('ColorColumn', '\%124v', 100)
+" call matchadd('ColorColumn', '\%125v', 100)
+" call matchadd('ColorColumn', '\%126v', 100)
+" call matchadd('ColorColumn', '\%127v', 100)
+" call matchadd('ColorColumn', '\%128v', 100)
+" call matchadd('ColorColumn', '\%129v', 100)
+" call matchadd('ColorColumn', '\%130v', 100)
 
 set nobackup                    " don't use backup files
 set nowb                        " don't use backup files
