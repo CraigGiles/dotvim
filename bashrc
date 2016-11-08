@@ -18,6 +18,7 @@ function new-tmux-from-dir-name {
 alias tnew="new-tmux-from-dir-name"
 
 alias g='mvim --remote-silent'
+alias gvim='gnvim'
 alias ll='ls -la'
 alias gs='git status'
 
