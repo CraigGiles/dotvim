@@ -26,10 +26,6 @@ nnoremap <leader>sp <C-w>t<C-w>K
 " Change two horizontal splits to vertical splits
 nnoremap <leader>vs <C-w>t<C-w>H
 
-" Easy open and source of vimrc
-nnoremap <leader>ed :vs ~/.vimrc<CR>
-nnoremap <leader>sv :source ~/.vimrc<CR>
-
 " Down is really the next line
 nnoremap j gj
 nnoremap k gk
@@ -121,35 +117,33 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
-" Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-dispatch'
-Plug 'derekwyatt/vim-scala'
-Plug 'derekwyatt/vim-sbt'
-Plug 'spiroid/vim-ultisnip-scala'
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'soramugi/auto-ctags.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
 Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
 Plug 'kien/ctrlp.vim'
 Plug 'Shougo/unite.vim'
-Plug 'jceb/vim-orgmode'
 Plug 'scrooloose/nerdtree'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'iamcco/markdown-preview.vim'
+Plug 'scrooloose/syntastic'
+
+" Scala Plugins
+Plug 'derekwyatt/vim-scala'
+Plug 'derekwyatt/vim-sbt'
+Plug 'spiroid/vim-ultisnip-scala'
 Plug 'ensime/ensime-vim'
 Plug 'solarnz/thrift.vim'
 Plug 'jpalardy/vim-slime'
 
-" Testing these plugins
-Plug 'morhetz/gruvbox'
-Plug 'iamcco/markdown-preview.vim'
-Plug 'scrooloose/syntastic'
-
 " Colorschemes
 Plug 'altercation/vim-colors-solarized'
-Plug 'christoomey/vim-tmux-navigator'
+Plug 'morhetz/gruvbox'
+
+" Testing these plugins
 
 call plug#end()
 
@@ -171,7 +165,7 @@ set ignorecase                  " Case insensitive searches
 set smartcase                   " Case sensitive when wanted
 set tabstop=4                   " Tab Stop at 4 unless plugin overwrites it
 set shiftwidth=4
-set linespace=3                 " Vertical line space
+set linespace=4                 " Vertical line space
 set expandtab                   " Always use spaces instead of tabs
 set autoread                    " Read a file that has changed on disk
 set autowrite                   " Auto write to disk when buffer is changed
