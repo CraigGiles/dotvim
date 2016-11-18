@@ -6,10 +6,9 @@ let mapleader = "\<Space>"
 " Source the current file
 nnoremap <leader>so :source %<CR>
 nnoremap <Esc> <Nop>
+inoremap <Esc> <Nop>
 
 nnoremap <C-s> :w<CR>
-nnoremap <leader>Y "*y
-nnoremap <leader>P "*p
 
 " Unite key bindings
 nnoremap <leader>t :Unite -start-insert tag<CR>
@@ -55,9 +54,6 @@ nnoremap ,B :sbuffer *
 " Code Completion
 inoremap <C-Space> <C-x><C-o>
 
-" insert the class name into the current location
-inoremap <C-space>cn <c-r>=expand('%:t:r')<cr>
-
 " Turn off that stupid highlight search
 nnoremap <silent> <leader>n :nohls<CR>
 
@@ -96,8 +92,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
-set laststatus=2
 
 " Markdown Preview
 let g:mkdp_path_to_chrome = "open -a Safari"
@@ -148,49 +142,49 @@ Plug 'morhetz/gruvbox'
 
 call plug#end()
 
-
 " ==================================================
 " Settings
 " ==================================================
 if has('gui_running')
+    " NOTE: sometimes i swap between colorschemes.
     set background=light
-    colorscheme solarized
+    colorscheme macvim
 else
-    set background=dark
-    colorscheme darkula
+    set background=light
+    colorscheme default
 endif
 
-set list                        " Makes the whitespace visible
+set list                " Makes the whitespace visible
 set guifont=Menlo:h14
-set splitright                  " Puts new v-split to the right of the current
-set splitbelow                  " Puts new split windows to the bottom
-set nu                          " Always show line numbers
-set ignorecase                  " Case insensitive searches
-set smartcase                   " Case sensitive when wanted
-set tabstop=4                   " Tab Stop at 4 unless plugin overwrites it
+set splitright          " Puts new v-split to the right of the current
+set splitbelow          " Puts new split windows to the bottom
+set nu                  " Always show line numbers
+set ignorecase          " Case insensitive searches
+set smartcase           " Case sensitive when wanted
+set tabstop=4           " Tab Stop at 4 unless plugin overwrites it
 set shiftwidth=4
-set linespace=4                 " Vertical line space
-set expandtab                   " Always use spaces instead of tabs
-set autoread                    " Read a file that has changed on disk
-set autowrite                   " Auto write to disk when buffer is changed
+set linespace=4         " Vertical line space
+set expandtab           " Always use spaces instead of tabs
+set autoread            " Read a file that has changed on disk
+set autowrite           " Auto write to disk when buffer is changed
 set autowriteall
-set hidden                      " Allow modified buffers in the background
+set hidden              " Allow modified buffers in the background
 set ruler
-set nomodeline                  " Don't allow modeline ( :help modeline )
+set nomodeline          " Don't allow modeline ( :help modeline )
 
 " When the page starts to scroll, keep the cursor 8 lines from the top and 8
 " lines from the bottom
 set scrolloff=8
 
 " Color columns at 80 lines and 120+ lines
-" set colorcolumn=120            " Sets 120 as the column limit drawdown mark
-" set colorcolumn=81             " Sets 80 as the column limit drawdown mark
-" let &colorcolumn="81,".join(range(120,999),",")
+set colorcolumn=120            " Sets 120 as the column limit drawdown mark
+set colorcolumn=81             " Sets 80 as the column limit drawdown mark
+let &colorcolumn="81,".join(range(120,999),",")
 " highlight ColorColumn ctermbg=0 guibg=magenta
 
-set nobackup                    " don't use backup files
-set nowb                        " don't use backup files
-set noswapfile                  " don't use swap files
+set nobackup            " don't use backup files
+set nowb                " don't use backup files
+set noswapfile          " don't use swap files
 
 " Sets the timeout length for how long we'll 'pause' when waiting for a
 " keypress after leader key
@@ -207,7 +201,6 @@ set wildignore+=*/docroot/res/out/**
 set wildignore+=*.swp
 set wildignore+=*.bak
 
-
 " ==================================================
 " Functions
 " ==================================================
@@ -215,6 +208,8 @@ set wildignore+=*.bak
 " ==================================================
 " Status Line
 " ==================================================
+set laststatus=2
+
 set statusline+=%m                            "modified flag
 set statusline+=%r                            "read only flag
 set statusline=[%t]                           "tail of the filename
@@ -232,4 +227,3 @@ set statusline+=%=                            "left/right separator
 set statusline+=%c,                           "cursor column
 set statusline+=%l/%L                         "cursor line/total lines
 set statusline+=\ %P                          "percent through file
-" set statusline+=%6*%m%r%*                     " modified, readonly
