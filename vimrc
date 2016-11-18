@@ -137,6 +137,7 @@ Plug 'derekwyatt/vim-sbt'
 Plug 'spiroid/vim-ultisnip-scala'
 Plug 'ensime/ensime-vim'
 Plug 'solarnz/thrift.vim'
+Plug 'iamcco/markdown-preview.vim'
 Plug 'jpalardy/vim-slime'
 
 " Colorschemes
@@ -151,10 +152,13 @@ call plug#end()
 " ==================================================
 " Settings
 " ==================================================
-" set background=dark
-" colorscheme darkula
-" set background=light
-" colorscheme solarized
+if has('gui_running')
+    set background=light
+    colorscheme solarized
+else
+    set background=dark
+    colorscheme darkula
+endif
 
 set list                        " Makes the whitespace visible
 set guifont=Menlo:h14
@@ -184,19 +188,6 @@ set scrolloff=8
 " let &colorcolumn="81,".join(range(120,999),",")
 " highlight ColorColumn ctermbg=0 guibg=magenta
 
-" Color column line 81 and 121-130
-" call matchadd('ColorColumn', '\%81v', 100)
-" call matchadd('ColorColumn', '\%121v', 100)
-" call matchadd('ColorColumn', '\%122v', 100)
-" call matchadd('ColorColumn', '\%123v', 100)
-" call matchadd('ColorColumn', '\%124v', 100)
-" call matchadd('ColorColumn', '\%125v', 100)
-" call matchadd('ColorColumn', '\%126v', 100)
-" call matchadd('ColorColumn', '\%127v', 100)
-" call matchadd('ColorColumn', '\%128v', 100)
-" call matchadd('ColorColumn', '\%129v', 100)
-" call matchadd('ColorColumn', '\%130v', 100)
-
 set nobackup                    " don't use backup files
 set nowb                        " don't use backup files
 set noswapfile                  " don't use swap files
@@ -220,68 +211,25 @@ set wildignore+=*.bak
 " ==================================================
 " Functions
 " ==================================================
-function! WindowNumber()
-  return tabpagewinnr(tabpagenr())
-endfunction
 
-function! TrailingSpaceWarning()
-  if !exists("b:statline_trailing_space_warning")
-    let lineno = search('\s$', 'nw')
-    if lineno != 0
-      let b:statline_trailing_space_warning = 'Trailing:'.lineno.''
-    else
-      let b:statline_trailing_space_warning = 'Trailing: None'
-    endif
-  endif
-  return b:statline_trailing_space_warning
-endfunction
-
-" recalculate when idle, and after saving
-augroup statline_trail
-  autocmd!
-  autocmd cursorhold,bufwritepost * unlet! b:statline_trailing_space_warning
-augroup END
-
-" set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%h%m%r%y%=%c,%l/%L\ %P
-
-set statusline+=%m                              "modified flag
-set statusline+=%r                              "read only flag
-set statusline=[%t]                               "tail of the filename
-" set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
-set statusline+=[%{&ff}]                         "file format
+" ==================================================
+" Status Line
+" ==================================================
+set statusline+=%m                            "modified flag
+set statusline+=%r                            "read only flag
+set statusline=[%t]                           "tail of the filename
+set statusline+=[%{&ff}]                      "file format
 
 " Syntastic settings
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%{SyntasticStatuslineFlag()}  " Syntastic Syntax Checker
 set statusline+=%*
 
-set statusline+=%h                              "help file flag
-set statusline+=%y                              "filetype
-set statusline+=%=                              "left/right separator
-set statusline+=%c,                             "cursor column
-set statusline+=%l/%L                           "cursor line/total lines
-set statusline+=\ %P                            "percent through file
-
-" set statusline=
-" set statusline+=%6*%m%r%*                          " modified, readonly
-" set statusline+=
-" set statusline+=%{fugitive#statusline()}           " Git branch
-" set statusline+=[
-" set statusline+=%1*%t%*                            " file name
-" set statusline+=][
-" set statusline+=%<                                 " truncate here if needed
-" set statusline+=][
-" set statusline+=%3*%{TrailingSpaceWarning()}%*     " trailing whitespace
-" set statusline+=]
-
-" set statusline+=%=                                 " switch to RHS
-
-" set statusline+=[
-" set statusline+=%1*%{expand('%:h')}%*              " relative path to file's directory"
-" set statusline+=][
-" set statusline+=%5*col:%-3.c%*                      " column
-" set statusline+=][
-" set statusline+=%2*buf:%-3n%*                      " buffer number
-" set statusline+=][
-" set statusline+=%2*win:%-3.3{WindowNumber()}%*     " window number
-" set statusline+=]
+set statusline+=%h                            "help file flag
+set statusline+=%y                            "filetype
+set statusline+=%{fugitive#statusline()}      " Git branch
+set statusline+=%=                            "left/right separator
+set statusline+=%c,                           "cursor column
+set statusline+=%l/%L                         "cursor line/total lines
+set statusline+=\ %P                          "percent through file
+" set statusline+=%6*%m%r%*                     " modified, readonly

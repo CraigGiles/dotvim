@@ -10,6 +10,11 @@ Link your vimrc and gvimrc to included vimrc files:
   ln -s ~/.vim/bashrc ~/.bash_profile
   ln -s ~/.vim/tmux.conf ~/.tmux.conf
 
+If you're using MacVim use the following to install w/ ENSIME
+  brew install python
+  brew install macvim --with-luajit --with-lua --with-override-system-vim
+  pip install websocket-client
+
 If you're using NeoVim then make the following changes
   mkdir ~/.config
   ln -s ~/.vim ~/.config/nvim
