@@ -212,10 +212,13 @@ set wildignore+=*.bak
 " ==================================================
 function! ScalaInsertDatabaseMigration(name)
     " silent! execute <C-R>=strftime("%Y%m%d%H%M")a:name.sql<CR>
-    echo join([strftime("%Y%m%d%H%M"), tolower("a:name"),".sql"])
-    let a:myval = join([strftime("%Y%m%d%H%M"), tolower("a:name"),".sql"])
-    echo a:myval
-    echo substitute(a:myval, " ", "-", "")
+    let a:ts = strftime("%Y%m%d%H%M")
+    let a:myval = tolower(a:name)
+    let a:noHyphs = substitute(a:myval, " ", "-", "g")
+    let a:noSpaces = substitute(a:noHyphs, "\"", "", "g")
+    let a:filename = "V1_" . a:ts . "__" . a:noSpaces . ".sql"
+    echo a:filename
+    silent! execute <C-R>=./flyway/src/main/resources/db/migration/a:filename<CR>
 endfunction
 
 command! -nargs=1 Smigration call ScalaInsertDatabaseMigration(<q-args>)
