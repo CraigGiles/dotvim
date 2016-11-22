@@ -62,6 +62,12 @@ nnoremap <silent> <leader>u= :t.\|s/./=/g\|:nohls<cr>
 nnoremap <silent> <leader>u- :t.\|s/./-/g\|:nohls<cr>
 nnoremap <silent> <leader>u~ :t.\|s/./\\~/g\|:nohls<cr>
 
+" Move splits with just CTRL-HJKL
+nnoremap <C-h> <C-w>h
+nnoremap <C-k> <C-w>k
+nnoremap <C-j> <C-w>j
+nnoremap <C-l> <C-w>l
+
 " ==================================================
 " Plugin Settings
 " ==================================================
@@ -88,10 +94,10 @@ autocmd BufWritePost *.scala silent :EnTypeCheck
 nnoremap <leader>et :EnTypeCheck<CR>
 nnoremap <leader>ed :EnDeclaration<CR>
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
 
 " Markdown Preview
 let g:mkdp_path_to_chrome = "open -a Safari"
@@ -204,6 +210,16 @@ set wildignore+=*.bak
 " ==================================================
 " Functions
 " ==================================================
+function! ScalaInsertDatabaseMigration(name)
+    " silent! execute <C-R>=strftime("%Y%m%d%H%M")a:name.sql<CR>
+    echo join([strftime("%Y%m%d%H%M"), tolower("a:name"),".sql"])
+    let a:myval = join([strftime("%Y%m%d%H%M"), tolower("a:name"),".sql"])
+    echo a:myval
+    echo substitute(a:myval, " ", "-", "")
+endfunction
+
+command! -nargs=1 Smigration call ScalaInsertDatabaseMigration(<q-args>)
+
 
 " ==================================================
 " Status Line
