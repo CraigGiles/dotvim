@@ -75,6 +75,12 @@ nnoremap <silent> <leader>u= :t.\|s/./=/g\|:nohls<cr>
 nnoremap <silent> <leader>u- :t.\|s/./-/g\|:nohls<cr>
 nnoremap <silent> <leader>u~ :t.\|s/./\\~/g\|:nohls<cr>
 
+" Move splits with just CTRL-HJKL
+nnoremap <C-h> <C-w>h
+nnoremap <C-k> <C-w>k
+nnoremap <C-j> <C-w>j
+nnoremap <C-l> <C-w>l
+
 " ==================================================
 " Plugin Settings
 " ==================================================
@@ -98,13 +104,13 @@ let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
 
 " Ensime settings
 autocmd BufWritePost *.scala silent :EnTypeCheck
-nnoremap <leader>et :EnTypeCheck<CR>
+nnoremap <leader>et :EnType<CR>
 nnoremap <leader>ed :EnDeclaration<CR>
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_auto_loc_list = 2
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
 
 " Markdown Preview
 let g:mkdp_path_to_chrome = "open -a Safari"
@@ -171,7 +177,7 @@ else
 endif
 
 set list                " Makes the whitespace visible
-set guifont=Menlo:h14
+set guifont=Menlo:h12
 set splitright          " Puts new v-split to the right of the current
 set splitbelow          " Puts new split windows to the bottom
 set nu                  " Always show line numbers
@@ -222,6 +228,19 @@ set wildignore+=*.bak
 " ==================================================
 " Functions
 " ==================================================
+function! ScalaInsertDatabaseMigration(name)
+    " silent! execute <C-R>=strftime("%Y%m%d%H%M")a:name.sql<CR>
+    let a:ts = strftime("%Y%m%d%H%M")
+    let a:myval = tolower(a:name)
+    let a:noHyphs = substitute(a:myval, " ", "-", "g")
+    let a:noSpaces = substitute(a:noHyphs, "\"", "", "g")
+    let a:filename = "V1_" . a:ts . "__" . a:noSpaces . ".sql"
+    echo a:filename
+    echo getcwd()."/flyway/src/main/resources/db/migration/".a:filename
+endfunction
+
+command! -nargs=1 Smigration call ScalaInsertDatabaseMigration(<q-args>)
+
 
 " ==================================================
 " Status Line
