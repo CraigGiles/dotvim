@@ -3,6 +3,19 @@
 " =================================================
 let mapleader = "\<Space>"
 
+augroup VimReload
+    autocmd!
+    autocmd BufWritePost  $MYVIMRC  source $MYVIMRC
+augroup END
+
+if has('persistent_undo')
+    set undolevels=5000
+    set undodir=$HOME/.VIM_UNDO_FILES
+    set undofile
+endif
+
+nmap  S :%s//gc<LEFT><LEFT><LEFT>
+
 " Source the current file
 nnoremap <leader>so :source %<CR>
 nnoremap <Esc> <Nop>
@@ -139,6 +152,9 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
 
 " Testing these plugins
+Plug 'jceb/vim-orgmode'
+Plug 'tpope/vim-speeddating'
+Plug 'jreybert/vimagit'
 
 call plug#end()
 
@@ -148,7 +164,7 @@ call plug#end()
 if has('gui_running')
     " NOTE: sometimes i swap between colorschemes.
     set background=light
-    colorscheme macvim
+    colorscheme solarized
 else
     set background=light
     colorscheme default
@@ -160,7 +176,9 @@ set splitright          " Puts new v-split to the right of the current
 set splitbelow          " Puts new split windows to the bottom
 set nu                  " Always show line numbers
 set ignorecase          " Case insensitive searches
+set incsearch           " Incremental searches
 set smartcase           " Case sensitive when wanted
+set hlsearch            " Highlight all the search results
 set tabstop=4           " Tab Stop at 4 unless plugin overwrites it
 set shiftwidth=4
 set linespace=4         " Vertical line space
