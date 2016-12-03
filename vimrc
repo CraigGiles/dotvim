@@ -1,23 +1,25 @@
-" ==================================================
 " Key Bindings
-" =================================================
+" ================================================
 let mapleader = "\<Space>"
+nnoremap ;v :e ~/.vimrc<CR>
 
+" When you save the vimrc, auto-reload it
 augroup VimReload
     autocmd!
     autocmd BufWritePost  $MYVIMRC  source $MYVIMRC
 augroup END
 
+" undo all the things
 if has('persistent_undo')
     set undolevels=5000
     set undodir=$HOME/.VIM_UNDO_FILES
     set undofile
 endif
 
+" map S to auto fill the search / replace
 nmap  S :%s//gc<LEFT><LEFT><LEFT>
 
-" Source the current file
-nnoremap <leader>so :source %<CR>
+" Don't use escape
 nnoremap <Esc> <Nop>
 inoremap <Esc> <Nop>
 
@@ -81,9 +83,9 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-j> <C-w>j
 nnoremap <C-l> <C-w>l
 
-" ==================================================
+" ================================================
 " Plugin Settings
-" ==================================================
+" ================================================
 let g:scala_use_default_keymappings = 0
 let g:notes_directories = ['~/Development/notes']
 
@@ -92,8 +94,9 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 
 " Open/Close NERDTree
-nnoremap - :NERDTreeToggle<CR>
+" nnoremap - :NERDTreeToggle<CR>
 nnoremap _ :NERDTreeFind<CR>
+let NERDTreeHijackNetrw=1
 let NERDTreeQuitOnOpen=1
 
 " tags
@@ -103,14 +106,16 @@ let g:auto_ctags_tags_name = 'tags'
 let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
 
 " Ensime settings
-autocmd BufWritePost *.scala silent :EnTypeCheck
+augroup EnsimeTypeCheck
+    autocmd!
+    autocmd BufWritePost *.scala silent :EnTypeCheck
+augroup END
+
 nnoremap <leader>et :EnType<CR>
 nnoremap <leader>ed :EnDeclaration<CR>
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 2
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
 
 " Markdown Preview
 let g:mkdp_path_to_chrome = "open -a Safari"
@@ -131,6 +136,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-vinegar'
 Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'airblade/vim-gitgutter'
@@ -156,6 +162,9 @@ Plug 'jpalardy/vim-slime'
 " Colorschemes
 Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
+Plug 'xoria256.vim'
+Plug 'flazz/vim-colorschemes'
+Plug 'jpo/vim-railscasts-theme'
 
 " Testing these plugins
 Plug 'jceb/vim-orgmode'
@@ -170,7 +179,7 @@ call plug#end()
 if has('gui_running')
     " NOTE: sometimes i swap between colorschemes.
     set background=light
-    colorscheme solarized
+    colorscheme xoria256
 else
     set background=light
     colorscheme default
@@ -202,9 +211,10 @@ set nomodeline          " Don't allow modeline ( :help modeline )
 set scrolloff=8
 
 " Color columns at 80 lines and 120+ lines
-set colorcolumn=120            " Sets 120 as the column limit drawdown mark
-set colorcolumn=81             " Sets 80 as the column limit drawdown mark
-let &colorcolumn="81,".join(range(120,999),",")
+" set colorcolumn=120            " Sets 120 as the column limit drawdown mark
+" set colorcolumn=81             " Sets 80 as the column limit drawdown mark
+call matchadd('ColorColumn', '\%81v', 100)
+" let &colorcolumn="81,".join(range(120,999),",")
 " highlight ColorColumn ctermbg=0 guibg=magenta
 
 set nobackup            " don't use backup files
