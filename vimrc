@@ -18,7 +18,7 @@ endif
 
 " After doing a search, hitting 'zz' will fold all the results for easier
 " display
-nmap <silent> <expr>  <C-z>z  FS_ToggleFoldAroundSearch({'context':1})
+nmap <silent> <expr>  <C-f><C-f>  FS_ToggleFoldAroundSearch({'context':1})
 
 " map S to auto fill the search / replace
 nmap S :%s//gc<LEFT><LEFT><LEFT>
