@@ -172,7 +172,6 @@ Plug 'jpo/vim-railscasts-theme'
 " Testing these plugins
 Plug 'jceb/vim-orgmode'
 Plug 'tpope/vim-speeddating'
-Plug 'jreybert/vimagit'
 Plug 'wesQ3/vim-windowswap'
 
 call plug#end()
@@ -274,6 +273,8 @@ set statusline+=%*
 set statusline+=%h                            "help file flag
 set statusline+=%y                            "filetype
 set statusline+=%{fugitive#statusline()}      " Git branch
+
+" Right side
 set statusline+=%=                            "left/right separator
 set statusline+=%c,                           "cursor column
 set statusline+=%l/%L                         "cursor line/total lines
