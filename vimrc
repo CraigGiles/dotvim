@@ -16,8 +16,12 @@ if has('persistent_undo')
     set undofile
 endif
 
+" After doing a search, hitting 'zz' will fold all the results for easier
+" display
+nmap <silent> <expr>  zz  FS_ToggleFoldAroundSearch({'context':1})
+
 " map S to auto fill the search / replace
-nmap  S :%s//gc<LEFT><LEFT><LEFT>
+nmap S :%s//gc<LEFT><LEFT><LEFT>
 
 " Don't use escape
 nnoremap <Esc> <Nop>
@@ -26,8 +30,6 @@ inoremap <Esc> <Nop>
 nnoremap <C-s> :w<CR>
 
 " Unite key bindings
-nnoremap <leader>t :Unite -start-insert tag<CR>
-nnoremap <leader>f :<C-u>Unite -start-insert file_rec<CR>
 nnoremap <leader>ls :Unite buffer<CR>
 
 " Easy opening of splits
@@ -89,6 +91,7 @@ nnoremap <C-l> <C-w>l
 let g:scala_use_default_keymappings = 0
 let g:notes_directories = ['~/Development/notes']
 
+nnoremap <leader>t :CtrlPTag<CR>
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
@@ -170,6 +173,7 @@ Plug 'jpo/vim-railscasts-theme'
 Plug 'jceb/vim-orgmode'
 Plug 'tpope/vim-speeddating'
 Plug 'jreybert/vimagit'
+Plug 'wesQ3/vim-windowswap'
 
 call plug#end()
 
@@ -252,7 +256,6 @@ endfunction
 
 command! -nargs=1 Smigration call ScalaInsertDatabaseMigration(<q-args>)
 
-
 " ==================================================
 " Status Line
 " ==================================================
@@ -275,3 +278,4 @@ set statusline+=%=                            "left/right separator
 set statusline+=%c,                           "cursor column
 set statusline+=%l/%L                         "cursor line/total lines
 set statusline+=\ %P                          "percent through file
+
