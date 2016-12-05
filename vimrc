@@ -18,7 +18,7 @@ endif
 
 " After doing a search, hitting 'zz' will fold all the results for easier
 " display
-nmap <silent> <expr>  zz  FS_ToggleFoldAroundSearch({'context':1})
+nmap <silent> <expr>  <C-z>z  FS_ToggleFoldAroundSearch({'context':1})
 
 " map S to auto fill the search / replace
 nmap S :%s//gc<LEFT><LEFT><LEFT>
@@ -92,12 +92,13 @@ let g:scala_use_default_keymappings = 0
 let g:notes_directories = ['~/Development/notes']
 
 nnoremap <leader>t :CtrlPTag<CR>
+nnoremap <leader>p :CtrlPTag<CR>
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 
 " Open/Close NERDTree
-" nnoremap - :NERDTreeToggle<CR>
+nnoremap - :NERDTreeToggle<CR>
 nnoremap _ :NERDTreeFind<CR>
 let NERDTreeHijackNetrw=1
 let NERDTreeQuitOnOpen=1
@@ -146,7 +147,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'soramugi/auto-ctags.vim'
 Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
-Plug 'kien/ctrlp.vim'
+" Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Shougo/unite.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'christoomey/vim-tmux-navigator'
@@ -173,6 +175,9 @@ Plug 'jpo/vim-railscasts-theme'
 Plug 'jceb/vim-orgmode'
 Plug 'tpope/vim-speeddating'
 Plug 'wesQ3/vim-windowswap'
+Plug 'jreybert/vimagit'
+Plug 'tpope/vim-projectionist'
+Plug 'ervandew/supertab'
 
 call plug#end()
 
