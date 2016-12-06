@@ -190,7 +190,7 @@ if has('gui_running')
     colorscheme xoria256
 else
     set background=light
-    colorscheme default
+    colorscheme tpope
 endif
 
 set list                " Makes the whitespace visible
