@@ -178,20 +178,24 @@ Plug 'wesQ3/vim-windowswap'
 Plug 'jreybert/vimagit'
 Plug 'tpope/vim-projectionist'
 Plug 'ervandew/supertab'
+Plug 'junkblocker/patchreview-vim'
+Plug 'codegram/vim-codereview'
 
 call plug#end()
 
 " ==================================================
 " Settings
 " ==================================================
-if has('gui_running')
-    " NOTE: sometimes i swap between colorschemes.
-    set background=light
-    colorscheme xoria256
-else
-    set background=light
-    colorscheme default
-endif
+function! ToggleColorscheme()
+    if (g:colors_name == "tpope")
+        set background=dark
+        colorscheme xoria256
+    else
+        set background=light
+        colorscheme tpope
+    endif
+endfunction
+command! TC call ToggleColorscheme()
 
 set list                " Makes the whitespace visible
 set listchars=tab:⇒·,trail:␣,nbsp:~",extends:¬
