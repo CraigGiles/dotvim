@@ -180,6 +180,7 @@ Plug 'tpope/vim-projectionist'
 Plug 'ervandew/supertab'
 Plug 'junkblocker/patchreview-vim'
 Plug 'codegram/vim-codereview'
+Plug 'vim-pandoc/vim-pandoc'
 
 call plug#end()
 
