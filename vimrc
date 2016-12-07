@@ -178,6 +178,9 @@ Plug 'wesQ3/vim-windowswap'
 Plug 'jreybert/vimagit'
 Plug 'tpope/vim-projectionist'
 Plug 'ervandew/supertab'
+Plug 'junkblocker/patchreview-vim'
+Plug 'codegram/vim-codereview'
+Plug 'vim-pandoc/vim-pandoc'
 
 call plug#end()
 
@@ -192,6 +195,17 @@ else
     set background=light
     colorscheme tpope
 endif
+
+function! ToggleColorscheme()
+    if (g:colors_name == "tpope")
+        set background=dark
+        colorscheme xoria256
+    else
+        set background=light
+        colorscheme tpope
+    endif
+endfunction
+command! TC call ToggleColorscheme()
 
 set list                " Makes the whitespace visible
 set listchars=tab:⇒·,trail:␣,nbsp:~",extends:¬
