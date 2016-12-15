@@ -65,8 +65,6 @@ nnoremap <C-b> g]
 " Buffer navigation
 nnoremap gb :ls<CR>:buffer<Space>
 nnoremap gB :ls<CR>:sbuffer<Space>
-nnoremap ,b :buffer *
-nnoremap ,B :sbuffer *
 
 " Code Completion
 inoremap <C-Space> <C-x><C-o>
@@ -118,9 +116,6 @@ augroup END
 nnoremap <leader>et :EnType<CR>
 nnoremap <leader>ed :EnDeclaration<CR>
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 2
-
 " Markdown Preview
 let g:mkdp_path_to_chrome = "open -a Safari"
 nnoremap <leader>md :MarkdownPreview<CR>
@@ -147,13 +142,11 @@ Plug 'airblade/vim-gitgutter'
 Plug 'soramugi/auto-ctags.vim'
 Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
-" Plug 'kien/ctrlp.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Shougo/unite.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'iamcco/markdown-preview.vim'
-Plug 'scrooloose/syntastic'
 
 " Scala Plugins
 Plug 'derekwyatt/vim-scala'
@@ -161,7 +154,6 @@ Plug 'derekwyatt/vim-sbt'
 Plug 'spiroid/vim-ultisnip-scala'
 Plug 'ensime/ensime-vim'
 Plug 'solarnz/thrift.vim'
-Plug 'iamcco/markdown-preview.vim'
 Plug 'jpalardy/vim-slime'
 
 " Colorschemes
@@ -172,13 +164,11 @@ Plug 'flazz/vim-colorschemes'
 Plug 'jpo/vim-railscasts-theme'
 
 " Testing these plugins
-Plug 'jceb/vim-orgmode'
 Plug 'tpope/vim-speeddating'
 Plug 'wesQ3/vim-windowswap'
 Plug 'jreybert/vimagit'
 Plug 'tpope/vim-projectionist'
 Plug 'ervandew/supertab'
-Plug 'junkblocker/patchreview-vim'
 Plug 'codegram/vim-codereview'
 Plug 'vim-pandoc/vim-pandoc'
 
@@ -283,11 +273,6 @@ set statusline+=%m                            "modified flag
 set statusline+=%r                            "read only flag
 set statusline=[%t]                           "tail of the filename
 set statusline+=[%{&ff}]                      "file format
-
-" Syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}  " Syntastic Syntax Checker
-set statusline+=%*
 
 set statusline+=%h                            "help file flag
 set statusline+=%y                            "filetype
