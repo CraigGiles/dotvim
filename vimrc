@@ -115,6 +115,9 @@ augroup END
 nnoremap <leader>et :EnType<CR>
 nnoremap <leader>ed :EnDeclaration<CR>
 
+" NeoComplete
+let g:neocomplete#enable_at_startup = 1
+
 " Markdown Preview
 let g:mkdp_path_to_chrome = "open -a Safari"
 nnoremap <leader>md :MarkdownPreview<CR>
@@ -170,6 +173,8 @@ Plug 'tpope/vim-projectionist'
 Plug 'ervandew/supertab'
 Plug 'codegram/vim-codereview'
 Plug 'vim-pandoc/vim-pandoc'
+Plug 'Shougo/neocomplete.vim'
+Plug 'reedes/vim-pencil'
 
 call plug#end()
 
@@ -179,7 +184,7 @@ call plug#end()
 if has('gui_running')
     " NOTE: sometimes i swap between colorschemes.
     set background=light
-    colorscheme xoria256
+    colorscheme macvim
 else
     set background=light
     colorscheme tpope
@@ -268,7 +273,6 @@ endfunction
 
 command! -nargs=1 Smigration call ScalaInsertDatabaseMigration(<q-args>)
 
-
 function! ScalaExtractFunction(name)
     " silent! execute <C-R>=strftime("%Y%m%d%H%M")a:name.sql<CR>
     :'<,'>x
@@ -276,6 +280,22 @@ function! ScalaExtractFunction(name)
 endfunction
 
 command! -nargs=1 Sextract call ScalaExtractFunction(<q-args>)
+
+function! WordProcessorMode()
+  setlocal formatoptions=1
+  setlocal noexpandtab
+  map j gj
+  map k gk
+  setlocal spell spelllang=en_us
+  set thesaurus+= "$HOME/.vim/thesaurus/thesaurus.txt"
+  set complete+=s
+  set formatprg=par
+  set nonu
+  setlocal wrap
+  setlocal linebreak
+endfunction
+com! WP call WordProcessorMode()
+
 " ==================================================
 " Status Line
 " ==================================================
