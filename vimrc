@@ -1,7 +1,6 @@
 " Key Bindings
 " ================================================
 let mapleader = "\<Space>"
-nnoremap ;v :e ~/.vimrc<CR>
 
 " When you save the vimrc, auto-reload it
 augroup VimReload
@@ -197,6 +196,11 @@ function! ToggleColorscheme()
 endfunction
 command! TC call ToggleColorscheme()
 
+" function! RemoveTrailingWhitespaces()
+"   :%s/\s\+$//e
+" endfunction
+" command! RemoveTrailingWhitespace call RemoveTrailingWhitespaces()
+
 set list                " Makes the whitespace visible
 set listchars=tab:⇒·,trail:␣,nbsp:~",extends:¬
 set guifont=Menlo:h12
@@ -264,6 +268,14 @@ endfunction
 
 command! -nargs=1 Smigration call ScalaInsertDatabaseMigration(<q-args>)
 
+
+function! ScalaExtractFunction(name)
+    " silent! execute <C-R>=strftime("%Y%m%d%H%M")a:name.sql<CR>
+    :'<,'>x
+    silent! normal i"a:name"
+endfunction
+
+command! -nargs=1 Sextract call ScalaExtractFunction(<q-args>)
 " ==================================================
 " Status Line
 " ==================================================
