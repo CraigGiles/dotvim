@@ -15,7 +15,7 @@ if has('persistent_undo')
     set undofile
 endif
 
-" After doing a search, hitting 'zz' will fold all the results for easier
+" After doing a search, hitting 'CTRL-f-f' will fold all the results for easier
 " display
 nmap <silent> <expr>  <C-f><C-f>  FS_ToggleFoldAroundSearch({'context':1})
 
@@ -26,6 +26,7 @@ nmap S :%s//gc<LEFT><LEFT><LEFT>
 nnoremap <Esc> <Nop>
 inoremap <Esc> <Nop>
 
+" CTRL-s for saving
 nnoremap <C-s> :w<CR>
 
 " Unite key bindings
@@ -47,6 +48,7 @@ nnoremap k gk
 
 " Escape to normal mode from insert mode with jj
 inoremap jj <ESC>
+inoremap jk <ESC>
 
 " Increase split size by 5
 nnoremap = :vertical resize +5<CR>
