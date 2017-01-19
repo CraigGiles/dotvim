@@ -35,6 +35,7 @@ if &background=="light"
   hi PmenuSel   ctermfg=Black ctermbg=LightCyan
   hi Comment    term=bold ctermfg=Blue guifg=Blue
 " hi Label      term=bold ctermfg=LightMagenta guifg=LightMagenta
+  hi String     ctermfg=Blue guifg=SkyBlue4
   hi SpecialKey ctermfg=LightGrey guifg=Grey
   if version >= 700
     " hi Visual     ctermbg=LightMagenta cterm=none

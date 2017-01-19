@@ -202,6 +202,11 @@ function! ToggleColorscheme()
 endfunction
 command! TC call ToggleColorscheme()
 
+" function! RemoveTrailingWhitespaces()
+"   :%s/\s\+$//e
+" endfunction
+" command! RemoveTrailingWhitespace call RemoveTrailingWhitespaces()
+
 set list                " Makes the whitespace visible
 set listchars=tab:⇒·,trail:␣,nbsp:~",extends:¬
 set guifont=Menlo:h12
@@ -268,6 +273,14 @@ function! ScalaInsertDatabaseMigration(name)
 endfunction
 
 command! -nargs=1 Smigration call ScalaInsertDatabaseMigration(<q-args>)
+
+function! ScalaExtractFunction(name)
+    " silent! execute <C-R>=strftime("%Y%m%d%H%M")a:name.sql<CR>
+    :'<,'>x
+    silent! normal i"a:name"
+endfunction
+
+command! -nargs=1 Sextract call ScalaExtractFunction(<q-args>)
 
 function! WordProcessorMode()
   setlocal formatoptions=1
