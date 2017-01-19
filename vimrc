@@ -86,7 +86,6 @@ nnoremap <C-l> <C-w>l
 " Plugin Settings
 " ================================================
 let g:scala_use_default_keymappings = 0
-let g:notes_directories = ['~/Development/notes']
 
 nnoremap <leader>t :CtrlPTag<CR>
 nnoremap <leader>p :CtrlPTag<CR>
@@ -117,6 +116,7 @@ nnoremap <leader>ed :EnDeclaration<CR>
 
 " NeoComplete
 let g:neocomplete#enable_at_startup = 1
+let g:EclimCompletionMethod = 'omnifunc'
 
 " Markdown Preview
 let g:mkdp_path_to_chrome = "open -a Safari"
@@ -142,7 +142,6 @@ Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'soramugi/auto-ctags.vim'
-Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Shougo/unite.vim'
@@ -173,8 +172,10 @@ Plug 'tpope/vim-projectionist'
 Plug 'ervandew/supertab'
 Plug 'codegram/vim-codereview'
 Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'Shougo/neocomplete.vim'
 Plug 'reedes/vim-pencil'
+Plug 'Valloric/YouCompleteMe'
 
 call plug#end()
 
