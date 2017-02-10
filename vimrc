@@ -180,6 +180,7 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'Shougo/neocomplete.vim'
 Plug 'reedes/vim-pencil'
 Plug 'Valloric/YouCompleteMe'
+Plug 'junegunn/goyo.vim'
 
 call plug#end()
 
