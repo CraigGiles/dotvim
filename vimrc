@@ -168,6 +168,8 @@ Plug 'jpo/vim-railscasts-theme'
 
 " Testing these plugins
 Plug 'tpope/vim-speeddating'
+
+" Use via <leader>ww -> <leader>ww
 Plug 'wesQ3/vim-windowswap'
 Plug 'jreybert/vimagit'
 Plug 'tpope/vim-projectionist'
