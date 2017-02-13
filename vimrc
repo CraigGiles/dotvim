@@ -128,6 +128,8 @@ nnoremap <leader>md :MarkdownPreview<CR>
 let g:slime_target = "tmux"
 let g:slime_paste_file = "$HOME/.slime_paste"
 
+" vim-markdown
+let g:markdown_mapping_switch_status = '<Leader>ms'
 " ==================================================
 " Plugins
 " ==================================================
