@@ -180,6 +180,7 @@ Plug 'Shougo/neocomplete.vim'
 Plug 'reedes/vim-pencil'
 Plug 'Valloric/YouCompleteMe'
 Plug 'junegunn/goyo.vim'
+Plug 'gabrielelana/vim-markdown'
 
 call plug#end()
 
