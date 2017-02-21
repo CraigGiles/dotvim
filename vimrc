@@ -290,6 +290,7 @@ endfunction
 command! -nargs=1 Sextract call ScalaExtractFunction(<q-args>)
 
 function! WordProcessorMode()
+  Goyo 80
   setlocal formatoptions=1
   setlocal noexpandtab
   map j gj
