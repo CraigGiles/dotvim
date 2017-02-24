@@ -20,7 +20,7 @@ endif
 nmap <silent> <expr>  <C-f><C-f>  FS_ToggleFoldAroundSearch({'context':1})
 
 " map S to auto fill the search / replace
-nmap S :%s//gc<LEFT><LEFT><LEFT>
+nmap S :%s/\v/gc<LEFT><LEFT><LEFT>
 
 " Don't use escape
 nnoremap <Esc> <Nop>
@@ -119,6 +119,7 @@ nnoremap <leader>ed :EnDeclaration<CR>
 " NeoComplete
 let g:neocomplete#enable_at_startup = 1
 let g:EclimCompletionMethod = 'omnifunc'
+set omnifunc=syntaxcomplete#Complete
 
 " Markdown Preview
 let g:mkdp_path_to_chrome = "open -a Safari"
