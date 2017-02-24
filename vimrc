@@ -183,6 +183,7 @@ Plug 'reedes/vim-pencil'
 Plug 'Valloric/YouCompleteMe'
 Plug 'junegunn/goyo.vim'
 Plug 'gabrielelana/vim-markdown'
+Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
@@ -234,6 +235,7 @@ set autowriteall
 set hidden              " Allow modified buffers in the background
 set ruler
 set nomodeline          " Don't allow modeline ( :help modeline )
+set foldmethod=expr     " Set the current fold method to expression based
 
 " When the page starts to scroll, keep the cursor 8 lines from the top and 8
 " lines from the bottom
