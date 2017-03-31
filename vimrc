@@ -301,6 +301,8 @@ function! WordProcessorMode()
   setlocal linebreak
 endfunction
 com! WP call WordProcessorMode()
+com! WordProcessor call WordProcessorMode()
+
 
 " ==================================================
 " Status Line
