@@ -113,11 +113,19 @@ augroup EnsimeTypeCheck
     autocmd BufWritePost *.scala silent :EnTypeCheck
 augroup END
 
+" Syntastic Settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 nnoremap <leader>et :EnType<CR>
 nnoremap <leader>ed :EnDeclaration<CR>
 
-" NeoComplete
-let g:neocomplete#enable_at_startup = 1
+" Completion
 let g:EclimCompletionMethod = 'omnifunc'
 set omnifunc=syntaxcomplete#Complete
 
@@ -179,7 +187,7 @@ Plug 'tpope/vim-projectionist'
 Plug 'ervandew/supertab'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'Shougo/neocomplete.vim'
+Plug 'scrooloose/syntastic'
 Plug 'reedes/vim-pencil'
 Plug 'Valloric/YouCompleteMe'
 Plug 'junegunn/goyo.vim'
