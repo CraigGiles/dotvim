@@ -26,12 +26,6 @@ nmap S :%s/\v/gc<LEFT><LEFT><LEFT>
 nnoremap <Esc> <Nop>
 inoremap <Esc> <Nop>
 
-" CTRL-s for saving
-nnoremap <C-s> :w<CR>
-
-" Unite key bindings
-nnoremap <leader>ls :Unite buffer<CR>
-
 " Easy opening of splits
 nnoremap vs :vs<CR>
 nnoremap sp :sp<CR>
@@ -92,14 +86,14 @@ let g:scala_use_default_keymappings = 0
 nnoremap <leader>t :CtrlPTag<CR>
 nnoremap <leader>p :CtrlPTag<CR>
 let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_cmd = 'CtrlPTag'
 let g:ctrlp_working_path_mode = 'ra'
 
 " Open/Close NERDTree
-nnoremap - :NERDTreeToggle<CR>
-nnoremap _ :NERDTreeFind<CR>
-let NERDTreeHijackNetrw=1
-let NERDTreeQuitOnOpen=1
+" nnoremap - :NERDTreeToggle<CR>
+" nnoremap _ :NERDTreeFind<CR>
+" let NERDTreeHijackNetrw=1
+" let NERDTreeQuitOnOpen=1
 
 " tags
 let g:auto_ctags = 1
@@ -113,17 +107,14 @@ augroup EnsimeTypeCheck
     autocmd BufWritePost *.scala silent :EnTypeCheck
 augroup END
 
+nnoremap <leader>et :EnType<CR>
+nnoremap <leader>ed :EnDeclaration<CR>
+
 " Syntastic Settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
-nnoremap <leader>et :EnType<CR>
-nnoremap <leader>ed :EnDeclaration<CR>
 
 " Completion
 let g:EclimCompletionMethod = 'omnifunc'
@@ -151,14 +142,13 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-vinegar'
-Plug 'majutsushi/tagbar'
+" Plug 'majutsushi/tagbar' // @deprecated
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'soramugi/auto-ctags.vim'
-Plug 'xolox/vim-misc'
+" Plug 'xolox/vim-misc'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'Shougo/unite.vim'
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'iamcco/markdown-preview.vim'
 
@@ -179,17 +169,13 @@ Plug 'jpo/vim-railscasts-theme'
 
 " Testing these plugins
 Plug 'tpope/vim-speeddating'
-
-" Use via <leader>ww -> <leader>ww
-Plug 'wesQ3/vim-windowswap'
-Plug 'jreybert/vimagit'
+Plug 'wesQ3/vim-windowswap'     " <- Use via <leader>ww -> <leader>ww
 Plug 'tpope/vim-projectionist'
-Plug 'ervandew/supertab'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'scrooloose/syntastic'
-Plug 'reedes/vim-pencil'
 Plug 'Valloric/YouCompleteMe'
+Plug 'reedes/vim-pencil'
 Plug 'junegunn/goyo.vim'
 Plug 'gabrielelana/vim-markdown'
 Plug 'jiangmiao/auto-pairs'
@@ -329,6 +315,10 @@ set statusline+=[%{&ff}]                      "file format
 set statusline+=%h                            "help file flag
 set statusline+=%y                            "filetype
 set statusline+=%{fugitive#statusline()}      " Git branch
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
 " Right side
 set statusline+=%=                            "left/right separator
