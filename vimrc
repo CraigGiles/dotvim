@@ -30,6 +30,10 @@ inoremap <Esc> <Nop>
 nnoremap vs :vs<CR>
 nnoremap sp :sp<CR>
 
+" Open up the buffer list and wait for input
+nnoremap gb :ls<CR>:b<Space>
+nnoremap <leader>ls :ls<CR>:b<Space>
+
 " Change two vertical splits to horizontal splits
 nnoremap <leader>sp <C-w>t<C-w>K
 
@@ -86,14 +90,14 @@ let g:scala_use_default_keymappings = 0
 nnoremap <leader>t :CtrlPTag<CR>
 nnoremap <leader>p :CtrlPTag<CR>
 let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlPTag'
+let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 
 " Open/Close NERDTree
-" nnoremap - :NERDTreeToggle<CR>
-" nnoremap _ :NERDTreeFind<CR>
-" let NERDTreeHijackNetrw=1
-" let NERDTreeQuitOnOpen=1
+nnoremap - :NERDTreeToggle<CR>
+nnoremap _ :NERDTreeFind<CR>
+let NERDTreeHijackNetrw=1
+let NERDTreeQuitOnOpen=1
 
 " tags
 let g:auto_ctags = 1
@@ -148,7 +152,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'soramugi/auto-ctags.vim'
 " Plug 'xolox/vim-misc'
 Plug 'ctrlpvim/ctrlp.vim'
-" Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'iamcco/markdown-preview.vim'
 
