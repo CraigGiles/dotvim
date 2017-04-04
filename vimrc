@@ -89,8 +89,9 @@ let g:scala_use_default_keymappings = 0
 
 nnoremap <leader>t :CtrlPTag<CR>
 nnoremap <leader>p :CtrlPTag<CR>
+nnoremap <leader>f :CtrlP<CR>
 let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_cmd = 'CtrlPTag'
 let g:ctrlp_working_path_mode = 'ra'
 
 " Open/Close NERDTree
@@ -116,7 +117,7 @@ nnoremap <leader>ed :EnDeclaration<CR>
 
 " Syntastic Settings
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
@@ -134,6 +135,7 @@ let g:slime_paste_file = "$HOME/.slime_paste"
 
 " vim-markdown
 let g:markdown_mapping_switch_status = '<Leader>ms'
+
 " ==================================================
 " Plugins
 " ==================================================
