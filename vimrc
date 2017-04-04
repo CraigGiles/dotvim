@@ -5,6 +5,7 @@ let mapleader = "\<Space>"
 " When you save the vimrc, auto-reload it
 augroup VimReload
     autocmd!
+    au FocusLost * :wa
     autocmd BufWritePost  $MYVIMRC  source $MYVIMRC
 augroup END
 
