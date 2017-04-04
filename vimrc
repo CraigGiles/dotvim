@@ -113,6 +113,11 @@ augroup EnsimeTypeCheck
     autocmd BufWritePost *.scala silent :EnTypeCheck
 augroup END
 
+augroup ScalaAutoCommmands
+    autocmd!
+    autocmd BufWritePost *.scala %s/\s\+$//e
+augroup END
+
 nnoremap <leader>et :EnType<CR>
 nnoremap <leader>ed :EnDeclaration<CR>
 
@@ -268,6 +273,12 @@ set wildignore+=*/tools/**
 set wildignore+=*/docroot/res/out/**
 set wildignore+=*.swp
 set wildignore+=*.bak
+
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn|target)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
 
 " ==================================================
 " Functions
