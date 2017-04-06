@@ -83,6 +83,14 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-j> <C-w>j
 nnoremap <C-l> <C-w>l
 
+" Make search results be in the center of the window
+nmap n nzz
+nmap N Nzz
+nmap * *zz
+nmap # #zz
+nmap g* g*zz
+nmap g# g#zz
+
 " ================================================
 " Plugin Settings
 " ================================================
@@ -115,7 +123,7 @@ augroup END
 
 augroup ScalaAutoCommmands
     autocmd!
-    autocmd BufWritePost *.scala %s/\s\+$//e
+    autocmd BufWritePost *.scala RemoveTrailingWhitespace
 augroup END
 
 nnoremap <leader>et :EnType<CR>
@@ -217,10 +225,10 @@ function! ToggleColorscheme()
 endfunction
 command! TC call ToggleColorscheme()
 
-" function! RemoveTrailingWhitespaces()
-"   :%s/\s\+$//e
-" endfunction
-" command! RemoveTrailingWhitespace call RemoveTrailingWhitespaces()
+function! RemoveTrailingWhitespaces()
+  :%s/\s\+$//e
+endfunction
+command! RemoveTrailingWhitespace call RemoveTrailingWhitespaces()
 
 set list                " Makes the whitespace visible
 set listchars=tab:⇒·,trail:␣,nbsp:~",extends:¬
