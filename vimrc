@@ -214,7 +214,6 @@ let g:fzf_action = {
   \ 'ctrl-v': 'vsplit' }
 
 " Default fzf layout
-" - down / up / left / right
 let g:fzf_layout = { 'down': '~40%' }
 let g:fzf_tags_command = 'git ctags'
 imap <c-x><c-l> <plug>(fzf-complete-line)
