@@ -6,6 +6,8 @@ set foldlevelstart=1
 nnoremap <leader><leader> <C-^>
 let g:fzf_launcher = "~/.vim/scripts/macvimfzf.sh %s"
 
+nnoremap <leader>ut :UTRun %:p<CR>:copen<CR>
+
 " ================================================
 " Key Bindings
 " ================================================
@@ -192,6 +194,10 @@ Plug 'morhetz/gruvbox'
 Plug 'xoria256.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'jpo/vim-railscasts-theme'
+
+" Plugins for writing vimscript plugins
+Plug 'LucHermitte/lh-vim-lib'
+Plug 'LucHermitte/vim-UT'
 
 " Testing these plugins
 Plug 'tpope/vim-speeddating'
