@@ -1,3 +1,12 @@
+" ================================================
+" Testing These Settings
+" ================================================
+set foldmethod=indent
+set foldlevelstart=1
+nnoremap <leader><leader> <C-^>
+let g:fzf_launcher = "~/.vim/scripts/macvimfzf.sh %s"
+
+" ================================================
 " Key Bindings
 " ================================================
 let mapleader = "\<Space>"
@@ -16,16 +25,12 @@ if has('persistent_undo')
     set undofile
 endif
 
-" After doing a search, hitting 'CTRL-f-f' will fold all the results for easier
-" display
+" After doing a search, hitting 'CTRL-f-f' will fold all
+" the results for easier display
 nmap <silent> <expr>  <C-f><C-f>  FS_ToggleFoldAroundSearch({'context':1})
 
 " map S to auto fill the search / replace
 nmap S :%s/\v/gc<LEFT><LEFT><LEFT>
-
-" Don't use escape
-nnoremap <Esc> <Nop>
-inoremap <Esc> <Nop>
 
 " Easy opening of splits
 nnoremap vs :vs<CR>
@@ -55,9 +60,6 @@ nnoremap + :resize +5<CR>
 
 " git related commands
 nnoremap ga :Gblame<CR>
-
-" File navigation and IDE like settings
-nnoremap <leader>7 :TagbarToggle<CR>
 
 " Jump to definition, <C-t> jumps back
 nnoremap <C-b> g]
@@ -96,12 +98,18 @@ nmap g# g#zz
 " ================================================
 let g:scala_use_default_keymappings = 0
 
-" nnoremap <leader>t :CtrlPTag<CR>
-" nnoremap <leader>p :CtrlPTag<CR>
-" nnoremap <leader>f :CtrlP<CR>
-" let g:ctrlp_map = '<c-p>'
-" let g:ctrlp_cmd = 'CtrlPTag'
-" let g:ctrlp_working_path_mode = 'ra'
+" CtrlP Settings
+nnoremap <leader>t :CtrlPTag<CR>
+nnoremap <leader>p :CtrlPTag<CR>
+nnoremap <leader>f :CtrlP<CR>
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlPTag'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn|target)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
 
 " Open/Close NERDTree
 nnoremap - :NERDTreeToggle<CR>
@@ -115,15 +123,15 @@ let g:auto_ctags_directory_list = ['.git', '.svn']
 let g:auto_ctags_tags_name = 'tags'
 let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
 
+augroup ScalaAutoCommmands
+    autocmd!
+    autocmd BufWritePost *.scala RemoveTrailingWhitespace
+augroup END
+
 " Ensime settings
 augroup EnsimeTypeCheck
     autocmd!
     autocmd BufWritePost *.scala silent :EnTypeCheck
-augroup END
-
-augroup ScalaAutoCommmands
-    autocmd!
-    autocmd BufWritePost *.scala RemoveTrailingWhitespace
 augroup END
 
 nnoremap <leader>et :EnType<CR>
@@ -162,12 +170,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-vinegar'
-" Plug 'majutsushi/tagbar' // @deprecated
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'soramugi/auto-ctags.vim'
-" Plug 'xolox/vim-misc'
-" Plug 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'iamcco/markdown-preview.vim'
@@ -194,11 +200,10 @@ Plug 'tpope/vim-projectionist'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'scrooloose/syntastic'
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 Plug 'reedes/vim-pencil'
 Plug 'junegunn/goyo.vim'
 Plug 'gabrielelana/vim-markdown'
-Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
@@ -208,6 +213,7 @@ call plug#end()
 " FZF
 " ==================================================
 " This is the default extra key bindings
+set rtp+=/usr/local/opt/fzf
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
@@ -217,8 +223,8 @@ let g:fzf_action = {
 let g:fzf_layout = { 'down': '~40%' }
 let g:fzf_tags_command = 'git ctags'
 imap <c-x><c-l> <plug>(fzf-complete-line)
-nnoremap <C-p> :Tags<CR>
-nnoremap <leader>f :Files<CR>
+" nnoremap <C-p> :Tags<CR>
+" nnoremap <leader>f :Files<CR>
 nnoremap <leader>l :Lines<CR>
 
 " ==================================================
@@ -269,7 +275,6 @@ set autowriteall
 set hidden              " Allow modified buffers in the background
 set ruler
 set nomodeline          " Don't allow modeline ( :help modeline )
-set foldmethod=expr     " Set the current fold method to expression based
 
 " When the page starts to scroll, keep the cursor 8 lines from the top and 8
 " lines from the bottom
@@ -301,35 +306,29 @@ set wildignore+=*/docroot/res/out/**
 set wildignore+=*.swp
 set wildignore+=*.bak
 
-" let g:ctrlp_custom_ignore = {
-"   \ 'dir':  '\v[\/]\.(git|hg|svn|target)$',
-"   \ 'file': '\v\.(exe|so|dll)$',
-"   \ 'link': 'some_bad_symbolic_links',
-"   \ }
+" " ==================================================
+" " Functions
+" " ==================================================
+" function! ScalaInsertDatabaseMigration(name)
+"     " silent! execute <C-R>=strftime("%Y%m%d%H%M")a:name.sql<CR>
+"     let a:ts = strftime("%Y%m%d%H%M")
+"     let a:myval = tolower(a:name)
+"     let a:noHyphs = substitute(a:myval, " ", "-", "g")
+"     let a:noSpaces = substitute(a:noHyphs, "\"", "", "g")
+"     let a:filename = "V1_" . a:ts . "__" . a:noSpaces . ".sql"
+"     echo a:filename
+"     echo getcwd()."/flyway/src/main/resources/db/migration/".a:filename
+" endfunction
 
-" ==================================================
-" Functions
-" ==================================================
-function! ScalaInsertDatabaseMigration(name)
-    " silent! execute <C-R>=strftime("%Y%m%d%H%M")a:name.sql<CR>
-    let a:ts = strftime("%Y%m%d%H%M")
-    let a:myval = tolower(a:name)
-    let a:noHyphs = substitute(a:myval, " ", "-", "g")
-    let a:noSpaces = substitute(a:noHyphs, "\"", "", "g")
-    let a:filename = "V1_" . a:ts . "__" . a:noSpaces . ".sql"
-    echo a:filename
-    echo getcwd()."/flyway/src/main/resources/db/migration/".a:filename
-endfunction
+" command! -nargs=1 Smigration call ScalaInsertDatabaseMigration(<q-args>)
 
-command! -nargs=1 Smigration call ScalaInsertDatabaseMigration(<q-args>)
+" function! ScalaExtractFunction(name)
+"     " silent! execute <C-R>=strftime("%Y%m%d%H%M")a:name.sql<CR>
+"     :'<,'>x
+"     silent! normal i"a:name"
+" endfunction
 
-function! ScalaExtractFunction(name)
-    " silent! execute <C-R>=strftime("%Y%m%d%H%M")a:name.sql<CR>
-    :'<,'>x
-    silent! normal i"a:name"
-endfunction
-
-command! -nargs=1 Sextract call ScalaExtractFunction(<q-args>)
+" command! -nargs=1 Sextract call ScalaExtractFunction(<q-args>)
 
 function! WordProcessorMode()
   Goyo 80
