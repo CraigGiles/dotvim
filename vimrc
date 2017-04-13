@@ -6,8 +6,6 @@ set foldlevelstart=1
 nnoremap <leader><leader> <C-^>
 let g:fzf_launcher = "~/.vim/scripts/macvimfzf.sh %s"
 
-nnoremap <leader>ut :UTRun %:p<CR>:copen<CR>
-
 " ================================================
 " Key Bindings
 " ================================================
@@ -98,7 +96,12 @@ nmap g# g#zz
 " ================================================
 " Plugin Settings
 " ================================================
+
+" vim-scala
 let g:scala_use_default_keymappings = 0
+
+" scalapackage.vim
+let g:scala_package_flat_package = 0
 
 " CtrlP Settings
 nnoremap <leader>t :CtrlPTag<CR>
@@ -198,6 +201,7 @@ Plug 'jpo/vim-railscasts-theme'
 " Plugins for writing vimscript plugins
 Plug 'LucHermitte/lh-vim-lib'
 Plug 'LucHermitte/vim-UT'
+Plug 'CraigGiles/scalapackage.vim'
 
 " Testing these plugins
 Plug 'tpope/vim-speeddating'
