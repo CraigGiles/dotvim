@@ -104,17 +104,17 @@ let g:scala_use_default_keymappings = 0
 let g:scala_package_flat_package = 0
 
 " CtrlP Settings
-nnoremap <leader>t :CtrlPTag<CR>
-nnoremap <leader>p :CtrlPTag<CR>
-nnoremap <leader>f :CtrlP<CR>
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlPTag'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn|target)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
+" nnoremap <leader>t :CtrlPTag<CR>
+" nnoremap <leader>p :CtrlPTag<CR>
+" nnoremap <leader>f :CtrlP<CR>
+" let g:ctrlp_map = '<c-p>'
+" let g:ctrlp_cmd = 'CtrlPTag'
+" let g:ctrlp_working_path_mode = 'ra'
+" let g:ctrlp_custom_ignore = {
+"   \ 'dir':  '\v[\/]\.(git|hg|svn|target)$',
+"   \ 'file': '\v\.(exe|so|dll)$',
+"   \ 'link': 'some_bad_symbolic_links',
+"   \ }
 
 " Open/Close NERDTree
 nnoremap - :NERDTreeToggle<CR>
@@ -178,7 +178,9 @@ Plug 'tpope/vim-vinegar'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'soramugi/auto-ctags.vim'
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'iamcco/markdown-preview.vim'
@@ -233,8 +235,8 @@ let g:fzf_action = {
 let g:fzf_layout = { 'down': '~40%' }
 let g:fzf_tags_command = 'git ctags'
 imap <c-x><c-l> <plug>(fzf-complete-line)
-" nnoremap <C-p> :Tags<CR>
-" nnoremap <leader>f :Files<CR>
+nnoremap <C-p> :Tags<CR>
+nnoremap <leader>f :Files<CR>
 nnoremap <leader>l :Lines<CR>
 
 " ==================================================
