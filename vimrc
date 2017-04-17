@@ -218,6 +218,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'gabrielelana/vim-markdown'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-peekaboo'
 
 call plug#end()
 
