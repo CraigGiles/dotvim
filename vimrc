@@ -14,7 +14,6 @@ let mapleader = "\<Space>"
 " When you save the vimrc, auto-reload it
 augroup VimReload
     autocmd!
-    au FocusLost * :wa
     autocmd BufWritePost  $MYVIMRC  source $MYVIMRC
 augroup END
 
@@ -35,10 +34,6 @@ nmap S :%s/\v/gc<LEFT><LEFT><LEFT>
 " Easy opening of splits
 nnoremap vs :vs<CR>
 nnoremap sp :sp<CR>
-
-" Open up the buffer list and wait for input
-nnoremap gb :ls<CR>:b<Space>
-nnoremap <leader>ls :ls<CR>:b<Space>
 
 " Change two vertical splits to horizontal splits
 nnoremap <leader>sp <C-w>t<C-w>K
@@ -65,8 +60,8 @@ nnoremap ga :Gblame<CR>
 nnoremap <C-b> g]
 
 " Buffer navigation
-nnoremap gb :ls<CR>:buffer<Space>
-nnoremap gB :ls<CR>:sbuffer<Space>
+nnoremap <leader>ls :ls<CR>:buffer<Space>
+nnoremap <leader>lS :ls<CR>:sbuffer<Space>
 
 " Code Completion
 inoremap <C-Space> <C-x><C-o>
@@ -212,7 +207,6 @@ Plug 'tpope/vim-projectionist'
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'scrooloose/syntastic'
-" Plug 'Valloric/YouCompleteMe'
 Plug 'reedes/vim-pencil'
 Plug 'junegunn/goyo.vim'
 Plug 'gabrielelana/vim-markdown'
@@ -287,7 +281,8 @@ set autowrite           " Auto write to disk when buffer is changed
 set autowriteall
 set hidden              " Allow modified buffers in the background
 set ruler
-set nomodeline          " Don't allow modeline ( :help modeline )
+set modeline            " Allow modeline ( :help modeline )
+set modelines=2         " Use the first and last two lines for modeline
 
 " When the page starts to scroll, keep the cursor 8 lines from the top and 8
 " lines from the bottom
