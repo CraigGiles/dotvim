@@ -88,76 +88,6 @@ nmap # #zz
 nmap g* g*zz
 nmap g# g#zz
 
-" ================================================
-" Plugin Settings
-" ================================================
-
-" vim-scala
-let g:scala_use_default_keymappings = 0
-
-" scalapackage.vim
-let g:scala_package_flat_package = 0
-
-" CtrlP Settings
-" nnoremap <leader>t :CtrlPTag<CR>
-" nnoremap <leader>p :CtrlPTag<CR>
-" nnoremap <leader>f :CtrlP<CR>
-" let g:ctrlp_map = '<c-p>'
-" let g:ctrlp_cmd = 'CtrlPTag'
-" let g:ctrlp_working_path_mode = 'ra'
-" let g:ctrlp_custom_ignore = {
-"   \ 'dir':  '\v[\/]\.(git|hg|svn|target)$',
-"   \ 'file': '\v\.(exe|so|dll)$',
-"   \ 'link': 'some_bad_symbolic_links',
-"   \ }
-
-" Open/Close NERDTree
-nnoremap - :NERDTreeToggle<CR>
-nnoremap _ :NERDTreeFind<CR>
-let NERDTreeHijackNetrw=1
-let NERDTreeQuitOnOpen=1
-
-" tags
-let g:auto_ctags = 1
-let g:auto_ctags_directory_list = ['.git', '.svn']
-let g:auto_ctags_tags_name = 'tags'
-let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
-
-augroup ScalaAutoCommmands
-    autocmd!
-    autocmd BufWritePost *.scala RemoveTrailingWhitespace
-augroup END
-
-" Ensime settings
-augroup EnsimeTypeCheck
-    autocmd!
-    autocmd BufWritePost *.scala silent :EnTypeCheck
-augroup END
-
-nnoremap <leader>et :EnType<CR>
-nnoremap <leader>ed :EnDeclaration<CR>
-
-" Syntastic Settings
-let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" Completion
-let g:EclimCompletionMethod = 'omnifunc'
-set omnifunc=syntaxcomplete#Complete
-
-" Markdown Preview
-let g:mkdp_path_to_chrome = "open -a Safari"
-nnoremap <leader>md :MarkdownPreview<CR>
-
-" SLIME for REPL
-let g:slime_target = "tmux"
-let g:slime_paste_file = "$HOME/.slime_paste"
-
-" vim-markdown
-let g:markdown_mapping_switch_status = '<Leader>ms'
-
 " ==================================================
 " Plugins
 " ==================================================
@@ -217,24 +147,6 @@ Plug 'junegunn/vim-peekaboo'
 call plug#end()
 
 " ==================================================
-" FZF
-" ==================================================
-" This is the default extra key bindings
-set rtp+=/usr/local/opt/fzf
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
-
-" Default fzf layout
-let g:fzf_layout = { 'down': '~40%' }
-let g:fzf_tags_command = 'git ctags'
-imap <c-x><c-l> <plug>(fzf-complete-line)
-nnoremap <C-p> :Tags<CR>
-nnoremap <leader>f :Files<CR>
-nnoremap <leader>l :Lines<CR>
-
-" ==================================================
 " Settings
 " ==================================================
 if has('gui_running')
@@ -246,21 +158,6 @@ else
     colorscheme tpope
 endif
 
-function! ToggleColorscheme()
-    if (g:colors_name == "tpope")
-        set background=dark
-        colorscheme xoria256
-    else
-        set background=light
-        colorscheme tpope
-    endif
-endfunction
-command! TC call ToggleColorscheme()
-
-function! RemoveTrailingWhitespaces()
-  :%s/\s\+$//e
-endfunction
-command! RemoveTrailingWhitespace call RemoveTrailingWhitespaces()
 
 set list                " Makes the whitespace visible
 set listchars=tab:⇒·,trail:␣,nbsp:~",extends:¬
@@ -338,45 +235,88 @@ set wildignore+=*.bak
 
 " command! -nargs=1 Sextract call ScalaExtractFunction(<q-args>)
 
-function! WordProcessorMode()
-  Goyo 80
-  setlocal formatoptions=1
-  setlocal noexpandtab
-  map j gj
-  map k gk
-  setlocal spell spelllang=en_us
-  set thesaurus+= "$HOME/.vim/thesaurus/thesaurus.txt"
-  set complete+=s
-  set formatprg=par
-  set nonu
-  setlocal wrap
-  setlocal linebreak
-endfunction
-com! WP call WordProcessorMode()
-com! WordProcessor call WordProcessorMode()
+
 
 
 " ==================================================
-" Status Line
+" TAKEN SHAMELESSLY FROM WINCENT
 " ==================================================
-set laststatus=2
+" if v:progname == 'vi'
+"   set noloadplugins
+" endif
 
-set statusline+=%m                            "modified flag
-set statusline+=%r                            "read only flag
-set statusline=[%t]                           "tail of the filename
-set statusline+=[%{&ff}]                      "file format
+" let mapleader="\<Space>"
+" let maplocalleader="\\"
 
-set statusline+=%h                            "help file flag
-set statusline+=%y                            "filetype
-set statusline+=%{fugitive#statusline()}      " Git branch
+" " Extension -> filetype mappings.
+" let filetype_m='objc'
+" let filetype_pl='prolog'
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" " Stop annoying paren match highlighting from flashing all over the screen.
+" let loaded_matchparen=1
 
-" Right side
-set statusline+=%=                            "left/right separator
-set statusline+=%c,                           "cursor column
-set statusline+=%l/%L                         "cursor line/total lines
-set statusline+=\ %P                          "percent through file
+" " Automatic, language-dependent indentation, syntax coloring and other
+" " functionality.
+" filetype indent plugin on
+" syntax on
 
+" source $VIMRUNTIME/macros/matchit.vim
+
+" " Stark highlighting is enough to see the current match; don't need the
+" " centering, which can be annoying.
+" let g:LoupeCenterResults=0
+
+" " Would be useful mappings, but they interfe with my default window movement
+" " bindings (<C-j> and <C-k>).
+" let g:NERDTreeMapJumpPrevSibling='<Nop>'
+" let g:NERDTreeMapJumpNextSibling='<Nop>'
+
+" " Prevent tcomment from making a zillion mappings (we just want the operator).
+" let g:tcommentMapLeader1=''
+" let g:tcommentMapLeader2=''
+" let g:tcommentMapLeaderCommentAnyway=''
+" let g:tcommentTextObjectInlineComment=''
+
+" " The default (g<) is a bit awkward to type.
+" let g:tcommentMapLeaderUncommentAnyway='gu'
+
+" " Allow for per-machine overrides in ~/.vim/host/hostname and
+" " ~/.vim/vimrc.local.
+" let s:hostfile = $HOME . '/.vim/host/' . substitute(hostname(), "\\..*", '', '')
+" if filereadable(s:hostfile)
+"   execute 'source ' . s:hostfile
+" endif
+
+" " Inglorious hack to share config across dev* machines.
+" if matchstr(hostname(), '\v^dev(vm)?\d+\.') != ''
+"   execute 'source ' . $HOME . '/.vim/host/dev-star'
+" endif
+
+" let s:vimrc_local = $HOME . '/.vim/vimrc.local'
+" if filereadable(s:vimrc_local)
+"   execute 'source ' . s:vimrc_local
+" endif
+
+" " Temporary workaround for MacVim blowing up for any Python plug-in.
+" if has('gui')
+"   let g:pathogen_blacklist=['YouCompleteMe', 'ultisnips']
+" endif
+
+" if &loadplugins
+"   if has('packages')
+"     packloadall
+"   else
+"     " Use Pathogen for plug-in loading.
+"     source $HOME/.vim/pack/bundle/opt/vim-pathogen/autoload/pathogen.vim
+"     call pathogen#infect('pack/bundle/start/{}')
+"   endif
+" endif
+
+" After this file is sourced, plug-in code will be evaluated.
+" See ~/.vim/after for files evaluated after that.
+" See `:scriptnames` for a list of all scripts, in evaluation order.
+" Launch Vim with `vim --startuptime vim.log` for profiling info.
+"
+" To see all leader mappings, including those from plug-ins:
+"
+"   vim -c 'set t_te=' -c 'set t_ti=' -c 'map <space>' -c q | sort
