@@ -4,3 +4,4 @@ plugged/
 .netrwhist
 .DS_Store*
 init.vim
+vimrc.local
