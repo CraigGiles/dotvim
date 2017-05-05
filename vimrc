@@ -1,5 +1,10 @@
 " vim:set foldmethod=marker:
 
+" See `:scriptnames` for a list of all scripts, in evaluation order.
+" Launch Vim with `vim --startuptime vim.log` for profiling info.
+"
+" To see all leader mappings, including those from plug-ins:
+
 source ~/.vim/config/plugins.vim
 source ~/.vim/config/pluginsettings.vim
 source ~/.vim/config/settings.vim
@@ -30,15 +35,12 @@ endif
 " ================================================
 " Testing These Settings
 " ================================================
-set foldmethod=indent
+set foldmethod=syntax
 set foldlevelstart=1
 nnoremap <leader><leader> <C-^>
 let g:fzf_launcher = "~/.vim/scripts/macvimfzf.sh %s"
 vmap <expr>  ++  VMATH_YankAndAnalyse()
 nmap         ++  vip++
-
-
-
 
 " " ==================================================
 " " Functions
@@ -63,13 +65,3 @@ nmap         ++  vip++
 " endfunction
 
 " command! -nargs=1 Sextract call ScalaExtractFunction(<q-args>)
-
-" ==================================================
-" TAKEN SHAMELESSLY FROM WINCENT
-" ==================================================
-" After this file is sourced, plug-in code will be evaluated.
-" See ~/.vim/after for files evaluated after that.
-" See `:scriptnames` for a list of all scripts, in evaluation order.
-" Launch Vim with `vim --startuptime vim.log` for profiling info.
-"
-" To see all leader mappings, including those from plug-ins:
