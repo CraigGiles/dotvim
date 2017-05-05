@@ -1,4 +1,4 @@
-" vim:set sw=2 sts=2 foldmethod=marker:
+" vim:set foldmethod=marker:
 
 source ~/.vim/config/plugins.vim
 source ~/.vim/config/pluginsettings.vim
