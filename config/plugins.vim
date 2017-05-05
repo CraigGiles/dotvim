@@ -1,0 +1,69 @@
+" ==================================================
+" Plugins
+" ==================================================
+call plug#begin()
+"{{{ General Plugins
+
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-vinegar'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-scripts/BufOnly.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'soramugi/auto-ctags.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'iamcco/markdown-preview.vim'
+
+"}}}
+"{{{ Scala Plugins 
+
+Plug 'derekwyatt/vim-scala'
+Plug 'derekwyatt/vim-sbt'
+Plug 'spiroid/vim-ultisnip-scala'
+Plug 'ensime/ensime-vim'
+Plug 'solarnz/thrift.vim'
+Plug 'jpalardy/vim-slime'
+
+" }}}
+"{{{ Colorschemes
+
+Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
+Plug 'xoria256.vim'
+Plug 'flazz/vim-colorschemes'
+Plug 'jpo/vim-railscasts-theme'
+
+"}}}
+"{{{ Plugins for writing vimscript plugins
+
+Plug 'LucHermitte/lh-vim-lib'
+Plug 'LucHermitte/vim-UT'
+Plug 'CraigGiles/scalapackage.vim'
+
+"}}}
+"{{{ Testing these plugins
+
+Plug 'tpope/vim-speeddating'
+Plug 'wesQ3/vim-windowswap'     " <- Use via <leader>ww -> <leader>ww
+Plug 'tpope/vim-projectionist'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'scrooloose/syntastic'
+Plug 'reedes/vim-pencil'
+Plug 'junegunn/goyo.vim'
+Plug 'gabrielelana/vim-markdown'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-peekaboo'
+Plug 'nixon/vim-vmath'
+
+"}}}
+call plug#end()
+
+" vim:set sw=2 sts=2 foldmethod=marker:
