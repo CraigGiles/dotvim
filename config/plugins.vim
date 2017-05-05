@@ -18,14 +18,16 @@ Plug 'soramugi/auto-ctags.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'iamcco/markdown-preview.vim'
+Plug 'junegunn/vim-peekaboo'
+Plug 'nixon/vim-vmath'
+Plug 'wesQ3/vim-windowswap'     " <- Use via <leader>ww -> <leader>ww
 
 "}}}
 "{{{ Scala Plugins 
 
 Plug 'derekwyatt/vim-scala'
 Plug 'derekwyatt/vim-sbt'
-Plug 'spiroid/vim-ultisnip-scala'
+Plug 'CraigGiles/scalapackage.vim'
 Plug 'ensime/ensime-vim'
 Plug 'solarnz/thrift.vim'
 Plug 'jpalardy/vim-slime'
@@ -44,24 +46,23 @@ Plug 'jpo/vim-railscasts-theme'
 
 Plug 'LucHermitte/lh-vim-lib'
 Plug 'LucHermitte/vim-UT'
-Plug 'CraigGiles/scalapackage.vim'
+
+"}}}
+"{{{ Document Writing
+
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'reedes/vim-pencil'
+Plug 'junegunn/goyo.vim'
+Plug 'gabrielelana/vim-markdown'
+Plug 'iamcco/markdown-preview.vim'
 
 "}}}
 "{{{ Testing these plugins
 
 Plug 'tpope/vim-speeddating'
-Plug 'wesQ3/vim-windowswap'     " <- Use via <leader>ww -> <leader>ww
 Plug 'tpope/vim-projectionist'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'scrooloose/syntastic'
-Plug 'reedes/vim-pencil'
-Plug 'junegunn/goyo.vim'
-Plug 'gabrielelana/vim-markdown'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/vim-peekaboo'
-Plug 'nixon/vim-vmath'
 
 "}}}
 call plug#end()
