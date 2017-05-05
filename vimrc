@@ -1,17 +1,11 @@
-" vim:set foldmethod=marker:
-
-" See `:scriptnames` for a list of all scripts, in evaluation order.
-" Launch Vim with `vim --startuptime vim.log` for profiling info.
-"
-" To see all leader mappings, including those from plug-ins:
-
+" Order matters when sourcing these
 source ~/.vim/config/plugins.vim
 source ~/.vim/config/pluginsettings.vim
 source ~/.vim/config/settings.vim
 source ~/.vim/config/functions.vim
-source ~/.vim/config/fzf.vim
 source ~/.vim/config/statusline.vim
 source ~/.vim/config/key-bindings.vim
+source ~/.vim/config/fuzzyfinder.vim
 
 " When you save the vimrc, auto-reload it
 augroup VimReload
@@ -65,3 +59,11 @@ nmap         ++  vip++
 " endfunction
 
 " command! -nargs=1 Sextract call ScalaExtractFunction(<q-args>)
+"
+
+" See `:scriptnames` for a list of all scripts, in evaluation order.
+" Launch Vim with `vim --startuptime vim.log` for profiling info.
+"
+" To see all leader mappings, including those from plug-ins:
+
+"vim:set foldmethod=marker:

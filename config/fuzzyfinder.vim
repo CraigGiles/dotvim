@@ -11,6 +11,7 @@ let g:fzf_action = {
 " Default fzf layout
 let g:fzf_layout = { 'down': '~40%' }
 let g:fzf_tags_command = 'git ctags'
+
 imap <c-x><c-l> <plug>(fzf-complete-line)
 nnoremap <C-p> :Tags<CR>
 nnoremap <leader>f :Files<CR>
