@@ -9,6 +9,10 @@ Clone misc directory to ~/Development/misc
   HTTP: git clone https://github.com/CraigGiles/misc.git ~/Development/misc
   SSH: git clone git@github.com:CraigGiles/misc.git ~/Development/misc
 
+Update CTags (On OSX)
+  brew tap universal-ctags/universal-ctags
+  brew install --HEAD universal-ctags
+
 Link your vimrc and gvimrc to included vimrc files:
   ln -s ~/.vim/vimrc ~/.vimrc
   ln -s ~/.vim/gvimrc ~/.gvimrc
@@ -32,6 +36,7 @@ For scala development
 Initialize the plugins:
   :PlugInstall
 
+================================================================================
 TMUX:
 ================================================================================
 brew install reattach-to-user-namespace

@@ -21,6 +21,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/vim-peekaboo'
 Plug 'nixon/vim-vmath'
 Plug 'wesQ3/vim-windowswap'     " <- Use via <leader>ww -> <leader>ww
+Plug 'tpope/vim-endwise'
 
 "}}}
 "{{{ Scala Plugins 
