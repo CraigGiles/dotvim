@@ -26,9 +26,8 @@ Plug 'tpope/vim-endwise'
 "}}}
 "{{{ Scala Plugins 
 
-Plug 'derekwyatt/vim-scala'
 Plug 'derekwyatt/vim-sbt'
-Plug 'CraigGiles/scalapackage.vim'
+Plug 'craiggiles/scala.vim'
 Plug 'ensime/ensime-vim'
 Plug 'solarnz/thrift.vim'
 Plug 'jpalardy/vim-slime'
