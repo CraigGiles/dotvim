@@ -63,6 +63,8 @@ Plug 'iamcco/markdown-preview.vim'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-projectionist'
 Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-scriptease'
+Plug 'mdreves/vim-scaladoc'
 
 "}}}
 call plug#end()

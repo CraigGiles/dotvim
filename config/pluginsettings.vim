@@ -68,3 +68,6 @@ let g:slime_paste_file = "$HOME/.slime_paste"
 " vim-markdown
 let g:markdown_mapping_switch_status = '<Leader>ms'
 
+" vim-scaladoc
+command -nargs=1 ScalaDoc <expr> call scaladoc#Search(<f-args>)
+nnoremap <C-k> :call ScalaDoc(expand("<cword>"))<CR>
