@@ -65,6 +65,7 @@ Plug 'tpope/vim-projectionist'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-scriptease'
 Plug 'mdreves/vim-scaladoc'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 "}}}
 call plug#end()

@@ -6,6 +6,8 @@ source ~/.vim/config/functions.vim
 source ~/.vim/config/statusline.vim
 source ~/.vim/config/key-bindings.vim
 source ~/.vim/config/fuzzyfinder.vim
+source ~/.vim/config/neovim-settings.vim
+source ~/.vim/config/autocomplete.vim
 
 " When you save the vimrc, auto-reload it
 augroup VimReload
