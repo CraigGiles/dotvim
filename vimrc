@@ -29,7 +29,6 @@ endif
 " ================================================
 " Testing These Settings
 " ================================================
-set foldmethod=syntax
 set foldlevelstart=1
 nnoremap <leader><leader> <C-^>
 let g:fzf_launcher = "~/.vim/scripts/macvimfzf.sh %s"

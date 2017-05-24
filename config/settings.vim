@@ -32,6 +32,7 @@ set hidden              " Allow modified buffers in the background
 set ruler
 set modeline            " Allow modeline ( :help modeline )
 set modelines=2         " Use the first and last two lines for modeline
+set foldmethod=indent   " Set the fold method to be based on the indentation
 
 " When the page starts to scroll, keep the cursor 8 lines from the top and 8
 " lines from the bottom
