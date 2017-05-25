@@ -36,6 +36,7 @@ nnoremap <leader><leader> <C-^>
 let g:fzf_launcher = "~/.vim/scripts/macvimfzf.sh %s"
 vmap <expr>  ++  VMATH_YankAndAnalyse()
 nmap         ++  vip++
+set guifont=
 
 " " ==================================================
 " " Functions
