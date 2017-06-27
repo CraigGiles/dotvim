@@ -44,8 +44,7 @@ augroup EnsimeTypeCheck
     autocmd BufWritePost *.scala silent :EnTypeCheck
 augroup END
 
-nnoremap <leader>et :EnType<CR>
-nnoremap <leader>ed :EnDeclaration<CR>
+let ensime_server_v2=1
 
 " Syntastic Settings
 let g:syntastic_always_populate_loc_list = 1

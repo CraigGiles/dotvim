@@ -66,3 +66,8 @@ nmap * *zz
 nmap # #zz
 nmap g* g*zz
 nmap g# g#zz
+
+" Ensime
+nnoremap <leader>et :EnType<CR>
+nnoremap <leader>ed :EnDeclaration<CR>
+
