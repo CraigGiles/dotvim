@@ -11,7 +11,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-vinegar'
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'soramugi/auto-ctags.vim'
@@ -64,7 +64,6 @@ Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-projectionist'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-scriptease'
-Plug 'mdreves/vim-scaladoc'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 "}}}

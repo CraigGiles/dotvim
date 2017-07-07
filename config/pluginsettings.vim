@@ -22,10 +22,10 @@ let g:scala_package_flat_package = 0
 "   \ }
 
 " Open/Close NERDTree
-nnoremap - :NERDTreeToggle<CR>
-nnoremap _ :NERDTreeFind<CR>
-let NERDTreeHijackNetrw=1
-let NERDTreeQuitOnOpen=1
+" nnoremap - :NERDTreeToggle<CR>
+" nnoremap _ :NERDTreeFind<CR>
+" let NERDTreeHijackNetrw=1
+" let NERDTreeQuitOnOpen=1
 
 " tags
 let g:auto_ctags = 1
