@@ -31,7 +31,7 @@ endif
 " ================================================
 " Testing These Settings
 " ================================================
-set foldlevelstart=1
+set foldlevelstart=10
 nnoremap <leader><leader> <C-^>
 let g:fzf_launcher = "~/.vim/scripts/macvimfzf.sh %s"
 vmap <expr>  ++  VMATH_YankAndAnalyse()
