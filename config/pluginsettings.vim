@@ -53,8 +53,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " Completion
-let g:EclimCompletionMethod = 'omnifunc'
-set omnifunc=syntaxcomplete#Complete
+" set omnifunc=syntaxcomplete#Complete
 
 " Markdown Preview
 let g:mkdp_path_to_chrome = "open -a Safari"

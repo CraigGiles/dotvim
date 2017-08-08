@@ -53,6 +53,12 @@ nnoremap <silent> <leader>u= :t.\|s/./=/g\|:nohls<cr>
 nnoremap <silent> <leader>u- :t.\|s/./-/g\|:nohls<cr>
 nnoremap <silent> <leader>u~ :t.\|s/./\\~/g\|:nohls<cr>
 
+" Try finding the ⇒ as a =>
+nmap f= :call search('=\\|⇒')<CR>
+nmap f- :call search('-\\|→')<CR>
+nmap f< :call search('-\\|←')<CR>
+nmap f> :call search('-\\|→')<CR>
+
 " Move splits with just CTRL-HJKL
 nnoremap <C-h> <C-w>h
 nnoremap <C-k> <C-w>k
