@@ -33,6 +33,7 @@ set ruler
 set modeline            " Allow modeline ( :help modeline )
 set modelines=2         " Use the first and last two lines for modeline
 set foldmethod=indent   " Set the fold method to be based on the indentation
+set foldlevelstart=5    " Set the foldlevel start at a high enough number
 set mouse=a             " Use the mouse for things like resizing windows
 set matchpairs+=<:>,«:» " Add additional pairs to be matched on
 
