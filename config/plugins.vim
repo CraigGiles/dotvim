@@ -60,6 +60,8 @@ Plug 'iamcco/markdown-preview.vim'
 "}}}
 "{{{ Testing these plugins
 
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/echodoc.vim'
 Plug 'tpope/vim-speeddating'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-scriptease'
