@@ -11,7 +11,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-vinegar'
-" Plug 'scrooloose/nerdtree'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'soramugi/auto-ctags.vim'
@@ -22,6 +21,7 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'nixon/vim-vmath'
 Plug 'wesQ3/vim-windowswap'     " <- Use via <leader>ww -> <leader>ww
 Plug 'tpope/vim-endwise'
+Plug 'elzr/vim-json'
 
 "}}}
 "{{{ Scala Plugins 
@@ -31,6 +31,7 @@ Plug 'craiggiles/scala.vim'
 Plug 'ensime/ensime-vim'
 Plug 'solarnz/thrift.vim'
 Plug 'jpalardy/vim-slime'
+Plug 'GEverding/vim-hocon'
 
 " }}}
 "{{{ Colorschemes
@@ -46,6 +47,8 @@ Plug 'jpo/vim-railscasts-theme'
 
 Plug 'LucHermitte/lh-vim-lib'
 Plug 'LucHermitte/vim-UT'
+Plug 'tpope/vim-scriptease'
+Plug 'tpope/vim-speeddating'
 
 "}}}
 "{{{ Document Writing
@@ -62,9 +65,7 @@ Plug 'iamcco/markdown-preview.vim'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/echodoc.vim'
-Plug 'tpope/vim-speeddating'
 Plug 'scrooloose/syntastic'
-Plug 'tpope/vim-scriptease'
 
 "}}}
 call plug#end()
