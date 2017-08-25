@@ -10,7 +10,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-vinegar'
+" Plug 'tpope/vim-vinegar'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'soramugi/auto-ctags.vim'
@@ -66,6 +66,7 @@ Plug 'iamcco/markdown-preview.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/echodoc.vim'
 Plug 'scrooloose/syntastic'
+Plug 'scrooloose/nerdtree'
 
 "}}}
 call plug#end()
