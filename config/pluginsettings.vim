@@ -39,12 +39,11 @@ augroup ScalaAutoCommmands
 augroup END
 
 " Ensime settings
+let ensime_server_v2=1
 augroup EnsimeTypeCheck
     autocmd!
-    autocmd BufWritePost *.scala silent :EnTypeCheck
 augroup END
 
-let ensime_server_v2=1
 
 " Syntastic Settings
 let g:syntastic_always_populate_loc_list = 1
