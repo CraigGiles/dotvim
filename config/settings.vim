@@ -21,6 +21,9 @@ set ignorecase          " Case insensitive searches
 set incsearch           " Incremental searches
 set smartcase           " Case sensitive when wanted
 set hlsearch            " Highlight all the search results
+highlight clear Search
+highlight       Search    ctermfg=Red ctermbg=Yellow
+
 set tabstop=4           " Tab Stop at 4 unless plugin overwrites it
 set shiftwidth=4
 set linespace=4         " Vertical line space

@@ -1,4 +1,8 @@
 if has('nvim')
+    tnoremap <Esc> <C-\><C-n>
+    tnoremap jj <C-\><C-n>
+    tnoremap jk <C-\><C-n>
+
     let g:python2_host_prog = '/usr/local/bin/python'
     let g:python3_host_prog = '/usr/local/bin/python3'
 

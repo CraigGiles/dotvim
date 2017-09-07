@@ -45,6 +45,10 @@ nnoremap <leader>lS :ls<CR>:sbuffer<Space>
 " Code Completion
 inoremap <C-Space> <C-x><C-o>
 
+" When selecting text in visual mode,
+" Delete or Backspace removes it
+vmap <BS> x
+
 " Turn off that stupid highlight search
 nnoremap <silent> <leader>n :nohls<CR>
 
