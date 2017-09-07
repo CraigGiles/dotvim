@@ -27,6 +27,11 @@ if filereadable(s:vimrc_local)
   execute 'source ' . s:vimrc_local
 endif
 
+" let g:solarized_termcolors=256
+" syntax enable
+" set background=light
+" colorscheme solarized
+
 " ================================================
 " Testing These Settings
 " ================================================
