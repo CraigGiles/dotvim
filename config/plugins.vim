@@ -22,6 +22,7 @@ Plug 'nixon/vim-vmath'
 Plug 'wesQ3/vim-windowswap'     " <- Use via <leader>ww -> <leader>ww
 Plug 'tpope/vim-endwise'
 Plug 'elzr/vim-json'
+Plug 'xtal8/traces.vim'
 
 "}}}
 "{{{ Scala Plugins 
