@@ -23,10 +23,20 @@ let g:currentmode={
     \ 't'  : 'Terminal '
     \}
 
+function! ModeCurrent() abort
+    let l:modecurrent = mode()
+    " use get() -> fails safely, since ^V doesn't seem to register
+    " 3rd arg is used when return of mode() == 0, which is case with ^V
+    " thus, ^V fails -> returns 0 -> replaced with 'V Block'
+    let l:modelist = toupper(get(g:currentmode, l:modecurrent, 'V·Block '))
+    let l:current_status_mode = l:modelist
+    return l:current_status_mode
+endfunction
+
 set laststatus=2
 
 set statusline=
-set statusline+=[-%{g:currentmode[mode()]}-]  "current mode
+set statusline+=[-%{ModeCurrent()}-]          "current mode
 set statusline+=[%t]                          "tail of the filename
 set statusline+=[%{&ff}]                      "file format
 
