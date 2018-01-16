@@ -13,7 +13,7 @@ endif
 
 set list                " Makes the whitespace visible
 set listchars=tab:⇒·,trail:␣,nbsp:~",extends:¬
-set guifont=Menlo:h12
+" set guifont=Menlo:h12
 set splitright          " Puts new v-split to the right of the current
 set splitbelow          " Puts new split windows to the bottom
 set nu                  " Always show line numbers
