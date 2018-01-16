@@ -35,7 +35,8 @@ set statusline+=%y                            "filetype
 set statusline+=%{fugitive#statusline()}      " Git branch
 
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%{ALEGetStatusLine()}
+" set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 " Right side

@@ -2,13 +2,31 @@
 " Plugin Settings
 " ================================================
 
-" vim-scala
-let g:scala_use_default_keymappings = 0
+" ALE settings
+" ================================================
+" Shorten error/warning flags
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
 
-" scalapackage.vim
-let g:scala_package_flat_package = 0
+" custom icons for errors and warnings
+let g:ale_sign_error = '✘✘'
+let g:ale_sign_warning = '⚠⚠'
+
+" Disable or enable loclist at the bottom of vim 
+" Comes down to personal preferance.
+let g:ale_open_list = 0
+let g:ale_loclist = 0
+
+" Setup compilers for languages
+let g:ale_linters = {
+      \  'cs':['syntax', 'semantic', 'issues'],
+      \  'python': ['pylint'],
+      \  'java': ['javac'],
+      \  'scala': ['scalac']
+      \ }
 
 " CtrlP Settings
+" ================================================
 " nnoremap <leader>t :CtrlPTag<CR>
 " nnoremap <leader>p :CtrlPTag<CR>
 " nnoremap <leader>f :CtrlP<CR>
@@ -33,16 +51,6 @@ let g:auto_ctags_directory_list = ['.git', '.svn']
 let g:auto_ctags_tags_name = 'tags'
 let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
 
-augroup ScalaAutoCommmands
-    autocmd!
-    autocmd BufWritePost *.scala RemoveTrailingWhitespace
-augroup END
-
-" Ensime settings
-let ensime_server_v2=1
-augroup EnsimeTypeCheck
-    autocmd!
-augroup END
 
 
 " Syntastic Settings
@@ -51,8 +59,9 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" Completion
-" set omnifunc=syntaxcomplete#Complete
+" Deoplete Completion
+" ================================================
+" Don't forget to start deoplete
 
 " Markdown Preview
 let g:mkdp_path_to_chrome = "open -a Safari"
