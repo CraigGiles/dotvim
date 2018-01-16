@@ -29,6 +29,7 @@ Plug 'xtal8/traces.vim'
 
 Plug 'derekwyatt/vim-sbt'
 Plug 'craiggiles/scala.vim'
+Plug 'derekwyatt/vim-scala'
 " Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins' }
 Plug 'solarnz/thrift.vim'
 Plug 'jpalardy/vim-slime'
