@@ -25,6 +25,16 @@ let g:ale_linters = {
       \  'scala': ['scalac']
       \ }
 
+" Language Server Client
+set hidden
+set signcolumn=yes
+let g:LanguageClient_autoStart = 1
+let g:LanguageClient_serverCommands = {
+    \ 'scala': ['node', expand('~/bin/sbt-server-stdio.js')]
+    \ }
+nnoremap gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap hf :call LanguageClient_textDocument_hover()<CR>
+
 " CtrlP Settings
 " ================================================
 " nnoremap <leader>t :CtrlPTag<CR>
