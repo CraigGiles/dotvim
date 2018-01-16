@@ -24,6 +24,7 @@ if has('nvim')
                 \ 'buffer']
 
     let g:deoplete#sources.scala = [
+                \ 'omnifunc',
                 \ 'javacomplete2',
                 \ 'file',
                 \ 'buffer']
