@@ -1,0 +1,53 @@
+let mapleader = ' '
+
+inoremap jk <Esc>
+inoremap jj <Esc>
+
+set number
+set incsearch hlsearch
+set ignorecase smartcase
+set scrolloff=8
+
+nnoremap <Space>o :action GotoClass<CR>
+nnoremap <Space>O :action GotoFile<CR>
+nnoremap <Space>d :action CloseContent<CR>
+nnoremap <Space>j :action RecentFiles<CR>
+nnoremap <C-k> :action QuickJavaDoc<CR>
+nnoremap gcc :action CommentByLineComment<cr>
+
+set showmode
+set surround
+
+nnoremap <leader>ff :action FindInPath<cr>
+nnoremap <leader>fu :action FindUsages<cr>
+nnoremap <leader>su :action ShowUsages<cr>
+nnoremap <leader>cv :action ChangeView<cr>
+nnoremap <leader>re :action RenameElement<cr>
+nnoremap <leader>rf :action RenameFile<cr>
+nnoremap <leader>q  :action CloseActiveTab<cr>
+nnoremap <leader>gi :action GotoImplementation<cr>
+nnoremap <leader>gs :action GotoSuperMethod<cr>
+nnoremap <leader>gd :action GotoDeclaration<cr>
+nnoremap <leader>gt :action GotoTest<cr>
+
+" Easy opening of splits
+nnoremap vs :vs<CR>
+nnoremap sp :sp<CR>
+
+" Down is really the next line
+nnoremap j gj
+nnoremap k gk
+
+" Move splits with just CTRL-HJKL
+nnoremap <C-h> <C-w>h
+nnoremap <C-k> <C-w>k
+nnoremap <C-j> <C-w>j
+nnoremap <C-l> <C-w>l
+
+" Make search results be in the center of the window
+nmap n nzz
+nmap N Nzz
+nmap * *zz
+nmap # #zz
+nmap g* g*zz
+nmap g# g#zz
