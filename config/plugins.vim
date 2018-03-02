@@ -67,6 +67,7 @@ Plug 'iamcco/markdown-preview.vim'
 " Code completion
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'eed3si9n/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 else
   Plug 'Shougo/deoplete.nvim'
   Plug 'roxma/nvim-yarp'
