@@ -15,7 +15,11 @@ Plug 'vim-scripts/BufOnly.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'soramugi/auto-ctags.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+if has("gui_macvim")
+  Plug 'ctrlpvim/ctrlp.vim'
+else
+  Plug 'junegunn/fzf.vim'
+endif
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/vim-peekaboo'
 Plug 'nixon/vim-vmath'

@@ -25,19 +25,6 @@ let g:ale_linters = {
       \  'scala': ['scalac']
       \ }
 
-" CtrlP Settings
-" ================================================
-" nnoremap <leader>t :CtrlPTag<CR>
-" nnoremap <leader>p :CtrlPTag<CR>
-" nnoremap <leader>f :CtrlP<CR>
-" let g:ctrlp_map = '<c-p>'
-" let g:ctrlp_cmd = 'CtrlPTag'
-" let g:ctrlp_working_path_mode = 'ra'
-" let g:ctrlp_custom_ignore = {
-"   \ 'dir':  '\v[\/]\.(git|hg|svn|target)$',
-"   \ 'file': '\v\.(exe|so|dll)$',
-"   \ 'link': 'some_bad_symbolic_links',
-"   \ }
 
 " Open/Close NERDTree
 nnoremap - :NERDTreeToggle<CR>

@@ -32,6 +32,7 @@ endif
 " set background=light
 " colorscheme solarized
 
+
 " ================================================
 " Testing These Settings
 " ================================================
