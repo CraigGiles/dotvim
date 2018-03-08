@@ -1,11 +1,9 @@
 " Order matters when sourcing these
 source ~/.vim/config/plugins.vim
-source ~/.vim/config/pluginsettings.vim
 source ~/.vim/config/settings.vim
 source ~/.vim/config/functions.vim
 source ~/.vim/config/statusline.vim
 source ~/.vim/config/key-bindings.vim
-source ~/.vim/config/fuzzyfinder.vim
 source ~/.vim/config/neovim-settings.vim
 
 " When you save the vimrc, auto-reload it
@@ -27,20 +25,14 @@ if filereadable(s:vimrc_local)
   execute 'source ' . s:vimrc_local
 endif
 
-" let g:solarized_termcolors=256
-" syntax enable
-" set background=light
-" colorscheme solarized
-
-
 " ================================================
 " Testing These Settings
 " ================================================
 nnoremap <leader><leader> <C-^>
-let g:fzf_launcher = "~/.vim/scripts/macvimfzf.sh %s"
-vmap <expr>  ++  VMATH_YankAndAnalyse()
-nmap         ++  vip++
 set guicursor=
+nnoremap <leader>t :CtrlPTag<CR>
+nnoremap <leader>p :CtrlPTag<CR>
+nnoremap <leader>f :CtrlP<CR>
 
 " " ==================================================
 " " Functions
