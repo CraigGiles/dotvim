@@ -31,7 +31,7 @@ Plug 'xtal8/traces.vim'
 Plug 'derekwyatt/vim-sbt'
 Plug 'craiggiles/scala.vim'
 Plug 'derekwyatt/vim-scala'
-" Plug 'ensime/ensime-vim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'ensime/ensime-vim'
 Plug 'solarnz/thrift.vim'
 Plug 'jpalardy/vim-slime'
 Plug 'GEverding/vim-hocon'
@@ -77,9 +77,10 @@ endif
 Plug 'artur-shaik/vim-javacomplete2'
 
 Plug 'Shougo/echodoc.vim'
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
 Plug 'w0rp/ale'
 Plug 'majutsushi/tagbar'
+Plug 'justinmk/vim-dirvish'
 
 "}}}
 call plug#end()
@@ -125,11 +126,19 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'some_bad_symbolic_links',
   \ }
 
-" Open/Close NERDTree
-nnoremap - :NERDTreeToggle<CR>
-nnoremap _ :NERDTreeFind<CR>
-let NERDTreeHijackNetrw=1
-let NERDTreeQuitOnOpen=1
+" Dirvish Settings
+" ================================================
+let g:dirvish_mode = 1
+let g:dirvish_mode = ':sort ,^.*[\/],'
+
+
+" NERDTree Settings
+" ================================================
+" " Open/Close NERDTree
+" nnoremap - :NERDTreeToggle<CR>
+" nnoremap _ :NERDTreeFind<CR>
+" let NERDTreeHijackNetrw=1
+" let NERDTreeQuitOnOpen=1
 
 " tags
 let g:auto_ctags = 1
