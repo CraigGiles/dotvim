@@ -10,21 +10,15 @@ nmap <silent> <expr>  <C-f><C-f>  FS_ToggleFoldAroundSearch({'context':1})
 " map S to auto fill the search / replace
 nmap S :%s/\v/gc<LEFT><LEFT><LEFT>
 
-" Easy opening of splits
-nnoremap vs :vs<CR>
-nnoremap sp :sp<CR>
-
-" Change two vertical splits to horizontal splits
+" Change split orientation from | to -
 nnoremap <leader>sp <C-w>t<C-w>K
-
-" Change two horizontal splits to vertical splits
 nnoremap <leader>vs <C-w>t<C-w>H
 
 " Down is really the next line
 nnoremap j gj
 nnoremap k gk
 
-" Escape to normal mode from insert mode with jj
+" Escape to normal mode from insert mode with jj / jk
 inoremap jj <ESC>
 inoremap jk <ESC>
 
@@ -52,7 +46,7 @@ vmap <BS> x
 " Turn off that stupid highlight search
 nnoremap <silent> <leader>n :nohls<CR>
 
-" Underline the current line with '='
+" Underline the current line with '=' or '-' or '~'
 nnoremap <silent> <leader>u= :t.\|s/./=/g\|:nohls<cr>
 nnoremap <silent> <leader>u- :t.\|s/./-/g\|:nohls<cr>
 nnoremap <silent> <leader>u~ :t.\|s/./\\~/g\|:nohls<cr>
@@ -63,7 +57,7 @@ nmap f- :call search('-\\|→')<CR>
 nmap f< :call search('-\\|←')<CR>
 nmap f> :call search('-\\|→')<CR>
 
-" Move splits with just CTRL-HJKL
+" Navigate splits with just CTRL-HJKL
 nnoremap <C-h> <C-w>h
 nnoremap <C-k> <C-w>k
 nnoremap <C-j> <C-w>j
@@ -76,8 +70,4 @@ nmap * *zz
 nmap # #zz
 nmap g* g*zz
 nmap g# g#zz
-
-" Ensime
-nnoremap <leader>et :EnType<CR>
-nnoremap <leader>ed :EnDeclaration<CR>
 

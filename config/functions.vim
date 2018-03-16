@@ -15,17 +15,6 @@ endfunction
 com! WP call WordProcessorMode()
 com! WordProcessor call WordProcessorMode()
 
-function! ToggleColorscheme()
-    if (g:colors_name == "tpope")
-        set background=dark
-        colorscheme xoria256
-    else
-        set background=light
-        colorscheme tpope
-    endif
-endfunction
-command! TC call ToggleColorscheme()
-
 function! RemoveTrailingWhitespaces()
   :%s/\s\+$//e
 endfunction
