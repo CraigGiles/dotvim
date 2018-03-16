@@ -74,3 +74,5 @@ set wildignore+=*.bak
 " Re-add these since i want my fuzzy finder to find them
 set wildignore-=*.thrift
 set wildignore-=*.sql
+
+" vim:set sw=2 sts=2 foldmethod=marker foldlevel=0:

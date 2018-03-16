@@ -1,7 +1,6 @@
-" ==================================================
-" Plugins
-" ==================================================
+" {{{ Plugins
 call plug#begin()
+
 "{{{ General Plugins
 
 Plug 'tpope/vim-sensible'
@@ -14,8 +13,6 @@ Plug 'tpope/vim-vinegar'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'soramugi/auto-ctags.vim'
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Plug 'junegunn/fzf.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'christoomey/vim-tmux-navigator'
 " Plug 'junegunn/vim-peekaboo'
@@ -80,17 +77,19 @@ Plug 'Shougo/echodoc.vim'
 " Plug 'scrooloose/nerdtree'
 Plug 'w0rp/ale'
 Plug 'majutsushi/tagbar'
-Plug 'justinmk/vim-dirvish'
+" Plug 'justinmk/vim-dirvish'
 
 "}}}
+""{{{ No longer using these plugins
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
+"}}}
+
 call plug#end()
+"}}}
+"{{{ Plugin Settings
 
-" ================================================
-" Plugin Settings
-" ================================================
-
-" ALE settings
-" ================================================
+"{{{ ALE settings
 " Shorten error/warning flags
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
@@ -111,9 +110,8 @@ let g:ale_linters = {
       \  'java': ['javac'],
       \  'scala': ['scalac']
       \ }
-
-" CtrlP Settings
-" ================================================
+"}}}
+"{{{ CtrlP Settings
 nnoremap <leader>t :CtrlPTag<CR>
 nnoremap <leader>p :CtrlPTag<CR>
 nnoremap <leader>f :CtrlP<CR>
@@ -125,29 +123,22 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
-
-" Dirvish Settings
-" ================================================
-let g:dirvish_mode = 1
-let g:dirvish_mode = ':sort ,^.*[\/],'
-
-
-" NERDTree Settings
+"}}}
+"{{{ NERDTree Settings
 " ================================================
 " " Open/Close NERDTree
 " nnoremap - :NERDTreeToggle<CR>
 " nnoremap _ :NERDTreeFind<CR>
 " let NERDTreeHijackNetrw=1
 " let NERDTreeQuitOnOpen=1
-
-" tags
+"}}}
+"{{{ tags
 let g:auto_ctags = 1
 let g:auto_ctags_directory_list = ['.git', '.svn']
 let g:auto_ctags_tags_name = 'tags'
 let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
-
-" FZF Settings
-" ==================================================
+"}}}
+"{{{ FZF Settings
 " This is the default extra key bindings
 " set rtp+=/usr/local/opt/fzf
 " let g:fzf_action = {
@@ -163,17 +154,15 @@ let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
 " nnoremap <C-p> :Tags<CR>
 " nnoremap <leader>f :Files<CR>
 " nnoremap <leader>l :Lines<CR>
-
-" Deoplete Completion
-" ================================================
-" Don't forget to start deoplete
-
-" Markdown Preview
+"}}}
+"{{{ Markdown Preview
 let g:mkdp_path_to_chrome = "open -a Safari"
 nnoremap <leader>md :MarkdownPreview<CR>
-
-" SLIME for REPL
+"}}}
+"{{{ SLIME for REPL
 let g:slime_target = "tmux"
 let g:slime_paste_file = "$HOME/.slime_paste"
+"}}}
+"}}}
 
-" vim:set sw=2 sts=2 foldmethod=marker:
+" vim:set sw=2 sts=2 foldmethod=marker foldlevel=0:

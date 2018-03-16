@@ -19,3 +19,5 @@ function! RemoveTrailingWhitespaces()
   :%s/\s\+$//e
 endfunction
 command! RemoveTrailingWhitespace call RemoveTrailingWhitespaces()
+
+" vim:set sw=2 sts=2 foldmethod=marker foldlevel=0:

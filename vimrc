@@ -64,4 +64,4 @@ nnoremap <leader>f :CtrlP<CR>
 "
 " To see all leader mappings, including those from plug-ins:
 
-"vim:set foldmethod=marker:
+" vim:set sw=2 sts=2 foldmethod=marker foldlevel=0:

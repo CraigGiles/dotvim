@@ -74,3 +74,5 @@ set statusline+=\ %P                          "percent through file
 " set statusline+=%#warningmsg#                 " Syntastic error flag
 " set statusline+=%{SyntasticStatuslineFlag()}  " Syntastic error flag
 " set statusline+=%*                            " Syntastic error flag
+
+" vim:set sw=2 sts=2 foldmethod=marker foldlevel=0:

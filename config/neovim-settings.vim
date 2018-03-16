@@ -51,3 +51,4 @@ if has('nvim')
     endfunction "" }}}
 endif
 
+" vim:set sw=2 sts=2 foldmethod=marker foldlevel=0:

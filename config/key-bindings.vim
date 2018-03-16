@@ -71,3 +71,4 @@ nmap # #zz
 nmap g* g*zz
 nmap g# g#zz
 
+" vim:set sw=2 sts=2 foldmethod=marker foldlevel=0:
