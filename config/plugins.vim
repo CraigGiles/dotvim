@@ -2,7 +2,6 @@
 call plug#begin()
 
 "{{{ General Plugins
-
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
@@ -15,51 +14,39 @@ Plug 'airblade/vim-gitgutter'
 Plug 'soramugi/auto-ctags.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'christoomey/vim-tmux-navigator'
-" Plug 'junegunn/vim-peekaboo'
-" Plug 'nixon/vim-vmath'
 Plug 'wesQ3/vim-windowswap'     " <- Use via <leader>ww -> <leader>ww
 Plug 'tpope/vim-endwise'
-" Plug 'elzr/vim-json'
 Plug 'xtal8/traces.vim'
-
 ""}}}
-""{{{ Scala Plugins 
-
+""{{{ Scala Plugins
 Plug 'derekwyatt/vim-sbt'
-Plug 'craiggiles/scala.vim'
 Plug 'derekwyatt/vim-scala'
-" Plug 'ensime/ensime-vim'
-Plug 'solarnz/thrift.vim'
+Plug 'craiggiles/scala.vim'
 Plug 'jpalardy/vim-slime'
 Plug 'GEverding/vim-hocon'
-
+Plug 'solarnz/thrift.vim'
+" Plug 'ensime/ensime-vim'
 "" }}}
 ""{{{ Colorschemes
-
 Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
 Plug 'xoria256.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'jpo/vim-railscasts-theme'
-
 ""}}}
 ""{{{ Plugins for writing vimscript plugins
-
 Plug 'LucHermitte/lh-vim-lib'
 Plug 'LucHermitte/vim-UT'
 Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-speeddating'
-
 ""}}}
 ""{{{ Document Writing
-
 Plug 'vim-pandoc/vim-pandoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'reedes/vim-pencil'
 Plug 'junegunn/goyo.vim'
 Plug 'gabrielelana/vim-markdown'
 Plug 'iamcco/markdown-preview.vim'
-
 ""}}}
 ""{{{ Testing these plugins
 " Code completion
@@ -72,17 +59,17 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 Plug 'artur-shaik/vim-javacomplete2'
-
 Plug 'Shougo/echodoc.vim'
-" Plug 'scrooloose/nerdtree'
 Plug 'w0rp/ale'
 Plug 'majutsushi/tagbar'
-" Plug 'justinmk/vim-dirvish'
 
 "}}}
 ""{{{ No longer using these plugins
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/vim-peekaboo'
+" Plug 'nixon/vim-vmath'
+" Plug 'scrooloose/nerdtree'
 "}}}
 
 call plug#end()
@@ -98,7 +85,7 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_sign_error = '✘✘'
 let g:ale_sign_warning = '⚠⚠'
 
-" Disable or enable loclist at the bottom of vim 
+" Disable or enable loclist at the bottom of vim
 " Comes down to personal preferance.
 let g:ale_open_list = 0
 let g:ale_loclist = 0
@@ -115,6 +102,7 @@ let g:ale_linters = {
 nnoremap <leader>t :CtrlPTag<CR>
 nnoremap <leader>p :CtrlPTag<CR>
 nnoremap <leader>f :CtrlP<CR>
+
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlPTag'
 let g:ctrlp_working_path_mode = 'ra'
