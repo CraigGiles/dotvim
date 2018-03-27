@@ -105,6 +105,8 @@ nnoremap <leader>f :CtrlP<CR>
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlPTag'
+let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+let g:ctrlp_use_caching = 0
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn|target)$',
