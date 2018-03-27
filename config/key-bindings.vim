@@ -8,6 +8,7 @@ let mapleader = "\<Space>"
 nmap <silent> <expr>  <C-f><C-f>  FS_ToggleFoldAroundSearch({'context':1})
 
 " newline above and below without entering insert mode
+nnoremap <CR> o<Esc>
 nnoremap <leader>o o<Esc>k
 nnoremap <leader>O O<Esc>j
 
