@@ -9,6 +9,8 @@ augroup ScalaAutoCommmands
     autocmd BufWritePost *.scala RemoveTrailingWhitespace
     " code completion
     autocmd FileType scala setlocal omnifunc=javacomplete#Complete
+    autocmd FileType scala setlocal commentstring=//\ %s
+    autocmd FileType sbt setlocal commentstring=#\ %s
     autocmd FileType scala JCEnable
 augroup END
 

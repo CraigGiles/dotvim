@@ -71,7 +71,9 @@ Plug 'majutsushi/tagbar'
 " Plug 'nixon/vim-vmath'
 " Plug 'scrooloose/nerdtree'
 "}}}
-
+"{{{ SNES Plugins
+  Plug 'ARM9/snes-syntax-vim'
+"}}}
 call plug#end()
 "}}}
 "{{{ Plugin Settings
@@ -152,6 +154,10 @@ nnoremap <leader>md :MarkdownPreview<CR>
 "{{{ SLIME for REPL
 let g:slime_target = "tmux"
 let g:slime_paste_file = "$HOME/.slime_paste"
+"}}}
+"
+"{{{ SNES Syntax
+au BufNewFile,BufRead *.asm,*.inc set filetype=snes
 "}}}
 "}}}
 
