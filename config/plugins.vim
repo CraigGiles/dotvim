@@ -50,17 +50,8 @@ Plug 'iamcco/markdown-preview.vim'
 ""}}}
 ""{{{ Testing these plugins
 " Code completion
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'eed3si9n/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-Plug 'artur-shaik/vim-javacomplete2'
-Plug 'Shougo/echodoc.vim'
 Plug 'w0rp/ale'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --java-completer' }
 Plug 'majutsushi/tagbar'
 
 "}}}
