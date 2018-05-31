@@ -3,11 +3,14 @@
 " ==================================================
 if has('gui_running')
     " NOTE: sometimes i swap between colorschemes.
-    set background=light
-    colorscheme macvim
+    set background=dark
+    " colorscheme macvim
+    colorscheme darkula
 else
-    set background=light
-    colorscheme tpope
+    " set background=light
+    " colorscheme tpope
+    set background=dark
+    colorscheme zenburn
 endif
 
 
@@ -56,9 +59,9 @@ set nobackup            " don't use backup files
 set nowb                " don't use backup files
 set noswapfile          " don't use swap files
 
-" Sets the timeout length for how long we'll 'pause' when waiting for a
-" keypress after leader key
-set timeoutlen=1000
+" " Sets the timeout length for how long we'll 'pause' when waiting for a
+" " keypress after leader key
+" set timeoutlen=1000
 
 " I don't want to pull up these folders/files when calling my fuzzy finder
 set wildignore+=*/vendor/**

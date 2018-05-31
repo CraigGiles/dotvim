@@ -28,6 +28,7 @@ Plug 'solarnz/thrift.vim'
 " Plug 'ensime/ensime-vim'
 "" }}}
 ""{{{ Colorschemes
+Plug 'jnurmine/Zenburn'
 Plug 'altercation/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
 Plug 'xoria256.vim'
