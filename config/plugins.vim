@@ -51,6 +51,7 @@ Plug 'iamcco/markdown-preview.vim'
 ""}}}
 ""{{{ Testing these plugins
 " Code completion
+Plug 'gabesoft/vim-ags'
 Plug 'w0rp/ale'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --java-completer' }
 Plug 'majutsushi/tagbar'
