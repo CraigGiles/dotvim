@@ -144,6 +144,9 @@ let g:auto_ctags_tags_args = '--tag-relative --recurse --sort=yes'
 let g:mkdp_path_to_chrome = "open -a Safari"
 nnoremap <leader>md :MarkdownPreview<CR>
 "}}}
+"{{{ Silver Search
+nnoremap <C-b> :Ags<CR>
+"}}}
 "{{{ SLIME for REPL
 let g:slime_target = "tmux"
 let g:slime_paste_file = "$HOME/.slime_paste"

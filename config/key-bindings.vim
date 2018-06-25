@@ -33,9 +33,6 @@ nnoremap + :resize +5<CR>
 " git related commands
 nnoremap ga :Gblame<CR>
 
-" Jump to definition, <C-t> jumps back
-nnoremap <C-b> g]
-
 " Buffer navigation
 nnoremap <leader>ls :ls<CR>:buffer<Space>
 nnoremap <leader>lS :ls<CR>:sbuffer<Space>
