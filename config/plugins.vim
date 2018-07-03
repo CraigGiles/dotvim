@@ -146,6 +146,7 @@ nnoremap <leader>md :MarkdownPreview<CR>
 "}}}
 "{{{ Silver Search
 nnoremap <C-b> :Ags<CR>
+let g:ags_enable_async = 1
 "}}}
 "{{{ SLIME for REPL
 let g:slime_target = "tmux"
