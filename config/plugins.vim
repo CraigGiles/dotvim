@@ -42,20 +42,14 @@ Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-speeddating'
 ""}}}
 ""{{{ Document Writing
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'reedes/vim-pencil'
 Plug 'junegunn/goyo.vim'
-" Plug 'gabrielelana/vim-markdown'
 Plug 'iamcco/markdown-preview.vim'
 ""}}}
 ""{{{ Testing these plugins
-" Code completion
 Plug 'gabesoft/vim-ags'
 Plug 'w0rp/ale'
-" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --java-completer' }
 Plug 'majutsushi/tagbar'
-
 "}}}
 ""{{{ No longer using these plugins
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
