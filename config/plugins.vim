@@ -61,6 +61,9 @@ Plug 'majutsushi/tagbar'
 "{{{ SNES Plugins
   Plug 'ARM9/snes-syntax-vim'
 "}}}
+"{{{ GODOT
+  Plug 'calviken/vim-gdscript3'
+"}}}
 call plug#end()
 "}}}
 "{{{ Plugin Settings

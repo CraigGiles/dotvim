@@ -6,6 +6,9 @@ source ~/.vim/config/statusline.vim
 source ~/.vim/config/key-bindings.vim
 source ~/.vim/config/neovim-settings.vim
 
+" au! BufRead,BufNewFile *.gd setfiletype gd
+au! BufRead,BufNewFile *.gd setfiletype gdscript3
+
 " When you save the vimrc, auto-reload it
 augroup VimReload
     autocmd!
