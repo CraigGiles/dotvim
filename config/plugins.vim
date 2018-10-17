@@ -143,7 +143,7 @@ let g:mkdp_path_to_chrome = "open -a Safari"
 nnoremap <leader>md :MarkdownPreview<CR>
 "}}}
 "{{{ Silver Search
-nnoremap <C-b> :Ags<CR>
+" nnoremap <C-b> :Ags<CR>
 let g:ags_enable_async = 1
 "}}}
 "{{{ SLIME for REPL

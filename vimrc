@@ -32,7 +32,8 @@ endif
 " Testing These Settings
 " ================================================
 nnoremap <leader><leader> <C-^>
-set guicursor=
+" set guicursor=
+set guifont=Liberation\ Mono:h14
 nnoremap <leader>t :CtrlPTag<CR>
 nnoremap <leader>p :CtrlPTag<CR>
 nnoremap <leader>f :CtrlP<CR>

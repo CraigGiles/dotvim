@@ -9,6 +9,8 @@ nmap <silent> <expr>  <C-f><C-f>  FS_ToggleFoldAroundSearch({'context':1})
 
 nmap <F4> :Dispatch make clean && make run<CR>
 nmap <F5> :Dispatch make run<CR>
+nmap <C-b> :Dispatch make<CR>
+nmap <C-n> :Dispatch make clean && make run<CR>
 
 " newline above and below without entering insert mode
 nnoremap <leader>o o<Esc>k
