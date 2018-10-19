@@ -43,6 +43,8 @@ set foldlevelstart=15   " Set the foldlevel start at a high enough number
 set mouse=a             " Use the mouse for things like resizing windows
 set matchpairs+=<:>,«:» " Add additional pairs to be matched on
 set noshowmode          " Doesn't show what mode you're in
+" set cursorline          " Show the horizontal bar where the cursor is
+" hi CursorLine   cterm=NONE ctermbg=blue ctermfg=white guibg=blue guifg=white
 
 " When the page starts to scroll, keep the cursor 8 lines from the top and 8
 " lines from the bottom

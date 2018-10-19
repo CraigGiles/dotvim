@@ -38,6 +38,18 @@ nnoremap <leader>t :CtrlPTag<CR>
 nnoremap <leader>p :CtrlPTag<CR>
 nnoremap <leader>f :CtrlP<CR>
 
+" open current buffer in new tab
+nmap <C-Bslash> :vs<CR><C-w>T
+
+"Max out the height of the current split
+" ctrl + w _
+
+"Max out the width of the current split
+" ctrl + w |
+
+"Normalize all split sizes, which is very handy when resizing terminal
+" ctrl + w =
+
 " ==================================================
 " Functions
 " ==================================================
