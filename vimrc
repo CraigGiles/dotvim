@@ -39,7 +39,7 @@ nnoremap <leader>p :CtrlPTag<CR>
 nnoremap <leader>f :CtrlP<CR>
 
 " open current buffer in new tab
-nmap <C-Bslash> :vs<CR><C-w>T
+nmap tt :vs<CR><C-w>T
 
 "Max out the height of the current split
 " ctrl + w _

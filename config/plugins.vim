@@ -50,7 +50,7 @@ Plug 'iamcco/markdown-preview.vim'
 ""{{{ Testing these plugins
 Plug 'jreybert/vimagit'
 Plug 'gabesoft/vim-ags'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 Plug 'majutsushi/tagbar'
 "}}}
 ""{{{ No longer using these plugins
