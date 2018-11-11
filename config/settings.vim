@@ -44,7 +44,7 @@ set mouse=a             " Use the mouse for things like resizing windows
 set matchpairs+=<:>,«:» " Add additional pairs to be matched on
 set noshowmode          " Doesn't show what mode you're in
 " set cursorline          " Show the horizontal bar where the cursor is
-" hi CursorLine   cterm=NONE ctermbg=blue ctermfg=white guibg=blue guifg=white
+" hi CursorLine   cterm=NONE ctermbg=69 ctermfg=white guibg=lightblue guifg=white
 
 " When the page starts to scroll, keep the cursor 8 lines from the top and 8
 " lines from the bottom
@@ -53,9 +53,9 @@ set scrolloff=8
 " Color columns at 80 lines and 120+ lines
 " set colorcolumn=120            " Sets 120 as the column limit drawdown mark
 " set colorcolumn=81             " Sets 80 as the column limit drawdown mark
-call matchadd('ColorColumn', '\%81v', 100)
+" call matchadd('ColorColumn', '\%81v', 100)
 " let &colorcolumn="81,".join(range(120,999),",")
-" highlight ColorColumn ctermbg=0 guibg=magenta
+" highlight ColorColumn ctermbg=0 guibg=lightblue
 
 set nobackup            " don't use backup files
 set nowb                " don't use backup files
