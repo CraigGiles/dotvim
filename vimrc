@@ -38,8 +38,20 @@ nnoremap <leader>t :CtrlPTag<CR>
 nnoremap <leader>p :CtrlPTag<CR>
 nnoremap <leader>f :CtrlP<CR>
 
+nnoremap <C-f> :Ags<CR><C-w>t<C-w>H
+
 " open current buffer in new tab
 nmap tt :vs<CR><C-w>T
+
+" TODO(craig) -- get these working right
+" NOTE(craig) -- i dont think these are working right
+" IMPORTANT(craig) -- i dont think these are working right
+:highlight MyGroupTodo ctermbg=red guibg=red ctermfg=black guifg=black
+:let m1 = matchadd("MyGroupTodo", "TODO")
+:highlight MyGroupNote ctermbg=green guibg=green ctermfg=black guifg=black
+:let m2 = matchadd("MyGroupNote", "NOTE")
+:highlight MyGroupNTH ctermbg=yellow guibg=yellow ctermfg=black guifg=black
+:let m3 = matchadd("MyGroupNTH", "IMPORTANT")
 
 " ==================================================
 " Functions
