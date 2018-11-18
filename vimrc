@@ -53,7 +53,6 @@ nmap tt :vs<CR><C-w>T
 :highlight MyGroupNTH ctermbg=yellow guibg=yellow ctermfg=black guifg=black
 :let m3 = matchadd("MyGroupNTH", "IMPORTANT")
 
-
 " ==================================================
 " Functions
 " ==================================================
