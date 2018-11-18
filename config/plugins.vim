@@ -53,6 +53,7 @@ Plug 'gilligan/vim-lldb'
 Plug 'gabesoft/vim-ags'
 " Plug 'w0rp/ale'
 Plug 'majutsushi/tagbar'
+Plug 'dyng/ctrlsf.vim'
 "}}}
 ""{{{ No longer using these plugins
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -60,12 +61,6 @@ Plug 'majutsushi/tagbar'
 " Plug 'junegunn/vim-peekaboo'
 " Plug 'nixon/vim-vmath'
 " Plug 'scrooloose/nerdtree'
-"}}}
-"{{{ SNES Plugins
-  Plug 'ARM9/snes-syntax-vim'
-"}}}
-"{{{ GODOT
-  Plug 'calviken/vim-gdscript3'
 "}}}
 call plug#end()
 "}}}
@@ -156,6 +151,13 @@ let g:slime_paste_file = "$HOME/.slime_paste"
 "{{{ SNES Syntax
 au BufNewFile,BufRead *.asm,*.inc set filetype=snes
 "}}}
+"Fatal Python error: PyThreadState_Get: no current thread
+
+let g:ctrlsf_auto_close = {
+      \ "normal" : 0,
+      \ "compact": 0
+      \ }
+
 "}}}
 
 " vim:set sw=2 sts=2 foldmethod=marker foldlevel=0:

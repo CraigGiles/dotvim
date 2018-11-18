@@ -38,7 +38,8 @@ nnoremap <leader>t :CtrlPTag<CR>
 nnoremap <leader>p :CtrlPTag<CR>
 nnoremap <leader>f :CtrlP<CR>
 
-nnoremap <C-f> :Ags<CR><C-w>t<C-w>H
+" nnoremap <C-f> :Ags<CR>
+nnoremap <C-f> :CtrlSF<CR>
 
 " open current buffer in new tab
 nmap tt :vs<CR><C-w>T
