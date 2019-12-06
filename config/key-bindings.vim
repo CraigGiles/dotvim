@@ -11,6 +11,10 @@ nmap <F4> :Dispatch make<CR>
 nmap <F5> :Dispatch make run<CR>
 nmap <C-b> :Dispatch make<CR>
 
+if has('gui_macvim')
+  nmap <D-m> :Dispatch make<CR>
+endif
+
 " newline above and below without entering insert mode
 nnoremap <leader>o o<Esc>k
 nnoremap <leader>O O<Esc>j
@@ -29,10 +33,6 @@ nnoremap k gk
 " Escape to normal mode from insert mode with jj / jk
 inoremap jj <ESC>
 inoremap jk <ESC>
-
-" Move to next / previous blank line
-nnoremap <C-j> /^$<CR>
-nnoremap <C-k> ?^$<CR>
 
 " Increase split size by 5
 nnoremap = :vertical resize +5<CR>

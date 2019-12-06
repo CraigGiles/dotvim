@@ -1,19 +1,90 @@
-" Order matters when sourcing these
+colorscheme jblow
+nnoremap <Space>ed :source ~/.vimrc<CR>
+
 source ~/.vim/config/plugins.vim
-source ~/.vim/config/settings.vim
-source ~/.vim/config/functions.vim
 source ~/.vim/config/statusline.vim
-source ~/.vim/config/key-bindings.vim
-source ~/.vim/config/neovim-settings.vim
 
-" au! BufRead,BufNewFile *.gd setfiletype gd
-au! BufRead,BufNewFile *.gd setfiletype gdscript3
+" -------------------------------------------------
+"   Key Bindings
+" =================================================
+nmap tt :vs<CR><C-w>T
 
-" When you save the vimrc, auto-reload it
-augroup VimReload
-    autocmd!
-    autocmd BufWritePost  $MYVIMRC  source $MYVIMRC
-augroup END
+" Escape to normal mode from insert mode with jj / jk
+inoremap jj <ESC>
+inoremap jk <ESC>
+
+" Down is really the next line
+nnoremap j gj
+nnoremap k gk
+
+" Turn off that stupid highlight search
+nnoremap <silent> <Space>n :noh<CR>
+
+" When selecting text in visual mode,
+" Delete or Backspace removes it
+vmap <BS> x
+
+" git related commands
+nnoremap ga :Gblame<CR>
+
+" Move to next / previous blank line
+nnoremap <C-j> /^$<CR>:noh<CR>
+nnoremap <C-k> ?^$<CR>:noh<CR>
+
+" After doing a search, hitting 'CTRL-f-f' will fold all
+" the results for easier display
+nmap <silent> <expr>  <C-f><C-f>  FS_ToggleFoldAroundSearch({'context':1})
+
+" Make search results be in the center of the window
+nmap n nzz
+nmap N Nzz
+nmap * *zz
+nmap # #zz
+nmap g* g*zz
+nmap g# g#zz
+
+if has('gui_macvim')
+  nmap <D-m> :Dispatch make<CR>
+endif
+
+" -------------------------------------------------
+"   settings
+" =================================================
+if has('gui_macvim')
+  " Disable the print menu
+  :aunmenu File.Print
+
+  set guifont=Liberation\ Mono:h14
+  set guioptions=          " Don't have scroll bars
+endif
+
+set lines=999 columns=9999 " Start vim in "full screen"
+set splitright             " Puts new v-split to the right of the current
+set splitbelow             " Puts new split windows to the bottom
+set ignorecase             " Case insensitive searches
+set incsearch              " Incremental searches
+set smartcase              " Case sensitive when wanted
+set hlsearch               " Highlight all the search results
+highlight       Search    ctermfg=Red ctermbg=Yellow guifg=Red guibg=Yellow
+
+set tabstop=4              " Tab Stop at 4 unless plugin overwrites it
+set shiftwidth=4
+set linespace=4            " Vertical line space
+set expandtab              " Always use spaces instead of tabs
+set autoread               " Read a file that has changed on disk
+set autowrite              " Auto write to disk when buffer is changed
+set autowriteall
+set hidden                 " Allow modified buffers in the background
+set ruler
+set modeline               " Allow modeline ( :help modeline )
+set mouse=a                " Use the mouse for things like resizing windows
+set noshowmode             " Doesn't show what mode you're in
+set cursorline             " Show the horizontal bar where the cursor is
+set scrolloff=8            " Keep cursor 8 lines from top and bottom while scrolling
+
+set nobackup               " don't use backup files
+set nowb                   " don't use backup files
+set noswapfile             " don't use swap files
 
 " undo all the things
 if has('persistent_undo')
@@ -22,94 +93,19 @@ if has('persistent_undo')
     set undofile
 endif
 
-" Allow for per-machine overrides in ~/.vim/vimrc.local.
-let s:vimrc_local = $HOME . '/.vim/vimrc.local'
-if filereadable(s:vimrc_local)
-  execute 'source ' . s:vimrc_local
-endif
+" I don't want to pull up these folders/files when calling my fuzzy finder
+set wildignore+=*/vendor/**
+set wildignore+=*/target/**
+set wildignore+=*/cli/**
+set wildignore+=*/logs/**
+set wildignore+=*/sql/**
+set wildignore+=*/tools/**
+set wildignore+=*/docroot/res/out/**
+set wildignore+=*.swp
+set wildignore+=*.bak
 
-" ================================================
-" Testing These Settings
-" ================================================
-nnoremap <leader><leader> <C-^>
-" set guicursor=
-set guifont=Liberation\ Mono:h14
-nnoremap <leader>t :CtrlPTag<CR>
-nnoremap <leader>p :CtrlPTag<CR>
-nnoremap <leader>f :CtrlP<CR>
-
-" nnoremap <C-f> :Ags<CR>
-nnoremap <C-f> :CtrlSF<CR>
-
-" open current buffer in new tab
-nmap tt :vs<CR><C-w>T
-
-" TODO(craig) -- get these working right
-" NOTE(craig) -- i dont think these are working right
-" IMPORTANT(craig) -- i dont think these are working right
-:highlight MyGroupTodo ctermbg=red guibg=red ctermfg=black guifg=black
-:let m1 = matchadd("MyGroupTodo", "TODO")
-:highlight MyGroupNote ctermbg=green guibg=green ctermfg=black guifg=black
-:let m2 = matchadd("MyGroupNote", "NOTE")
-:highlight MyGroupNTH ctermbg=yellow guibg=yellow ctermfg=black guifg=black
-:let m3 = matchadd("MyGroupNTH", "IMPORTANT")
-
-" ==================================================
-" Functions
-" ==================================================
-"======[ Magically build interim directories if necessary ]===================
-
-function! AskQuit(msg, options, quit_option)
-    if confirm(a:msg, a:options) == a:quit_option
-        exit
-    endif
-endfunction
-
-function! EnsureDirExists()
-    let required_dir = expand("%:h")
-    if !isdirectory(required_dir)
-        call AskQuit("Parent directory '" . required_dir . "' doesn't exist.",
-             \       "&Create it\nor &Quit?", 2)
-
-        try
-            call mkdir( required_dir, 'p' )
-        catch
-            call AskQuit("Can't create '" . required_dir . "'",
-            \            "&Quit\nor &Continue anyway?", 1)
-        endtry
-    endif
-endfunction
-
-augroup AutoMkdir
-    autocmd!
-    autocmd  BufNewFile  *  :call EnsureDirExists()
-augroup END
-
-" function! ScalaInsertDatabaseMigration(name)
-"     " silent! execute <C-R>=strftime("%Y%m%d%H%M")a:name.sql<CR>
-"     let a:ts = strftime("%Y%m%d%H%M")
-"     let a:myval = tolower(a:name)
-"     let a:noHyphs = substitute(a:myval, " ", "-", "g")
-"     let a:noSpaces = substitute(a:noHyphs, "\"", "", "g")
-"     let a:filename = "V1_" . a:ts . "__" . a:noSpaces . ".sql"
-"     echo a:filename
-"     echo getcwd()."/flyway/src/main/resources/db/migration/".a:filename
-" endfunction
-
-" command! -nargs=1 Smigration call ScalaInsertDatabaseMigration(<q-args>)
-
-" function! ScalaExtractFunction(name)
-"     " silent! execute <C-R>=strftime("%Y%m%d%H%M")a:name.sql<CR>
-"     :'<,'>x
-"     silent! normal i"a:name"
-" endfunction
-
-" command! -nargs=1 Sextract call ScalaExtractFunction(<q-args>)
-"
-
-" See `:scriptnames` for a list of all scripts, in evaluation order.
-" Launch Vim with `vim --startuptime vim.log` for profiling info.
-"
-" To see all leader mappings, including those from plug-ins:
+" Re-add these since i want my fuzzy finder to find them
+set wildignore-=*.thrift
+set wildignore-=*.sql
 
 " vim:set sw=2 sts=2 foldmethod=marker foldlevel=0:

@@ -13,13 +13,14 @@ else
     colorscheme zenburn
 endif
 
-
+set guioptions=         " Don't have scroll bars
+set lines=999 columns=9999 " Start vim in "full screen"
 set list                " Makes the whitespace visible
 set listchars=tab:⇒·,trail:␣,nbsp:~",extends:¬
 " set guifont=Menlo:h12
 set splitright          " Puts new v-split to the right of the current
 set splitbelow          " Puts new split windows to the bottom
-set nu                  " Always show line numbers
+" set nu                  " Always show line numbers
 set ignorecase          " Case insensitive searches
 set incsearch           " Incremental searches
 set smartcase           " Case sensitive when wanted
@@ -38,8 +39,8 @@ set hidden              " Allow modified buffers in the background
 set ruler
 set modeline            " Allow modeline ( :help modeline )
 set modelines=2         " Use the first and last two lines for modeline
-set foldmethod=indent   " Set the fold method to be based on the indentation
-set foldlevelstart=15   " Set the foldlevel start at a high enough number
+" set foldmethod=indent   " Set the fold method to be based on the indentation
+" set foldlevelstart=15   " Set the foldlevel start at a high enough number
 set mouse=a             " Use the mouse for things like resizing windows
 set matchpairs+=<:>,«:» " Add additional pairs to be matched on
 set noshowmode          " Doesn't show what mode you're in
