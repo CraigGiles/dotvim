@@ -30,6 +30,10 @@ nnoremap k gk
 inoremap jj <ESC>
 inoremap jk <ESC>
 
+" Move to next / previous blank line
+nnoremap <C-j> /^$<CR>
+nnoremap <C-k> ?^$<CR>
+
 " Increase split size by 5
 nnoremap = :vertical resize +5<CR>
 nnoremap + :resize +5<CR>
@@ -55,12 +59,6 @@ nnoremap <silent> <leader>n :nohls<CR>
 nnoremap <silent> <leader>u= :t.\|s/./=/g\|:nohls<cr>
 nnoremap <silent> <leader>u- :t.\|s/./-/g\|:nohls<cr>
 nnoremap <silent> <leader>u~ :t.\|s/./\\~/g\|:nohls<cr>
-
-" Navigate splits with just CTRL-HJKL
-nnoremap <C-h> <C-w>h
-nnoremap <C-k> <C-w>k
-nnoremap <C-j> <C-w>j
-nnoremap <C-l> <C-w>l
 
 " Make search results be in the center of the window
 nmap n nzz
