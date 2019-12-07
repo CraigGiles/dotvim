@@ -10,6 +10,7 @@ source ~/.vim/statusline.vim
 "   Key Bindings
 " =================================================
 nmap tt :vs<CR><C-w>T
+nmap <tab> za
 
 " Exit the Ex menu without executing the command
 cnoremap <C-g><C-g> <c-c>
@@ -83,7 +84,7 @@ endif
 
 :let _ = matchadd("FixMeTodo", "TODO")
 :let _ = matchadd("FixMeNote", "NOTE")
-:let _ = matchadd("FixMeNTH", "IMPORTANT")
+:let _ = matchadd("FixMeImportant", "IMPORTANT")
 :let _ = matchadd("FixMeCleanup", "CLEANUP")
 :let _ = matchadd("FixMeSpeed", "SPEED")
 :let _ = matchadd("FixMeNext", "NEXT")
@@ -92,19 +93,23 @@ endif
 :let _ = matchadd("FixMeDone", "DONE")
 
 " -------------------------------------------------
-"   Functions
-" =================================================
-
-" -------------------------------------------------
 "   settings
 " =================================================
 if has('gui_macvim')
-  " Disable the print menu
-  :aunmenu File.Print
-  :aunmenu File.New\ Window
+  " Disable all the menus and let the key bindings work
+  :menu disable &File.*
+  :menu disable &Edit.*
+  :menu disable &Tools.*
+  :menu disable &Syntax.*
+  :menu disable &Buffers.*
+  :menu disable &Plugin.*
+  :menu disable &Window.*
+  :menu disable &Help.*
 
   set guifont=Liberation\ Mono:h12
-  set guioptions=          " Don't have scroll bars
+
+  " Don't have scroll bars
+  set guioptions=
 endif
 
 " Source a vimrc.local for per-machine overrides

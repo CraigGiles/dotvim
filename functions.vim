@@ -1,3 +1,10 @@
+" NOTE(craig): for function debugging
+" See `:scriptnames` for a list of all scripts, in evaluation order.
+
+"
+" WordProcessor
+" a command that will set you up for a distraction free word processor. 
+"
 function! WordProcessorMode()
   Goyo 80
   setlocal formatoptions=1
@@ -15,13 +22,15 @@ endfunction
 com! WP call WordProcessorMode()
 com! WordProcessor call WordProcessorMode()
 
+"
+" RemoveTrailingWhitespace
+" Removing all trailing whitespace from the file
+"
 function! RemoveTrailingWhitespaces()
   :%s/\s\+$//e
 endfunction
 command! RemoveTrailingWhitespace call RemoveTrailingWhitespaces()
 
-" NOTE: for function debugging
-" See `:scriptnames` for a list of all scripts, in evaluation order.
 function! AskQuit(msg, options, quit_option)
     if confirm(a:msg, a:options) == a:quit_option
         exit
