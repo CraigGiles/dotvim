@@ -1,7 +1,7 @@
 " -------------------------------------------------
 "   TODO
 " =================================================
- TODO(craig) the todo's aren't being highlighted correctly in md or vim viles
+ TODO(craig) find alternate file and find alternate file in other window
  
   
   

@@ -2,6 +2,44 @@
 " See `:scriptnames` for a list of all scripts, in evaluation order.
 
 "
+" OtherWindowVerticalSplit
+" When operating in a two split space (which is my norm) calling :OtherWindow
+" will move the cursor to the inactive vertical split.
+"
+function! OtherWindowVerticalSplit()
+   let s:current_window = winnr()
+   wincmd h
+   if winnr() == s:current_window
+       wincmd l
+   endif
+endfunction
+command! OtherWindowVertical call OtherWindowVerticalSplit()
+
+"
+" RotateSplits
+" This function takes two veritcal splits and rotates them to be two
+" horizontal splits and vice versa.
+"
+function! RotateSplits()
+   " save the original position, jump to the first window
+   let initial = winnr()
+   exe 1 . "wincmd w"
+
+   wincmd l
+   if winnr() != 1
+      " succeeded moving to the right window
+      wincmd J " make it the bot window
+   else
+      " cannot move to the right, so we are at the top
+      wincmd H " make it the left window
+   endif
+
+   " restore cursor to the initial window
+   exe initial . "wincmd w"
+endfunction
+com! RotateSplits call RotateSplits()
+
+"
 " WordProcessor
 " a command that will set you up for a distraction free word processor. 
 "
