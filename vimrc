@@ -1,30 +1,33 @@
-colorscheme jblow
-nnoremap <Space>ed :source ~/.vimrc<CR>
+"
+" Vim Configuration File
+" Author : Craig Giles
+"
+" Major settings that are altered all the time are still in the vimrc file.
+" Settings that are not modified often are split into their respective files.
+"
+" NOTE: Since i've been playing with both vim and emacs + evil, there are some
+" questionable things (including mapping <C-g><C-g> to escape, and creating a
+" new system command :magit and mapping that to :Magit) I may end up pulling
+" out some of my more useful functions into a vim plugin at some point but for
+" now i just don't see the reason.
+"
+" Anyway, since I'm a c, scala, and go developer, I'm not a super proficient
+" at viml. Don't really look at these as good examples of what viml should be.
+"
 
 source ~/.vim/plugins.vim
 source ~/.vim/plugin_settings.vim
 source ~/.vim/functions.vim
 source ~/.vim/statusline.vim
-" -------------------------------------------------
-"   Test Settings
-" =================================================
+source ~/.vim/test_settings.vim
+source ~/.vim/fixme.vim
 
-" This creates a new Help command and binds it to <C-h> which will open the
-" help window in the OtherWindowVertical (see functions.vim) and allow the
-" C-^ command to be used in order to go to previous the buffer
-"
-" TODO(craig) make a HelpBuffer function maybe actually take some arguments
-command! -nargs=1 -complete=help Help :enew | :set buftype=help | :keepalt h <args>
-nnoremap <C-h> :OtherWindowVertical<CR>:Help 
-
-" TODO(craig) try to get Magit to use the other window if open, split if not
-" command! magit :OtherWindowVertical<CR>:Magit<CR> 
-" command! MagitV :enew | :set buftype=nofile | :keepalt :Magit<CR>
-cnoreabbrev magit Magit
+colorscheme jblow
 
 " -------------------------------------------------
 "   Key Bindings
 " =================================================
+nnoremap <Space>ed :source ~/.vimrc<CR>
 
 nmap tt :vs<CR><C-w>T
 nmap <tab> za
@@ -85,29 +88,6 @@ if has('gui_macvim')
   nnoremap <D-b> :CtrlPBuffer<CR>
 endif
 
-
-" -------------------------------------------------
-"   fixme faces
-" =================================================
-:highlight FixMeTodo      guibg=NONE guifg=#cd2626
-:highlight FixMeNote      guibg=NONE guifg=#6495ed
-:highlight FixMeImportant guibg=NONE guifg=#ffff00
-:highlight FixMeCleanup   guibg=NONE guifg=#ffff00
-:highlight FixMeSpeed     guibg=NONE guifg=#ffff00
-:highlight FixMeNext      guibg=NONE guifg=#6495ed
-:highlight FixMeProg      guibg=NONE guifg=#ffff00
-:highlight FixMeHold      guibg=NONE guifg=#6495ed
-:highlight FixMeDone      guibg=NONE guifg=#00ff00
-
-:let _ = matchadd("FixMeTodo", "TODO")
-:let _ = matchadd("FixMeNote", "NOTE")
-:let _ = matchadd("FixMeImportant", "IMPORTANT")
-:let _ = matchadd("FixMeCleanup", "CLEANUP")
-:let _ = matchadd("FixMeSpeed", "SPEED")
-:let _ = matchadd("FixMeNext", "NEXT")
-:let _ = matchadd("FixMeProg", "PROG")
-:let _ = matchadd("FixMeHold", "HOLD")
-:let _ = matchadd("FixMeDone", "DONE")
 
 " -------------------------------------------------
 "   settings
