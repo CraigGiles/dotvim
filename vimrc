@@ -1,13 +1,18 @@
 colorscheme jblow
 nnoremap <Space>ed :source ~/.vimrc<CR>
 
-source ~/.vim/config/plugins.vim
-source ~/.vim/config/statusline.vim
+source ~/.vim/plugins.vim
+source ~/.vim/plugin_settings.vim
+source ~/.vim/functions.vim
+source ~/.vim/statusline.vim
 
 " -------------------------------------------------
 "   Key Bindings
 " =================================================
 nmap tt :vs<CR><C-w>T
+
+" Exit the Ex menu without executing the command
+cnoremap <C-g><C-g> <c-c>
 
 " Escape to normal mode from insert mode with jj / jk
 inoremap jj <ESC>
@@ -31,9 +36,19 @@ nnoremap ga :Gblame<CR>
 nnoremap <C-j> /^$<CR>:noh<CR>
 nnoremap <C-k> ?^$<CR>:noh<CR>
 
+" Change split orientation from | to -
+nnoremap <Space>sp <C-w>t<C-w>K
+nnoremap <Space>vs <C-w>t<C-w>H
+
 " After doing a search, hitting 'CTRL-f-f' will fold all
 " the results for easier display
 nmap <silent> <expr>  <C-f><C-f>  FS_ToggleFoldAroundSearch({'context':1})
+
+" When selecting text in visual mode, Delete or Backspace removes it
+vmap <BS> x
+
+" Turn off that stupid highlight search
+nnoremap <silent> <Space>n :nohls<CR>
 
 " Make search results be in the center of the window
 nmap n nzz
@@ -44,8 +59,41 @@ nmap g* g*zz
 nmap g# g#zz
 
 if has('gui_macvim')
-  nmap <D-m> :Dispatch make<CR>
+  " compile the code and open the results in a quickfix vertical split
+  nnoremap <D-m> :make<CR>:copen<CR><C-w>t<C-w>H
+  nnoremap <D-n> :cnext<CR>
+  nnoremap <D-N> :cfirst<CR>:cnext<CR>
+  nnoremap <D-p> :CtrlP<CR>
+  nnoremap <D-b> :ls<CR>:buffer<Space>
 endif
+
+
+" -------------------------------------------------
+"   fixme faces
+" =================================================
+:highlight FixMeTodo      guibg=NONE guifg=#cd2626
+:highlight FixMeNote      guibg=NONE guifg=#6495ed
+:highlight FixMeImportant guibg=NONE guifg=#ffff00
+:highlight FixMeCleanup   guibg=NONE guifg=#ffff00
+:highlight FixMeSpeed     guibg=NONE guifg=#ffff00
+:highlight FixMeNext      guibg=NONE guifg=#6495ed
+:highlight FixMeProg      guibg=NONE guifg=#ffff00
+:highlight FixMeHold      guibg=NONE guifg=#6495ed
+:highlight FixMeDone      guibg=NONE guifg=#00ff00
+
+:let _ = matchadd("FixMeTodo", "TODO")
+:let _ = matchadd("FixMeNote", "NOTE")
+:let _ = matchadd("FixMeNTH", "IMPORTANT")
+:let _ = matchadd("FixMeCleanup", "CLEANUP")
+:let _ = matchadd("FixMeSpeed", "SPEED")
+:let _ = matchadd("FixMeNext", "NEXT")
+:let _ = matchadd("FixMeProg", "PROG")
+:let _ = matchadd("FixMeHold", "HOLD")
+:let _ = matchadd("FixMeDone", "DONE")
+
+" -------------------------------------------------
+"   Functions
+" =================================================
 
 " -------------------------------------------------
 "   settings
@@ -53,10 +101,19 @@ endif
 if has('gui_macvim')
   " Disable the print menu
   :aunmenu File.Print
+  :aunmenu File.New\ Window
 
-  set guifont=Liberation\ Mono:h14
+  set guifont=Liberation\ Mono:h12
   set guioptions=          " Don't have scroll bars
 endif
+
+" Source a vimrc.local for per-machine overrides
+let s:vimrc_local = $HOME . '/.vim/vimrc.local'
+if filereadable(s:vimrc_local)
+  execute 'source ' . s:vimrc_local
+endif
+
+set nowrapscan             " Don't search past end of file
 
 set lines=999 columns=9999 " Start vim in "full screen"
 set splitright             " Puts new v-split to the right of the current
@@ -107,5 +164,6 @@ set wildignore+=*.bak
 " Re-add these since i want my fuzzy finder to find them
 set wildignore-=*.thrift
 set wildignore-=*.sql
+
 
 " vim:set sw=2 sts=2 foldmethod=marker foldlevel=0:

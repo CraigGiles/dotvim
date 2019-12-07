@@ -1,6 +1,6 @@
-" ==================================================
+" -------------------------------------------------
 " Status Line
-" ==================================================
+" =================================================
 let g:currentmode={
     \ 'n'  : 'Normal',
     \ 'no' : 'N·Operator Pending ',
@@ -76,3 +76,4 @@ set statusline+=\ %P                          "percent through file
 " set statusline+=%*                            " Syntastic error flag
 
 " vim:set sw=2 sts=2 foldmethod=marker foldlevel=0:
+
