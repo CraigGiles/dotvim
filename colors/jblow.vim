@@ -16,6 +16,7 @@ let g:colors_name = "jblow"
 hi Cursor ctermfg=188 ctermbg=250 cterm=NONE guifg=#393939 guibg=#40FF40 gui=NONE
 hi CursorLine ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#191970 gui=NONE
 hi Normal ctermfg=188 ctermbg=235 cterm=NONE guifg=#d2cbc0 guibg=#122A2C gui=NONE
+hi NonText ctermfg=188 ctermbg=235 cterm=NONE guifg=#d2cbc0 guibg=#122A2C gui=NONE
 hi Comment ctermfg=244 ctermbg=NONE cterm=NONE guifg=#7f7f7f guibg=NONE gui=NONE
 hi Constant ctermfg=103 ctermbg=NONE cterm=NONE guifg=#6b8e23 guibg=NONE gui=NONE
 hi String ctermfg=71 ctermbg=NONE cterm=NONE guifg=#65b29e guibg=NONE gui=NONE
@@ -71,7 +72,6 @@ hi ErrorMsg ctermfg=15 ctermbg=88 cterm=NONE guifg=#ffffff guibg=#990000 gui=NON
 hi WarningMsg ctermfg=15 ctermbg=88 cterm=NONE guifg=#ffffff guibg=#990000 gui=NONE
 hi Float ctermfg=67 ctermbg=NONE cterm=NONE guifg=#7ca8c6 guibg=NONE gui=NONE
 hi Label ctermfg=103 ctermbg=NONE cterm=NONE guifg=#9f8db7 guibg=NONE gui=NONE
-hi NonText ctermfg=188 ctermbg=235 cterm=NONE guifg=#b8c4d0 guibg=#393939 gui=NONE
 hi Number ctermfg=67 ctermbg=NONE cterm=NONE guifg=#7ca8c6 guibg=NONE gui=NONE
 hi Operator ctermfg=250 ctermbg=NONE cterm=NONE guifg=#b8c4d0 guibg=NONE gui=NONE
 hi SpecialKey ctermfg=250 ctermbg=236 cterm=NONE guifg=#bfbfbf guibg=#38393b gui=NONE
