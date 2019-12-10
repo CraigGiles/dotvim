@@ -1,6 +1,56 @@
 " NOTE(craig): for function debugging
 " See `:scriptnames` for a list of all scripts, in evaluation order.
 
+function! GetPreviousBlankLineNumber()
+    let l:cursor_line_number = line('.') - 1
+
+    while l:cursor_line_number > 0
+        let l:line_value = getline(l:cursor_line_number)
+        let l:trimmed_value = trim(l:line_value)
+
+        if len(l:trimmed_value) == 0
+            return l:cursor_line_number
+        endif
+
+        let l:cursor_line_number -= 1
+    endwhile
+    
+    return 0
+endfunction
+
+function! SetCursorToPreviousBlankLine()
+    let line_number = GetPreviousBlankLineNumber()
+    let mylist = [bufnr(), line_number, 1, 0]
+    call setpos('.', mylist)
+endfunction
+command! SetCursorToPreviousBlankLine call SetCursorToPreviousBlankLine()
+
+function! GetNextBlankLineNumber()
+    let l:cursor_line_number = line('.') + 1
+    let l:max_lines = line('$')
+
+    while l:cursor_line_number < l:max_lines
+        let l:line_value = getline(l:cursor_line_number)
+        let l:trimmed_value = trim(l:line_value)
+
+        if len(l:trimmed_value) == 0
+            return l:cursor_line_number
+        endif
+
+        let l:cursor_line_number += 1
+    endwhile
+    
+    return l:max_lines
+endfunction
+
+function! SetCursorToNextBlankLine()
+    let line_number = GetNextBlankLineNumber()
+    echo printf("Setting cursor to %i", line_number)
+    let mylist = [bufnr(), line_number, 1, 0]
+    call setpos('.', mylist)
+endfunction
+command! SetCursorToNextBlankLine call SetCursorToNextBlankLine()
+
 "
 " OtherWindowVerticalSplit
 " When operating in a two split space (which is my norm) calling :OtherWindow

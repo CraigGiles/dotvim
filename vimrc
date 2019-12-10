@@ -54,8 +54,8 @@ vmap <BS> x
 nnoremap ga :Gblame<CR>
 
 " Move to next / previous blank line
-nnoremap <C-j> /^$<CR>:noh<CR>
-nnoremap <C-k> ?^$<CR>:noh<CR>
+nnoremap <C-j> :SetCursorToNextBlankLine<CR>
+nnoremap <C-k> :SetCursorToPreviousBlankLine<CR>
 
 " Change split orientation from | to -
 nnoremap <Space>sp <C-w>t<C-w>K
@@ -113,8 +113,6 @@ let s:vimrc_local = $HOME . '/.vim/vimrc.local'
 if filereadable(s:vimrc_local)
   execute 'source ' . s:vimrc_local
 endif
-
-set nowrapscan             " Don't search past end of file
 
 set lines=999 columns=9999 " Start vim in "full screen"
 set splitright             " Puts new v-split to the right of the current
