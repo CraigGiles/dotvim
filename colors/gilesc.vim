@@ -37,8 +37,10 @@ hi Special ctermfg=172 ctermbg=NONE cterm=NONE guifg=#d58b48 guibg=NONE gui=NONE
 hi Todo ctermfg=red ctermbg=NONE cterm=bold guifg=#cd2626 guibg=NONE gui=bold
 
 " hi VertSplit ctermfg=60 ctermbg=236 cterm=NONE guifg=#000000 guibg=#000000 gui=NONE
+" hi VertSplit ctermfg=60 ctermbg=236 cterm=NONE guifg=#cdaa7d guibg=#cdaa7d gui=NONE
 " hi VertSplit ctermfg=60 ctermbg=236 cterm=NONE guifg=#404245 guibg=NONE gui=NONE
-hi VertSplit ctermfg=60 ctermbg=236 cterm=NONE guifg=NONE guibg=#404245 gui=NONE
+" hi VertSplit ctermfg=60 ctermbg=236 cterm=NONE guifg=NONE guibg=#404245 gui=NONE
+hi VertSplit ctermfg=60 ctermbg=236 cterm=NONE guifg=#404245 guibg=#404245 gui=NONE
 
 " hi Identifier ctermfg=222 ctermbg=NONE cterm=NONE guifg=#ffcf85 guibg=NONE gui=NONE
 hi Identifier ctermfg=222 ctermbg=NONE cterm=NONE guifg=#DAB98F guibg=NONE gui=NONE
