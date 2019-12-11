@@ -33,6 +33,7 @@ nmap <tab> za
 
 " Exit the Ex menu without executing the command
 cnoremap <C-g><C-g> <c-c>
+vnoremap <C-g><C-g> <c-c>
 
 " Escape to normal mode from insert mode with jj / jk
 inoremap jj <ESC>
