@@ -55,9 +55,8 @@ vmap <BS> x
 nnoremap ga :Gblame<CR>
 
 " Move to next / previous blank line
-" set nowrapscan             " Don't search past end of file
-nnoremap <C-j> /^$<CR>:noh<CR>
-nnoremap <C-k> ?^$<CR>:noh<CR>
+nnoremap <C-j> :SetCursorToNextBlankLine<CR>
+nnoremap <C-k> :SetCursorToPreviousBlankLine<CR>
 
 " Change split orientation from | to -
 nnoremap <Space>sp <C-w>t<C-w>K
