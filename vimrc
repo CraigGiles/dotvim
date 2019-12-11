@@ -1,3 +1,5 @@
+:set guioptions-=m guioptions+=M 
+
 "
 " Vim Configuration File
 " Author : Craig Giles
@@ -14,15 +16,14 @@
 " Anyway, since I'm a c, scala, and go developer, I'm not a super proficient
 " at viml. Don't really look at these as good examples of what viml should be.
 "
-
 source ~/.vim/plugins.vim
 source ~/.vim/plugin_settings.vim
 source ~/.vim/functions.vim
 source ~/.vim/statusline.vim
 source ~/.vim/test_settings.vim
-source ~/.vim/fixme.vim
+source ~/.vim/fixme_colors.vim
 
-colorscheme jblow
+colorscheme gilesc
 
 " -------------------------------------------------
 "   Key Bindings
@@ -65,6 +66,52 @@ nnoremap <Space>vs <C-w>t<C-w>H
 " the results for easier display
 nmap <silent> <expr>  <C-f><C-f>  FS_ToggleFoldAroundSearch({'context':1})
 
+" command! -nargs=1 Ag :keepalt | :Ags <args>
+" command! -nargs=1 -complete=help Help :enew | :set buftype=help | :keepalt h <args>
+"
+" This determines the placement of the search results window. It
+" defaults to |bottom|. Possible values are: |top|, |bottom|, |above|,
+" |below|, |far-left|, |far-right|, |left|, |right|.
+" >
+"     let g:ags_winplace = 'bottom'
+" TODO(craig) do i REALLY need this?
+function! SearchCodebase()
+  let s:number_of_windows = winnr('$') 
+
+  if s:number_of_windows == 1
+    :Ag
+    :RotateSplits
+  elseif s:number_of_windows == 2
+    " TODO(craig) if one of the splits is AG, do nothing, else persist buffer
+    "   and re-use
+    :Ag
+  else
+    :Ag
+  endif
+endfunction
+
+let g:ag_working_path_mode="r"
+
+" let g:ags_enable_async = 1
+" TODO(Craig): Write a function that tells this to open in the 'other window'
+"   Behavior i want to emulate is always open in the 'other-window' given a
+"   two split style. If no other window is open, then open one and use it as
+"   the search result. If there IS an other window, preserve its file and
+"   search (allowing me to use C-^ to go back to last file)
+" nnoremap <silent> <C-f> :OtherWindow<CR>:Ag<CR>
+nnoremap <silent> <C-f> :call SearchCodebase()<CR>
+
+augroup markdown_mode
+  autocmd! markdown_mode
+  autocmd Filetype markdown source ~/.vim/fixme_colors.vim
+augroup end
+
+augroup key_bindings_ags
+  autocmd! key_bindings_ags
+  autocmd Filetype agsv nmap <buffer> <D-n> :AgsNextResult<CR>
+  autocmd Filetype agsv nmap <buffer> <D-N> :AgsPrevResult<CR>
+augroup end
+
 " When selecting text in visual mode, Delete or Backspace removes it
 vmap <BS> x
 
@@ -88,19 +135,35 @@ if has('gui_macvim')
   nnoremap <D-b> :CtrlPBuffer<CR>
 endif
 
+" -------------------------------------------------
+"   Language Specific Key Bindings
+" =================================================
+augroup key_bindings_go
+  autocmd! key_bindings_go
+  autocmd Filetype go nmap <buffer> <C-b> :GoDef<CR>
+
+  " Debug
+  autocmd Filetype go nmap <buffer> <F5> :GoDebugStart<CR>
+  autocmd Filetype go nmap <buffer> <F9> :GoDebugBreakpoint<CR>
+  autocmd Filetype go nmap <buffer> <F10> :GoDebugNext<CR>
+  autocmd Filetype go nmap <buffer> <F11> :GoDebugStep<CR>
+  autocmd Filetype go nmap <buffer> <F12> :GoDebugStepOut<CR>
+augroup end
 
 " -------------------------------------------------
 "   settings
 " =================================================
 if has('gui_macvim')
   " Disable all the menus and let the key bindings work
-  :menu disable &File.*
-  :menu disable &Edit.*
-  :menu disable &Tools.*
-  :menu disable &Syntax.*
-  :menu disable &Buffers.*
-  :menu disable &Plugin.*
-  :menu disable &Help.*
+  source ~/.vim/menu.vim
+  let did_install_default_menus=1
+  " :amenu disable &File.New\ Window
+  " :menu disable Edit.*
+  " :menu disable Tools.*
+  " :menu disable Syntax.*
+  " :menu disable Buffers.*
+  " :menu disable &Plugin.*
+  " :menu disable Help.*
 
   set guifont=Liberation\ Mono:h12
 
@@ -164,5 +227,6 @@ set wildignore+=*.bak
 set wildignore-=*.thrift
 set wildignore-=*.sql
 
-
+" TODO(craig): for some reason when i reload my vimrc it shows higlights
+:noh
 " vim:set sw=2 sts=2 foldmethod=marker foldlevel=0:

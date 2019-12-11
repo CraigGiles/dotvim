@@ -9,9 +9,13 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-dispatch'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jreybert/vimagit'
-Plug 'gabesoft/vim-ags'
+Plug 'rking/ag.vim'
+Plug 'tpope/vim-vinegar'
 
 Plug 'vim-scripts/BufOnly.vim'
+
+" Vim GO
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " -------------------------------------------------
 "     Scala Plugins

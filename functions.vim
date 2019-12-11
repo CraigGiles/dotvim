@@ -65,6 +65,23 @@ function! OtherWindowVerticalSplit()
 endfunction
 command! OtherWindowVertical call OtherWindowVerticalSplit()
 
+"function! DoesWindowWithFiletypeExist(a:file_type)
+"  let l:result = false
+"  let l:number_of_windows = winnr('$') 
+"
+"  " TODO(craig) this is untested and doesn't work probably
+"  let l:window_index = 0
+"  while l:window_index <= l:number_of_windows
+"    l:window_filetype = filetype(l:window_index)
+"    if l:window_filetype == a:file_type
+"      l:result = true
+"    endif
+"    let l:window_index++
+"  endwhile
+"
+"  return l:result
+"endfunction
+
 "
 " RotateSplits
 " This function takes two veritcal splits and rotates them to be two

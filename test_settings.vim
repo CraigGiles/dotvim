@@ -15,4 +15,3 @@ nnoremap <C-h> :OtherWindowVertical<CR>:Help
 " command! MagitV :enew | :set buftype=nofile | :keepalt :Magit<CR>
 cnoreabbrev magit Magit
 
-
