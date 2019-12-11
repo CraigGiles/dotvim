@@ -150,21 +150,15 @@ augroup key_bindings_go
   autocmd Filetype go nmap <buffer> <F12> :GoDebugStepOut<CR>
 augroup end
 
+augroup disable_menu_group
+  autocmd! disable_menu_group
+  autocmd Filetype * aunmenu *
+augroup end
+
 " -------------------------------------------------
 "   settings
 " =================================================
 if has('gui_macvim')
-  " Disable all the menus and let the key bindings work
-  source ~/.vim/menu.vim
-  let did_install_default_menus=1
-  " :amenu disable &File.New\ Window
-  " :menu disable Edit.*
-  " :menu disable Tools.*
-  " :menu disable Syntax.*
-  " :menu disable Buffers.*
-  " :menu disable &Plugin.*
-  " :menu disable Help.*
-
   set guifont=Liberation\ Mono:h12
 
   " Don't have scroll bars
@@ -227,6 +221,4 @@ set wildignore+=*.bak
 set wildignore-=*.thrift
 set wildignore-=*.sql
 
-" TODO(craig): for some reason when i reload my vimrc it shows higlights
-:noh
 " vim:set sw=2 sts=2 foldmethod=marker foldlevel=0:
