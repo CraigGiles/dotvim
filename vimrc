@@ -1,5 +1,3 @@
-:set guioptions-=m guioptions+=M 
-
 "
 " Vim Configuration File
 " Author : Craig Giles
@@ -150,9 +148,10 @@ augroup key_bindings_go
   autocmd Filetype go nmap <buffer> <F12> :GoDebugStepOut<CR>
 augroup end
 
-augroup disable_menu_group
-  autocmd! disable_menu_group
+augroup AllFiletypeGroup
+  autocmd! AllFiletypeGroup
   autocmd Filetype * aunmenu *
+  autocmd Filetype * source ~/.vim/fixme_colors.vim
 augroup end
 
 " -------------------------------------------------
