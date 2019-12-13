@@ -221,4 +221,7 @@ set wildignore+=*.bak
 set wildignore-=*.thrift
 set wildignore-=*.sql
 
+" NOTE: don't get rid of this
+:noh
+
 " vim:set sw=2 sts=2 foldmethod=marker foldlevel=0:
