@@ -127,7 +127,7 @@ nmap g# g#zz
 
 if has('gui_macvim')
   " compile the code and open the results in a quickfix vertical split
-  nnoremap <D-m> :make<CR>:copen<CR><C-w>t<C-w>H
+  nnoremap <D-m> :Dispatch make<CR>:copen<CR>
   nnoremap <D-n> :cnext<CR>
   nnoremap <D-N> :cfirst<CR>:cnext<CR>
   nnoremap <D-p> :CtrlP<CR>
