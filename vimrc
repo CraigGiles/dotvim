@@ -23,6 +23,19 @@ source ~/.vim/fixme_colors.vim
 
 colorscheme gilesc
 
+" TODO this only works for cpp files, so not at ALL generic
+" cpp / h switch alternate files
+function! SwitchSourceHeader()
+  "update!
+  if (expand ("%:e") == "cpp")
+    find %:t:r.h
+  else
+    find %:t:r.cpp
+  endif
+endfunction
+nnoremap <f12> :call SwitchSourceHeader()<CR>
+nnoremap <D-f12> :vs:call SwitchSourceHeader()h
+
 " -------------------------------------------------
 "   Key Bindings
 " =================================================
