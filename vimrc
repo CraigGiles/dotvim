@@ -21,7 +21,7 @@ source ~/.vim/statusline.vim
 source ~/.vim/test_settings.vim
 source ~/.vim/fixme_colors.vim
 
-colorscheme gilesc
+colorscheme nosyntax
 
 " TODO this only works for cpp files, so not at ALL generic
 " cpp / h switch alternate files
@@ -41,6 +41,10 @@ nnoremap <D-f12> :vs:call SwitchSourceHeader()h
 " =================================================
 nnoremap <Space>ed :source ~/.vimrc<CR>
 
+" cmd f opens up the file list
+nmap <D-f> -
+
+" open current buffer in a new tab
 nmap tt :vs<CR><C-w>T
 nmap <tab> za
 

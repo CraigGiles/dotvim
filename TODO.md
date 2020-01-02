@@ -1,6 +1,8 @@
 " -------------------------------------------------
 "   TODO
 " =================================================
+ TODO(craig) CMD-F - go to file list so i can open a file
+
  TODO(craig) F12 - find alternate file and find alternate file in other window
  TODO(craig) D-j - search for function
  TODO(craig) try to get Magit to use the other window if open, split if not
