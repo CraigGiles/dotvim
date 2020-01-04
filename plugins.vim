@@ -11,7 +11,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jreybert/vimagit'
 Plug 'rking/ag.vim'
 Plug 'tpope/vim-vinegar'
-
+Plug 'tpope/vim-projectionist'
 Plug 'vim-scripts/BufOnly.vim'
 
 " Vim GO

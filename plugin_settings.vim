@@ -16,5 +16,13 @@ nnoremap <Space>md :MarkdownPreview<CR>
 " the_silver_searcher
 let g:ags_enable_async = 1
 
+" projectionist example
+" {
+"   "src/main/java/*.java": {"alternate": "src/test/java/{}Spec.java"},
+"   "src/test/java/*Spec.java": {"alternate": "src/main/java/{}.java"},
+"   "src/main/scala/*.scala": {"alternate": "src/test/scala/{}Spec.scala"},
+"   "src/test/scala/*Spec.scala": {"alternate": "src/main/scala/{}.scala"}
+" }
+
 " vim:set sw=2 sts=2 foldmethod=marker foldlevel=0:
 
