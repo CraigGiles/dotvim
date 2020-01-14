@@ -242,4 +242,9 @@ set wildignore-=*.sql
 " NOTE: don't get rid of this
 :noh
 
+if has("gui_running")
+  " use the terminal colors
+  set t_Co=0
+endif
+
 " vim:set sw=2 sts=2 foldmethod=marker foldlevel=0:
