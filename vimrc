@@ -14,6 +14,8 @@
 " Anyway, since I'm a c, scala, and go developer, I'm not a super proficient
 " at viml. Don't really look at these as good examples of what viml should be.
 "
+set termguicolors
+
 source ~/.vim/plugins.vim
 source ~/.vim/plugin_settings.vim
 source ~/.vim/functions.vim
