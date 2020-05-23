@@ -1,6 +1,6 @@
-" -------------------------------------------------
-"   fixme faces
-" =================================================
+"
+"     --- Fixme Highlights---
+" -----------------------------------------------------------------------
 :highlight FixMeTodo      guibg=NONE guifg=#cd2626
 :highlight FixMeNote      guibg=NONE guifg=#6495ed
 :highlight FixMeImportant guibg=NONE guifg=#ffff00
