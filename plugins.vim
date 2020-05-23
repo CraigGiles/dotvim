@@ -13,6 +13,7 @@ Plug 'rking/ag.vim'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-projectionist'
 Plug 'vim-scripts/BufOnly.vim'
+Plug 'skywind3000/asyncrun.vim'
 
 " Vim GO
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }

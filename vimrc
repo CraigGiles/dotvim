@@ -38,13 +38,26 @@ endfunction
 nnoremap <f12> :call SwitchSourceHeader()<CR>
 nnoremap <D-f12> :vs:call SwitchSourceHeader()h
 
+function! SwitchSourceHeaderOtherWindow()
+    let l:file_name = expand("%")
+    let l:extension = expand("%:e")
+    echo(l:file_name)
+    :OtherWindowVertical
+    " :call SwitchSourceHeader()
+    if (l:extension == "cpp")
+        find l:file_name . ".h"
+    else
+        find l:file_name . ".cpp"
+    endif
+endfunction
+
 " -------------------------------------------------
 "   Key Bindings
 " =================================================
 nnoremap <Space>ed :source ~/.vimrc<CR>
 
 " cmd f opens up the file list
-nmap <D-f> -
+nmap <D-f> :CtrlP<CR>
 
 " open current buffer in a new tab
 nmap tt :vs<CR><C-w>T
@@ -94,18 +107,31 @@ nmap <silent> <expr>  <C-f><C-f>  FS_ToggleFoldAroundSearch({'context':1})
 "     let g:ags_winplace = 'bottom'
 " TODO(craig) do i REALLY need this?
 function! SearchCodebase()
-  let s:number_of_windows = winnr('$') 
+    let l:number_of_windows = winnr('$') 
+    if l:number_of_windows == 1
+        :Ag
+        :RotateSplits
+    else
+        let initial = winnr()
+        :Ag
+        :cclose
+        exe initial . "wincmd w"
+        OtherWindowVertical
+        call OpenQuickfixHere()
+    endif
 
-  if s:number_of_windows == 1
-    :Ag
-    :RotateSplits
-  elseif s:number_of_windows == 2
-    " TODO(craig) if one of the splits is AG, do nothing, else persist buffer
-    "   and re-use
-    :Ag
-  else
-    :Ag
-  endif
+  " let s:number_of_windows = winnr('$') 
+
+  " if s:number_of_windows == 1
+  "   :Ag
+    " :RotateSplits
+  " elseif s:number_of_windows == 2
+  "   " TODO(craig) if one of the splits is AG, do nothing, else persist buffer
+  "   "   and re-use
+  "   :Ag
+  " else
+  "   :Ag
+  " endif
 endfunction
 
 let g:ag_working_path_mode="r"
@@ -144,11 +170,71 @@ nmap # #zz
 nmap g* g*zz
 nmap g# g#zz
 
+
+" When the quickfix buffer gets opened
+augroup quickfix
+    autocmd!
+    " autocmd QuickFixCmdPost [^l]* call OpenQuickFixList()
+augroup END
+
+" When the quickfix buffer is opened, make sure that we're on only
+" one window.
+function! OpenQuickfixHere() abort
+  copen
+  let bufn = bufnr('%')
+  let winn = winnr()
+  wincmd p
+  execute 'b'.bufn
+  execute winn.'close'
+endfunction
+
+function OpenQuickFixList()
+    let l:number_of_windows = winnr('$') 
+
+    if l:number_of_windows == 1
+        :vs
+        call OpenQuickfixHere()
+    else
+        OtherWindowVertical
+        call OpenQuickfixHere()
+    endif
+
+    " if l:number_of_windows == 1
+    "     " vert call OpenQuickfixHere()
+    "     wincmd o
+    "     vert cwindow
+    "     wincmd p
+    "     wincmd =
+    " else
+    "     OtherWindowVertical
+    "     call OpenQuickfixHere()
+    " endif
+
+endfunction
+
+function! MakeWithoutAsking()
+    let l:number_of_windows = winnr('$') 
+
+    if l:number_of_windows == 1
+        :AsyncRun -program=make
+        :vs
+        call OpenQuickfixHere()
+        :OtherWindowVertical
+    else
+        :AsyncRun -program=make
+        OtherWindowVertical
+        call OpenQuickfixHere()
+        :OtherWindowVertical
+    endif
+endfunction
+command! MakeWithoutAsking call MakeWithoutAsking()
+
 if has('gui_macvim')
   " compile the code and open the results in a quickfix vertical split
-  nnoremap <D-m> :Dispatch make<CR>
+  " nnoremap <D-m> :Dispatch make<CR>
+  nnoremap <D-m> :MakeWithoutAsking<CR>
   nnoremap <D-n> :cnext<CR>
-  nnoremap <D-N> :cfirst<CR>:cnext<CR>
+  nnoremap <D-N> :cprev<CR>
   nnoremap <D-p> :CtrlP<CR>
   nnoremap <D-b> :CtrlPBuffer<CR>
   nnoremap <D-6> :OtherWindowVertical<CR><C-^>
