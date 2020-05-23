@@ -65,23 +65,6 @@ function! OtherWindowVerticalSplit()
 endfunction
 command! OtherWindowVertical call OtherWindowVerticalSplit()
 
-"function! DoesWindowWithFiletypeExist(a:file_type)
-"  let l:result = false
-"  let l:number_of_windows = winnr('$') 
-"
-"  " TODO(craig) this is untested and doesn't work probably
-"  let l:window_index = 0
-"  while l:window_index <= l:number_of_windows
-"    l:window_filetype = filetype(l:window_index)
-"    if l:window_filetype == a:file_type
-"      l:result = true
-"    endif
-"    let l:window_index++
-"  endwhile
-"
-"  return l:result
-"endfunction
-
 "
 " RotateSplits
 " This function takes two veritcal splits and rotates them to be two
@@ -105,27 +88,6 @@ function! RotateSplits()
    exe initial . "wincmd w"
 endfunction
 com! RotateSplits call RotateSplits()
-
-"
-" WordProcessor
-" a command that will set you up for a distraction free word processor. 
-"
-function! WordProcessorMode()
-  Goyo 80
-  setlocal formatoptions=1
-  setlocal noexpandtab
-  map j gj
-  map k gk
-  setlocal spell spelllang=en_us
-  set thesaurus+= "$HOME/.vim/thesaurus/thesaurus.txt"
-  set complete+=s
-  set formatprg=par
-  set nonu
-  setlocal wrap
-  setlocal linebreak
-endfunction
-com! WP call WordProcessorMode()
-com! WordProcessor call WordProcessorMode()
 
 "
 " RemoveTrailingWhitespace
@@ -157,9 +119,72 @@ function! EnsureDirExists()
     endif
 endfunction
 
-augroup AutoMkdir
-    autocmd!
-    autocmd  BufNewFile  *  :call EnsureDirExists()
-augroup END
+" When the quickfix buffer is opened, make sure that we're on only one window.
+function! OpenQuickfixHere() abort
+  copen
+  let bufn = bufnr('%')
+  let winn = winnr()
+  wincmd p
+  execute 'b'.bufn
+  execute winn.'close'
+endfunction
+
+function OpenQuickFixList()
+    let l:number_of_windows = winnr('$') 
+
+    if l:number_of_windows == 1
+        :vs
+        call OpenQuickfixHere()
+        wincmd p
+    else
+        OtherWindowVertical
+        call OpenQuickfixHere()
+    endif
+
+    " if l:number_of_windows == 1
+    "     " vert call OpenQuickfixHere()
+    "     wincmd o
+    "     vert cwindow
+    "     wincmd p
+    "     wincmd =
+    " else
+    "     OtherWindowVertical
+    "     call OpenQuickfixHere()
+    " endif
+
+endfunction
+
+function! MakeWithoutAsking()
+    let l:number_of_windows = winnr('$') 
+
+    if l:number_of_windows == 1
+        :AsyncRun -program=make
+        :vs
+        call OpenQuickfixHere()
+        :OtherWindowVertical
+    else
+        :AsyncRun -program=make
+        OtherWindowVertical
+        call OpenQuickfixHere()
+        :OtherWindowVertical
+    endif
+endfunction
+command! MakeWithoutAsking call MakeWithoutAsking()
+
+function! SearchCodebase()
+    let l:number_of_windows = winnr('$') 
+    if l:number_of_windows == 1
+        :Ag
+        :RotateSplits
+    else
+        let initial = winnr()
+        :Ag
+        :cclose
+        exe initial . "wincmd w"
+        OtherWindowVertical
+        call OpenQuickfixHere()
+    endif
+endfunction
+
 
 " vim:set sw=2 sts=2 foldmethod=marker foldlevel=0:
