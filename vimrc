@@ -15,6 +15,9 @@ Plug 'tpope/vim-vinegar'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'rking/ag.vim'
 Plug 'skywind3000/asyncrun.vim'
+
+Plug 'tpope/vim-commentary'
+Plug 'vim-scripts/BufOnly.vim'
 call plug#end()
 
 " ctrlp
