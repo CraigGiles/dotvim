@@ -45,5 +45,5 @@ endfunction
 " TODO(craig) try to get Magit to use the other window if open, split if not
 " command! magit :OtherWindowVertical<CR>:Magit<CR> 
 " command! MagitV :enew | :set buftype=nofile | :keepalt :Magit<CR>
-cnoreabbrev magit Magit
+" NOTE This is the one that workedcnoreabbrev magit Magit
 

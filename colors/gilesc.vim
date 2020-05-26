@@ -15,8 +15,8 @@ let g:colors_name = "gilesc"
 " ----------------------------------------------------------------------------------
 hi Cursor ctermfg=188 ctermbg=250 cterm=NONE guifg=#393939 guibg=#40FF40 gui=NONE
 hi CursorLine ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#191970 gui=NONE
-hi Normal ctermfg=188 ctermbg=235 cterm=NONE guifg=#d2cbc0 guibg=#122A2C gui=NONE
-hi NonText ctermfg=188 ctermbg=235 cterm=NONE guifg=#d2cbc0 guibg=#122A2C gui=NONE
+hi Normal ctermfg=188 ctermbg=235 cterm=NONE guifg=#D2CBC0 guibg=#072626 gui=NONE
+hi NonText ctermfg=188 ctermbg=235 cterm=NONE guifg=#D2CBC0 guibg=#072626 gui=NONE
 hi Comment ctermfg=244 ctermbg=NONE cterm=NONE guifg=#7f7f7f guibg=NONE gui=NONE
 hi Constant ctermfg=103 ctermbg=NONE cterm=NONE guifg=#6b8e23 guibg=NONE gui=NONE
 hi String ctermfg=71 ctermbg=NONE cterm=NONE guifg=#65b29e guibg=NONE gui=NONE
