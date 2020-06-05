@@ -20,6 +20,7 @@ endfunction
 
 function! SetCursorToPreviousBlankLine()
     let line_number = GetPreviousBlankLineNumber()
+    echo printf("Setting cursor to %i", line_number)
     let mylist = [bufnr(), line_number, 1, 0]
     call setpos('.', mylist)
 endfunction

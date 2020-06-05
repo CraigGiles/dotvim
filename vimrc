@@ -138,7 +138,7 @@ if has('gui_macvim')
     nnoremap <D-N> :cprev<CR>
     nnoremap <D-p> :CtrlP<CR>
     nnoremap <D-b> :CtrlPBuffer<CR>
-    nnoremap <D-6> :OtherWindowVertical<CR><C-^>
+    nnoremap <D-6> :OtherWindowVertical<CR><C-^>:OtherWindowVertical<CR>
 endif
 
 if has('gui_vimr')
@@ -149,7 +149,7 @@ if has('gui_vimr')
     nnoremap <D-N> :cprev<CR>
     nnoremap <D-p> :CtrlP<CR>
     nnoremap <D-b> :CtrlPBuffer<CR>
-    nnoremap <D-6> :OtherWindowVertical<CR><C-^>
+    nnoremap <D-6> :OtherWindowVertical<CR><C-^>:OtherWindowVertical<CR>
 endif
 
 "
