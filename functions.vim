@@ -155,15 +155,17 @@ function OpenQuickFixList()
 endfunction
 
 function! MakeWithoutAsking()
+    :wa
+    :cclose
+    :AsyncRun -program=make
+
     let l:number_of_windows = winnr('$') 
 
     if l:number_of_windows == 1
-        :AsyncRun -program=make
         :vs
         call OpenQuickfixHere()
         :OtherWindowVertical
     else
-        :AsyncRun -program=make
         OtherWindowVertical
         call OpenQuickfixHere()
         :OtherWindowVertical
