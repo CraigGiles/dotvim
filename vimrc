@@ -141,6 +141,17 @@ if has('gui_macvim')
     nnoremap <D-6> :OtherWindowVertical<CR><C-^>
 endif
 
+if has('gui_vimr')
+    nnoremap <C-f> :call SearchCodebase()<CR>
+    nnoremap <D-f> :CtrlP<CR>
+    nnoremap <D-m> :MakeWithoutAsking<CR>
+    nnoremap <D-n> :cnext<CR>
+    nnoremap <D-N> :cprev<CR>
+    nnoremap <D-p> :CtrlP<CR>
+    nnoremap <D-b> :CtrlPBuffer<CR>
+    nnoremap <D-6> :OtherWindowVertical<CR><C-^>
+endif
+
 "
 "      --- Settings ---
 " -------------------------------------------------
