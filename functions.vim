@@ -99,12 +99,25 @@ function! RemoveTrailingWhitespaces()
 endfunction
 command! RemoveTrailingWhitespace call RemoveTrailingWhitespaces()
 
+"
+" AskQuit
+" Add a confirmation for quitting rather than just exiting the program.
+" Mainly used in the flow for custom functions and NOT hooked into already
+" existing functions like :q
+"
 function! AskQuit(msg, options, quit_option)
     if confirm(a:msg, a:options) == a:quit_option
         exit
     endif
 endfunction
 
+"
+" EnsureDirExists
+" When creating a file in a path that doesn't exist, this function will
+" be called alerting you to the fact that the path isn't valid and you 
+" will be unable to save the file. If the system is able to create the 
+" directory then it will, otherwise it will ask you if you want to quit.
+"
 function! EnsureDirExists()
     let required_dir = expand("%:h")
     if !isdirectory(required_dir)
@@ -141,18 +154,6 @@ function OpenQuickFixList()
         OtherWindowVertical
         call OpenQuickfixHere()
     endif
-
-    " if l:number_of_windows == 1
-    "     " vert call OpenQuickfixHere()
-    "     wincmd o
-    "     vert cwindow
-    "     wincmd p
-    "     wincmd =
-    " else
-    "     OtherWindowVertical
-    "     call OpenQuickfixHere()
-    " endif
-
 endfunction
 
 function! MakeWithoutAsking()
