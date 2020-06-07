@@ -52,6 +52,18 @@ function! SetCursorToNextBlankLine()
 endfunction
 command! SetCursorToNextBlankLine call SetCursorToNextBlankLine()
 
+function! IsLeftSplit()
+   let s:current_window = winnr()
+   wincmd h
+   if winnr() == s:current_window
+     return 1
+   else
+     wincmd l
+     return 0
+   endif
+endfunction
+command! IsLeftSplit call IsLeftSplit()
+
 "
 " OtherWindowVerticalSplit
 " When operating in a two split space (which is my norm) calling :OtherWindow
@@ -156,21 +168,37 @@ function OpenQuickFixList()
     endif
 endfunction
 
+function! GetQuickfixWindowNumber()
+    let qf_number = filter(range(1, winnr('$')), 'getwinvar(v:val, "&ft") == "qf"')
+    let result = get(qf_number, 0, bufnr("%"))
+    return result
+endfunction
+command! QuickfixWindowNumber call GetQuickfixWindowNumber()
+
 function! MakeWithoutAsking()
     :wa
-    :cclose
     :AsyncRun -program=make
 
     let l:number_of_windows = winnr('$') 
+    let l:quickfix_window_number = GetQuickfixWindowNumber()
 
     if l:number_of_windows == 1
         :vs
-        call OpenQuickfixHere()
-        :OtherWindowVertical
+        :call OpenQuickfixHere()
     else
-        OtherWindowVertical
-        call OpenQuickfixHere()
-        :OtherWindowVertical
+        " 
+        " If one of the windows is a quickfix window, do nothing.. it will
+        " auto refresh.
+        "
+        " If neither window is quickfix, goto 'OtherWindow' and open there.
+        "
+        if l:quickfix_window_number == bufnr("%")
+            echo "OPening quickfix in toher window"
+            OtherWindowVertical
+            call OpenQuickfixHere()
+            OtherWindowVertical
+        endif
+
     endif
 endfunction
 command! MakeWithoutAsking call MakeWithoutAsking()

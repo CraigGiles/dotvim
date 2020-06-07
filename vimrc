@@ -101,6 +101,7 @@ endif
 "      --- Key Bindings ---
 " -------------------------------------------------
 nnoremap <Space>ed :e ~/.vim/vimrc<CR>
+nnoremap <Space>es :source ~/.vim/vimrc<CR>
 
 " Exit the Ex menu without executing the command
 cnoremap <C-g><C-g> <c-c>
