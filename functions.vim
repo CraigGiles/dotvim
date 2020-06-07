@@ -218,4 +218,14 @@ function! SearchCodebase()
     endif
 endfunction
 
+function GuiVimRunFullscreen()
+    " TODO store the previous columns and lines, restore later
+    if has('gui_macvim')
+        set columns=1000
+        set lines=1000
+    endif
+endfunction
+command! RunFullScreen call GuiVimRunFullscreen()
+
+
 " vim:set sw=2 sts=2 foldmethod=marker foldlevel=0:

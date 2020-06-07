@@ -86,8 +86,9 @@ augroup end
 "      --- Font and vimrc.local ---
 " -------------------------------------------------
 if has('gui_macvim')
-  set guifont=Liberation\ Mono:h12
+  set guifont=Liberation\ Mono:h10
 
+  nnoremap <D-F10> :RunFullScreen<CR>
   " Don't have scroll bars
   set guioptions=
 endif
