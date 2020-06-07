@@ -147,12 +147,12 @@ endfunction
 
 " When the quickfix buffer is opened, make sure that we're on only one window.
 function! OpenQuickfixHere() abort
-  copen
-  let bufn = bufnr('%')
-  let winn = winnr()
-  wincmd p
-  execute 'b'.bufn
-  execute winn.'close'
+    copen
+    let bufn = bufnr('%')
+    let winn = winnr()
+    wincmd p
+    execute 'b'.bufn
+    execute winn.'close'
 endfunction
 
 function OpenQuickFixList()
