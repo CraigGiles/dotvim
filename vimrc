@@ -134,6 +134,7 @@ nnoremap <Space>vs :RotateSplits<CR>
 if has('gui_macvim')
     nnoremap <C-f> :call SearchCodebase()<CR>
     nnoremap <D-f> :CtrlP<CR>
+    nnoremap <D-b> :CtrlPBuffer<CR>
     nnoremap <D-m> :MakeWithoutAsking<CR>
     nnoremap <D-n> :cnext<CR>
     nnoremap <D-N> :cprev<CR>
@@ -145,6 +146,7 @@ endif
 if has('gui_vimr')
     nnoremap <C-f> :call SearchCodebase()<CR>
     nnoremap <D-f> :CtrlP<CR>
+    nnoremap <D-b> :CtrlPBuffer<CR>
     nnoremap <D-m> :MakeWithoutAsking<CR>
     nnoremap <D-n> :cnext<CR>
     nnoremap <D-N> :cprev<CR>
