@@ -11,3 +11,4 @@ augroup ScalaAutoCommmands
     autocmd FileType scala setlocal commentstring=//\ %s
     autocmd FileType sbt setlocal commentstring=#\ %s
 augroup END
+

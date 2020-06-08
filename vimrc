@@ -14,8 +14,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'jreybert/vimagit'
 
 Plug 'ctrlpvim/ctrlp.vim'
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'junegunn/fzf.vim'
+Plug 'derekwyatt/vim-fswitch'
 Plug 'rking/ag.vim'
 Plug 'skywind3000/asyncrun.vim'
 
@@ -27,7 +26,8 @@ call plug#end()
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
 let g:ctrlp_use_caching = 0
-let g:ctrlp_working_path_mode = 'ra'
+" let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_working_path_mode = 0
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn|target)$',
   \ 'file': '\v\.(exe|so|dll)$',
@@ -46,38 +46,14 @@ augroup auto_make_directory
     autocmd  BufNewFile  *  :call EnsureDirExists()
 augroup END
 
-augroup markdown_mode
-    autocmd! markdown_mode
-    autocmd Filetype markdown source ~/.vim/fixme_colors.vim
-augroup end
-
 augroup ags_mode
     autocmd! ags_mode
     autocmd Filetype agsv nmap <buffer> <D-n> :AgsNextResult<CR>
     autocmd Filetype agsv nmap <buffer> <D-N> :AgsPrevResult<CR>
 augroup end
 
-augroup go_mode
-    autocmd! go_mode
-    autocmd Filetype go nmap <buffer> <C-b> :GoDef<CR>
-
-    " Debug
-    autocmd Filetype go nmap <buffer> <F5> :GoDebugStart<CR>
-    autocmd Filetype go nmap <buffer> <F9> :GoDebugBreakpoint<CR>
-    autocmd Filetype go nmap <buffer> <F10> :GoDebugNext<CR>
-    autocmd Filetype go nmap <buffer> <F11> :GoDebugStep<CR>
-    autocmd Filetype go nmap <buffer> <F12> :GoDebugStepOut<CR>
-augroup end
-
-augroup all_filetypes
-    autocmd Filetype * source ~/.vim/fixme_colors.vim
-augroup end
-
-augroup vimrc_mode
-    autocmd! vimrc_mode
-    " autocmd bufwritepost vimrc source $MYVIMRC
-    " autocmd bufwritepost .vimrc source $MYVIMRC
-augroup end
+abbrev magit Magit
+abbrev help Help
 
 "
 "      --- Font and vimrc.local ---

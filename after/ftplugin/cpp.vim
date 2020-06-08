@@ -1,11 +1,31 @@
+source ~/.vim/fixme_colors.vim
 
-augroup CPlusPlusAutoCommmands
-    autocmd!
-    autocmd BufWritePost *.cpp,*.h,*.hpp RemoveTrailingWhitespace
+augroup local_ftplugin_cpp
+    au!
+    " Change the directory when entering a buffer
+    au BufWinEnter,BufEnter *.h,*.cpp :lcd %:h
 
-    setlocal commentstring=//\ %s
+    au BufEnter *.cpp let b:fswitchdst = 'hpp,h' | let b:fswitchlocs = '.'
+    au BufEnter *.h let b:fswitchdst = 'cpp,c' | let b:fswitchlocs = '.'
 augroup END
 
+function! FSOtherWindow()
+    let number_of_windows = winnr('$') 
+    if number_of_windows == 1
+        FSHere
+    else
+        OtherWindowVertical
+        FSHere
+        OtherWindowVertical
+    endif
+endfunction
+
+nmap <F12> :FSHere<CR>
+if has('gui_macvim')
+    nmap <D-F12> :call FSOtherWindow()<CR>
+else
+    nmap <C-F12> :call FSOtherWindow()<CR>
+endif
 
 " We want to keep comments within an 80 column limit, but not code.
 " These two options give us that

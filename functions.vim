@@ -175,10 +175,33 @@ function! GetQuickfixWindowNumber()
 endfunction
 command! QuickfixWindowNumber call GetQuickfixWindowNumber()
 
-" TODO: make this function search upwards for the proper directory
+function! TestMe(filename, path)
+    " return true if file is found
+    " return false if not
+    " echo findfile("Makefile", ".;~")
+    " execute "make ".findfile("Makefile", ".;~")
+    " execute "!./".findfile("build.sh", ".;~")
+    "
+    " echo fnamemodify(findfile("Makefile", ".;~"), ':p')
+
+    let s:current_directory = expand("%:p") 
+    let s:makefile_directory = fnamemodify(findfile("Makefile", ".;~"), ':p')
+
+    echo "Current Dir:".s:current_directory." -- Makefile Dir:". s:makefile_directory
+    " cd fnamemodify(findfile("Makefile", ".;~"), ':p')
+
+    "
+    " echo "FileName:".a:filename . " -- Path:".a:path
+    " let result = findfile(a:filename, a:path)
+    " echo "Result: ".result
+    " echo !empty(result)
+    " echo !empty(findfile(a:filename, a:path.';'))
+endfunction
+command! Test call TestMe("Makefile", ".")
+
 function! MakeWithoutAsking()
     :wa
-    :AsyncRun -program=make
+    :AsyncRun -cwd=<root> -program=make
 
     let l:number_of_windows = winnr('$') 
     let l:quickfix_window_number = GetQuickfixWindowNumber()
