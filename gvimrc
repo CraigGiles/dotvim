@@ -21,6 +21,8 @@ if has('gui_macvim')
   macmenu Edit.Select\ All key=<nop>
   macmenu Edit.Emoji\ &\ Symbols key=<nop>
   macmenu Edit.Find.Find\.\.\. key=<nop>
+  macmenu Edit.Font.Bigger key=<nop>
+  macmenu Edit.Font.Smaller key=<nop>
 
   macmenu Tools.Make key=<nop>
   macmenu Tools.List\ Errors key=<nop>

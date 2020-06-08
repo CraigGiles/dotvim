@@ -87,11 +87,15 @@ augroup end
 " -------------------------------------------------
 if has('gui_macvim')
   set guifont=Liberation\ Mono:h10
+endif
 
+if has('gui_macvim') || has('gui_vimr')
   nnoremap <D-F10> :RunFullScreen<CR>
+
   " Don't have scroll bars
   set guioptions=
 endif
+
 
 let s:vimrc_local = $HOME . '/.vim/vimrc.local'
 if filereadable(s:vimrc_local)
@@ -131,8 +135,11 @@ nnoremap <C-k> :SetCursorToPreviousBlankLine<CR>
 nnoremap <Space>sp :RotateSplits<CR>
 nnoremap <Space>vs :RotateSplits<CR>
 
+" Change the directory to the current file
+command CDC cd %:p:h
+
 " cmd f opens up the file list
-if has('gui_macvim')
+if has('gui_macvim') || has('gui_vimr')
     nnoremap <C-f> :call SearchCodebase()<CR>
     nnoremap <D-f> :CtrlP<CR>
     nnoremap <D-b> :CtrlPBuffer<CR>
@@ -142,19 +149,14 @@ if has('gui_macvim')
     nnoremap <D-p> :CtrlP<CR>
     nnoremap <D-b> :CtrlPBuffer<CR>
     nnoremap <D-6> :OtherWindowVertical<CR><C-^>:OtherWindowVertical<CR>
+
+    " Testing these for folding methods
+    set foldmethod=syntax
+    nnoremap <D-=> :set foldlevel=10<CR>
+    nnoremap <D--> :set foldlevel=0<CR>
 endif
 
-if has('gui_vimr')
-    nnoremap <C-f> :call SearchCodebase()<CR>
-    nnoremap <D-f> :CtrlP<CR>
-    nnoremap <D-b> :CtrlPBuffer<CR>
-    nnoremap <D-m> :MakeWithoutAsking<CR>
-    nnoremap <D-n> :cnext<CR>
-    nnoremap <D-N> :cprev<CR>
-    nnoremap <D-p> :CtrlP<CR>
-    nnoremap <D-b> :CtrlPBuffer<CR>
-    nnoremap <D-6> :OtherWindowVertical<CR><C-^>:OtherWindowVertical<CR>
-endif
+nnoremap <Tab> zA
 
 "
 "      --- Settings ---
@@ -185,6 +187,7 @@ set scrolloff=8            " Keep cursor 8 lines from top and bottom while scrol
 set nobackup               " don't use backup files
 set nowb                   " don't use backup files
 set noswapfile             " don't use swap files
+set foldlevel=10           " Start out without a lot of folds
 
 " undo all the things
 if has('persistent_undo')

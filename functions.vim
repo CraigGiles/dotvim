@@ -185,6 +185,7 @@ function! MakeWithoutAsking()
     if l:number_of_windows == 1
         :vs
         :call OpenQuickfixHere()
+        OtherWindowVertical
     else
         " 
         " If one of the windows is a quickfix window, do nothing.. it will
@@ -218,14 +219,20 @@ function! SearchCodebase()
     endif
 endfunction
 
-function GuiVimRunFullscreen()
+function! GuiVimRunFullscreen()
     " TODO store the previous columns and lines, restore later
     if has('gui_macvim')
-        set columns=1000
-        set lines=1000
+        set columns=320
+        set lines=70
+        wincmd =
     endif
 endfunction
 command! RunFullScreen call GuiVimRunFullscreen()
 
+function! FullScreenHelp(term)
+    help term
+    wincmd _
+endfunction
+command! -nargs=1 Help call FullScreenHelp(string(<q-args>))
 
 " vim:set sw=2 sts=2 foldmethod=marker foldlevel=0:
