@@ -8,7 +8,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let g:colors_name = "gilesc"
+let g:colors_name = "nosyntax"
 " Test Color: #40FF40
 
 " Modified

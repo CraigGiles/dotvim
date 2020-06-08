@@ -2,6 +2,7 @@
 augroup CPlusPlusAutoCommmands
     autocmd!
     autocmd BufWritePost *.cpp,*.h,*.hpp RemoveTrailingWhitespace
+
     setlocal commentstring=//\ %s
 augroup END
 

@@ -75,8 +75,8 @@ augroup end
 
 augroup vimrc_mode
     autocmd! vimrc_mode
-    autocmd bufwritepost vimrc source $MYVIMRC
-    autocmd bufwritepost .vimrc source $MYVIMRC
+    " autocmd bufwritepost vimrc source $MYVIMRC
+    " autocmd bufwritepost .vimrc source $MYVIMRC
 augroup end
 
 "
@@ -120,6 +120,8 @@ inoremap JK <ESC>
 " Turn off that stupid highlight search
 nnoremap <silent> <Space>n :noh<CR>
 
+nnoremap <D-j> :CtrlPLine<CR>
+
 " When selecting text in visual mode,
 " Delete or Backspace removes it
 vmap <BS> x
@@ -135,8 +137,10 @@ nnoremap <Space>vs :RotateSplits<CR>
 " Tab toggles folds
 nnoremap <Tab> za
 
+autocmd BufNewFile  *.h	    0r ~/.vim/templates/cpp/template.h|exe "%s/__CLASS_NAME__/" . toupper(expand('%:t:r')) . "_H"
+
 " Change the directory to the current file
-command CDC cd %:p:h
+command CD cd %:p:h
 
 " cmd f opens up the file list
 if has('gui_macvim') || has('gui_vimr')

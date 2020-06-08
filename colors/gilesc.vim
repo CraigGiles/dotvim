@@ -8,7 +8,7 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let g:colors_name = "nosyntax"
+let g:colors_name = "gilesc"
 " Test Color: #40FF40
 
 " Vertical Line Separator
@@ -36,7 +36,6 @@ hi Special ctermfg=172 ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 " Status Line
 hi StatusLine ctermfg=67 ctermbg=236 cterm=bold guifg=#000000 guibg=#cdaa7d gui=bold
 
-" hi Constant ctermfg=103 ctermbg=NONE cterm=NONE guifg=#6B8E23 guibg=NONE gui=NONE
 hi Constant ctermfg=103 ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi Character ctermfg=71 ctermbg=NONE cterm=NONE guifg=#65B29E guibg=NONE gui=NONE
 hi Keyword ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
@@ -44,32 +43,16 @@ hi Conditional ctermfg=172 ctermbg=NONE cterm=NONE guifg=#DAB98F guibg=NONE gui=
 hi Label ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 
 hi Boolean ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
-hi Function ctermfg=NONE ctermbg=NONE cterm=bold guifg=#d2cbc0 guibg=NONE gui=NONE
+hi Function ctermfg=NONE ctermbg=NONE cterm=bold guifg=#D2CBC0 guibg=NONE gui=NONE
 hi PreProc ctermfg=NONE ctermbg=NONE cterm=NONE guifg=#DAB98F guibg=NONE gui=NONE
 hi Directory ctermfg=NONE ctermbg=NONE cterm=NONE guifg=#6495ed guibg=NONE gui=italic
 
-hi Statement ctermfg=NONE ctermbg=NONE cterm=NONE guifg=#D2CBC0 guibg=NONE gui=NONE
+hi Statement ctermfg=222 ctermbg=NONE cterm=NONE guifg=#DAB98F guibg=NONE gui=NONE
 hi Todo ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi Identifier ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi Type ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
-" hi Number ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
-
-hi Number ctermfg=NONE ctermbg=NONE cterm=NONE guifg=#CDAA7D guibg=NONE gui=NONE
+hi Number ctermfg=NONE ctermbg=NONE cterm=NONE guifg=#89CFF0 guibg=NONE gui=NONE
 hi Visual ctermfg=NONE ctermbg=24 cterm=NONE guifg=NONE guibg=#214283 gui=NONE
 hi Folded ctermfg=244 ctermbg=235 cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi IncSearch term=reverse ctermfg=188 ctermbg=24 guifg=#404245 guibg=#b1c73d gui=none
 hi Search term=reverse ctermfg=188 ctermbg=24 guifg=#b8c4d0 guibg=#214283 gui=none
-
-
-
-
-
-
-
-
-
-
-
-
-
-

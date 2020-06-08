@@ -175,6 +175,7 @@ function! GetQuickfixWindowNumber()
 endfunction
 command! QuickfixWindowNumber call GetQuickfixWindowNumber()
 
+" TODO: make this function search upwards for the proper directory
 function! MakeWithoutAsking()
     :wa
     :AsyncRun -program=make
@@ -229,10 +230,11 @@ function! GuiVimRunFullscreen()
 endfunction
 command! RunFullScreen call GuiVimRunFullscreen()
 
-function! FullScreenHelp(term)
-    help term
+function! FullScreenHelp(query)
+    OtherWindowVertical
+    execute "help " . a:query
     wincmd _
 endfunction
-command! -nargs=1 Help call FullScreenHelp(string(<q-args>))
+command! -nargs=1 Help call FullScreenHelp(<f-args>)
 
 " vim:set sw=2 sts=2 foldmethod=marker foldlevel=0:
