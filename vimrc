@@ -1,4 +1,4 @@
-colorscheme nosyntax
+colorscheme gilesc
 
 source ~/.vim/functions.vim
 source ~/.vim/statusline.vim
@@ -56,12 +56,6 @@ augroup ags_mode
     autocmd Filetype agsv nmap <buffer> <D-n> :AgsNextResult<CR>
     autocmd Filetype agsv nmap <buffer> <D-N> :AgsPrevResult<CR>
 augroup end
-
-" When the quickfix buffer gets opened
-augroup quickfix
-    autocmd!
-    " autocmd QuickFixCmdPost [^l]* call OpenQuickFixList()
-augroup END
 
 augroup go_mode
     autocmd! go_mode
@@ -138,6 +132,9 @@ nnoremap <C-k> :SetCursorToPreviousBlankLine<CR>
 nnoremap <Space>sp :RotateSplits<CR>
 nnoremap <Space>vs :RotateSplits<CR>
 
+" Tab toggles folds
+nnoremap <Tab> za
+
 " Change the directory to the current file
 command CDC cd %:p:h
 
@@ -148,11 +145,11 @@ if has('gui_macvim') || has('gui_vimr')
     nnoremap <D-f> :CtrlP<CR>
     nnoremap <D-b> :CtrlPBuffer<CR>
     nnoremap <D-p> :CtrlP<CR>
-    ""
+
+    " FZF key bindings
     "nnoremap <D-f> :Files<CR>
     "nnoremap <D-b> :Buffers<CR>
     "nnoremap <D-p> :Files<CR>
-    " nnoremap <D-b> :Buffers<CR>
 
     nnoremap <D-m> :MakeWithoutAsking<CR>
     nnoremap <D-n> :cnext<CR>
@@ -164,8 +161,6 @@ if has('gui_macvim') || has('gui_vimr')
     nnoremap <D-=> :set foldlevel=10<CR>
     nnoremap <D--> :set foldlevel=0<CR>
 endif
-
-nnoremap <Tab> zA
 
 "
 "      --- Settings ---
@@ -201,7 +196,7 @@ set foldlevel=10           " Start out without a lot of folds
 " undo all the things
 if has('persistent_undo')
     set undolevels=5000
-    set undodir=$HOME/.VIM_UNDO_FILES
+    set undodir=$HOME/.vim/.VIM_UNDO_FILES
     set undofile
 endif
 
