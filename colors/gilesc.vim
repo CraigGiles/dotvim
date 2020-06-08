@@ -31,7 +31,7 @@ hi Comment ctermfg=244 ctermbg=NONE cterm=NONE guifg=#7f7f7f guibg=NONE gui=NONE
 hi String ctermfg=71 ctermbg=NONE cterm=NONE guifg=#65b29e guibg=NONE gui=NONE
 
 " %d and such in c strings, objects in scala, etc
-hi Special ctermfg=172 ctermbg=NONE cterm=NONE guifg=#d58b48 guibg=NONE gui=NONE
+hi Special ctermfg=172 ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 
 " Status Line
 hi StatusLine ctermfg=67 ctermbg=236 cterm=bold guifg=#000000 guibg=#cdaa7d gui=bold
