@@ -18,6 +18,7 @@ Plug 'derekwyatt/vim-fswitch'
 Plug 'rking/ag.vim'
 Plug 'skywind3000/asyncrun.vim'
 
+Plug 'CraigGiles/scala.vim'
 Plug 'tpope/vim-commentary'
 Plug 'vim-scripts/BufOnly.vim'
 call plug#end()
@@ -123,7 +124,7 @@ nnoremap <Tab> za
 autocmd BufNewFile  *.h	    0r ~/.vim/templates/cpp/template.h|exe "%s/__CLASS_NAME__/" . toupper(expand('%:t:r')) . "_H"
 
 " Change the directory to the current file
-command CD cd %:p:h
+command! CD cd %:p:h
 
 " cmd f opens up the file list
 if has('gui_macvim') || has('gui_vimr')
