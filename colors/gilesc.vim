@@ -25,6 +25,7 @@ hi Statement ctermfg=222 ctermbg=NONE cterm=NONE guifg=#DAB98F guibg=NONE gui=NO
 hi StatusLine ctermfg=67 ctermbg=236 cterm=bold guifg=#000000 guibg=#cdaa7d gui=bold
 hi Keyword ctermfg=172 ctermbg=NONE cterm=NONE guifg=#DAB98F guibg=NONE gui=NONE
 hi Conditional ctermfg=172 ctermbg=NONE cterm=NONE guifg=#DAB98F guibg=NONE gui=NONE
+hi Number ctermfg=NONE ctermbg=NONE cterm=NONE guifg=#CDAA7D guibg=NONE gui=NONE
 
 hi Boolean ctermfg=103 ctermbg=NONE cterm=NONE guifg=#d58b48 guibg=NONE gui=NONE
 hi Function ctermfg=221 ctermbg=NONE cterm=bold guifg=#d2cbc0 guibg=NONE gui=NONE
@@ -32,9 +33,10 @@ hi PreProc ctermfg=172 ctermbg=NONE cterm=NONE guifg=#DAB98F guibg=NONE gui=NONE
 hi Directory ctermfg=103 ctermbg=NONE cterm=NONE guifg=#6495ed guibg=NONE gui=italic
 
 " %d and such in c strings, objects in scala, etc
-hi Special ctermfg=172 ctermbg=NONE cterm=NONE guifg=#d58b48 guibg=NONE gui=NONE
+" hi Special ctermfg=172 ctermbg=NONE cterm=NONE guifg=#d58b48 guibg=NONE gui=NONE
+hi Special ctermfg=172 ctermbg=NONE cterm=NONE guifg=#D58B48 guibg=NONE gui=NONE
 
-hi Todo ctermfg=red ctermbg=NONE cterm=bold guifg=#cd2626 guibg=NONE gui=bold
+hi Todo ctermfg=red ctermbg=NONE cterm=bold guifg=#CD2626 guibg=NONE gui=bold
 
 " hi VertSplit ctermfg=60 ctermbg=236 cterm=NONE guifg=#000000 guibg=#000000 gui=NONE
 " hi VertSplit ctermfg=60 ctermbg=236 cterm=NONE guifg=#cdaa7d guibg=#cdaa7d gui=NONE

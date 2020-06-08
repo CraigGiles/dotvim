@@ -11,8 +11,11 @@ call plug#begin()
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vinegar'
+Plug 'jreybert/vimagit'
 
 Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf.vim'
 Plug 'rking/ag.vim'
 Plug 'skywind3000/asyncrun.vim'
 
@@ -141,13 +144,19 @@ command CDC cd %:p:h
 " cmd f opens up the file list
 if has('gui_macvim') || has('gui_vimr')
     nnoremap <C-f> :call SearchCodebase()<CR>
+
     nnoremap <D-f> :CtrlP<CR>
     nnoremap <D-b> :CtrlPBuffer<CR>
+    nnoremap <D-p> :CtrlP<CR>
+    ""
+    "nnoremap <D-f> :Files<CR>
+    "nnoremap <D-b> :Buffers<CR>
+    "nnoremap <D-p> :Files<CR>
+    " nnoremap <D-b> :Buffers<CR>
+
     nnoremap <D-m> :MakeWithoutAsking<CR>
     nnoremap <D-n> :cnext<CR>
     nnoremap <D-N> :cprev<CR>
-    nnoremap <D-p> :CtrlP<CR>
-    nnoremap <D-b> :CtrlPBuffer<CR>
     nnoremap <D-6> :OtherWindowVertical<CR><C-^>:OtherWindowVertical<CR>
 
     " Testing these for folding methods
