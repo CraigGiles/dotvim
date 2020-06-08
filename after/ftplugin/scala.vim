@@ -7,8 +7,10 @@ let g:scala_package_flat_package = 0
 augroup ScalaAutoCommmands
     autocmd!
     autocmd BufWritePost *.scala RemoveTrailingWhitespace
-    " code completion
-    autocmd FileType scala setlocal commentstring=//\ %s
-    autocmd FileType sbt setlocal commentstring=#\ %s
 augroup END
 
+" We want to keep comments within an 80 column limit, but not code.
+" These two options give us that
+setlocal formatoptions=crq
+setlocal textwidth=80
+setlocal commentstring=//\ %s

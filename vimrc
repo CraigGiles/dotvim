@@ -22,6 +22,7 @@ Plug 'tpope/vim-commentary'
 Plug 'vim-scripts/BufOnly.vim'
 call plug#end()
 
+
 " ctrlp
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
@@ -51,6 +52,13 @@ augroup ags_mode
     autocmd Filetype agsv nmap <buffer> <D-n> :AgsNextResult<CR>
     autocmd Filetype agsv nmap <buffer> <D-N> :AgsPrevResult<CR>
 augroup end
+
+augroup alternate_files_au
+  au!
+  au BufEnter *.cpp let b:fswitchdst = 'hpp,h' | let b:fswitchlocs = '.'
+  au BufEnter *.h let b:fswitchdst = 'cpp,c' | let b:fswitchlocs = '.'
+augroup END
+
 
 abbrev magit Magit
 

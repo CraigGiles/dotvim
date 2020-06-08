@@ -3,10 +3,9 @@ source ~/.vim/fixme_colors.vim
 augroup local_ftplugin_cpp
     au!
     " Change the directory when entering a buffer
-    au BufWinEnter,BufEnter *.h,*.cpp :lcd %:h
+    au! BufWinEnter,BufEnter *.h,*.cpp :lcd %:h
 
-    au BufEnter *.cpp let b:fswitchdst = 'hpp,h' | let b:fswitchlocs = '.'
-    au BufEnter *.h let b:fswitchdst = 'cpp,c' | let b:fswitchlocs = '.'
+    " TODO:L set comment string
 augroup END
 
 function! FSOtherWindow()
@@ -31,6 +30,7 @@ endif
 " These two options give us that
 setlocal formatoptions=crq
 setlocal textwidth=80
+setlocal commentstring=//\ %s
 
 " This makes doxygen comments work the same as regular comments
 setlocal comments-=://
