@@ -53,7 +53,6 @@ augroup ags_mode
 augroup end
 
 abbrev magit Magit
-abbrev help Help
 
 "
 "      --- Font and vimrc.local ---
