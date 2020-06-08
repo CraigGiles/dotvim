@@ -54,11 +54,8 @@ augroup ags_mode
     autocmd Filetype agsv nmap <buffer> <D-N> :AgsPrevResult<CR>
 augroup end
 
-augroup alternate_files_au
-  au!
-  au BufEnter *.cpp let b:fswitchdst = 'hpp,h' | let b:fswitchlocs = '.'
-  au BufEnter *.h let b:fswitchdst = 'cpp,c' | let b:fswitchlocs = '.'
-augroup END
+au! BufEnter *.cpp let b:fswitchdst = 'hpp,h' | let b:fswitchlocs = '.'
+au! BufEnter *.h let b:fswitchdst = 'cpp,c' | let b:fswitchlocs = '.'
 
 
 abbrev magit Magit

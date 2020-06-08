@@ -225,6 +225,8 @@ function! MakeWithoutAsking()
         endif
 
     endif
+
+    " setpos(".", [GetQuickfixWindowNumber(), 0, 0, 0])
 endfunction
 command! MakeWithoutAsking call MakeWithoutAsking()
 

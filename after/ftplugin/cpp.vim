@@ -13,18 +13,19 @@ function! FSOtherWindow()
     if number_of_windows == 1
         FSHere
     else
-        OtherWindowVertical
-        FSHere
-        OtherWindowVertical
+        " TODO: this doens't work like i had hoped.
+        " OtherWindowVertical
+        " FSHere
+        " OtherWindowVertical
     endif
 endfunction
 
 nmap <F12> :FSHere<CR>
-if has('gui_macvim')
-    nmap <D-F12> :call FSOtherWindow()<CR>
-else
-    nmap <C-F12> :call FSOtherWindow()<CR>
-endif
+" if has('gui_macvim')
+"     nmap <D-F12> :call FSOtherWindow()<CR>
+" else
+"     nmap <C-F12> :call FSOtherWindow()<CR>
+" endif
 
 " We want to keep comments within an 80 column limit, but not code.
 " These two options give us that
