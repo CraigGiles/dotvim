@@ -29,8 +29,8 @@ call plug#end()
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
 let g:ctrlp_use_caching = 0
-" let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_working_path_mode = 0
+let g:ctrlp_working_path_mode = 'ra'
+" let g:ctrlp_working_path_mode = 0
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn|target)$',
   \ 'file': '\v\.(exe|so|dll)$',
@@ -40,6 +40,8 @@ let g:ctrlp_custom_ignore = {
 " the_silver_searcher
 let g:ags_enable_async = 1
 let g:ag_working_path_mode="r"
+let g:tagbar_vertical = 30
+let g:tagbar_left = 0
 
 "
 "      --- Auto Groups ---
