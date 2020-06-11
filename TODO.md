@@ -1,5 +1,5 @@
 " -------------------------------------------------
 "   TODO
 " =================================================
-TODO: fix CMD-F
-TODO: try to get Magit to use the other window if open, split if not
+TODO: There are some windows where i can not 'q' out of.. and it bugs me
+TODO: colors in fugitive diff view (:Gstatus then hit '=' to show the diff)
