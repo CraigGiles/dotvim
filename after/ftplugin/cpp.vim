@@ -20,7 +20,9 @@ function! FSOtherWindow()
     endif
 endfunction
 
+
 nmap <F12> :FSHere<CR>
+
 " if has('gui_macvim')
 "     nmap <D-F12> :call FSOtherWindow()<CR>
 " else

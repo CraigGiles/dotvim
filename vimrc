@@ -12,6 +12,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-vinegar'
 Plug 'jreybert/vimagit'
+Plug 'majutsushi/tagbar'
 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'derekwyatt/vim-fswitch'
@@ -101,8 +102,6 @@ inoremap JK <ESC>
 " Turn off that stupid highlight search
 nnoremap <silent> <Space>n :noh<CR>
 
-nnoremap <D-j> :CtrlPLine<CR>
-
 " When selecting text in visual mode,
 " Delete or Backspace removes it
 vmap <BS> x
@@ -127,6 +126,7 @@ command! CD cd %:p:h
 if has('gui_macvim') || has('gui_vimr')
     nnoremap <C-f> :call SearchCodebase()<CR>
 
+    nnoremap <D-j> :TagbarOpenAutoClose<CR>
     nnoremap <D-f> :CtrlP<CR>
     nnoremap <D-b> :CtrlPBuffer<CR>
     nnoremap <D-p> :CtrlP<CR>
