@@ -19,6 +19,7 @@ Plug 'derekwyatt/vim-fswitch'
 Plug 'rking/ag.vim'
 Plug 'skywind3000/asyncrun.vim'
 
+Plug 'markonm/traces.vim'
 Plug 'CraigGiles/scala.vim'
 Plug 'tpope/vim-commentary'
 Plug 'vim-scripts/BufOnly.vim'
