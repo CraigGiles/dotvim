@@ -19,6 +19,7 @@ Plug 'derekwyatt/vim-fswitch'
 Plug 'rking/ag.vim'
 Plug 'skywind3000/asyncrun.vim'
 
+Plug 'tacahiroy/ctrlp-funky'
 Plug 'markonm/traces.vim'
 Plug 'CraigGiles/scala.vim'
 Plug 'tpope/vim-commentary'
@@ -129,7 +130,8 @@ command! CD cd %:p:h
 if has('gui_macvim') || has('gui_vimr')
     nnoremap <C-f> :call SearchCodebase()<CR>
 
-    nnoremap <D-j> :TagbarOpenAutoClose<CR>
+    " nnoremap <D-j> :TagbarOpenAutoClose<CR>
+    nnoremap <D-j> :CtrlPFunky<CR>
     nnoremap <D-f> :CtrlP<CR>
     nnoremap <D-b> :CtrlPBuffer<CR>
     nnoremap <D-p> :CtrlP<CR>
