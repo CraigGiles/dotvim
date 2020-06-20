@@ -129,7 +129,10 @@ command! CD cd %:p:h
 
 " cmd f opens up the file list
 if has('gui_macvim') || has('gui_vimr')
-    nnoremap <C-f> :call SearchCodebase()<CR>
+
+    " nnoremap <C-f> :call SearchCodebase(expand('<cword>'))<CR>
+
+    nnoremap <C-f> :call SearchCodebase(expand('<cword>'))<CR>
 
     " nnoremap <D-j> :TagbarOpenAutoClose<CR>
     nnoremap <D-j> :CtrlPFunky<CR>

@@ -256,26 +256,26 @@ function! MakeWithoutAsking()
 endfunction
 command! MakeWithoutAsking call MakeWithoutAsking()
 
-function! SearchCodebase()
-    let l:number_of_windows = winnr('$') 
-    if l:number_of_windows == 1
-        :Ag
-        :RotateSplits
-    else
-        let initial = winnr()
-        :Ag
-        :cclose
-        exe initial . "wincmd w"
-        OtherWindowVertical
-        call OpenQuickfixHere()
-    endif
+function! SearchCodebase(query)
+  let l:number_of_windows = winnr('$') 
+  if l:number_of_windows == 1
+      execute "Ag " . a:query
+      RotateSplits
+  else
+      let initial = winnr()
+      execute "Ag " . a:query
+      :cclose
+      execute initial . "wincmd w"
+      OtherWindowVertical
+      call OpenQuickfixHere()
+  endif
 endfunction
 
 function! GuiVimRunFullscreen()
     " TODO store the previous columns and lines, restore later
     if has('gui_macvim')
-        set columns=320
-        set lines=70
+        set columns=1000
+        set lines=300
         wincmd =
     endif
 endfunction
