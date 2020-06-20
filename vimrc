@@ -2,7 +2,6 @@ colorscheme gilesc
 
 source ~/.vim/functions.vim
 source ~/.vim/statusline.vim
-source ~/.vim/fixme_colors.vim
 
 "
 "      --- Plugins ---
@@ -61,6 +60,8 @@ augroup end
 
 au! BufEnter *.cpp let b:fswitchdst = 'hpp,h' | let b:fswitchlocs = '.'
 au! BufEnter *.h let b:fswitchdst = 'cpp,c' | let b:fswitchlocs = '.'
+
+au! BufEnter * :FixmeModes
 
 
 abbrev magit Magit
@@ -165,7 +166,6 @@ highlight       Search    ctermfg=Red ctermbg=Yellow guifg=Red guibg=Yellow
 
 set tabstop=4              " Tab Stop at 4 unless plugin overwrites it
 set shiftwidth=4
-set linespace=4            " Vertical line space
 set expandtab              " Always use spaces instead of tabs
 set autoread               " Read a file that has changed on disk
 set autowrite              " Auto write to disk when buffer is changed
@@ -204,6 +204,8 @@ set wildignore+=*.bak
 " Re-add these since i want my fuzzy finder to find them
 set wildignore-=*.thrift
 set wildignore-=*.sql
+
+source ~/.vim/fixme_colors.vim
 
 " NOTE: don't get rid of this
 :noh
