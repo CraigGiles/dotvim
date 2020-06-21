@@ -244,7 +244,6 @@ function! MakeWithoutAsking()
         " If neither window is quickfix, goto 'OtherWindow' and open there.
         "
         if l:quickfix_window_number == bufnr("%")
-            echo "OPening quickfix in toher window"
             OtherWindowVertical
             call OpenQuickfixHere()
             OtherWindowVertical
