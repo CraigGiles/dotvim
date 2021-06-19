@@ -29,6 +29,3 @@ if has('gui_macvim')
 
   macmenu Window.Minimize key=<nop>
 endif
-
-if has('gui_vimr')
-endif

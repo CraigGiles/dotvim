@@ -225,10 +225,7 @@ function! TestMe(filename, path)
 endfunction
 command! Test call TestMe("Makefile", ".")
 
-function! MakeWithoutAsking()
-    :wa
-    :AsyncRun -cwd=<root> -program=make
-
+function! OpenQuickfixInOtherWindow()
     let l:number_of_windows = winnr('$') 
     let l:quickfix_window_number = GetQuickfixWindowNumber()
 
@@ -250,8 +247,14 @@ function! MakeWithoutAsking()
         endif
 
     endif
+endfunction
+command! OpenQuickfixInOtherWindow call OpenQuickfixInOtherWindow()
 
-    " setpos(".", [GetQuickfixWindowNumber(), 0, 0, 0])
+
+function! MakeWithoutAsking()
+    :wa
+    :AsyncRun -cwd=<root> -program=make
+    OpenQuickfixInOtherWindow
 endfunction
 command! MakeWithoutAsking call MakeWithoutAsking()
 
