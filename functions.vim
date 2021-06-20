@@ -173,6 +173,10 @@ endfunction
 
 " When the quickfix buffer is opened, make sure that we're on only one window.
 function! OpenQuickfixHere() abort
+  " Store the current buffer so we can re-claim it when we close
+    let g:old_bufn = bufnr('%')
+    let g:old_winn = winnr()
+
     copen
     let bufn = bufnr('%')
     let winn = winnr()

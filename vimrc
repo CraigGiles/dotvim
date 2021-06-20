@@ -45,6 +45,21 @@ let g:ctrlp_custom_ignore = {
 "
 "      --- Auto Groups ---
 " -------------------------------------------------
+augroup quickfix_group
+  autocmd! quickfix_group
+  au FileType qf map <buffer> q <C-^>
+augroup END
+
+augroup fugitive_group
+  autocmd! fugitive_group
+  au FileType fugitive map <buffer> <D-2> :set foldlevel=0<cr>
+augroup END
+
+augroup help_group
+  autocmd! help_group
+  au FileType help map <buffer> q :q<cr>
+augroup END
+
 augroup auto_make_directory
     autocmd! auto_make_directory
     autocmd  BufNewFile  *  :call EnsureDirExists()
@@ -133,10 +148,6 @@ if has('gui_macvim')
     " nnoremap <D-=> :set foldlevel=10<CR>
     " nnoremap <D--> :set foldlevel=0<CR>
 endif
-
-augroup QuickFix
-     au FileType qf map <buffer> q :close<cr>
-augroup END
 
 "
 "      --- Settings ---
