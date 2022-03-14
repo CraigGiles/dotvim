@@ -18,6 +18,7 @@ Plug 'vim-scripts/BufOnly.vim'
 
 " Development Environments
 Plug 'fatih/vim-go'
+Plug 'jansedivy/jai.vim'
 
 call plug#end()
 
