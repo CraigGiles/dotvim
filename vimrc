@@ -1,94 +1,37 @@
 colorscheme gilesc
 
-" source ~/.vim/statusline.vim
+source ~/.vim/statusline.vim
 source ~/.vim/functions.vim
+source ~/.vim/fixme_colors.vim
 
 call plug#begin()
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
 
-Plug 'skywind3000/asyncrun.vim'
-Plug 'derekwyatt/vim-fswitch'
-Plug 'rking/ag.vim'
-Plug 'tpope/vim-commentary'
-Plug 'vim-scripts/BufOnly.vim'
+" Plug 'skywind3000/asyncrun.vim'
+" Plug 'derekwyatt/vim-fswitch'
+" Plug 'rking/ag.vim'
+" Plug 'vim-scripts/BufOnly.vim'
 
 " Development Environments
 Plug 'fatih/vim-go'
 Plug 'jansedivy/jai.vim'
 
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
 "
 "      --- 'Platform' layer ---
 " -------------------------------------------------
-if has('gui_macvim')
-  source ~/.vim/macvim.vim
-endif
-
-if exists('g:GuiLoaded') && has('nvim')
-  source ~/.vim/nvim-qt.vim
-endif
-
-
 set lines=1000
 set columns=120
-
-" the_silver_searcher
-let g:ags_enable_async = 1
-let g:ag_working_path_mode="r"
-let g:tagbar_vertical = 30
-let g:tagbar_left = 0
-
-" ctrlp
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-let g:ctrlp_use_caching = 0
-let g:ctrlp_working_path_mode = 'ra'
-" let g:ctrlp_working_path_mode = 0
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn|target)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
-
-"
-"      --- Auto Groups ---
-" -------------------------------------------------
-augroup quickfix_group
-  autocmd! quickfix_group
-  au FileType qf map <buffer> q <C-^>
-augroup END
-
-augroup fugitive_group
-  autocmd! fugitive_group
-  au FileType fugitive map <buffer> <D-2> :set foldlevel=0<cr>
-augroup END
-
-augroup help_group
-  autocmd! help_group
-  au FileType help map <buffer> q :q<cr>
-augroup END
-
-augroup auto_make_directory
-    autocmd! auto_make_directory
-    autocmd  BufNewFile  *  :call EnsureDirExists()
-augroup END
-
-augroup ags_mode
-    autocmd! ags_mode
-    autocmd Filetype agsv nmap <buffer> <D-n> :AgsNextResult<CR>
-    autocmd Filetype agsv nmap <buffer> <D-N> :AgsPrevResult<CR>
-augroup end
-
-au! BufEnter *.cpp let b:fswitchdst = 'hpp,h' | let b:fswitchlocs = '.'
-au! BufEnter *.h let b:fswitchdst = 'cpp,c' | let b:fswitchlocs = '.'
 
 "
 "      --- Key Bindings ---
@@ -108,23 +51,11 @@ inoremap jk <ESC>
 inoremap Jk <ESC>
 inoremap JK <ESC>
 
+nnoremap <C-j> }
+nnoremap <C-k> {
+
 " Turn off that stupid highlight search
 nnoremap <silent> <Space>n :noh<CR>
-
-" When selecting text in visual mode,
-" Delete or Backspace removes it
-vmap <BS> x
-
-" Move to next / previous blank line
-nnoremap <C-j> :SetCursorToNextBlankLine<CR>
-nnoremap <C-k> :SetCursorToPreviousBlankLine<CR>
-
-" Change split orientation from | to -
-nnoremap <Space>sp :RotateSplits<CR>
-nnoremap <Space>vs :RotateSplits<CR>
-
-" Tab toggles folds
-nnoremap <Tab> za
 
 " Search the codebase for the word under cursor
 nnoremap <C-f> :call SearchCodebase(expand('<cword>'))<CR>
@@ -169,29 +100,12 @@ if has('persistent_undo')
     set undofile
 endif
 
-" I don't want to pull up these folders/files when calling my fuzzy finder
-set wildignore+=*/vendor/**
-set wildignore+=*/target/**
-set wildignore+=*/cli/**
-set wildignore+=*/logs/**
-set wildignore+=*/sql/**
-set wildignore+=*/tools/**
-set wildignore+=*/docroot/res/out/**
-set wildignore+=*.swp
-set wildignore+=*.bak
-
-" Re-add these since i want my fuzzy finder to find them
-set wildignore-=*.thrift
-set wildignore-=*.sql
-
-source ~/.vim/fixme_colors.vim
-
-" NOTE: don't get rid of this
-:noh
-
-if has("gui_running")
-  " use the terminal colors
-  set t_Co=0
-endif
+" This creates a new Help command and binds it to <C-h> which will open the
+" help window in the OtherWindowVertical (see functions.vim) and allow the
+" C-^ command to be used in order to go to previous the buffer
+"
+" TODO(craig) make a HelpBuffer function maybe actually take some arguments
+command! -nargs=1 -complete=help Help :enew | :set buftype=help | :keepalt h <args>
+nnoremap <C-h> :OtherWindowVertical<CR>:Help 
 
 " vim:set sw=2 sts=2 foldmethod=marker foldlevel=0:

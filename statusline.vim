@@ -45,8 +45,6 @@ set statusline+=%y                            "filetype
 set statusline+=%{fugitive#statusline()}      " Git branch
 
 set statusline+=%#warningmsg#
-" set statusline+=%{ALEGetStatusLine()}
-" set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 " Right side
@@ -56,7 +54,7 @@ set statusline+=%m                            "modified flag
 set statusline+=%r                            "read only flag
 set statusline+=\                             " blank space
 set statusline+=\[                            "  separator
-set statusline+=Buffer                    " buffer number
+set statusline+=Buffer                        " buffer number
 set statusline+=\:                            " colon separator
 set statusline+=%{winnr()}                    " buffer number
 set statusline+=\]                            " separator
@@ -65,15 +63,4 @@ set statusline+=%c,                           "cursor column
 set statusline+=%l/%L                         "cursor line/total lines
 set statusline+=\ %P                          "percent through file
 
-
-
-" set statusline+=\                             " blank space
-" set statusline+=\/                            " slash separator
-" set statusline+=\:                            " colon separator
-
-" set statusline+=%#warningmsg#                 " Syntastic error flag
-" set statusline+=%{SyntasticStatuslineFlag()}  " Syntastic error flag
-" set statusline+=%*                            " Syntastic error flag
-
 " vim:set sw=2 sts=2 foldmethod=marker foldlevel=0:
-
