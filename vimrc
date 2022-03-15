@@ -3,14 +3,6 @@ colorscheme gilesc
 " source ~/.vim/statusline.vim
 source ~/.vim/functions.vim
 
-if has('gui_macvim')
-  source ~/.vim/macvim.vim
-endif
-
-if exists('g:GuiLoaded') && has('nvim')
-  source ~/.vim/nvim-qt.vim
-endif
-
 call plug#begin()
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-vinegar'
@@ -32,6 +24,18 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
+
+"
+"      --- 'Platform' layer ---
+" -------------------------------------------------
+if has('gui_macvim')
+  source ~/.vim/macvim.vim
+endif
+
+if exists('g:GuiLoaded') && has('nvim')
+  source ~/.vim/nvim-qt.vim
+endif
+
 
 set lines=1000
 set columns=120

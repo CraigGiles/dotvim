@@ -27,6 +27,7 @@ function! FixmeModes()
 endfunction
 command! FixmeModes call FixmeModes()
 
+" TODO: blank line navigation in vim is done via { and } ... change these
 function! GetPreviousBlankLineNumber()
     let l:cursor_line_number = line('.') - 1
 
