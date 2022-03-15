@@ -1,31 +1,6 @@
-if has('gui_macvim')
-  macmenu File.New\ Tab key=<nop>
-  macmenu File.New\ Window key=<Nop>
-  macmenu File.Open\.\.\. key=<Nop>
-  macmenu File.Open\ Tab\.\.\. key=<Nop>
-  macmenu File.Close\ Window key=<Nop>
-  macmenu File.Close key=<Nop>
-  macmenu File.Save key=<Nop>
-  macmenu File.Save\ As\.\.\. key=<Nop>
-  macmenu File.Save\ All key=<Nop>
-  macmenu File.Print key=<Nop>
+" set guifont=Liberation\ Mono:h12
+set guifont=Inconsolata:h18
 
-  macmenu Edit.Undo key=<nop>
-  macmenu Edit.Redo key=<nop>
-  macmenu Edit.Repeat key=<nop>
-  macmenu Edit.Cut key=<nop>
-  macmenu Edit.Copy key=<nop>
-  macmenu Edit.Paste key=<nop>
-  macmenu Edit.Put\ Before key=<nop>
-  macmenu Edit.Put\ After key=<nop>
-  macmenu Edit.Select\ All key=<nop>
-  macmenu Edit.Emoji\ &\ Symbols key=<nop>
-  macmenu Edit.Find.Find\.\.\. key=<nop>
-  macmenu Edit.Font.Bigger key=<nop>
-  macmenu Edit.Font.Smaller key=<nop>
-
-  macmenu Tools.Make key=<nop>
-  macmenu Tools.List\ Errors key=<nop>
-
-  macmenu Window.Minimize key=<nop>
+if exists('g:GuiLoaded')
+  source ~/.vim/nvim-qt.vim
 endif

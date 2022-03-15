@@ -1,7 +1,15 @@
 colorscheme gilesc
 
-source ~/.vim/statusline.vim
+" source ~/.vim/statusline.vim
 source ~/.vim/functions.vim
+
+if has('gui_macvim')
+  source ~/.vim/macvim.vim
+endif
+
+if exists('g:GuiLoaded') && has('nvim')
+  source ~/.vim/nvim-qt.vim
+endif
 
 call plug#begin()
 Plug 'tpope/vim-sensible'
@@ -19,6 +27,9 @@ Plug 'vim-scripts/BufOnly.vim'
 " Development Environments
 Plug 'fatih/vim-go'
 Plug 'jansedivy/jai.vim'
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
@@ -75,15 +86,6 @@ augroup end
 au! BufEnter *.cpp let b:fswitchdst = 'hpp,h' | let b:fswitchlocs = '.'
 au! BufEnter *.h let b:fswitchdst = 'cpp,c' | let b:fswitchlocs = '.'
 
-if has('gui_macvim')
-  " NOTE: font size 11 means on my monitor i can run it 'fullscreen' and not have extra pixels
-  set guifont=Liberation\ Mono:h11
-  nnoremap <D-F10> :RunFullScreen<CR>
-
-  " Don't have scroll bars
-  set guioptions=
-endif
-
 "
 "      --- Key Bindings ---
 " -------------------------------------------------
@@ -120,35 +122,11 @@ nnoremap <Space>vs :RotateSplits<CR>
 " Tab toggles folds
 nnoremap <Tab> za
 
+" Search the codebase for the word under cursor
+nnoremap <C-f> :call SearchCodebase(expand('<cword>'))<CR>
+
 " Change the directory to the current file
 command! CD cd %:p:h
-
-" cmd f opens up the file list
-if has('gui_macvim')
-    " Search the codebase for the word under cursor
-    nnoremap <C-f> :call SearchCodebase(expand('<cword>'))<CR>
-
-    " nnoremap <D-j> :TagbarOpenAutoClose<CR>
-    nnoremap <D-j> :CtrlPFunky<CR>
-    nnoremap <D-f> :CtrlP<CR>
-    nnoremap <D-b> :CtrlPBuffer<CR>
-    nnoremap <D-p> :CtrlP<CR>
-
-    " FZF key bindings
-    "nnoremap <D-f> :Files<CR>
-    "nnoremap <D-b> :Buffers<CR>
-    "nnoremap <D-p> :Files<CR>
-
-    nnoremap <D-m> :MakeWithoutAsking<CR>
-    nnoremap <D-n> :cnext<CR>
-    nnoremap <D-N> :cprev<CR>
-    nnoremap <D-6> :OtherWindowVertical<CR><C-^>:OtherWindowVertical<CR>
-
-    " Testing these for folding methods
-    " set foldmethod=syntax
-    " nnoremap <D-=> :set foldlevel=10<CR>
-    " nnoremap <D--> :set foldlevel=0<CR>
-endif
 
 "
 "      --- Settings ---
