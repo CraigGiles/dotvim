@@ -81,15 +81,30 @@ nnoremap <silent> <Space>n :noh<CR>
 " Search the codebase for the word under cursor
 nnoremap <C-f> :call SearchCodebase(expand('<cword>'))<CR>
 
-nnoremap <A-f10> :RunFullScreen<CR>
-nnoremap <D-f10> :RunFullScreen<CR>
 
-" let normal = '<C-\><C-N>'
-" exe 'nmap <leader>q ' . normal . '@q'
-nnoremap <D-j> :CtrlPFunky<CR>
-nnoremap <D-f> :CtrlP<CR>
-nnoremap <D-b> :CtrlPBuffer<CR>
-nnoremap <D-p> :CtrlP<CR>
+"
+"      --- OS Specific Key Bindings ---
+" -------------------------------------------------
+"  NOTE: any key binding that uses the <CMD> or the <ALT> key needs to be
+"  bound using the BindCommandOrMetaKey function. This will ensure the proper
+"  prefix is applied at the binding time. 
+"
+"  Just note, that this is kind of disgusting.
+"                                                         gilesc 03/15/2022
+" -------------------------------------------------
+if has('macunix')
+    let g:gui_prefix = "D"
+elseif has('win32')
+    let g:gui_prefix = "A"
+endif
+func! BindCommandOrMetaKey(mode, key, command)
+    exe a:mode . ' ' . '<' . g:gui_prefix . '-' . a:key . '> ' . a:command
+endfunction
+
+call BindCommandOrMetaKey("nnoremap", "l", ':echo "Hello, Wonderful"<CR>')
+call BindCommandOrMetaKey("nnoremap", "j", ':CtrlPFunky<CR>')
+call BindCommandOrMetaKey("nnoremap", "b", ':CtrlPBuffer<CR>')
+call BindCommandOrMetaKey("nnoremap", "p", ':CtrlP<CR>')
 
 " Change the directory to the current file
 command! CD cd %:p:h
@@ -139,9 +154,9 @@ endif
 command! -nargs=1 -complete=help Help :enew | :set buftype=help | :keepalt h <args>
 nnoremap <C-h> :OtherWindowVertical<CR>:Help 
 
+set guioptions+=!
+
 " NOTE: don't get rid of this
 :noh
-
-set guioptions+=!
 
 " vim:set sw=2 sts=2 foldmethod=marker foldlevel=0:
