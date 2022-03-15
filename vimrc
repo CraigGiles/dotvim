@@ -13,14 +13,17 @@ Plug 'tpope/vim-commentary'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
 
-" Plug 'skywind3000/asyncrun.vim'
-" Plug 'derekwyatt/vim-fswitch'
-" Plug 'rking/ag.vim'
-" Plug 'vim-scripts/BufOnly.vim'
+Plug 'rking/ag.vim'
 
 " Development Environments
 Plug 'fatih/vim-go'
+Plug 'udalov/kotlin-vim'
 Plug 'jansedivy/jai.vim'
+
+" Unused plugins, for now
+" Plug 'skywind3000/asyncrun.vim'
+" Plug 'derekwyatt/vim-fswitch'
+" Plug 'vim-scripts/BufOnly.vim'
 
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
@@ -30,8 +33,26 @@ call plug#end()
 "
 "      --- 'Platform' layer ---
 " -------------------------------------------------
-set lines=1000
-set columns=120
+" set lines=1000
+" set columns=120
+
+" the_silver_searcher
+let g:ags_enable_async = 1
+let g:ag_working_path_mode="r"
+let g:tagbar_vertical = 30
+let g:tagbar_left = 0
+
+" ctrlp
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+let g:ctrlp_use_caching = 0
+let g:ctrlp_working_path_mode = 'ra'
+" let g:ctrlp_working_path_mode = 0
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn|target)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
 
 "
 "      --- Key Bindings ---
@@ -59,6 +80,16 @@ nnoremap <silent> <Space>n :noh<CR>
 
 " Search the codebase for the word under cursor
 nnoremap <C-f> :call SearchCodebase(expand('<cword>'))<CR>
+
+nnoremap <A-f10> :RunFullScreen<CR>
+nnoremap <D-f10> :RunFullScreen<CR>
+
+" let normal = '<C-\><C-N>'
+" exe 'nmap <leader>q ' . normal . '@q'
+nnoremap <D-j> :CtrlPFunky<CR>
+nnoremap <D-f> :CtrlP<CR>
+nnoremap <D-b> :CtrlPBuffer<CR>
+nnoremap <D-p> :CtrlP<CR>
 
 " Change the directory to the current file
 command! CD cd %:p:h
@@ -107,5 +138,10 @@ endif
 " TODO(craig) make a HelpBuffer function maybe actually take some arguments
 command! -nargs=1 -complete=help Help :enew | :set buftype=help | :keepalt h <args>
 nnoremap <C-h> :OtherWindowVertical<CR>:Help 
+
+" NOTE: don't get rid of this
+:noh
+
+set guioptions+=!
 
 " vim:set sw=2 sts=2 foldmethod=marker foldlevel=0:

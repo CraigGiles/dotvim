@@ -57,27 +57,13 @@ hi Folded ctermfg=244 ctermbg=235 cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi IncSearch term=reverse ctermfg=188 ctermbg=24 guifg=#404245 guibg=#b1c73d gui=none
 hi Search term=reverse ctermfg=188 ctermbg=24 guifg=#b8c4d0 guibg=#214283 gui=none
 
-"
-"     --- Fixme Highlights---
-" -----------------------------------------------------------------------
-:highlight FixMeTodo      guibg=NONE guifg=#cd2626 gui=underline,BOLD
-:highlight FixMeNote      guibg=NONE guifg=#6495ed gui=underline,BOLD
-:highlight FixMeImportant guibg=NONE guifg=#ffff00 gui=underline,BOLD
-:highlight FixMeCleanup   guibg=NONE guifg=#ffff00 gui=underline,BOLD
-:highlight FixMeSpeed     guibg=NONE guifg=#ffff00 gui=underline,BOLD
-:highlight FixMeNext      guibg=NONE guifg=#6495ed gui=underline,BOLD
-:highlight FixMeProg      guibg=NONE guifg=#ffff00 gui=underline,BOLD
-:highlight FixMeHold      guibg=NONE guifg=#6495ed gui=underline,BOLD
-:highlight FixMeDone      guibg=NONE guifg=#00ff00 gui=underline,BOLD
 
-:let _ = matchadd("FixMeTodo", "TODO")
-:let _ = matchadd("FixMeNote", "NOTE")
-:let _ = matchadd("FixMeImportant", "IMPORTANT")
-:let _ = matchadd("FixMeCleanup", "CLEANUP")
-:let _ = matchadd("FixMeSpeed", "SPEED")
-:let _ = matchadd("FixMeNext", "NEXT")
-:let _ = matchadd("FixMeProg", "PROG")
-:let _ = matchadd("FixMeHold", "HOLD")
-:let _ = matchadd("FixMeDone", "DONE")
+" au! BufEnter * if &ft ==# 'git' | hi Identifier gui=NONE; hi Statement gui=NONE | endif 
 
-
+augroup git_colorscheme
+    autocmd!
+    au BufEnter * if &ft ==# 'git' | colorscheme tpope | endif 
+    au BufEnter * if &ft ==# 'fugitive' | colorscheme tpope | endif 
+    au BufLeave * if &ft ==# 'git' | colorscheme gilesc | endif
+    au BufLeave * if &ft ==# 'fugitive' | colorscheme gilesc | endif
+augroup END

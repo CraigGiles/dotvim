@@ -184,30 +184,6 @@ function! GetQuickfixWindowNumber()
 endfunction
 command! QuickfixWindowNumber call GetQuickfixWindowNumber()
 
-function! TestMe(filename, path)
-    " return true if file is found
-    " return false if not
-    " echo findfile("Makefile", ".;~")
-    " execute "make ".findfile("Makefile", ".;~")
-    " execute "!./".findfile("build.sh", ".;~")
-    "
-    " echo fnamemodify(findfile("Makefile", ".;~"), ':p')
-
-    let s:current_directory = expand("%:p") 
-    let s:makefile_directory = fnamemodify(findfile("Makefile", ".;~"), ':p')
-
-    echo "Current Dir:".s:current_directory." -- Makefile Dir:". s:makefile_directory
-    " cd fnamemodify(findfile("Makefile", ".;~"), ':p')
-
-    "
-    " echo "FileName:".a:filename . " -- Path:".a:path
-    " let result = findfile(a:filename, a:path)
-    " echo "Result: ".result
-    " echo !empty(result)
-    " echo !empty(findfile(a:filename, a:path.';'))
-endfunction
-command! Test call TestMe("Makefile", ".")
-
 function! OpenQuickfixInOtherWindow()
     let l:number_of_windows = winnr('$') 
     let l:quickfix_window_number = GetQuickfixWindowNumber()
@@ -233,7 +209,6 @@ function! OpenQuickfixInOtherWindow()
 endfunction
 command! OpenQuickfixInOtherWindow call OpenQuickfixInOtherWindow()
 
-
 function! MakeWithoutAsking()
     :wa
     :AsyncRun -cwd=<root> -program=make
@@ -257,11 +232,20 @@ function! SearchCodebase(query)
 endfunction
 
 function! GuiVimRunFullscreen()
-    " TODO store the previous columns and lines, restore later
-    if has('gui_macvim')
+    if exists('g:fullscreen') && g:fullscreen == 1
+        call GuiWindowMaximized(0)
+        let g:fullscreen = 0
+
+    elseif has('gui_macvim')
+        " TODO store the previous columns and lines, restore later
         set columns=1000
         set lines=300
         wincmd =
+
+    elseif exists('g:GuiLoaded') && has('nvim') 
+        echo "Fullscreen hoooo"
+        call GuiWindowMaximized(1)
+        let g:fullscreen = 1
     endif
 endfunction
 command! RunFullScreen call GuiVimRunFullscreen()
@@ -272,5 +256,35 @@ function! FullScreenHelp(query)
     wincmd _
 endfunction
 command! -nargs=1 Help call FullScreenHelp(<f-args>)
+
+
+
+
+
+function! TestMe(filename, path)
+    " return true if file is found
+    " return false if not
+    " echo findfile("Makefile", ".;~")
+    " execute "make ".findfile("Makefile", ".;~")
+    " execute "!./".findfile("build.sh", ".;~")
+    "
+    " echo fnamemodify(findfile("Makefile", ".;~"), ':p')
+
+    let s:current_directory = expand("%:p") 
+    let s:makefile_directory = fnamemodify(findfile("Makefile", ".;~"), ':p')
+
+    echo "Current Dir:".s:current_directory." -- Makefile Dir:". s:makefile_directory
+    " cd fnamemodify(findfile("Makefile", ".;~"), ':p')
+
+    "
+    " echo "FileName:".a:filename . " -- Path:".a:path
+    " let result = findfile(a:filename, a:path)
+    " echo "Result: ".result
+    " echo !empty(result)
+    " echo !empty(findfile(a:filename, a:path.';'))
+endfunction
+command! Test call TestMe("Makefile", ".")
+
+
 
 " vim:set sw=2 sts=2 foldmethod=marker foldlevel=0:
