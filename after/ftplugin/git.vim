@@ -1,0 +1,2 @@
+nmap <buffer> q gq
+

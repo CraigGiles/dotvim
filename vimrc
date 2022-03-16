@@ -9,6 +9,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dispatch'
 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
@@ -44,7 +45,7 @@ let g:tagbar_left = 0
 
 " ctrlp
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+" let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
 let g:ctrlp_use_caching = 0
 let g:ctrlp_working_path_mode = 'ra'
 " let g:ctrlp_working_path_mode = 0
@@ -80,6 +81,7 @@ nnoremap <silent> <Space>n :noh<CR>
 
 " Search the codebase for the word under cursor
 nnoremap <C-f> :call SearchCodebase(expand('<cword>'))<CR>
+nnoremap co :OpenQuickfixInOtherWindow<CR>
 
 
 "
@@ -105,6 +107,8 @@ call BindCommandOrMetaKey("nnoremap", "l", ':echo "Hello, Wonderful"<CR>')
 call BindCommandOrMetaKey("nnoremap", "j", ':CtrlPFunky<CR>')
 call BindCommandOrMetaKey("nnoremap", "b", ':CtrlPBuffer<CR>')
 call BindCommandOrMetaKey("nnoremap", "p", ':CtrlP<CR>')
+call BindCommandOrMetaKey("nnoremap", "m", ':MakeWithoutAsking<CR>')
+call BindCommandOrMetaKey("nnoremap", "f", ':CtrlP<CR>')
 
 " Change the directory to the current file
 command! CD cd %:p:h

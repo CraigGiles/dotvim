@@ -211,7 +211,7 @@ command! OpenQuickfixInOtherWindow call OpenQuickfixInOtherWindow()
 
 function! MakeWithoutAsking()
     :wa
-    :AsyncRun -cwd=<root> -program=make
+    exec "Make"
     OpenQuickfixInOtherWindow
 endfunction
 command! MakeWithoutAsking call MakeWithoutAsking()
