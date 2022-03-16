@@ -209,10 +209,22 @@ function! OpenQuickfixInOtherWindow()
 endfunction
 command! OpenQuickfixInOtherWindow call OpenQuickfixInOtherWindow()
 
+let g:build_file_name = 'build.bat'
+let g:compile_command = 'make'
 function! MakeWithoutAsking()
-    :wa
-    exec "Make"
+    " find project directory
+    let s:current_directory = expand("%:p") 
+    let s:build_file_full_path = findfile(g:build_file_name, ".;~")
+    let s:build_file_directory = fnamemodify(s:build_file_full_path, ':p:h')
+
+    let s:working_directory = getcwd()
+    exec 'cd' s:build_file_directory
+    exec g:compile_command
     OpenQuickfixInOtherWindow
+
+    " :wa
+    " exec "Make"
+    " OpenQuickfixInOtherWindow
 endfunction
 command! MakeWithoutAsking call MakeWithoutAsking()
 
@@ -260,30 +272,123 @@ command! -nargs=1 Help call FullScreenHelp(<f-args>)
 
 
 
+    "(with-system darwin
+    "             (setq build-file-name "build.sh")
+    "             (setq compile-command "./build.sh"))
+    "(with-system windows-nt
+    "             (setq build-file-name "build.bat")
+    "             (setq compile-command "build.bat"))
 
-function! TestMe(filename, path)
-    " return true if file is found
-    " return false if not
-    " echo findfile("Makefile", ".;~")
-    " execute "make ".findfile("Makefile", ".;~")
-    " execute "!./".findfile("build.sh", ".;~")
-    "
-    " echo fnamemodify(findfile("Makefile", ".;~"), ':p')
+    "(setq build-file-name "build.sh")
+    "(setq compile-command "make")
 
+";; Compile Settings
+";; -------------------------------------------------------
+";; split right if only one window exists
+"(defun split-window-right-if-single-window ()
+"  "Test something"
+"  (interactive)
+"  (if (= (length (window-list)) 1) (split-window-right) nil))
+""
+"(setq compilation-directory-locked nil)
+
+"(defun find-project-directory-recursive ()
+  ""Recursively search for a makefile."
+  "(interactive)
+  "(if (file-exists-p build-file-name) t
+    "(cd "../")
+    "(find-project-directory-recursive)))
+
+"(defun lock-compilation-directory ()
+  ""The compilation process should NOT hunt for a makefile"
+  "(interactive)
+  "(setq compilation-directory-locked t)
+  "(message "Compilation directory is locked."))
+
+"(defun unlock-compilation-directory ()
+  ""The compilation process SHOULD hunt for a makefile"
+  "(interactive)
+  "(setq compilation-directory-locked nil)
+  "(message "Compilation directory is roaming."))
+
+"(defun find-project-directory ()
+  ""Find the project directory."
+  "(interactive)
+  "(setq find-project-from-directory default-directory)
+  "(switch-to-buffer-other-window "*compilation*")
+  "(if compilation-directory-locked (cd last-compilation-directory)
+    "(cd find-project-from-directory)
+    "(find-project-directory-recursive)
+    "(setq last-compilation-directory default-directory)))
+
+"(defun make-without-asking ()
+  ""Make the current build."
+  "(interactive)
+  "(split-window-right-if-single-window)
+  "(save-buffers-without-asking)
+  "(if (find-project-directory) (compile compile-command))
+  "(other-window 1))
+
+let g:compile_command = 'make'
+function! TestMakeWithoutAsking()
+    " split window right if single window
+    :wa
+    " find project directory
     let s:current_directory = expand("%:p") 
-    let s:makefile_directory = fnamemodify(findfile("Makefile", ".;~"), ':p')
+    let s:build_directory = fnamemodify(findfile("build.bat", ".;~"), ':p')
 
-    echo "Current Dir:".s:current_directory." -- Makefile Dir:". s:makefile_directory
-    " cd fnamemodify(findfile("Makefile", ".;~"), ':p')
+    echo "Current Dir:".s:current_directory." -- Build Dir:". s:build_directory
 
-    "
-    " echo "FileName:".a:filename . " -- Path:".a:path
-    " let result = findfile(a:filename, a:path)
-    " echo "Result: ".result
-    " echo !empty(result)
-    " echo !empty(findfile(a:filename, a:path.';'))
+    " exec g:compile_command
+    cd s:build_directory
+    exec "make"
+    OpenQuickfixInOtherWindow
 endfunction
-command! Test call TestMe("Makefile", ".")
+command! TestMakeWithoutAsking call TestMakeWithoutAsking()
+
+" function! TestMe(filename, path)
+function! TestMe()
+    " find project directory
+    let s:current_directory = expand("%:p") 
+    let s:build_file_full_path = findfile(g:build_file_name, ".;~")
+    let s:build_file_directory = fnamemodify(s:build_file_full_path, ':p:h')
+
+    let s:working_directory = getcwd()
+    exec 'cd' s:build_file_directory
+    exec "make"
+    OpenQuickfixInOtherWindow
+
+
+
+
+
+
+    " OLD FROM HERE ON
+    " --------------------------------------------------------------------------
+
+    "" return true if file is found
+    "" return false if not
+    "" echo findfile("Makefile", ".;~")
+    "" execute "make ".findfile("Makefile", ".;~")
+    "" execute "!./".findfile("build.sh", ".;~")
+    ""
+    "" echo fnamemodify(findfile("Makefile", ".;~"), ':p')
+
+    "let s:current_directory = expand("%:p") 
+    "let s:build_directory = fnamemodify(findfile("build.bat", ".;~"), ':p')
+
+    "echo "Current Dir:".s:current_directory." -- Build Dir:". s:build_directory
+    "" cd fnamemodify(findfile("Makefile", ".;~"), ':p')
+
+    ""
+    "" echo "FileName:".a:filename . " -- Path:".a:path
+    "" let result = findfile(a:filename, a:path)
+    "" echo "Result: ".result
+    "" echo !empty(result)
+    "" echo !empty(findfile(a:filename, a:path.';'))
+endfunction
+" command! Test call TestMe("Makefile", ".")
+command! Test call TestMe()
 
 
 
