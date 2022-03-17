@@ -1,2 +1,2 @@
-CompilerSet makeprg=call\ build.bat
+CompilerSet makeprg=jai
 CompilerSet errorformat=%f(%l):%m

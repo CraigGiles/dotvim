@@ -54,3 +54,9 @@ setlocal cinoptions+=^
 setlocal cinoptions+=g0
 setlocal cinoptions+=:0
 setlocal cinoptions+=(0
+
+" TODO
+" let g:build_parameters = ''
+" let g:build_file_name = ''
+
+compiler jai

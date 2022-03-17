@@ -10,6 +10,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-scriptease'
 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
@@ -142,6 +143,7 @@ set nobackup               " don't use backup files
 set nowb                   " don't use backup files
 set noswapfile             " don't use swap files
 set foldlevel=10           " Start out without a lot of folds
+set autochdir
 
 " undo all the things
 if has('persistent_undo')

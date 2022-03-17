@@ -62,8 +62,8 @@ hi Search term=reverse ctermfg=188 ctermbg=24 guifg=#b8c4d0 guibg=#214283 gui=no
 
 augroup git_colorscheme
     autocmd!
-    au BufEnter * if &ft ==# 'git' | colorscheme tpope | endif 
-    au BufEnter * if &ft ==# 'fugitive' | colorscheme tpope | endif 
-    au BufLeave * if &ft ==# 'git' | colorscheme gilesc | endif
+    au BufEnter * if &ft ==# 'git'      | colorscheme tpope  | endif 
+    au BufEnter * if &ft ==# 'fugitive' | colorscheme tpope  | endif 
+    au BufLeave * if &ft ==# 'git'      | colorscheme gilesc | endif
     au BufLeave * if &ft ==# 'fugitive' | colorscheme gilesc | endif
 augroup END
