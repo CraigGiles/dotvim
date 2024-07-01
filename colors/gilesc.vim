@@ -26,7 +26,7 @@ hi CursorLine ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#191970 gui=N
 hi Normal ctermfg=188 ctermbg=235 cterm=NONE guifg=#D2CBC0 guibg=#1b2335 gui=NONE " neovide color -- blue-ish
 
 " Comments
-hi Comment ctermfg=244 ctermbg=NONE cterm=NONE guifg=#7f7f7f guibg=NONE gui=NONE
+hi Comment ctermfg=244 ctermbg=NONE cterm=NONE guifg=#108530 guibg=NONE gui=NONE
 
 " Strings
 hi String ctermfg=71 ctermbg=NONE cterm=NONE guifg=#65b29e guibg=NONE gui=NONE
@@ -51,7 +51,8 @@ hi Directory ctermfg=NONE ctermbg=NONE cterm=NONE guifg=#6495ed guibg=NONE gui=N
 hi Statement ctermfg=222 ctermbg=NONE cterm=NONE guifg=#DAB98F guibg=NONE gui=NONE
 hi Todo ctermfg=NONE ctermbg=NONE cterm=NONE guibg=NONE guifg=#cd2626 gui=underline,BOLD
 hi Identifier ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
-hi Type ctermfg=NONE ctermbg=NONE cterm=NONE guifg=#DAB98F guibg=NONE gui=NONE
+" hi Type ctermfg=NONE ctermbg=NONE cterm=NONE guifg=#DAB98F guibg=NONE gui=NONE
+hi Type ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi Number ctermfg=NONE ctermbg=NONE cterm=NONE guifg=#89CFF0 guibg=NONE gui=NONE
 hi Visual ctermfg=NONE ctermbg=24 cterm=NONE guifg=NONE guibg=#214283 gui=NONE
 hi Folded ctermfg=244 ctermbg=235 cterm=NONE guifg=NONE guibg=NONE gui=NONE
