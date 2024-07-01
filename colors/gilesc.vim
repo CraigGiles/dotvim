@@ -46,7 +46,7 @@ hi Label ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi Boolean ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi Function ctermfg=NONE ctermbg=NONE cterm=bold guifg=#D2CBC0 guibg=NONE gui=NONE
 hi PreProc ctermfg=NONE ctermbg=NONE cterm=NONE guifg=#DAB98F guibg=NONE gui=NONE
-hi Directory ctermfg=NONE ctermbg=NONE cterm=NONE guifg=#6495ed guibg=NONE gui=italic
+hi Directory ctermfg=NONE ctermbg=NONE cterm=NONE guifg=#6495ed guibg=NONE gui=NONE
 
 hi Statement ctermfg=222 ctermbg=NONE cterm=NONE guifg=#DAB98F guibg=NONE gui=NONE
 hi Todo ctermfg=NONE ctermbg=NONE cterm=NONE guibg=NONE guifg=#cd2626 gui=underline,BOLD
