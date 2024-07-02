@@ -23,7 +23,8 @@ hi CursorLine ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#191970 gui=N
 " Background text 
 " hi Normal ctermfg=188 ctermbg=235 cterm=NONE guifg=#D2CBC0 guibg=#072626 gui=NONE
 " hi Normal ctermfg=188 ctermbg=235 cterm=NONE guifg=#D2CBC0 guibg=#1b2928 gui=NONE " neovide color -- greenish
-hi Normal ctermfg=188 ctermbg=235 cterm=NONE guifg=#D2CBC0 guibg=#1b2335 gui=NONE " neovide color -- blue-ish
+" hi Normal ctermfg=188 ctermbg=235 cterm=NONE guifg=#D2CBC0 guibg=#1b2335 gui=NONE " neovide color -- blue-ish
+hi Normal ctermfg=188 ctermbg=235 cterm=NONE guifg=#D2CBC0 guibg=#0A2030 gui=NONE " neovide color -- blue-ish
 
 " Comments
 hi Comment ctermfg=244 ctermbg=NONE cterm=NONE guifg=#108530 guibg=NONE gui=NONE
