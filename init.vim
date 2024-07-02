@@ -54,6 +54,9 @@ augroup end
 nnoremap <M-b> :CtrlPBuffer<CR>
 nnoremap <M-m> :MakeWithoutAsking<CR>
 
+nnoremap <M-n> :cn<CR>
+nnoremap <M-p> :cp<CR>
+
 "
 "      --- Key Bindings ---
 " -----------------------------------------------------------------
