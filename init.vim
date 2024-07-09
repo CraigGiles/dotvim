@@ -57,6 +57,9 @@ nnoremap <M-m> :MakeWithoutAsking<CR>
 nnoremap <M-n> :cn<CR>
 nnoremap <M-p> :cp<CR>
 
+tnoremap <ESC> <C-\><C-n>
+tnoremap jj <C-\><C-n>
+
 "
 "      --- Key Bindings ---
 " -----------------------------------------------------------------
