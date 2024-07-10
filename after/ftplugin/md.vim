@@ -1,1 +1,1 @@
-source ~/.vim/fixme_colors.vim
+source $MYVIMRC
