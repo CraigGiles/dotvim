@@ -57,8 +57,6 @@ augroup end
 " Thicker vertical / horizontal split
 lua vim.opt.fillchars = { horiz = '━', horizup = '┻', horizdown = '┳', vert = '┃', vertleft = '┫', vertright = '┣', verthoriz = '╋', } 
 
-let g:ctrlp_switch_buffer = 't'
-
 autocmd FocusGained,BufEnter * if mode() != 'c' | checktime | endif
 
 nnoremap <M-b> :CtrlPBuffer<CR>
