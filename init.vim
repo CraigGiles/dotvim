@@ -58,6 +58,7 @@ augroup end
 lua vim.opt.fillchars = { horiz = '━', horizup = '┻', horizdown = '┳', vert = '┃', vertleft = '┫', vertright = '┣', verthoriz = '╋', } 
 
 autocmd FocusGained,BufEnter * if mode() != 'c' | checktime | endif
+nnoremap <C-b> g <Shift-]>
 
 nnoremap <M-b> :CtrlPBuffer<CR>
 nnoremap <M-p> :CtrlP<CR>
@@ -70,7 +71,7 @@ tnoremap <ESC> <C-\><C-n>
 tnoremap jj <C-\><C-n>
 nnoremap <M-j> :CtrlPFunky<CR>
 
-nnoremap <M-f> :e 
+nnoremap <M-f> :CtrlP<CR>
 
 "
 "      --- Key Bindings ---
