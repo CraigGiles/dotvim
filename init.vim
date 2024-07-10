@@ -54,6 +54,8 @@ augroup end
 "
 "      --- Test Settings / Bindings ---
 " -----------------------------------------------------------------
+" Thicker vertical / horizontal split
+lua vim.opt.fillchars = { horiz = '━', horizup = '┻', horizdown = '┳', vert = '┃', vertleft = '┫', vertright = '┣', verthoriz = '╋', } 
 
 autocmd FocusGained,BufEnter * if mode() != 'c' | checktime | endif
 
