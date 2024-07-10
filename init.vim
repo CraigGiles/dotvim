@@ -10,11 +10,14 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
-
+Plug 'rluba/jai.vim'
 Plug 'tpope/vim-commentary'
 Plug 'rking/ag.vim'
 Plug 'skywind3000/asyncrun.vim'
-Plug 'jansedivy/jai.vim'
+
+" Test
+Plug 'junegunn/vim-easy-align' " Align code
+
 call plug#end()
 
 "
@@ -49,9 +52,13 @@ augroup ags_mode
 augroup end
 
 "
-"      --- Test Bindings ---
+"      --- Test Settings / Bindings ---
 " -----------------------------------------------------------------
+
+autocmd FocusGained,BufEnter * if mode() != 'c' | checktime | endif
+
 nnoremap <M-b> :CtrlPBuffer<CR>
+nnoremap <M-j> :CtrlPBufTag<CR>
 nnoremap <M-m> :MakeWithoutAsking<CR>
 
 nnoremap <M-n> :cn<CR>
