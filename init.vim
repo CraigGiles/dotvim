@@ -58,7 +58,7 @@ augroup end
 autocmd FocusGained,BufEnter * if mode() != 'c' | checktime | endif
 
 nnoremap <M-b> :CtrlPBuffer<CR>
-nnoremap <M-j> :CtrlPBufTag<CR>
+" nnoremap <M-j> :CtrlPBufTag<CR>
 nnoremap <M-m> :MakeWithoutAsking<CR>
 
 nnoremap <M-n> :cn<CR>
