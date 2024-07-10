@@ -57,6 +57,8 @@ augroup end
 " Thicker vertical / horizontal split
 lua vim.opt.fillchars = { horiz = '━', horizup = '┻', horizdown = '┳', vert = '┃', vertleft = '┫', vertright = '┣', verthoriz = '╋', } 
 
+let g:ctrlp_switch_buffer = 't'
+
 autocmd FocusGained,BufEnter * if mode() != 'c' | checktime | endif
 
 nnoremap <M-b> :CtrlPBuffer<CR>
@@ -77,6 +79,10 @@ nnoremap <M-f> :e
 " -----------------------------------------------------------------
 nnoremap <Space>ed :e $MYVIMRC<CR>
 nnoremap <Space>es :source $MYVIMRC<CR>
+
+" Show list of buffers and get to the specific one.. in case i didn't want to
+" use ctrlp buffer search tool
+nnoremap <Space>b :ls<cr>:b<space>
 
 " Exit the Ex menu without executing the command
 cnoremap <C-g><C-g> <c-c>
