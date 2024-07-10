@@ -66,6 +66,7 @@ nnoremap <M-p> :cp<CR>
 
 tnoremap <ESC> <C-\><C-n>
 tnoremap jj <C-\><C-n>
+nnoremap <M-j> :CtrlPFunky<CR>
 
 "
 "      --- Key Bindings ---
