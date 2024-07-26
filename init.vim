@@ -54,11 +54,8 @@ augroup end
 "
 "      --- Test Settings / Bindings ---
 " -----------------------------------------------------------------
-" Thicker vertical / horizontal split
-lua vim.opt.fillchars = { horiz = '━', horizup = '┻', horizdown = '┳', vert = '┃', vertleft = '┫', vertright = '┣', verthoriz = '╋', } 
 
 autocmd FocusGained,BufEnter * if mode() != 'c' | checktime | endif
-nnoremap <C-b> g <Shift-]>
 
 nnoremap <M-b> :CtrlPBuffer<CR>
 nnoremap <M-p> :CtrlP<CR>
@@ -71,17 +68,13 @@ tnoremap <ESC> <C-\><C-n>
 tnoremap jj <C-\><C-n>
 nnoremap <M-j> :CtrlPFunky<CR>
 
-nnoremap <M-f> :CtrlP<CR>
+nnoremap <M-f> :e 
 
 "
 "      --- Key Bindings ---
 " -----------------------------------------------------------------
 nnoremap <Space>ed :e $MYVIMRC<CR>
 nnoremap <Space>es :source $MYVIMRC<CR>
-
-" Show list of buffers and get to the specific one.. in case i didn't want to
-" use ctrlp buffer search tool
-nnoremap <Space>b :ls<cr>:b<space>
 
 " Exit the Ex menu without executing the command
 cnoremap <C-g><C-g> <c-c>
