@@ -67,8 +67,8 @@ nnoremap <M-N> :cp<CR>
 tnoremap <ESC> <C-\><C-n>
 tnoremap jj <C-\><C-n>
 nnoremap <M-j> :CtrlPFunky<CR>
+nnoremap <M-f> :e <C-r>=expand('%:p:h')<CR>\
 
-nnoremap <M-f> :e 
 
 "
 "      --- Key Bindings ---
