@@ -14,6 +14,7 @@ Plug 'rluba/jai.vim'
 Plug 'tpope/vim-commentary'
 Plug 'rking/ag.vim'
 Plug 'skywind3000/asyncrun.vim'
+Plug 'masukomi/vim-markdown-folding'
 
 " Test
 Plug 'junegunn/vim-easy-align' " Align code
@@ -54,6 +55,9 @@ augroup end
 "
 "      --- Test Settings / Bindings ---
 " -----------------------------------------------------------------
+"
+"
+let g:netrw_fastbrowse = 0
 
 autocmd FocusGained,BufEnter * if mode() != 'c' | checktime | endif
 
