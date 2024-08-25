@@ -92,6 +92,10 @@ inoremap jk <ESC>
 inoremap Jk <ESC>
 inoremap JK <ESC>
 
+" up / down during word wrap doesn't skip to next line
+nnoremap j gj
+nnoremap k gk
+
 " Turn off that stupid highlight search
 nnoremap <silent> <Space>n :noh<CR>
 
