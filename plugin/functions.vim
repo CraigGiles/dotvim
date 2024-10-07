@@ -271,9 +271,9 @@ function! SearchCodebase(query)
   " else
       let initial = winnr()
       execute "Ag " . a:query
-      :cclose
-      execute initial . "wincmd w"
-      copen
+      " :cclose
+      " execute initial . "wincmd w"
+      " copen
       " OtherWindowVertical
       " call OpenQuickfixHere()
   " endif
