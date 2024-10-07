@@ -26,7 +26,7 @@ call plug#end()
 " -------------------------------------------------
 augroup quickfix_group
   autocmd! quickfix_group
-  au FileType qf map <buffer> q <C-^>
+  au FileType qf map <buffer> q :q<CR>
 augroup END
 
 augroup fugitive_group

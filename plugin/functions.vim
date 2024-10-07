@@ -171,39 +171,39 @@ function! EnsureDirExists()
     endif
 endfunction
 
-" When the quickfix buffer is opened, make sure that we're on only one window.
-function! OpenQuickfixHere() abort
-  " Store the current buffer so we can re-claim it when we close
-    let g:old_bufn = bufnr('%')
-    let g:old_winn = winnr()
+" " When the quickfix buffer is opened, make sure that we're on only one window.
+" function! OpenQuickfixHere() abort
+"   " Store the current buffer so we can re-claim it when we close
+"     let g:old_bufn = bufnr('%')
+"     let g:old_winn = winnr()
 
-    copen
-    let bufn = bufnr('%')
-    let winn = winnr()
-    wincmd p
-    execute 'b'.bufn
-    execute winn.'close'
-endfunction
+"     copen
+"     let bufn = bufnr('%')
+"     let winn = winnr()
+"     wincmd p
+"     execute 'b'.bufn
+"     execute winn.'close'
+" endfunction
 
-function OpenQuickFixList()
-    let l:number_of_windows = winnr('$') 
+" function OpenQuickFixList()
+"     let l:number_of_windows = winnr('$') 
 
-    if l:number_of_windows == 1
-        :vs
-        call OpenQuickfixHere()
-        wincmd p
-    else
-        OtherWindowVertical
-        call OpenQuickfixHere()
-    endif
-endfunction
+"     if l:number_of_windows == 1
+"         :vs
+"         call OpenQuickfixHere()
+"         wincmd p
+"     else
+"         OtherWindowVertical
+"         call OpenQuickfixHere()
+"     endif
+" endfunction
 
-function! GetQuickfixWindowNumber()
-    let qf_number = filter(range(1, winnr('$')), 'getwinvar(v:val, "&ft") == "qf"')
-    let result = get(qf_number, 0, bufnr("%"))
-    return result
-endfunction
-command! QuickfixWindowNumber call GetQuickfixWindowNumber()
+" function! GetQuickfixWindowNumber()
+"     let qf_number = filter(range(1, winnr('$')), 'getwinvar(v:val, "&ft") == "qf"')
+"     let result = get(qf_number, 0, bufnr("%"))
+"     return result
+" endfunction
+" command! QuickfixWindowNumber call GetQuickfixWindowNumber()
 
 function! TestMe(filename, path)
     " return true if file is found
@@ -229,52 +229,54 @@ function! TestMe(filename, path)
 endfunction
 command! Test call TestMe("Makefile", ".")
 
-function! OpenQuickfixInOtherWindow()
-    let l:number_of_windows = winnr('$') 
-    let l:quickfix_window_number = GetQuickfixWindowNumber()
+"function! OpenQuickfixInOtherWindow()
+"    let l:number_of_windows = winnr('$') 
+"    let l:quickfix_window_number = GetQuickfixWindowNumber()
 
-    if l:number_of_windows == 1
-        :vs
-        :call OpenQuickfixHere()
-        OtherWindowVertical
-    else
-        " 
-        " If one of the windows is a quickfix window, do nothing.. it will
-        " auto refresh.
-        "
-        " If neither window is quickfix, goto 'OtherWindow' and open there.
-        "
-        if l:quickfix_window_number == bufnr("%")
-            OtherWindowVertical
-            call OpenQuickfixHere()
-            OtherWindowVertical
-        endif
+"    if l:number_of_windows == 1
+"        :vs
+"        :call OpenQuickfixHere()
+"        OtherWindowVertical
+"    else
+"        " 
+"        " If one of the windows is a quickfix window, do nothing.. it will
+"        " auto refresh.
+"        "
+"        " If neither window is quickfix, goto 'OtherWindow' and open there.
+"        "
+"        if l:quickfix_window_number == bufnr("%")
+"            OtherWindowVertical
+"            call OpenQuickfixHere()
+"            OtherWindowVertical
+"        endif
 
-    endif
-endfunction
-command! OpenQuickfixInOtherWindow call OpenQuickfixInOtherWindow()
+"    endif
+"endfunction
+"command! OpenQuickfixInOtherWindow call OpenQuickfixInOtherWindow()
 
 
 function! MakeWithoutAsking()
     :wa
     :AsyncRun -cwd=<root> -program=make
-    OpenQuickfixInOtherWindow
+    copen
+    " OpenQuickfixInOtherWindow
 endfunction
 command! MakeWithoutAsking call MakeWithoutAsking()
 
 function! SearchCodebase(query)
   let l:number_of_windows = winnr('$') 
-  if l:number_of_windows == 1
-      execute "Ag " . a:query
-      RotateSplits
-  else
+  " if l:number_of_windows == 1
+  "     execute "Ag " . a:query
+  "     RotateSplits
+  " else
       let initial = winnr()
       execute "Ag " . a:query
       :cclose
       execute initial . "wincmd w"
-      OtherWindowVertical
-      call OpenQuickfixHere()
-  endif
+      copen
+      " OtherWindowVertical
+      " call OpenQuickfixHere()
+  " endif
 endfunction
 
 function! GuiVimRunFullscreen()
