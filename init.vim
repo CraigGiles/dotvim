@@ -63,7 +63,7 @@ autocmd FocusGained,BufEnter * if mode() != 'c' | checktime | endif
 
 nnoremap <M-b> :CtrlPBuffer<CR>
 nnoremap <M-p> :CtrlP<CR>
-nnoremap <M-m> :MakeWithoutAsking<CR>
+nnoremap <M-m> :BuildProject<CR>
 
 nnoremap <M-n> :cn<CR>
 nnoremap <M-N> :cp<CR>
@@ -158,7 +158,6 @@ set scrolloff=8            " Keep cursor 8 lines from top and bottom while scrol
 set nobackup               " don't use backup files
 set nowb                   " don't use backup files
 set noswapfile             " don't use swap files
-set foldlevel=10           " Start out without a lot of folds
 
 " undo all the things
 if has('persistent_undo')

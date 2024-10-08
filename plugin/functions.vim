@@ -255,12 +255,12 @@ endfunction
 command! OpenQuickfixInOtherWindow call OpenQuickfixInOtherWindow()
 
 
-function! MakeWithoutAsking()
+function! BuildProject()
     :wa
     :AsyncRun -cwd=<root> -program=make
     OpenQuickfixInOtherWindow
 endfunction
-command! MakeWithoutAsking call MakeWithoutAsking()
+command! BuildProject call BuildProject()
 
 function! SearchCodebase(query)
   let l:number_of_windows = winnr('$') 
