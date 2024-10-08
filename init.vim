@@ -26,7 +26,7 @@ call plug#end()
 " -------------------------------------------------
 augroup quickfix_group
   autocmd! quickfix_group
-  au FileType qf map <buffer> q <C-^>
+  au FileType qf map <buffer> q :q<CR>
 augroup END
 
 augroup fugitive_group
@@ -91,6 +91,10 @@ inoremap JJ <ESC>
 inoremap jk <ESC>
 inoremap Jk <ESC>
 inoremap JK <ESC>
+
+" up / down during word wrap doesn't skip to next line
+nnoremap j gj
+nnoremap k gk
 
 " Turn off that stupid highlight search
 nnoremap <silent> <Space>n :noh<CR>
