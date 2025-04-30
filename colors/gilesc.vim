@@ -66,9 +66,9 @@ hi Search term=reverse ctermfg=188 ctermbg=24 guifg=#b8c4d0 guibg=#214283 gui=no
 "
 "     --- Fixme Highlights---
 " -----------------------------------------------------------------------
-:highlight FixMeTodo      guibg=NONE guifg=#cd2626 gui=underline,BOLD
-:highlight FixMeNote      guibg=NONE guifg=#6495ed gui=underline,BOLD
-:highlight FixMeDone      guibg=NONE guifg=#00ff00 gui=underline,BOLD
+" :highlight FixMeTodo      guibg=NONE guifg=#cd2626 gui=underline,BOLD
+" :highlight FixMeNote      guibg=NONE guifg=#6495ed gui=underline,BOLD
+" :highlight FixMeDone      guibg=NONE guifg=#00ff00 gui=underline,BOLD
 " :highlight FixMeImportant guibg=NONE guifg=#ffff00 gui=underline,BOLD
 " :highlight FixMeCleanup   guibg=NONE guifg=#ffff00 gui=underline,BOLD
 " :highlight FixMeSpeed     guibg=NONE guifg=#ffff00 gui=underline,BOLD
@@ -76,9 +76,9 @@ hi Search term=reverse ctermfg=188 ctermbg=24 guifg=#b8c4d0 guibg=#214283 gui=no
 " :highlight FixMeProg      guibg=NONE guifg=#ffff00 gui=underline,BOLD
 " :highlight FixMeHold      guibg=NONE guifg=#6495ed gui=underline,BOLD
 
-:let _ = matchadd("FixMeTodo", "TODO")
-:let _ = matchadd("FixMeNote", "NOTE")
-:let _ = matchadd("FixMeDone", "DONE")
+" :let _ = matchadd("FixMeTodo", "TODO")
+" :let _ = matchadd("FixMeNote", "NOTE")
+" :let _ = matchadd("FixMeDone", "DONE")
 " :let _ = matchadd("FixMeImportant", "IMPORTANT")
 " :let _ = matchadd("FixMeCleanup", "CLEANUP")
 " :let _ = matchadd("FixMeSpeed", "SPEED")

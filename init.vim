@@ -3,15 +3,52 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-vinegar'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-fugitive'
+
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tacahiroy/ctrlp-funky'
+
+Plug 'rluba/jai.vim'
+Plug 'tpope/vim-commentary'
+
+Plug 'rking/ag.vim'
 call plug#end()
 
 colorscheme gilesc
+
+augroup auto_make_directory
+    autocmd! auto_make_directory
+    autocmd  BufNewFile  *  :call EnsureDirExists()
+augroup END
+
+augroup ags_mode
+    autocmd! ags_mode
+    autocmd Filetype agsv nmap <buffer> <D-n> :AgsNextResult<CR>
+    autocmd Filetype agsv nmap <buffer> <D-N> :AgsPrevResult<CR>
+    autocmd Filetype agsv map <buffer> q <C-^>
+augroup end
+
+"
+"      --- Testing Key Bindings ---
+" -----------------------------------------------------------------
+"  When hilighting a row, use Control+Up / Control + Down to move those lines
+"  up or down
+vnoremap <C-Up> :m '<-2<CR>gv=gv
+vnoremap <C-Down> :m '>+1<CR>gv=gv
+
+" Keep the cursor in place when appending lines with 'J'
+" nnoremap J mzJ`z"
+
+" Keep the cursor centered after doing half page jumps
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
 
 nnoremap <M-n> :cn<CR>
 nnoremap <M-N> :cp<CR>
 
 tnoremap <ESC> <C-\><C-n>
 tnoremap jj <C-\><C-n>
+
+nnoremap <C-f> :call SearchCodebase(expand('<cword>'))<CR>
 
 "
 "      --- Key Bindings ---
@@ -48,6 +85,13 @@ nnoremap <C-k> :SetCursorToPreviousBlankLine<CR>
 
 nnoremap <Space>n :noh<CR>
 
+nnoremap <M-b> :CtrlPBuffer<CR>
+nnoremap <M-p> :CtrlP<CR>
+nnoremap <M-j> :CtrlPFunky<CR>
+nnoremap <M-n> :cn<CR>
+nnoremap <M-N> :cp<CR>
+nnoremap <M-f> :e <C-r>=expand('%:p:h')<CR>\
+
 "
 "      --- Gui Settings ---
 " -----------------------------------------------------------------
@@ -58,7 +102,6 @@ if exists("g:neovide")
     let g:neovide_input_macos_option_key_is_meta = 'only_left'
     let g:neovide_font_features = "-liga"
     set guifont=Liberation\ Mono:h12
-
 endif
 
 "
@@ -73,6 +116,7 @@ set hlsearch               " Highlight all the search results
 highlight       Search    ctermfg=Red ctermbg=Yellow guifg=Red guibg=Yellow
 
 set tabstop=4              " Tab Stop at 4 unless plugin overwrites it
+set softtabstop=4          " When inserting a tab how many spaces to input
 set shiftwidth=4
 set expandtab              " Always use spaces instead of tabs
 set autoread               " Read a file that has changed on disk
