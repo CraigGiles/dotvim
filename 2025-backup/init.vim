@@ -1,17 +1,78 @@
+colorscheme gilesc
+
+"
+"      --- Plugins ---
+" -----------------------------------------------------------------
 call plug#begin()
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-vinegar'
-Plug 'mbbill/undotree'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tacahiroy/ctrlp-funky'
+Plug 'rluba/jai.vim'
+Plug 'tpope/vim-commentary'
+Plug 'rking/ag.vim'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'masukomi/vim-markdown-folding'
+
+" Test
+Plug 'junegunn/vim-easy-align' " Align code
+
 call plug#end()
 
-colorscheme gilesc
+"
+"      --- Auto Groups ---
+" -------------------------------------------------
+augroup quickfix_group
+  autocmd! quickfix_group
+  au FileType qf map <buffer> q :q<CR>
+augroup END
+
+augroup fugitive_group
+  autocmd! fugitive_group
+  au FileType fugitive map <buffer> <D-2> :set foldlevel=0<cr>
+  au FileType fugitive map <Tab> =
+augroup END
+
+augroup help_group
+  autocmd! help_group
+  au FileType help map <buffer> q :q<cr>
+augroup END
+
+augroup auto_make_directory
+    autocmd! auto_make_directory
+    autocmd  BufNewFile  *  :call EnsureDirExists()
+augroup END
+
+augroup ags_mode
+    autocmd! ags_mode
+    autocmd Filetype agsv nmap <buffer> <D-n> :AgsNextResult<CR>
+    autocmd Filetype agsv nmap <buffer> <D-N> :AgsPrevResult<CR>
+    autocmd Filetype agsv map <buffer> q <C-^>
+augroup end
+
+"
+"      --- Test Settings / Bindings ---
+" -----------------------------------------------------------------
+"
+"
+let g:netrw_fastbrowse = 0
+
+autocmd FocusGained,BufEnter * if mode() != 'c' | checktime | endif
+
+nnoremap <M-b> :CtrlPBuffer<CR>
+nnoremap <M-p> :CtrlP<CR>
+nnoremap <M-m> :BuildProject<CR>
 
 nnoremap <M-n> :cn<CR>
 nnoremap <M-N> :cp<CR>
 
 tnoremap <ESC> <C-\><C-n>
 tnoremap jj <C-\><C-n>
+nnoremap <M-j> :CtrlPFunky<CR>
+nnoremap <M-f> :e <C-r>=expand('%:p:h')<CR>\
+
 
 "
 "      --- Key Bindings ---
@@ -35,18 +96,29 @@ inoremap JK <ESC>
 nnoremap j gj
 nnoremap k gk
 
+" Turn off that stupid highlight search
+nnoremap <silent> <Space>n :noh<CR>
+
 " When selecting text in visual mode,
 " Delete or Backspace removes it
 vmap <BS> x
-
-" Change the directory to the current file
-command! CD cd %:p:h
 
 " Move to next / previous blank line
 nnoremap <C-j> :SetCursorToNextBlankLine<CR>
 nnoremap <C-k> :SetCursorToPreviousBlankLine<CR>
 
-nnoremap <Space>n :noh<CR>
+" Change split orientation from | to -
+nnoremap <Space>sp :RotateSplits<CR>
+nnoremap <Space>vs :RotateSplits<CR>
+
+" Tab toggles folds
+nnoremap <Tab> za
+
+" Search the codebase for the word under cursor
+nnoremap <C-f> :call SearchCodebase(expand('<cword>'))<CR>
+
+" Change the directory to the current file
+command! CD cd %:p:h
 
 "
 "      --- Gui Settings ---
@@ -60,6 +132,7 @@ if exists("g:neovide")
     set guifont=Liberation\ Mono:h12
 
 endif
+
 
 "
 "      --- Settings ---

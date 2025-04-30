@@ -85,4 +85,3 @@ hi Search term=reverse ctermfg=188 ctermbg=24 guifg=#b8c4d0 guibg=#214283 gui=no
 " :let _ = matchadd("FixMeNext", "NEXT")
 " :let _ = matchadd("FixMeProg", "PROG")
 " :let _ = matchadd("FixMeHold", "HOLD")
-
