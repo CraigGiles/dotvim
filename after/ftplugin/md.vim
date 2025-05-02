@@ -1,0 +1,2 @@
+nnoremap <TAB> za
+
