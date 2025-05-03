@@ -16,6 +16,7 @@ hi VertSplit ctermfg=60 ctermbg=236 cterm=NONE guifg=#404245 guibg=#404245 gui=N
 
 "  Cursor to green
 hi Cursor ctermfg=188 ctermbg=250 cterm=NONE guifg=#393939 guibg=#40FF40 gui=NONE
+set guicursor=n-v-c:block-Cursor/lCursor
 
 "  cursor line to midnight blue
 hi CursorLine ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#191970 gui=NONE

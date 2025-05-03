@@ -11,6 +11,13 @@ Plug 'rluba/jai.vim'
 Plug 'tpope/vim-commentary'
 
 Plug 'rking/ag.vim'
+Plug 'skywind3000/asyncrun.vim'
+
+" automatically change the directory of the buffer to the project root
+Plug 'airblade/vim-rooter'
+Plug 'vim-scripts/BufOnly.vim'
+
+Plug 'masukomi/vim-markdown-folding'
 call plug#end()
 
 colorscheme gilesc
@@ -88,6 +95,9 @@ nnoremap <Space>n :noh<CR>
 nnoremap <M-b> :CtrlPBuffer<CR>
 nnoremap <M-p> :CtrlP<CR>
 nnoremap <M-j> :CtrlPFunky<CR>
+
+nnoremap <M-m> :BuildProject<CR>
+
 nnoremap <M-n> :cn<CR>
 nnoremap <M-N> :cp<CR>
 nnoremap <M-f> :e <C-r>=expand('%:p:h')<CR>\
@@ -97,7 +107,7 @@ nnoremap <M-f> :e <C-r>=expand('%:p:h')<CR>\
 " -----------------------------------------------------------------
 if exists("g:neovide")
 	let g:neovide_cursor_animation_length = 0
-    let g:neovide_scroll_animation_length = 0.1
+    let g:neovide_scroll_animation_length = 0.0
 
     let g:neovide_input_macos_option_key_is_meta = 'only_left'
     let g:neovide_font_features = "-liga"
