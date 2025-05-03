@@ -1,17 +1,19 @@
 call plug#begin()
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-vinegar'
-Plug 'mbbill/undotree'
 Plug 'tpope/vim-fugitive'
 
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'rking/ag.vim'
+
+
+Plug 'mbbill/undotree'
 
 Plug 'rluba/jai.vim'
 Plug 'tpope/vim-commentary'
 
-Plug 'rking/ag.vim'
-Plug 'skywind3000/asyncrun.vim'
 
 " automatically change the directory of the buffer to the project root
 Plug 'airblade/vim-rooter'
@@ -46,8 +48,8 @@ vnoremap <C-Down> :m '>+1<CR>gv=gv
 " nnoremap J mzJ`z"
 
 " Keep the cursor centered after doing half page jumps
-nnoremap <C-d> <C-d>zz
-nnoremap <C-u> <C-u>zz
+" nnoremap <C-d> <C-d>zz
+" nnoremap <C-u> <C-u>zz
 
 nnoremap <M-n> :cn<CR>
 nnoremap <M-N> :cp<CR>
@@ -108,6 +110,7 @@ nnoremap <M-f> :e <C-r>=expand('%:p:h')<CR>\
 if exists("g:neovide")
 	let g:neovide_cursor_animation_length = 0
     let g:neovide_scroll_animation_length = 0.0
+    let g:neovide_position_animation_length = 0.0
 
     let g:neovide_input_macos_option_key_is_meta = 'only_left'
     let g:neovide_font_features = "-liga"
