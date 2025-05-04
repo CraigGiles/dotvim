@@ -27,7 +27,9 @@ hi CursorLine ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#191970 gui=N
 " hi Normal ctermfg=188 ctermbg=235 cterm=NONE guifg=#D2CBC0 guibg=#1b2335 gui=NONE " neovide color -- blue-ish
 " hi Normal ctermfg=188 ctermbg=235 cterm=NONE guifg=#D2CBC0 guibg=#0A2030 gui=NONE " neovide color -- blue-ish
 " hi Normal ctermfg=188 ctermbg=235 cterm=NONE guifg=#D2CBC0 guibg=#102531 gui=NONE " neovide color -- blue-ish
-hi Normal ctermfg=188 ctermbg=235 cterm=NONE guifg=#D2CBC0 guibg=#072626 gui=NONE " jblow's color
+" #
+" hi Normal ctermfg=188 ctermbg=235 cterm=NONE guifg=#D2CBC0 guibg=#072626 gui=NONE " jblow's color
+hi Normal ctermfg=188 ctermbg=235 cterm=NONE guifg=#D2CBC0 guibg=#001e20 gui=NONE " a little darker than jblow's color
 
 
 " Comments
