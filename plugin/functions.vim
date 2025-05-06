@@ -309,3 +309,4 @@ function! DeleteHiddenBuffers()
     echo "Closed ".closed." hidden buffers"
 endfunction
 command! DeleteHiddenBuffers call DeleteHiddenBuffers()
+

@@ -21,3 +21,4 @@ endif
 let colors_name = "default"
 
 " vim: sw=2
+

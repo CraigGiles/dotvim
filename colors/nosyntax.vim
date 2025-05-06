@@ -84,3 +84,4 @@ hi Type ctermfg=NONE ctermbg=NONE cterm=NONE guifg=#cd950c guibg=NONE gui=NONE
 " hi Tag ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 " hi Title ctermfg=159 ctermbg=NONE cterm=bold guifg=#b8c4d0 guibg=NONE gui=bold
 " hi Underlined ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=underline
+

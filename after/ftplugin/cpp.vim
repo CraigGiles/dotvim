@@ -54,3 +54,4 @@ setlocal cinoptions+=^
 setlocal cinoptions+=g0
 setlocal cinoptions+=:0
 setlocal cinoptions+=(0
+

@@ -1,44 +1,28 @@
-colorscheme gilesc
-
-"
-"      --- Plugins ---
-" -----------------------------------------------------------------
 call plug#begin()
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-unimpaired'
+
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'rking/ag.vim'
+
+
+Plug 'mbbill/undotree'
+
 Plug 'rluba/jai.vim'
 Plug 'tpope/vim-commentary'
-Plug 'rking/ag.vim'
-Plug 'skywind3000/asyncrun.vim'
+
+
+" automatically change the directory of the buffer to the project root
+Plug 'airblade/vim-rooter'
+Plug 'vim-scripts/BufOnly.vim'
+
 Plug 'masukomi/vim-markdown-folding'
-
-" Test
-Plug 'junegunn/vim-easy-align' " Align code
-
 call plug#end()
 
-"
-"      --- Auto Groups ---
-" -------------------------------------------------
-augroup quickfix_group
-  autocmd! quickfix_group
-  au FileType qf map <buffer> q :q<CR>
-augroup END
-
-augroup fugitive_group
-  autocmd! fugitive_group
-  au FileType fugitive map <buffer> <D-2> :set foldlevel=0<cr>
-  au FileType fugitive map <Tab> =
-augroup END
-
-augroup help_group
-  autocmd! help_group
-  au FileType help map <buffer> q :q<cr>
-augroup END
+colorscheme gilesc
 
 augroup auto_make_directory
     autocmd! auto_make_directory
@@ -53,26 +37,37 @@ augroup ags_mode
 augroup end
 
 "
-"      --- Test Settings / Bindings ---
+"      --- Testing Key Bindings ---
 " -----------------------------------------------------------------
-"
-"
-let g:netrw_fastbrowse = 0
+"  When hilighting a row, use Control+Up / Control + Down to move those lines
+"  up or down
+vnoremap <C-Up> :m '<-2<CR>gv=gv
+vnoremap <C-Down> :m '>+1<CR>gv=gv
 
-autocmd FocusGained,BufEnter * if mode() != 'c' | checktime | endif
+function! IncreaseFontSize()
+    let g:neovide_scale_factor += 0.50
+endfunction
+command! IncreaseFontSize call IncreaseFontSize()
 
-nnoremap <M-b> :CtrlPBuffer<CR>
-nnoremap <M-p> :CtrlP<CR>
-nnoremap <M-m> :BuildProject<CR>
+function! DecreaseFontSize()
+    let g:neovide_scale_factor -= 0.50
+endfunction
+command! DecreaseFontSize call DecreaseFontSize()
+
+" Keep the cursor in place when appending lines with 'J'
+" nnoremap J mzJ`z"
+
+" Keep the cursor centered after doing half page jumps
+" nnoremap <C-d> <C-d>zz
+" nnoremap <C-u> <C-u>zz
 
 nnoremap <M-n> :cn<CR>
 nnoremap <M-N> :cp<CR>
 
 tnoremap <ESC> <C-\><C-n>
 tnoremap jj <C-\><C-n>
-nnoremap <M-j> :CtrlPFunky<CR>
-nnoremap <M-f> :e <C-r>=expand('%:p:h')<CR>\
 
+nnoremap <C-f> :call SearchCodebase(expand('<cword>'))<CR>
 
 "
 "      --- Key Bindings ---
@@ -96,43 +91,41 @@ inoremap JK <ESC>
 nnoremap j gj
 nnoremap k gk
 
-" Turn off that stupid highlight search
-nnoremap <silent> <Space>n :noh<CR>
-
 " When selecting text in visual mode,
 " Delete or Backspace removes it
 vmap <BS> x
+
+" Change the directory to the current file
+command! CD cd %:p:h
 
 " Move to next / previous blank line
 nnoremap <C-j> :SetCursorToNextBlankLine<CR>
 nnoremap <C-k> :SetCursorToPreviousBlankLine<CR>
 
-" Change split orientation from | to -
-nnoremap <Space>sp :RotateSplits<CR>
-nnoremap <Space>vs :RotateSplits<CR>
+nnoremap <Space>n :noh<CR>
 
-" Tab toggles folds
-nnoremap <Tab> za
+nnoremap <M-b> :CtrlPBuffer<CR>
+nnoremap <M-p> :CtrlP<CR>
+nnoremap <M-j> :CtrlPFunky<CR>
 
-" Search the codebase for the word under cursor
-nnoremap <C-f> :call SearchCodebase(expand('<cword>'))<CR>
+nnoremap <M-m> :BuildProject<CR>
 
-" Change the directory to the current file
-command! CD cd %:p:h
+nnoremap <M-n> :cn<CR>
+nnoremap <M-N> :cp<CR>
+nnoremap <M-f> :e <C-r>=expand('%:p:h')<CR>\
 
 "
 "      --- Gui Settings ---
 " -----------------------------------------------------------------
 if exists("g:neovide")
 	let g:neovide_cursor_animation_length = 0
-    let g:neovide_scroll_animation_length = 0.1
+    let g:neovide_scroll_animation_length = 0.0
+    let g:neovide_position_animation_length = 0.0
 
     let g:neovide_input_macos_option_key_is_meta = 'only_left'
     let g:neovide_font_features = "-liga"
     set guifont=Liberation\ Mono:h12
-
 endif
-
 
 "
 "      --- Settings ---
@@ -142,10 +135,11 @@ set splitbelow             " Puts new split windows to the bottom
 set ignorecase             " Case insensitive searches
 set incsearch              " Incremental searches
 set smartcase              " Case sensitive when wanted
-set hlsearch               " Highlight all the search results
+set nohlsearch               " Highlight all the search results
 highlight       Search    ctermfg=Red ctermbg=Yellow guifg=Red guibg=Yellow
 
 set tabstop=4              " Tab Stop at 4 unless plugin overwrites it
+set softtabstop=4          " When inserting a tab how many spaces to input
 set shiftwidth=4
 set expandtab              " Always use spaces instead of tabs
 set autoread               " Read a file that has changed on disk

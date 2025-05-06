@@ -5,3 +5,4 @@ let g:ctrlp_funky_after_jump = {
             \ 'go'      : 'zz',
             \ 'vim'     : '',
             \ }
+

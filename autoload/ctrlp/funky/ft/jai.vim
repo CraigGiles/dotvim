@@ -13,3 +13,4 @@ function! ctrlp#funky#ft#jai#filters()
 
     return filters
 endfunction
+

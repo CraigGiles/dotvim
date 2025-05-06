@@ -16,6 +16,7 @@ hi VertSplit ctermfg=60 ctermbg=236 cterm=NONE guifg=#404245 guibg=#404245 gui=N
 
 "  Cursor to green
 hi Cursor ctermfg=188 ctermbg=250 cterm=NONE guifg=#393939 guibg=#40FF40 gui=NONE
+set guicursor=n-v-c:block-Cursor/lCursor
 
 "  cursor line to midnight blue
 hi CursorLine ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#191970 gui=NONE
@@ -26,7 +27,9 @@ hi CursorLine ctermfg=NONE ctermbg=236 cterm=NONE guifg=NONE guibg=#191970 gui=N
 " hi Normal ctermfg=188 ctermbg=235 cterm=NONE guifg=#D2CBC0 guibg=#1b2335 gui=NONE " neovide color -- blue-ish
 " hi Normal ctermfg=188 ctermbg=235 cterm=NONE guifg=#D2CBC0 guibg=#0A2030 gui=NONE " neovide color -- blue-ish
 " hi Normal ctermfg=188 ctermbg=235 cterm=NONE guifg=#D2CBC0 guibg=#102531 gui=NONE " neovide color -- blue-ish
-hi Normal ctermfg=188 ctermbg=235 cterm=NONE guifg=#D2CBC0 guibg=#072626 gui=NONE " jblow's color
+" #
+" hi Normal ctermfg=188 ctermbg=235 cterm=NONE guifg=#D2CBC0 guibg=#072626 gui=NONE " jblow's color
+hi Normal ctermfg=188 ctermbg=235 cterm=NONE guifg=#D2CBC0 guibg=#001e20 gui=NONE " a little darker than jblow's color
 
 
 " Comments
@@ -69,19 +72,21 @@ hi Search term=reverse ctermfg=188 ctermbg=24 guifg=#b8c4d0 guibg=#214283 gui=no
 :highlight FixMeTodo      guibg=NONE guifg=#cd2626 gui=underline,BOLD
 :highlight FixMeNote      guibg=NONE guifg=#6495ed gui=underline,BOLD
 :highlight FixMeDone      guibg=NONE guifg=#00ff00 gui=underline,BOLD
-" :highlight FixMeImportant guibg=NONE guifg=#ffff00 gui=underline,BOLD
-" :highlight FixMeCleanup   guibg=NONE guifg=#ffff00 gui=underline,BOLD
-" :highlight FixMeSpeed     guibg=NONE guifg=#ffff00 gui=underline,BOLD
-" :highlight FixMeNext      guibg=NONE guifg=#6495ed gui=underline,BOLD
-" :highlight FixMeProg      guibg=NONE guifg=#ffff00 gui=underline,BOLD
-" :highlight FixMeHold      guibg=NONE guifg=#6495ed gui=underline,BOLD
 
-:let _ = matchadd("FixMeTodo", "TODO")
-:let _ = matchadd("FixMeNote", "NOTE")
-:let _ = matchadd("FixMeDone", "DONE")
-" :let _ = matchadd("FixMeImportant", "IMPORTANT")
-" :let _ = matchadd("FixMeCleanup", "CLEANUP")
-" :let _ = matchadd("FixMeSpeed", "SPEED")
-" :let _ = matchadd("FixMeNext", "NEXT")
-" :let _ = matchadd("FixMeProg", "PROG")
-" :let _ = matchadd("FixMeHold", "HOLD")
+" Function to apply highlights
+function! ApplyFixMeHighlights()
+    " Clear existing matches
+    call clearmatches()
+    
+    " Add matches with global pattern
+    call matchadd("FixMeTodo", '\<TODO\>', 10)
+    call matchadd("FixMeNote", '\<NOTE\>', 10)
+    call matchadd("FixMeDone", '\<DONE\>', 10)
+endfunction
+
+" Apply highlights initially
+call ApplyFixMeHighlights()
+
+" Reapply highlights when entering a buffer or window
+autocmd BufEnter,WinEnter * call ApplyFixMeHighlights()
+
