@@ -44,6 +44,16 @@ augroup end
 vnoremap <C-Up> :m '<-2<CR>gv=gv
 vnoremap <C-Down> :m '>+1<CR>gv=gv
 
+function! IncreaseFontSize()
+    let g:neovide_scale_factor += 0.50
+endfunction
+command! IncreaseFontSize call IncreaseFontSize()
+
+function! DecreaseFontSize()
+    let g:neovide_scale_factor -= 0.50
+endfunction
+command! DecreaseFontSize call DecreaseFontSize()
+
 " Keep the cursor in place when appending lines with 'J'
 " nnoremap J mzJ`z"
 
@@ -125,7 +135,7 @@ set splitbelow             " Puts new split windows to the bottom
 set ignorecase             " Case insensitive searches
 set incsearch              " Incremental searches
 set smartcase              " Case sensitive when wanted
-set hlsearch               " Highlight all the search results
+set nohlsearch               " Highlight all the search results
 highlight       Search    ctermfg=Red ctermbg=Yellow guifg=Red guibg=Yellow
 
 set tabstop=4              " Tab Stop at 4 unless plugin overwrites it
