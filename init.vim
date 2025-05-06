@@ -54,8 +54,8 @@ function! DecreaseFontSize()
 endfunction
 command! DecreaseFontSize call DecreaseFontSize()
 
-nnoremap <M-.> :call IncreaseFontSize()<CR>
-nnoremap <M-,> :call DecreaseFontSize()<CR>
+nnoremap <C-=> :call IncreaseFontSize()<CR>
+nnoremap <C--> :call DecreaseFontSize()<CR>
 
 " Keep the cursor in place when appending lines with 'J'
 " nnoremap J mzJ`z"
