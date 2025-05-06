@@ -45,14 +45,17 @@ vnoremap <C-Up> :m '<-2<CR>gv=gv
 vnoremap <C-Down> :m '>+1<CR>gv=gv
 
 function! IncreaseFontSize()
-    let g:neovide_scale_factor += 0.50
+    let g:neovide_scale_factor += 0.10
 endfunction
 command! IncreaseFontSize call IncreaseFontSize()
 
 function! DecreaseFontSize()
-    let g:neovide_scale_factor -= 0.50
+    let g:neovide_scale_factor -= 0.10
 endfunction
 command! DecreaseFontSize call DecreaseFontSize()
+
+nnoremap <M-,> :call DecreaseFontSize()<CR>
+nnoremap <M-.> :call IncreaseFontSize()<CR>
 
 " Keep the cursor in place when appending lines with 'J'
 " nnoremap J mzJ`z"
