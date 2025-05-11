@@ -172,18 +172,18 @@ function! EnsureDirExists()
 endfunction
 
 " " When the quickfix buffer is opened, make sure that we're on only one window.
-" function! OpenQuickfixHere() abort
-"   " Store the current buffer so we can re-claim it when we close
-"     let g:old_bufn = bufnr('%')
-"     let g:old_winn = winnr()
+function! OpenQuickfixHere()
+  " Store the current buffer so we can re-claim it when we close
+    let g:old_bufn = bufnr('%')
+    let g:old_winn = winnr()
 
-"     copen
-"     let bufn = bufnr('%')
-"     let winn = winnr()
-"     wincmd p
-"     execute 'b'.bufn
-"     execute winn.'close'
-" endfunction
+    copen
+    let bufn = bufnr('%')
+    let winn = winnr()
+    wincmd p
+    execute 'b'.bufn
+    execute winn.'close'
+endfunction
 
 " function OpenQuickFixList()
 "     let l:number_of_windows = winnr('$') 
@@ -254,12 +254,66 @@ command! Test call TestMe("Makefile", ".")
 "endfunction
 "command! OpenQuickfixInOtherWindow call OpenQuickfixInOtherWindow()
 
+function! CloseQuickfixWindows()
+    for win in range(1, winnr('$'))
+        if getwinvar(win, '&buftype') == 'quickfix'
+            execute win . 'close'
+        endif
+    endfor
+endfunction
+command! CloseQuickfixWindows call CloseQuickfixWindows()
 
 function! BuildProject()
+    " Save all files
     :wa
+    
+    " Run the build command
     :AsyncRun -cwd=<root> -program=make
-    copen
-    " OpenQuickfixInOtherWindow
+    
+    " Store the current window
+    let current_win = winnr()
+    
+    " If we have multiple windows, check if one is already a quickfix window
+    if winnr('$') > 1
+        let has_quickfix = 0
+        let quickfix_win = 0
+        
+        " Check if any window is a quickfix window
+        for win in range(1, winnr('$'))
+            if getwinvar(win, '&buftype') == 'quickfix'
+                let has_quickfix = 1
+                let quickfix_win = win
+                break
+            endif
+        endfor
+        
+        if has_quickfix
+            " Focus the quickfix window briefly to refresh it (if needed)
+            execute quickfix_win . "wincmd w"
+            execute current_win . "wincmd w"
+            return
+        endif
+    endif
+    
+    " Close any existing quickfix windows
+    call CloseQuickfixWindows()
+    
+    " Now we know there are no quickfix windows open
+    
+    " If we only have one window, create a split
+    if winnr('$') == 1
+        " Create a vertical split on the right
+        vertical split
+    else
+        " Move to the non-current window
+        call OtherWindowVerticalSplit()
+    endif
+    
+    " Now open quickfix in the current window (other than our starting window)
+    call OpenQuickfixHere()
+    
+    " Return to the original window
+    execute current_win . "wincmd w"
 endfunction
 command! BuildProject call BuildProject()
 
@@ -309,4 +363,30 @@ function! DeleteHiddenBuffers()
     echo "Closed ".closed." hidden buffers"
 endfunction
 command! DeleteHiddenBuffers call DeleteHiddenBuffers()
+
+function! CloseQuickfixPreserveWindow()
+    " Store the current buffer number
+    let current_buf = bufnr('%')
+    
+    " Check if this is a quickfix window
+    if &buftype == 'quickfix'
+        " Find the previous buffer number
+        let prev_buf = bufnr('#')
+        
+        " If there's a valid previous buffer, switch to it
+        if prev_buf > 0 && buflisted(prev_buf)
+            execute "buffer " . prev_buf
+        else
+            " Otherwise, find another buffer to display
+            let buffers = filter(range(1, bufnr('$')), 'buflisted(v:val) && v:val != current_buf')
+            if !empty(buffers)
+                execute "buffer " . buffers[0]
+            else
+                " If no other buffer exists, create a new one
+                enew
+            endif
+        endif
+    endif
+endfunction
+command! CloseQuickfixPreserveWindow call CloseQuickfixPreserveWindow()
 

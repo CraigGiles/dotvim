@@ -1,2 +1,1 @@
-map <buffer> q :q<CR>
-let &l:winheight = &lines / 3
+map <buffer> q :CloseQuickfixPreserveWindow<CR>
