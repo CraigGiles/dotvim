@@ -295,11 +295,6 @@ function! BuildProject()
         endif
     endif
     
-    " Close any existing quickfix windows
-    call CloseQuickfixWindows()
-    
-    " Now we know there are no quickfix windows open
-    
     " If we only have one window, create a split
     if winnr('$') == 1
         " Create a vertical split on the right
