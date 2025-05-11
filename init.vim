@@ -1,6 +1,7 @@
 call plug#begin()
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-vinegar'
+Plug 'eiginn/netrw'
 Plug 'tpope/vim-fugitive'
 
 Plug 'ctrlpvim/ctrlp.vim'
@@ -21,7 +22,7 @@ Plug 'vim-scripts/BufOnly.vim'
 
 Plug 'masukomi/vim-markdown-folding'
 call plug#end()
-
+let g:netrw_altfile = 1
 colorscheme gilesc
 
 augroup auto_make_directory
@@ -175,6 +176,7 @@ set wildignore+=*/logs/**
 set wildignore+=*/sql/**
 set wildignore+=*/tools/**
 set wildignore+=*/docroot/res/out/**
+set wildignore+=*/.venv/**
 set wildignore+=*.swp
 set wildignore+=*.bak
 
