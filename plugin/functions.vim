@@ -263,13 +263,7 @@ function! CloseQuickfixWindows()
 endfunction
 command! CloseQuickfixWindows call CloseQuickfixWindows()
 
-function! BuildProject()
-    " Save all files
-    :wa
-    
-    " Run the build command
-    :AsyncRun -cwd=<root> -program=make
-    
+function! OpenQuickfixInOtherWindow()
     " Store the current window
     let current_win = winnr()
     
@@ -310,22 +304,24 @@ function! BuildProject()
     " Return to the original window
     execute current_win . "wincmd w"
 endfunction
+command! OpenQuickfixInOtherWindow call OpenQuickfixInOtherWindow()
+
+function! BuildProject()
+    " Save all files
+    :wa
+    
+    " Run the build command
+    :AsyncRun -cwd=<root> -program=make
+    call OpenQuickfixInOtherWindow()
+endfunction
 command! BuildProject call BuildProject()
 
 function! SearchCodebase(query)
-  let l:number_of_windows = winnr('$') 
-  " if l:number_of_windows == 1
-  "     execute "Ag " . a:query
-  "     RotateSplits
-  " else
-      let initial = winnr()
-      execute "Ag " . a:query
-      " :cclose
-      " execute initial . "wincmd w"
-      " copen
-      " OtherWindowVertical
-      " call OpenQuickfixHere()
-  " endif
+    let initial = winnr()
+    execute "Ag " . a:query
+    execute "cclose"
+    execute initial . "wincmd w"
+    call OpenQuickfixInOtherWindow()
 endfunction
 
 function! GuiVimRunFullscreen()
