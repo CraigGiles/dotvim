@@ -324,7 +324,7 @@ function! SearchCodebase(query)
     call OpenQuickfixInOtherWindow()
 endfunction
 
-function! GuiVimRunFullscreen()
+function! GuiVimRunFullscree()
     " TODO store the previous columns and lines, restore later
     if has('gui_macvim')
         set columns=1000

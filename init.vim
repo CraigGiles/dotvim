@@ -21,9 +21,14 @@ Plug 'airblade/vim-rooter'
 Plug 'vim-scripts/BufOnly.vim'
 
 Plug 'masukomi/vim-markdown-folding'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'greggh/claude-code.nvim'
 call plug#end()
 let g:netrw_altfile = 1
 colorscheme gilesc
+
+" After installing, add this to your init.vim:
+lua require('claude-code').setup()
 
 augroup auto_make_directory
     autocmd! auto_make_directory
