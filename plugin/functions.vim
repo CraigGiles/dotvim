@@ -45,9 +45,42 @@ function! GetPreviousBlankLineNumber()
 endfunction
 
 function! SetCursorToPreviousBlankLine()
-    let line_number = GetPreviousBlankLineNumber()
-    echo printf("Setting cursor to %i", line_number)
-    let mylist = [bufnr(), line_number, 1, 0]
+    let l:current_line = line('.')
+    let l:line_number = l:current_line
+    
+    " If we're on a blank line, skip consecutive blank lines and find blank line before previous text block
+    if len(trim(getline('.'))) == 0
+        let l:line_number = l:current_line - 1
+        
+        " Skip consecutive blank lines going upward
+        while l:line_number > 0
+            let l:line_value = getline(l:line_number)
+            if len(trim(l:line_value)) > 0
+                break
+            endif
+            let l:line_number -= 1
+        endwhile
+        
+        " Skip through text going upward to find the previous blank line
+        while l:line_number > 0
+            let l:line_value = getline(l:line_number)
+            if len(trim(l:line_value)) == 0
+                break
+            endif
+            let l:line_number -= 1
+        endwhile
+        
+        " If we didn't find a blank line before text, use the original behavior
+        if l:line_number <= 0
+            let l:line_number = GetPreviousBlankLineNumber()
+        endif
+    else
+        " If we're not on a blank line, use the original behavior
+        let l:line_number = GetPreviousBlankLineNumber()
+    endif
+    
+    echo printf("Setting cursor to %i", l:line_number)
+    let mylist = [bufnr(), l:line_number, 1, 0]
     call setpos('.', mylist)
 endfunction
 command! SetCursorToPreviousBlankLine call SetCursorToPreviousBlankLine()
@@ -71,9 +104,43 @@ function! GetNextBlankLineNumber()
 endfunction
 
 function! SetCursorToNextBlankLine()
-    let line_number = GetNextBlankLineNumber()
-    echo printf("Setting cursor to %i", line_number)
-    let mylist = [bufnr(), line_number, 1, 0]
+    let l:current_line = line('.')
+    let l:max_lines = line('$')
+    let l:line_number = l:current_line
+    
+    " If we're on a blank line, skip consecutive blank lines and find blank line after next text block
+    if len(trim(getline('.'))) == 0
+        let l:line_number = l:current_line + 1
+        
+        " Skip consecutive blank lines
+        while l:line_number <= l:max_lines
+            let l:line_value = getline(l:line_number)
+            if len(trim(l:line_value)) > 0
+                break
+            endif
+            let l:line_number += 1
+        endwhile
+        
+        " Skip through text to find the next blank line
+        while l:line_number <= l:max_lines
+            let l:line_value = getline(l:line_number)
+            if len(trim(l:line_value)) == 0
+                break
+            endif
+            let l:line_number += 1
+        endwhile
+        
+        " If we didn't find a blank line after text, use the original behavior
+        if l:line_number > l:max_lines
+            let l:line_number = GetNextBlankLineNumber()
+        endif
+    else
+        " If we're not on a blank line, use the original behavior
+        let l:line_number = GetNextBlankLineNumber()
+    endif
+    
+    echo printf("Setting cursor to %i", l:line_number)
+    let mylist = [bufnr(), l:line_number, 1, 0]
     call setpos('.', mylist)
 endfunction
 command! SetCursorToNextBlankLine call SetCursorToNextBlankLine()
