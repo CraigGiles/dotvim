@@ -157,9 +157,12 @@ local function telescope_functions()
         if ok then return end
     end
     
-    -- Try LSP if available
-    ok = pcall(builtin.lsp_document_symbols)
-    if ok then return end
+    -- Try LSP if available (check if client is actually attached first)
+    local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+    if #clients > 0 then
+        ok = pcall(builtin.lsp_document_symbols)
+        if ok then return end
+    end
     
     -- Fallback to grep-based search for common patterns
     local patterns = {
