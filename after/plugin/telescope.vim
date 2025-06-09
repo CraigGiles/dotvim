@@ -165,7 +165,8 @@ local function telescope_functions()
     end
     
     -- Fallback to grep-based search for common patterns
-    local patterns = {
+    -- Different patterns for ripgrep vs vim regex
+    local rg_patterns = {
         -- C/C++ patterns
         c = "^[[:alnum:]_]+.*\\s+[[:alnum:]_]+\\s*\\([^)]*\\)\\s*{",
         cpp = "^[[:alnum:]_]+.*\\s+[[:alnum:]_]+\\s*\\([^)]*\\)\\s*{",
@@ -181,20 +182,28 @@ local function telescope_functions()
         -- Lua patterns
         lua = "^(local\\s+)?function\\s+|^local\\s+[[:alnum:]_]+\\s*=\\s*function",
         -- Jai patterns (from ctrlp-funky)
-        jai = "^\\w[\\w\\s]*::\\s*\\(|^\\w[\\w\\s]*::\\s*(struct|enum|#type|#run)",
+        jai = "^\\w.*\\s*::\\s*\\(|^\\w.*\\s*::\\s*(struct|enum|#type|#run)",
     }
     
-    local pattern = patterns[filetype]
-    if pattern then
+    local vim_patterns = {
+        -- Jai patterns for vim regex
+        jai = "^\\w.*\\s\\+::\\s\\+(\\|^\\w.*\\s\\+::\\s\\+\\(struct\\|enum\\|#type\\|#run\\)",
+        -- Add other language patterns here if needed
+    }
+    
+    local rg_pattern = rg_patterns[filetype]
+    local vim_pattern = vim_patterns[filetype] or rg_pattern
+    
+    if rg_pattern then
         -- On Windows, we need to use a different approach to show initial results
-        if vim.fn.has("win32") == 1 then
+        if vim.fn.has("win32") == 1 and vim_pattern then
             -- First collect all matches using vim's search
             local results = {}
             local bufnr = vim.fn.bufnr('%')
             local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
             
             for i, line in ipairs(lines) do
-                if vim.fn.match(line, pattern) >= 0 then
+                if vim.fn.match(line, vim_pattern) >= 0 then
                     table.insert(results, {
                         bufnr = bufnr,
                         lnum = i,
@@ -213,7 +222,7 @@ local function telescope_functions()
         else
             -- Use live_grep on non-Windows systems
             builtin.live_grep({
-                search = pattern,
+                search = rg_pattern,
                 use_regex = true,
                 only_sort_text = true,
                 search_dirs = {vim.fn.expand("%:p")},
