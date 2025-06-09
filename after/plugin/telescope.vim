@@ -132,8 +132,8 @@ telescope.setup{
     }
 }
 
--- Load fzf extension for better performance
-telescope.load_extension('fzf')
+-- Load fzf extension for better performance (if available)
+pcall(telescope.load_extension, 'fzf')
 
 -- Custom function finder that mimics CtrlP-funky
 local function telescope_functions()

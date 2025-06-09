@@ -5,7 +5,7 @@ Plug 'eiginn/netrw'
 Plug 'tpope/vim-fugitive'
 
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.x' }
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': has('win32') ? 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' : 'make' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'skywind3000/asyncrun.vim'
 Plug 'rking/ag.vim'
