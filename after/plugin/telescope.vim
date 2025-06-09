@@ -135,19 +135,67 @@ telescope.setup{
 -- Load fzf extension for better performance
 telescope.load_extension('fzf')
 
--- Custom function to search symbols with treesitter fallback
--- This will provide better language support including Jai
-vim.api.nvim_create_user_command('TelescopeFunctions', function()
-    -- Try LSP symbols first
-    local ok = pcall(builtin.lsp_document_symbols)
-    if not ok then
-        -- Fall back to treesitter
-        builtin.treesitter()
+-- Custom function finder that mimics CtrlP-funky
+local function telescope_functions()
+    local filetype = vim.bo.filetype
+    
+    -- Try different methods based on what's available
+    local ok = false
+    
+    -- First try treesitter (most reliable for supported languages)
+    ok = pcall(function()
+        builtin.treesitter({
+            symbols = { "function", "method", "class", "struct", "interface", "type", "enum" },
+            show_line = false,
+        })
+    end)
+    
+    if ok then return end
+    
+    -- Try LSP if available
+    ok = pcall(builtin.lsp_document_symbols)
+    if ok then return end
+    
+    -- Fallback to grep-based search for common patterns
+    local patterns = {
+        -- C/C++ patterns
+        c = "^[[:alnum:]_]+.*\\s+[[:alnum:]_]+\\s*\\([^)]*\\)\\s*{",
+        cpp = "^[[:alnum:]_]+.*\\s+[[:alnum:]_]+\\s*\\([^)]*\\)\\s*{",
+        -- Go patterns  
+        go = "^func\\s+",
+        -- Python patterns
+        python = "^(def|class)\\s+",
+        -- JavaScript/TypeScript patterns
+        javascript = "^(function|const|let|var)\\s+[[:alnum:]_]+\\s*=|^[[:alnum:]_]+\\s*\\([^)]*\\)\\s*{",
+        typescript = "^(function|const|let|var)\\s+[[:alnum:]_]+\\s*=|^[[:alnum:]_]+\\s*\\([^)]*\\)\\s*{",
+        -- Vim patterns
+        vim = "^(function!?|command!?|augroup)\\s+",
+        -- Lua patterns
+        lua = "^(local\\s+)?function\\s+|^local\\s+[[:alnum:]_]+\\s*=\\s*function",
+        -- Jai patterns (from ctrlp-funky)
+        jai = "^\\w.*\\s*::\\s*\\(|^\\w.*\\s*::\\s*(struct|enum|#type|#run)",
+    }
+    
+    local pattern = patterns[filetype]
+    if pattern then
+        builtin.grep_string({
+            search = pattern,
+            use_regex = true,
+            only_sort_text = true,
+            search_dirs = {vim.fn.expand("%:p")},
+            prompt_title = "Functions",
+        })
+    else
+        -- Generic fallback
+        builtin.current_buffer_fuzzy_find({
+            prompt_title = "Functions/Symbols",
+        })
     end
-end, {})
+end
 
--- Remap the function finder to use our custom command
-vim.keymap.set('n', '<M-j>', '<cmd>TelescopeFunctions<cr>', { noremap = true, silent = true })
+-- Create command and keymap
+vim.api.nvim_create_user_command('TelescopeFunctions', telescope_functions, {})
+vim.keymap.set('n', '<M-j>', telescope_functions, { noremap = true, silent = true })
 
 -- Helper function to jump to symbol with fold handling
 -- (similar to CtrlP-funky's after_jump behavior)

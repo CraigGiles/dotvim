@@ -103,8 +103,7 @@ local function setup_jai_symbols()
                 telescope.quickfix({ title = "Jai Symbols" })
             end
             
-            -- Set buffer-local keymap for Jai files
-            vim.keymap.set('n', '<M-j>', jai_document_symbols, { buffer = true, silent = true })
+            -- Jai symbol detection is now handled in telescope.vim
         end
     })
 end
