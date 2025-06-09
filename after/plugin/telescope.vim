@@ -197,6 +197,11 @@ local function telescope_functions()
     if rg_pattern then
         -- On Windows, we need to use a different approach to show initial results
         if vim.fn.has("win32") == 1 and vim_pattern then
+            local pickers = require('telescope.pickers')
+            local finders = require('telescope.finders')
+            local conf = require('telescope.config').values
+            local entry_display = require('telescope.pickers.entry_display')
+            
             -- First collect all matches using vim's search
             local results = {}
             local bufnr = vim.fn.bufnr('%')
@@ -205,22 +210,40 @@ local function telescope_functions()
             for i, line in ipairs(lines) do
                 if vim.fn.match(line, vim_pattern) >= 0 then
                     table.insert(results, {
-                        filename = vim.fn.expand("%:p"),
                         lnum = i,
-                        col = 1,
-                        text = vim.trim(line)
+                        text = vim.trim(line),
+                        bufnr = bufnr,
                     })
                 end
             end
             
-            -- Use quickfix picker to show results
-            vim.fn.setqflist(results, 'r')
-            builtin.quickfix({
+            -- Create custom picker
+            pickers.new({}, {
                 prompt_title = "Functions in " .. vim.fn.expand("%:t"),
-                show_line = false,
-                trim_text = true,
-                fname_width = 0,  -- Hide filename since we're in the same file
-            })
+                finder = finders.new_table {
+                    results = results,
+                    entry_maker = function(entry)
+                        return {
+                            value = entry,
+                            display = entry.text,
+                            ordinal = entry.text,
+                            lnum = entry.lnum,
+                            bufnr = entry.bufnr,
+                        }
+                    end,
+                },
+                sorter = conf.generic_sorter({}),
+                attach_mappings = function(prompt_bufnr, map)
+                    actions.select_default:replace(function()
+                        actions.close(prompt_bufnr)
+                        local selection = require('telescope.actions.state').get_selected_entry()
+                        if selection then
+                            vim.api.nvim_win_set_cursor(0, {selection.lnum, 0})
+                        end
+                    end)
+                    return true
+                end,
+            }):find()
         else
             -- Use live_grep on non-Windows systems
             builtin.live_grep({
