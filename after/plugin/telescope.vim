@@ -205,7 +205,7 @@ local function telescope_functions()
             for i, line in ipairs(lines) do
                 if vim.fn.match(line, vim_pattern) >= 0 then
                     table.insert(results, {
-                        bufnr = bufnr,
+                        filename = vim.fn.expand("%:p"),
                         lnum = i,
                         col = 1,
                         text = vim.trim(line)
@@ -214,10 +214,12 @@ local function telescope_functions()
             end
             
             -- Use quickfix picker to show results
-            vim.fn.setqflist(results)
+            vim.fn.setqflist(results, 'r')
             builtin.quickfix({
                 prompt_title = "Functions in " .. vim.fn.expand("%:t"),
                 show_line = false,
+                trim_text = true,
+                fname_width = 0,  -- Hide filename since we're in the same file
             })
         else
             -- Use live_grep on non-Windows systems
