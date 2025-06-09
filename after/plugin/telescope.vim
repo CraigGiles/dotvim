@@ -178,17 +178,21 @@ local function telescope_functions()
         -- Lua patterns
         lua = "^(local\\s+)?function\\s+|^local\\s+[[:alnum:]_]+\\s*=\\s*function",
         -- Jai patterns (from ctrlp-funky)
-        jai = "^\\w.*\\s*::\\s*\\(|^\\w.*\\s*::\\s*(struct|enum|#type|#run)",
+        jai = "^\\w[\\w\\s]*::\\s*\\(|^\\w[\\w\\s]*::\\s*(struct|enum|#type|#run)",
     }
     
     local pattern = patterns[filetype]
     if pattern then
-        builtin.grep_string({
+        -- Use live_grep with the pattern for better regex support
+        builtin.live_grep({
             search = pattern,
             use_regex = true,
             only_sort_text = true,
             search_dirs = {vim.fn.expand("%:p")},
-            prompt_title = "Functions",
+            prompt_title = "Functions in " .. vim.fn.expand("%:t"),
+            default_text = "",
+            disable_coordinates = true,
+            path_display = {"hidden"},
         })
     else
         -- Generic fallback
