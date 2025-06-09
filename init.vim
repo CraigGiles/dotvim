@@ -4,8 +4,9 @@ Plug 'tpope/vim-vinegar'
 Plug 'eiginn/netrw'
 Plug 'tpope/vim-fugitive'
 
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'tacahiroy/ctrlp-funky'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.x' }
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'skywind3000/asyncrun.vim'
 Plug 'rking/ag.vim'
 
@@ -113,9 +114,9 @@ nnoremap <C-k> :SetCursorToPreviousBlankLine<CR>
 
 nnoremap <Space>n :noh<CR>
 
-nnoremap <M-b> :CtrlPBuffer<CR>
-nnoremap <M-p> :CtrlP<CR>
-nnoremap <M-j> :CtrlPFunky<CR>
+nnoremap <M-b> <cmd>Telescope buffers<cr>
+" <M-p> is set in after/plugin/telescope.vim with wildignore support
+" <M-j> is set in after/plugin/telescope.vim and after/plugin/treesitter.vim
 
 nnoremap <M-m> :BuildProject<CR>
 
