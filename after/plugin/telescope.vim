@@ -98,6 +98,7 @@ telescope.setup{
             find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
             follow = true,
             hidden = false,
+            previewer = false,  -- Disable preview for file finding
         },
         
         buffers = {
@@ -295,6 +296,7 @@ setup_symbol_jump_behavior()
 _G.telescope_find_files_with_wildignore = function()
     local opts = {}
     opts.find_command = { "rg", "--files", "--hidden" }
+    opts.previewer = false  -- Disable preview
     
     -- Add wildignore patterns
     local wildignore = vim.o.wildignore
