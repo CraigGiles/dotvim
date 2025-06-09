@@ -186,17 +186,43 @@ local function telescope_functions()
     
     local pattern = patterns[filetype]
     if pattern then
-        -- Use live_grep with the pattern for better regex support
-        builtin.live_grep({
-            search = pattern,
-            use_regex = true,
-            only_sort_text = true,
-            search_dirs = {vim.fn.expand("%:p")},
-            prompt_title = "Functions in " .. vim.fn.expand("%:t"),
-            default_text = "",
-            disable_coordinates = true,
-            path_display = {"hidden"},
-        })
+        -- On Windows, we need to use a different approach to show initial results
+        if vim.fn.has("win32") == 1 then
+            -- First collect all matches using vim's search
+            local results = {}
+            local bufnr = vim.fn.bufnr('%')
+            local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+            
+            for i, line in ipairs(lines) do
+                if vim.fn.match(line, pattern) >= 0 then
+                    table.insert(results, {
+                        bufnr = bufnr,
+                        lnum = i,
+                        col = 1,
+                        text = vim.trim(line)
+                    })
+                end
+            end
+            
+            -- Use quickfix picker to show results
+            vim.fn.setqflist(results)
+            builtin.quickfix({
+                prompt_title = "Functions in " .. vim.fn.expand("%:t"),
+                show_line = false,
+            })
+        else
+            -- Use live_grep on non-Windows systems
+            builtin.live_grep({
+                search = pattern,
+                use_regex = true,
+                only_sort_text = true,
+                search_dirs = {vim.fn.expand("%:p")},
+                prompt_title = "Functions in " .. vim.fn.expand("%:t"),
+                default_text = "",
+                disable_coordinates = true,
+                path_display = {"hidden"},
+            })
+        end
     else
         -- Generic fallback
         builtin.current_buffer_fuzzy_find({
