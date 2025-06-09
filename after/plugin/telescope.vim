@@ -79,7 +79,7 @@ telescope.setup{
         },
         
         -- Use ripgrep for finding files (faster than default)
-        vimgrep_arguments = {
+        vimgrep_arguments = vim.fn.executable('rg') == 1 and {
             'rg',
             '--color=never',
             '--no-heading',
@@ -89,7 +89,7 @@ telescope.setup{
             '--smart-case',
             '--hidden',
             '--glob=!.git/*',
-        },
+        } or nil,
     },
     
     pickers = {
@@ -143,14 +143,19 @@ local function telescope_functions()
     local ok = false
     
     -- First try treesitter (most reliable for supported languages)
-    ok = pcall(function()
-        builtin.treesitter({
-            symbols = { "function", "method", "class", "struct", "interface", "type", "enum" },
-            show_line = false,
-        })
-    end)
+    -- Skip treesitter for languages without parsers
+    local has_parser = pcall(require, 'nvim-treesitter.parsers') and require('nvim-treesitter.parsers').has_parser(filetype)
     
-    if ok then return end
+    if has_parser then
+        ok = pcall(function()
+            builtin.treesitter({
+                symbols = { "function", "method", "class", "struct", "interface", "type", "enum" },
+                show_line = false,
+            })
+        end)
+        
+        if ok then return end
+    end
     
     -- Try LSP if available
     ok = pcall(builtin.lsp_document_symbols)
