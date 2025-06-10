@@ -4,12 +4,15 @@ Plug 'tpope/vim-vinegar'
 Plug 'eiginn/netrw'
 Plug 'tpope/vim-fugitive'
 
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.x' }
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': has('win32') ? 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' : 'make' }
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.x' }
+" Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': has('win32') ? 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' : 'make' }
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'skywind3000/asyncrun.vim'
 Plug 'rking/ag.vim'
 
+" fzf for fuzzy finding
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 Plug 'mbbill/undotree'
 
@@ -114,9 +117,22 @@ nnoremap <C-k> :SetCursorToPreviousBlankLine<CR>
 
 nnoremap <Space>n :noh<CR>
 
-nnoremap <M-b> <cmd>Telescope buffers<cr>
-" <M-p> is set in after/plugin/telescope.vim with wildignore support
-" <M-j> is set in after/plugin/telescope.vim and after/plugin/treesitter.vim
+" fzf key bindings
+nnoremap <C-p> :Files<CR>
+nnoremap <M-b> :Buffers<CR>
+nnoremap <M-g> :GFiles<CR>
+nnoremap <M-r> :Rg<CR>
+
+" fzf settings - use bottom split layout like CtrlP
+let g:fzf_layout = { 'down': '~40%' }
+
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+autocmd! FileType fzf tnoremap <buffer> <C-g> <C-c>
+autocmd! FileType fzf tnoremap <buffer> <Esc> <C-c>
 
 nnoremap <M-m> :BuildProject<CR>
 
