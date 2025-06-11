@@ -71,7 +71,8 @@ if exists("g:neovide")
 
     let g:neovide_input_macos_option_key_is_meta = 'only_left'
     let g:neovide_font_features = "-liga"
-    set guifont=Liberation\ Mono:h12
+    " set guifont=Liberation\ Mono:h12
+    set guifont=Liberation\ Mono:h17
 endif
 
 "
