@@ -24,6 +24,11 @@ call plug#end()
 let g:netrw_altfile = 1
 colorscheme gilesc
 
+augroup RemoveWhitespaceMode
+    autocmd!
+    autocmd BufWritePost *.* RemoveTrailingWhitespace
+augroup END
+
 augroup auto_make_directory
     autocmd! auto_make_directory
     autocmd  BufNewFile  *  :call EnsureDirExists()
