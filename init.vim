@@ -5,17 +5,21 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-commentary'
 
-" Fuzzy Finders 
+" Fuzzy Finders
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
 
+" Workflow Plugins
 Plug 'rking/ag.vim'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'masukomi/vim-markdown-folding'
 
-Plug 'rluba/jai.vim'
 
 Plug 'junegunn/vim-easy-align' " Align code
+Plug 'airblade/vim-rooter'     " Auto CD into the root of the current project
+
+" Filetype Plugins / Syntax
+Plug 'rluba/jai.vim'
 call plug#end()
 
 let g:netrw_altfile = 1
@@ -110,6 +114,9 @@ nnoremap <C-k> :SetCursorToPreviousBlankLine<CR>
 
 nnoremap <Space>n :noh<CR>
 
+nnoremap <M-b> :CtrlPBuffer<CR>
+nnoremap <M-p> :CtrlP<CR>
+nnoremap <M-j> :CtrlPFunky<CR>
 nnoremap <M-m> :BuildProject<CR>
 
 nnoremap <M-n> :cn<CR>
