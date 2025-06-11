@@ -122,6 +122,8 @@ nnoremap <M-n> :cn<CR>
 nnoremap <M-N> :cp<CR>
 nnoremap <M-f> :e <C-r>=expand('%:p:h')<CR>\
 
+nnoremap <C-f> :call SearchCodebase(expand('<cword>'))<CR>
+
 "
 "      --- Settings ---
 " -------------------------------------------------
