@@ -14,7 +14,6 @@ Plug 'rking/ag.vim'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'masukomi/vim-markdown-folding'
 
-
 Plug 'junegunn/vim-easy-align' " Align code
 Plug 'airblade/vim-rooter'     " Auto CD into the root of the current project
 
